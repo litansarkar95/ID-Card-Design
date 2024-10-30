@@ -52,7 +52,7 @@ select[type="text"]{
                       <option value="">Select</option>   
                       <?php
                                         foreach ($allCat as $cat){
-                                      echo "<option value='{$cat->id}'>{$cat->name}</option>";
+                                      echo "<option value='{$cat->id}'>{$cat->name} - {$cat->mobile_no}</option>";
                                         }
                                     ?>
                        
@@ -69,78 +69,343 @@ select[type="text"]{
                         <textarea type="text" class="form-control" id="description"  name="description"   ><?php echo set_value('description'); ?></textarea>
                         <span class="text-red small"><?php echo form_error('description'); ?></span>
                     </div>
+
+                    <div class="row">
+                          <!-- FORM -->
+                          <div class="col-md-6">
+                          <div class="form-group ">
+                         <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_name_en">
+                                <input type="checkbox" class="form-check-input" id="is_name_en" name="is_name_en" value="1"> Name English</label>
+                            </div>
+                         </div>  
+                         </div>
+                      <!-- END FORM -->
+                            <!-- FORM -->
+                            <div class="col-md-6">
                       <div class="form-group">
                       <div class="form-check form-check-success">
-                              <label class="form-check-label" for="is_name">
-                                <input type="checkbox" class="form-check-input" id="is_name" name="is_name" value="1"> Name </label>
+                              <label class="form-check-label" for="is_name_bn">
+                                <input type="checkbox" class="form-check-input" id="is_name_bn" name="is_name_bn" value="1"> Name Bangla</label>
+                            </div>
+                    </div>   </div>
+                <!-- END FORM -->
+
+                           <!-- FORM -->
+                           <div class="col-md-6">
+                           <div class="form-group">
+                         <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_father_name_en">
+                                <input type="checkbox" class="form-check-input" id="is_father_name_en" name="is_father_name_en" value="1"> Father's Name English</label>
+                            </div>
+                         </div>   </div>
+                      <!-- END FORM -->
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                     <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_father_name_bn">
+                                <input type="checkbox" class="form-check-input" id="is_father_name_bn" name="is_father_name_bn" value="1"> Father's Name Bangla</label>
+                            </div>
+                         </div>  </div>
+                      <!-- END FORM -->
+
+                             <!-- FORM -->
+                             <div class="col-md-6">
+                             <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_mother_name_en">
+                                <input type="checkbox" class="form-check-input" id="is_mother_name_en" name="is_mother_name_en" value="1"> Mother Name English</label>
+                            </div>
+                         </div>   </div>
+                      <!-- END FORM -->
+                      <!-- FORM -->
+                      <div class="col-md-6">
+                      <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_mother_name_bn">
+                                <input type="checkbox" class="form-check-input" id="is_mother_name_bn" name="is_mother_name_bn" value="1">Mother Name Bangla</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+
+
+                           <!-- FORM -->
+                           <div class="col-md-6">
+                           <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_mobile_no">
+                                <input type="checkbox" class="form-check-input" id="is_mobile_no" name="is_mobile_no" value="1"> Mobile No</label>
+                            </div>
+                         </div>      </div>
+                      <!-- END FORM -->
+
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                        <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_email">
+                                <input type="checkbox" class="form-check-input" id="is_email" name="is_email" value="1"> Email</label>
+                            </div>
+                         </div>      </div>
+                      <!-- END FORM -->
+
+                          <!-- FORM -->
+                          <div class="col-md-6">
+                          <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_village_en">
+                                <input type="checkbox" class="form-check-input" id="is_village_en" name="is_village_en" value="1"> Village English</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+                          <!-- FORM -->
+                          <div class="col-md-6">
+                          <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_village_bn">
+                                <input type="checkbox" class="form-check-input" id="is_village_bn" name="is_village_bn" value="1"> Village Bangla</label>
+                            </div>
+                         </div>  
+                          </div>
+                      <!-- END FORM -->
+
+                      <!-- FORM -->
+                      <div class="col-md-6">
+                      <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_post_office_en">
+                                <input type="checkbox" class="form-check-input" id="is_post_office_en" name="is_post_office_en" value="1"> Post Office English</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+
+                             <!-- FORM -->
+                             <div class="col-md-6">
+                             <div class="form-group">
+                             <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_post_office_bn">
+                                <input type="checkbox" class="form-check-input" id="is_post_office_bn" name="is_post_office_bn" value="1"> Post Office Bangla</label>
+                            </div>
+                         </div>
+                         </div>
+
+                      <!-- END FORM -->
+
+                         <!-- FORM -->
+                         <div class="col-md-6">
+                         <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_upazila_en">
+                                <input type="checkbox" class="form-check-input" id="is_upazila_en" name="is_upazila_en" value="1">Upazila English</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+
+                           <!-- FORM -->
+                           <div class="col-md-6">
+                           <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_upazila_bn">
+                                <input type="checkbox" class="form-check-input" id="is_upazila_bn" name="is_upazila_bn" value="1"> Upazila Bangla</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+
+                          <!-- FORM -->
+                          <div class="col-md-6">
+                          <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_zilla_en">
+                                <input type="checkbox" class="form-check-input" id="is_zilla_en" name="is_zilla_en" value="1"> Zilla English</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                        <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_zilla_bn">
+                                <input type="checkbox" class="form-check-input" id="is_zilla_bn" name="is_zilla_bn" value="1"> Zilla Bangla</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                      <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_present_address_en">
+                                <input type="checkbox" class="form-check-input" id="is_present_address_en" name="is_present_address_en" value="1"> Present Address English</label>
+                            </div>
+                       </div>
+                        </div>
+                          <!-- END FORM -->
+                             <!-- FORM -->
+                        <div class="col-md-6">
+                      <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_present_address_bn">
+                                <input type="checkbox" class="form-check-input" id="is_present_address_bn" name="is_present_address_bn" value="1"> Present Address Bangla</label>
+                            </div>
+                       </div>
+                        </div>
+                          <!-- END FORM -->
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                       <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_permanent_address_en">
+                                <input type="checkbox" class="form-check-input" id="is_permanent_address_en" name="is_permanent_address_en" value="1"> Permanent Address English</label>
+                            </div>
+                       </div>
+                       </div>
+                <!-- END FORM -->
+                    <!-- FORM -->
+                    <div class="col-md-6">
+                       <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_permanent_address_bn">
+                                <input type="checkbox" class="form-check-input" id="is_permanent_address_bn" name="is_permanent_address_bn" value="1"> Permanent Address Bangla</label>
+                            </div>
+                       </div>
+                       </div>
+                <!-- END FORM -->
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                        <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_designation">
+                                <input type="checkbox" class="form-check-input" id="is_designation" name="is_designation" value="1">Designation</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                        <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_department">
+                                <input type="checkbox" class="form-check-input" id="is_department" name="is_department" value="1">Department</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+
+                   <!-- FORM -->
+                   <div class="col-md-6">
+                   <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_employee_id">
+                                <input type="checkbox" class="form-check-input" id="is_employee_id" name="is_employee_id" value="1">Employee ID</label>
                             </div>
                     </div>
+                    </div>
+                <!-- END FORM -->
 
-                    <div class="form-group">
+                   <!-- FORM -->
+                   <div class="col-md-6">
+                   <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_index_no">
+                                <input type="checkbox" class="form-check-input" id="is_index_no" name="is_index_no" value="1">Index No</label>
+                            </div>
+                    </div>
+                    </div>
+                      <!-- END FORM -->
+                <div class="col-md-6">
+                <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_class">
+                                <input type="checkbox" class="form-check-input" id="is_class" name="is_class" value="1"> Class  </label>
+                            </div>
+                    </div>
+                    </div>
+                <!-- END FORM -->
+                <div class="col-md-6">
+                <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_class_roll">
+                                <input type="checkbox" class="form-check-input" id="is_class_roll" name="is_class_roll" value="1"> Class Roll </label>
+                            </div>
+                    </div>
+                    </div>
+                          <!-- END FORM -->
+                          <div class="col-md-6">
+                          <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_date_of_birth">
                                 <input type="checkbox" class="form-check-input" id="is_date_of_birth" name="is_date_of_birth" value="1"> Birthday </label>
                             </div>
                     </div>
-
-                    <div class="form-group">
+                    </div>
+                <!-- END FORM -->
+                <div class="col-md-6">
+                <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_gender">
                                 <input type="checkbox" class="form-check-input" id="is_gender" name="is_gender" value="1"> Gender </label>
                             </div>
                        </div>
-
-                       <div class="form-group">
-                      <div class="form-check form-check-success">
-                              <label class="form-check-label" for="is_present_address">
-                                <input type="checkbox" class="form-check-input" id="is_present_address" name="is_present_address" value="1"> Present Address </label>
-                            </div>
                        </div>
-
-                       <div class="form-group">
-                      <div class="form-check form-check-success">
-                              <label class="form-check-label" for="is_permanent_address">
-                                <input type="checkbox" class="form-check-input" id="is_permanent_address" name="is_permanent_address" value="1"> Permanent Address </label>
-                            </div>
-                       </div>
-
-
-                       <div class="form-group">
+                       <!-- END FORM -->
+                       <div class="col-md-6">
+                     <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_id_number">
                                 <input type="checkbox" class="form-check-input" id="is_id_number" name="is_id_number" value="1"> ID Number </label>
                             </div>
                        </div>
-                       <div class="form-group">
+                       </div>
+                      <!-- END FORM -->
+                      <div class="col-md-6">
+                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_blood_group">
                                 <input type="checkbox" class="form-check-input" id="is_blood_group" name="is_blood_group" value="1">Blood Group</label>
                             </div>
-                       </div>
-                       <div class="form-group">
+                       </div>   </div>
+                    <!-- END FORM -->
+                    <div class="col-md-6">
+                      <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_marital_status">
+                                <input type="checkbox" class="form-check-input" id="is_marital_status" name="is_marital_status" value="1">Marital Status</label>
+                            </div>
+                       </div>   </div>
+                      <!-- END FORM -->
+                      <div class="col-md-6">
+                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_photo">
                                 <input type="checkbox" class="form-check-input" id="is_photo" name="is_photo" value="1">Photo</label>
                             </div>
                        </div>
-                       <div class="form-group">
+                      </div>
+                      <!-- END FORM -->
+                      <div class="col-md-6">
+                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_nationality">
                                 <input type="checkbox" class="form-check-input" id="is_nationality" name="is_nationality" value="1">Nationality</label>
                             </div>
-                       </div>
-                       <div class="form-group">
-                      <div class="form-check form-check-success">
-                              <label class="form-check-label" for="is_mobile_no">
-                                <input type="checkbox" class="form-check-input" id="is_mobile_no" name="is_mobile_no" value="1">Mobile No</label>
-                            </div>
-                       </div>
-                       <div class="form-group">
-                      <div class="form-check form-check-success">
-                              <label class="form-check-label" for="is_email">
-                                <input type="checkbox" class="form-check-input" id="is_email" name="is_email" value="1">Email</label>
-                            </div>
-                       </div>
+                       </div>    </div>
+                         <!-- END FORM -->
+      </div>  
+                     
+                    
+                     
+                      
+                     
+                       
 
                  
                       <button type="submit" class="btn btn-primary me-2"> Submit </button>

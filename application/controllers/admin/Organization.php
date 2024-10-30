@@ -17,6 +17,7 @@ class Organization extends CI_Controller {
 	public function index()
 	{
         $this->form_validation->set_rules("company_name", "Company Name", "required");
+        $this->form_validation->set_rules("company_name_bn", "Company Name Bnagla", "required");
         $this->form_validation->set_rules("mobile_no", "Mobile Number", "required");
         if ($this->form_validation->run() == NULL) {
       
@@ -29,6 +30,7 @@ class Organization extends CI_Controller {
           $data = array(   
       
               "name"                       => $this->common_model->xss_clean($this->input->post("company_name")),
+              "name_bn"                    => $this->common_model->xss_clean($this->input->post("company_name_bn")),
               "slug"                       => $slug,
               "mobile_no"                  => $this->common_model->xss_clean($this->input->post("mobile_no")),
               "email"                      => $this->common_model->xss_clean($this->input->post("email")),
@@ -67,7 +69,7 @@ class Organization extends CI_Controller {
         $data['active'] = "company";
         $data['title'] =  "Company";
         $data['allPdt'] = $this->common_model->view_data("organizations", "", "id", "DESC");
-        $data['content'] = $this->load->view("admin/company-list", $data, TRUE);
+        $data['content'] = $this->load->view("admin/org/company-list", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
 
@@ -92,6 +94,28 @@ class Organization extends CI_Controller {
         $this->db->where('slug', $slug);
         $query = $this->db->get('organizations');
         return $query->num_rows() > 0;
+    }
+
+
+
+    public function delete($id) {
+        $dt = $this->common_model->view_data("organizations", array("id" => $id), "id", "asc");
+        foreach ($dt as $pdt){
+            $old_ext=$pdt->picture;
+        }
+        if(file_exists("public/static/images/organization/{$old_ext}")){
+            unlink("public/static/images/organization/{$old_ext}");
+        }
+        if ($dt) {
+           
+            $this->common_model->delete_data("organizations", array("id" => $id));
+        
+            $this->session->set_flashdata('success', 'Delete Successfully');
+        } else {
+            $this->session->set_flashdata('error', 'Server error.');
+        }
+        $this->session->set_userdata($sdata);
+        redirect(base_url() . "admin/organization", "refresh");
     }
 
 

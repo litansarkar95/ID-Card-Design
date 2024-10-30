@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Contact Form</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+    <title>Bootstrap Form</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js" ></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> 
     
+
+</head>
 <script>
 $(document).ready(function() {
     // Initialize the datepicker with year selection
@@ -24,209 +28,458 @@ $(document).ready(function() {
 
 
     </script>
-    <style>
-        html, body {
-            min-height: 100%;
-            padding: 0;
-            margin: 0;
-            font-family: Roboto, Arial, sans-serif;
-            font-size: 14px;
-            color: #666;
-        }
-        h1 {
-            margin: 0 0 20px;
-            font-weight: 400;
-            color: #1c87c9;
-            text-align:center;
-        }
-        p {
-            margin: 0 0 5px;
-        }
-        .main-block {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #1c87c9;
-        }
-        form {
-            padding: 25px;
+<style>
+body {
+    background-color: #1c87c9; 
+}
+
+.form-content {
+    padding: 25px;
             margin: 25px;
             box-shadow: 0 2px 5px #f5f5f5; 
             background: #f5f5f5; 
             border-radius: 8px;
-        }
-        .fas {
-            margin: 25px 10px 0;
-            font-size: 72px;
-            color: #fff;
-        }
-        .fa-id-card {
-            transform: rotate(-20deg);
-        }
-        .fa-users, .fa-mail-bulk {
-            transform: rotate(10deg);
-        }
-        input, textarea, select {
-            width: calc(100% - 18px);
-            padding: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #1c87c9;
-            outline: none;
-            border-radius: 4px;
-        }
-        input::placeholder, select {
-            color: #666;
-        }
-        label {
-            margin-bottom: 5px;
-            font-weight: bold;
-            display: block;
-            color: #333;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            background: #1c87c9; 
-            font-size: 16px;
+}
+h2 {
+      
             font-weight: 400;
-            color: #fff;
-            border-radius: 4px;
-            cursor: pointer;
+            color: #1c87c9;
+            text-align:center;
         }
-        button:hover {
-            background: #2371a0;
-        } 
-        @media (min-width: 568px) {
-            .main-block {
-                flex-direction: row;
-            }
-            .left-part, form {
-                width: 50%;
-            }
-            .fa-id-card {
-                margin-top: 0;
-                margin-left: 20%;
-            }
-            .fa-users {
-                margin-top: -10%;
-                margin-left: 65%;
-            }
-            .fa-mail-bulk {
-                margin-top: 2%;
-                margin-left: 28%;
-            }
-        }
+p{
+    text-align:center;
+}
+
+.form-control {
+    border: 1px solid #007bff; 
+    transition: border-color 0.3s ease; 
+}
+
+.form-control:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+.btn-primary {
+    background-color: #007bff; 
+    border: none; 
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; 
+}
+
     </style>
-</head>
 <body>
-<div class="main-block">
-    <!-- <div class="left-part">
-        <i class="fas fa-id-card"></i>
-        <i class="fas fa-users"></i>
-        <i class="fas fa-mail-bulk"></i>
-    </div> -->
-    <form action="<?php echo base_url()."userformsubmit/$pdt->org_slug?v=$pdt->id" ?>" method="post" enctype="multipart/form-data">
+    <div class="container mt-5">
     <?php
         if(isset($allPdt)){
             foreach($allPdt as $pdt){
         
         ?>
-        <h1><?php echo $pdt->title; ?></h1>
-        <input  class="form-control" type="hidden" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
-        <input  class="form-control" type="hidden" id="id" name="id" value="<?php echo $pdt->id; ?>"  >
-        <div class="info">
+        <div class="row">
+        <div class="col-md-8 offset-md-2">
+        <div class="form-content">
+         
+        <h2><?php echo $pdt->title; ?></h2>
+        <p><?php echo $pdt->description; ?></p>
+        <form action="<?php echo base_url()."userformsubmit/$pdt->org_slug?v=$pdt->id" ?>" method="post" enctype="multipart/form-data">
+     
+            <div class="row">
+
+            <input  class="form-control" type="hidden" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
+            <input  class="form-control" type="hidden" id="id" name="id" value="<?php echo $pdt->id; ?>"  >
+               <!-- FORM -->
             <?php
-            if($pdt->is_name  == 1){
+            if($pdt->is_name_en  == 1){
             ?>
-            <label for="full_name">Full Name</label>
-            <span class="text-red small"><?php echo form_error('full_name'); ?></span>
-            <input  class="form-control" type="text" id="full_name" name="full_name" value="<?php echo set_value('full_name'); ?>" placeholder="Full name" >
-           
-           <?php
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="name_en">Full Name</label>
+                <input type="text" class="form-control" id="name_en" name="name_en" value="<?php echo set_value('name_en'); ?>">
+                </div>
+
+                </div>
+                <?php
             }
             ?>
-               <?php
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_name_bn  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="name_bn">নাম</label>
+                <input type="text" class="form-control" id="name_bn" name="name_bn" value="<?php echo set_value('name_bn'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+              <!-- FORM -->
+            <?php
+            if($pdt->is_father_name_en  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="father_name_en">Father's Name</label>
+                <input type="text" class="form-control" id="father_name_en" name="father_name_en" value="<?php echo set_value('father_name_en'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_father_name_bn  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="father_name_bn">পিতার নাম</label>
+                <input type="text" class="form-control" id="father_name_bn" name="father_name_bn" value="<?php echo set_value('father_name_bn'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_mother_name_en  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="mother_name_en">Mother Name</label>
+                <input type="text" class="form-control" id="mother_name_en" name="mother_name_en" value="<?php echo set_value('mother_name_en'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_mother_name_bn  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="mother_name_bn">মায়ের নাম</label>
+                <input type="text" class="form-control" id="mother_name_bn" name="mother_name_bn" value="<?php echo set_value('mother_name_bn'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_mobile_no  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="mobile_no">Mobile No.</label>
+                <span class="text-red small"><?php echo form_error('mobile_no'); ?></span>
+                <input type="text" class="form-control" id="mobile_no" name="mobile_no" value="<?php echo set_value('mobile_no'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_email  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo set_value('email'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_village_en  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="village_en">Village</label>
+                <input type="text" class="form-control" id="village_en" name="village_en" value="<?php echo set_value('village_en'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_village_bn  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="village_bn">গ্রাম</label>
+                <input type="text" class="form-control" id="village_bn" name="village_bn" value="<?php echo set_value('village_bn'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_post_office_en  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="post_office_en">Post Office</label>
+                <input type="text" class="form-control" id="post_office_en" name="post_office_en" value="<?php echo set_value('post_office_en'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_post_office_bn  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="post_office_bn">পোস্ট অফিস</label>
+                <input type="text" class="form-control" id="post_office_bn" name="post_office_bn" value="<?php echo set_value('post_office_bn'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_upazila_en  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="upazila_en">Upazila</label>
+                <input type="text" class="form-control" id="upazila_en" name="upazila_en" value="<?php echo set_value('upazila_en'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_upazila_bn  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="upazila_bn">উপজেলা</label>
+                <input type="text" class="form-control" id="upazila_bn" name="upazila_bn" value="<?php echo set_value('upazila_bn'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_zilla_en  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="zilla_en">Zilla</label>
+                <input type="text" class="form-control" id="zilla_en" name="zilla_en" value="<?php echo set_value('zilla_en'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_zilla_bn  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="zilla_bn">জেলা</label>
+                <input type="text" class="form-control" id="zilla_bn" name="zilla_bn" value="<?php echo set_value('zilla_bn'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
             if($pdt->is_designation  == 1){
             ?>
-            <label for="is_designation">Designation</label>
-            <input  class="form-control" type="text" id="is_designation" name="is_designation" value="<?php echo set_value('is_designation'); ?>" >
-            <?php
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="designation">Designation</label>
+                <input type="text" class="form-control" id="designation" name="designation" value="<?php echo set_value('designation'); ?>">
+                </div>
+
+                </div>
+                <?php
             }
             ?>
-
+            <!-- END FORM -->
+               <!-- FORM -->
             <?php
             if($pdt->is_department  == 1){
             ?>
-            <label for="is_department">Department</label>
-            <input  class="form-control" type="text" id="is_department" name="is_department" value="<?php echo set_value('is_department'); ?>" >
-            <?php
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" class="form-control" id="department" name="department" value="<?php echo set_value('department'); ?>">
+                </div>
+
+                </div>
+                <?php
             }
             ?>
-               <?php
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_employee_id  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="employee_id">Employee ID</label>
+                <input type="text" class="form-control" id="employee_id" name="employee_id" value="<?php echo set_value('employee_id'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_index_no  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="index_no">Index No</label>
+                <input type="text" class="form-control" id="index_no" name="index_no" value="<?php echo set_value('index_no'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
+            if($pdt->is_class  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="class">Class</label>
+                <input type="text" class="form-control" id="class" name="class" value="<?php echo set_value('class'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+       
+               <!-- FORM -->
+            <?php
+            if($pdt->is_class_roll  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="class_roll">Class Roll</label>
+                <input type="text" class="form-control" id="class_roll" name="class_roll" value="<?php echo set_value('class_roll'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
             if($pdt->is_date_of_birth  == 1){
             ?>
-            <label for="dob">Birthday</label>
-            <input  class="form-control" type="text" id="dob" name="is_date_of_birth" value="<?php echo set_value('is_date_of_birth'); ?>"  >
-            <?php
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="full_name">Date of Birth</label>
+                <input type="text" class="form-control" id="dob" name="date_of_birth" value="<?php echo set_value('date_of_birth'); ?>">
+                </div>
+
+                </div>
+                <?php
             }
             ?>
-               <?php
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
             if($pdt->is_gender  == 1){
             ?>
-              <label for="is_gender">Gender</label>
-               <select class="form-control" type="text" id="is_gender" name="is_gender" value="<?php echo set_value('is_gender'); ?>" >
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" type="text" id="gender" name="gender" value="<?php echo set_value('gender'); ?>" >
                 <option value="">Select</option>
                 <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Others">Others</option>
             </select>
-          
-            <?php
-            }
-            ?>
+              
+                </div>
 
-<?php
-            if($pdt->is_marital_status  == 1){
-            ?>
-              <label for="is_marital_status">marital_status</label>
-               <select class="form-control" type="text" id="is_marital_status" name="is_marital_status" value="<?php echo set_value('is_marital_status'); ?>" >
-                <option value="">Select</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Widowed">Widowed</option>
-                <option value="Separated">Separated</option>
-                <option value="Not Specified">Not Specified</option>
-            </select>
-          
-            <?php
+                </div>
+                <?php
             }
             ?>
-               <?php
-            if($pdt->is_present_address  == 1){
-            ?>
-            <label for="is_present_address">Present Address</label>
-            <textarea rows="4"  id="is_present_address" name="is_present_address" ><?php echo set_value('is_present_address'); ?></textarea>
+            <!-- END FORM -->
+               <!-- FORM -->
             <?php
-            }
+            if($pdt->is_id_number  == 1){
             ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="id_number">ID No</label>
+                <input type="text" class="form-control" id="id_number" name="id_number" value="<?php echo set_value('id_number'); ?>">
+                </div>
 
-              <?php
-            if($pdt->is_permanent_address  == 1){
-            ?>
-            <label for="is_permanent_address">Permanent Address</label>
-            <textarea rows="4"  id="is_permanent_address" name="is_permanent_address" ><?php echo set_value('is_permanent_address'); ?></textarea>
-            <?php
+                </div>
+                <?php
             }
             ?>
-
+            <!-- END FORM -->
+               <!-- FORM -->
             <?php
             if($pdt->is_blood_group  == 1){
             ?>
-            <label for="is_blood_group">Blood Group</label>
-            <select class="form-control" type="text" id="is_blood_group" name="is_blood_group" value="<?php echo set_value('is_blood_group'); ?>" >
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="blood_group">Blood Group</label>
+                <select class="form-control" type="text" id="blood_group" name="blood_group" value="<?php echo set_value('blood_group'); ?>" >
                 <option value="">Select</option>
                 <option value="A+">A+</option>
                 <option value="A-">A-</option>
@@ -237,60 +490,143 @@ $(document).ready(function() {
                 <option value="AB+">AB+</option>
                 <option value="AB-">AB-</option>
             </select>
-              <?php
+            </div>
+                </div>
+                <?php
             }
             ?>
+            <!-- END FORM -->
+                       <!-- FORM -->
+            <?php
+            if($pdt->is_marital_status  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="marital_status">Marital Status</label>
+                <select class="form-control" type="text" id="marital_status" name="marital_status" value="<?php echo set_value('marital_status'); ?>" >
+                <option value="">Select</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+                <option value="Not Specified">Not Specified</option>
+            </select>
+            
+            </div>
 
-
+                </div>
                 <?php
+            }
+            ?>
+            <!-- END FORM -->
+                    <!-- FORM -->
+            <?php
             if($pdt->is_nationality  == 1){
             ?>
-            <label for="is_nationality">Nationality</label>
-            <input  class="form-control" type="text" id="is_nationality" name="is_nationality" value="<?php echo set_value('is_nationality'); ?>" >
-            <?php
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="nationality">Nationality</label>
+                <input type="text" class="form-control" id="nationality" name="nationality" value="<?php echo set_value('nationality'); ?>">
+                </div>
+
+                </div>
+                <?php
             }
             ?>
-
-
-<?php
-            if($pdt->is_mobile_no  == 1){
-            ?>
-            <label for="is_mobile_no">Mobile No</label>
-            <input  class="form-control" type="text" id="is_mobile_no" name="is_mobile_no" value="<?php echo set_value('is_mobile_no'); ?>" >
+            <!-- END FORM -->
+                     <!-- FORM -->
             <?php
+            if($pdt->is_present_address_en  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="present_address_en">Present Address</label>
+                <textarea class="form-control" id="present_address_en" rows="3" placeholder="Your Address"><?php echo set_value('present_address_en'); ?></textarea>
+                </div>
+
+                </div>
+                <?php
             }
             ?>
+            <!-- END FORM -->
 
-
-<?php
-            if($pdt->is_email  == 1){
+                    <!-- FORM -->
+                    <?php
+            if($pdt->is_permanent_address_en  == 1){
             ?>
-            <label for="is_email">Email</label>
-            <input  class="form-control" type="text" id="is_email" name="is_email" value="<?php echo set_value('is_email'); ?>" >
-            <?php
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="permanent_address_en">Permanent Address</label>
+                <textarea class="form-control" id="permanent_address_en" rows="3" ><?php echo set_value('permanent_address_en'); ?></textarea>
+                </div>
+
+                </div>
+                <?php
             }
             ?>
-
-
-<?php
+            <!-- END FORM -->
+               <!-- FORM -->
+            <?php
             if($pdt->is_photo  == 1){
             ?>
-            <label for="is_photo">Photo</label>
-            <input  class="form-control" type="file" id="is_photo" name="pic" value="<?php echo set_value('pic'); ?>" >
-            <?php
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="is_photo">Photo</label>
+                <input  class="form-control" type="file" id="is_photo" name="pic" value="<?php echo set_value('pic'); ?>" >
+                </div>
+
+                </div>
+                <?php
             }
             ?>
+            <!-- END FORM -->
+            <div class="col-md-10">
+            <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="terms" required>
+                    <label class="form-check-label" for="terms">
+                        I agree to the <a href="#termsModal" data-toggle="modal" data-target="#termsModal">terms and conditions</a>.
+                    </label>
+                </div>
+          
+            </div>
+            
+            </div>
+            <div class="col-md-10">
+            <button type="submit" class="btn btn-primary">Submit</button>
 
+            </div>
+        </form>
+    </div>
+    </div>
 
-  
-    
+</div>
 
-        <?php
+    <?php
             }
         }
         ?>
-        <button type="submit">Submit</button>
-    </form>
+    </div>
+ <!-- Modal for Terms and Conditions -->
+ <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Your terms and conditions go here. Make sure to include all necessary information that users should be aware of.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

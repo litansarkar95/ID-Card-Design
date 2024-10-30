@@ -6,9 +6,25 @@ $route['404_override'] = 'page_not_found';
 $route['translate_uri_dashes'] = FALSE;
 $route["logout"] = "login/logout"; 
 
-$route['userform/:any'] = "userform/index";
-$route['userformsubmit/:any'] = 'userform/userformsubmit';
-$route['thanks'] = 'userform/thanks';
+
+// $route['userform/:any'] = "userform/index";
+// $route['userformsubmit/:any'] = 'userform/userformsubmit';
+ $route['thanks'] = 'userform/thanks';
+
+
+
+define('EXT', '.php');
+require_once( BASEPATH . 'database/DB' . EXT );
+$db = & DB();
+
+$db->select("org_fields.*, organizations.slug org_slug")->from("org_fields");
+$db->join("organizations", "org_fields.organization_id = organizations.id");
+$result = $db->get()->result();
+foreach ($result as $value) {
+    $route["userform"."/".ReplaceR($value->org_slug)] = "userform/index";
+    $route["userformsubmit"."/".ReplaceR($value->org_slug)] = "userForm/userformsubmit";
+}
+
 
 function ReplaceR($data) {
     $data = trim($data);

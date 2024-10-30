@@ -13,7 +13,9 @@ textarea[type="text"] {
     margin-bottom: 10px;
     outline: none; /* Prevents the default outline when focused */
 }
-
+.text-red{
+  color:red;
+}
   </style>
 <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
@@ -39,23 +41,28 @@ textarea[type="text"] {
                         <input type="text" class="form-control" id="company_name" value="<?php echo set_value('company_name'); ?>" name="company_name"   />
                         <span class="text-red small"><?php echo form_error('company_name'); ?></span>
                     </div>
+                    <div class="form-group">
+                        <label for="company_name_bn">Company Name Bangla<code>*</code></label>
+                        <input type="text" class="form-control" id="company_name_bn" value="<?php echo set_value('company_name_bn'); ?>" name="company_name_bn"   />
+                        <span class="text-red small"><?php echo form_error('company_name_bn'); ?></span>
+                    </div>
                       <div class="form-group">
                         <label for="mobile_no">Mobile Number<code>*</code></label>
                         <input type="text" class="form-control" id="mobile_no" value="<?php echo set_value('mobile_no'); ?>" name="mobile_no"   />
                         <span class="text-red small"><?php echo form_error('mobile_no'); ?></span>
                     </div>
                       <div class="form-group">
-                        <label for="email">Email<code>*</code></label>
+                        <label for="email">Email<code></code></label>
                         <input type="text" class="form-control" id="email" value="<?php echo set_value('email'); ?>" name="email"   />
                         <span class="text-red small"><?php echo form_error('email'); ?></span>
                     </div>
                       <div class="form-group">
-                        <label for="address">Address<code>*</code></label>
+                        <label for="address">Address<code></code></label>
                         <textarea type="text" class="form-control" id="address" name="address"   ><?php echo set_value('address'); ?></textarea>
                         <span class="text-red small"><?php echo form_error('address'); ?></span>
                     </div>
                       <div class="form-group">
-                        <label for="pic">Logo<code>*</code></label>
+                        <label for="pic">Logo<code></code></label>
                         <input type="file" class="form-control" id="pic" value="<?php echo set_value('pic'); ?>" name="pic"   />
                         <span class="text-red small"><?php echo form_error('pic'); ?></span>
                     </div>
@@ -97,7 +104,7 @@ textarea[type="text"] {
                           <td><img src="<?php echo base_url()."public/static/images/organization/$pdt->picture"; ?>" width="80px" height="80px" alt="" class="img-circle"></td>
                             <td>
                          
-                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/organization/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
+                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/organization?edit={$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
                               <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/organization/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
                             </td>
                           </tr>

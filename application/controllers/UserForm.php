@@ -23,10 +23,7 @@ class UserForm extends CI_Controller {
 
 
     public function userformsubmit(){
-        $this->form_validation->set_rules("full_name", "Name", "required");
-        if ($this->form_validation->run() == NULL) {
-      
-        } else {
+    
             $organization_id = $this->common_model->xss_clean($this->input->post("organization_id"));
             $code_random = $this->main_model->number_generator("users_fields",$organization_id);
 
@@ -43,19 +40,38 @@ class UserForm extends CI_Controller {
                 "registration_no"                   => $code, 
                 "organization_id"                   => $this->common_model->xss_clean($this->input->post("organization_id")),
                 "org_fields_id"                     => $this->common_model->xss_clean($this->input->post("id")),
-                "name"                              => $this->common_model->xss_clean($this->input->post("full_name")),
-                "designation"                       => $this->common_model->xss_clean($this->input->post("is_designation")),
-                "department"                        => $this->common_model->xss_clean($this->input->post("is_department")),
+                "name_en"                           => $this->common_model->xss_clean($this->input->post("name_en")),
+                "name_bn"                           => $this->common_model->xss_clean($this->input->post("name_bn")),
+                "father_name_en"                    => $this->common_model->xss_clean($this->input->post("father_name_en")),
+                "father_name_bn"                    => $this->common_model->xss_clean($this->input->post("father_name_bn")),
+                "mother_name_en"                    => $this->common_model->xss_clean($this->input->post("mother_name_en")),
+                "mother_name_bn"                    => $this->common_model->xss_clean($this->input->post("mother_name_bn")),
+                "mobile_no"                         => $this->common_model->xss_clean($this->input->post("mobile_no")),
+                "email"                             => $this->common_model->xss_clean($this->input->post("email")),
+                "village_en"                        => $this->common_model->xss_clean($this->input->post("village_en")),
+                "village_bn"                        => $this->common_model->xss_clean($this->input->post("village_bn")),
+                "post_office_en"                    => $this->common_model->xss_clean($this->input->post("post_office_en")),
+                "post_office_bn"                    => $this->common_model->xss_clean($this->input->post("post_office_bn")),
+                "upazila_en"                        => $this->common_model->xss_clean($this->input->post("upazila_en")),
+                "upazila_bn"                        => $this->common_model->xss_clean($this->input->post("upazila_bn")),
+                "zilla_en"                          => $this->common_model->xss_clean($this->input->post("zilla_en")),
+                "zilla_bn"                          => $this->common_model->xss_clean($this->input->post("zilla_bn")),
+                "designation"                       => $this->common_model->xss_clean($this->input->post("designation")),
+                "department"                        => $this->common_model->xss_clean($this->input->post("department")),
+                "employee_id"                       => $this->common_model->xss_clean($this->input->post("employee_id")),
+                "index_no"                          => $this->common_model->xss_clean($this->input->post("index_no")),
+                "class"                             => $this->common_model->xss_clean($this->input->post("class")),
+                "class_roll"                        => $this->common_model->xss_clean($this->input->post("class_roll")),
                 "date_of_birth"                     => strtotime($this->common_model->xss_clean($this->input->post("is_date_of_birth"))),
-                "gender"                            => $this->common_model->xss_clean($this->input->post("is_gender")),
-                "marital_status"                    => $this->common_model->xss_clean($this->input->post("is_marital_status")),
-                "present_address"                   => $this->common_model->xss_clean($this->input->post("is_present_address")),
-                "permanent_address"                 => $this->common_model->xss_clean($this->input->post("is_permanent_address")),
-                "id_number"                         => $this->common_model->xss_clean($this->input->post("is_id_number")),
-                "blood_group"                       => $this->common_model->xss_clean($this->input->post("is_blood_group")),
-                "nationality"                       => $this->common_model->xss_clean($this->input->post("is_nationality")),
-                "mobile_no"                         => $this->common_model->xss_clean($this->input->post("is_mobile_no")),
-                "email"                             => $this->common_model->xss_clean($this->input->post("is_email")),
+                "gender"                            => $this->common_model->xss_clean($this->input->post("gender")),
+                "id_number"                         => $this->common_model->xss_clean($this->input->post("id_number")),
+                "blood_group"                       => $this->common_model->xss_clean($this->input->post("blood_group")),
+                "marital_status"                    => $this->common_model->xss_clean($this->input->post("marital_status")),
+                "nationality"                       => $this->common_model->xss_clean($this->input->post("nationality")),
+                "present_address_en"                => $this->common_model->xss_clean($this->input->post("present_address_en")),
+                "present_address_bn"                => $this->common_model->xss_clean($this->input->post("present_address_bn")),
+                "permanent_address_en"              => $this->common_model->xss_clean($this->input->post("permanent_address_en")),
+                "permanent_address_bn"              => $this->common_model->xss_clean($this->input->post("permanent_address_bn")),
                 "is_active"                         => 1,
                 "create_date"                       => strtotime($date),
                
@@ -83,15 +99,7 @@ class UserForm extends CI_Controller {
                 $this->session->set_flashdata('error', 'Server error.');
             }
             redirect(base_url() . "thanks", "refresh");
-        }
-   
-        $data = array();
-        $id = $_GET['v'];
-        $data['active'] = "dashboard";
-        $data['title'] =  "Dashboard";
-        $data['allPdt'] = $this->main_model->CustomfieldsList($id);
-      // $data['content'] = $this->load->view("admin/dashboard", $data, TRUE);
-       $this->load->view('front/user-form', $data);
+
     }
     public function thanks(){
         $data = array();
