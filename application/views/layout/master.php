@@ -140,7 +140,7 @@
                       <a class="nav-link" href="<?php echo base_url(); ?>admin/card/card_design">Card Design</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">Organization Custom Fields  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">Card Design Custom Fields  </a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">Custom Fields List</a>

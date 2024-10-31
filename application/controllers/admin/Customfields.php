@@ -61,6 +61,7 @@ class Customfields extends CI_Controller {
               "is_blood_group"                    => $this->common_model->xss_clean($this->input->post("is_blood_group")),
               "is_marital_status"                 => $this->common_model->xss_clean($this->input->post("is_marital_status")),
               "is_photo"                          => $this->common_model->xss_clean($this->input->post("is_photo")),
+              "is_signature"                      => $this->common_model->xss_clean($this->input->post("is_signature")),
               "is_nationality"                    => $this->common_model->xss_clean($this->input->post("is_nationality")),
               "is_active"                         => 1,
               "create_date"                       => strtotime($date),

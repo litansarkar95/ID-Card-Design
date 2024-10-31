@@ -35,4 +35,12 @@ class Card_design extends CI_Controller {
         $this->load->view('admin/card/card-design-001', $data);
 	}
 
+  public function  design002(){
+    $data = array();
+    $data['active'] = "users";
+    $data['title'] =  "Card Design";
+  //  $data['allPdt'] = $this->main_model->UsersList();
+    $this->load->view('admin/card/card-design-011', $data);
+}
+
 }

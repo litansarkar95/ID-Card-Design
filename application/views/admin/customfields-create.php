@@ -390,6 +390,16 @@ select[type="text"]{
                             </div>
                        </div>
                       </div>
+
+                         <!-- END FORM -->
+                         <div class="col-md-6">
+                      <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_signature">
+                                <input type="checkbox" class="form-check-input" id="is_signature" name="is_signature" value="1">Signature</label>
+                            </div>
+                       </div>
+                      </div>
                       <!-- END FORM -->
                       <div class="col-md-6">
                       <div class="form-group">

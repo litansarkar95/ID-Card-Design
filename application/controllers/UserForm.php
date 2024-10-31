@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserForm extends CI_Controller {
+class Userform extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -89,6 +89,20 @@ class UserForm extends CI_Controller {
                 }
             }else{
                 $data['photo'] = "0.png";
+            }
+
+
+            if ($_FILES['signature']['name'] != "") {
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
+                $config['upload_path'] = "./public/static/images/users/";
+                $config['encrypt_name'] = TRUE;
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload("signature")) {
+                    $data['signature'] = $this->upload->data('file_name');
+                    //$arrayMsg['enc_name'] = "1";
+                }
+            }else{
+                $data['signature'] = "0.png";
             }
         
           if ($this->common_model->save_data("users_fields", $data)) {

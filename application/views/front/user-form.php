@@ -580,6 +580,22 @@ p{
             }
             ?>
             <!-- END FORM -->
+
+                <!-- FORM -->
+                <?php
+            if($pdt->is_signature  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="signature">Signature</label>
+                <input  class="form-control" type="file" id="signature" name="signature" accept="image/png" value="<?php echo set_value('signature'); ?>" >
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
             <div class="col-md-10">
             <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="terms" required>
