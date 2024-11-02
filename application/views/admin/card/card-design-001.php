@@ -22,6 +22,19 @@ body {
     min-height: 100vh;
     background-color: #f4f4f4;
 }
+#print-button {
+    position: absolute; /* or relative/fixed */
+    top: 0 !important;
+    left: 10 !important;
+    cursor: pointer;
+        margin: 50px auto;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        background-color: #56a79a;
+        color: #fff;
+        font-weight: bold;
+}
 
 .id-card-container {
     display: flex;
@@ -69,7 +82,7 @@ body {
     color: #333;
     font-weight: bold;
     margin: 5px 0;
-}
+} 
 
 .info p {
     margin: 5px 0;
@@ -114,7 +127,15 @@ body {
 
     </style>
 <body>
+<button id="print-button" onclick="printSelectedContent()">
+        Print 
+      </button>
     <div class="id-card-container">
+   <?php
+   if(isset($allPdt)){
+    foreach($allPdt as $pdt){
+   
+   ?>
         <!-- Front of the ID Card -->
         <div class="id-card front">
             <div class="logo">
@@ -153,6 +174,24 @@ body {
             <p>Email: company@mail.com</p>
             <p>Address: 721 Broadway, New York, NY 10003, USA</p>
         </div>
+
+        <?php
+    }
+}
+        ?>
     </div>
 </body>
 </html>
+<script>
+      // Function to print the selected content
+      function printSelectedContent() {
+        // Hide the print button before printing
+        document.getElementById("print-button").style.display = "none";
+
+        // Print only the selected content
+        window.print();
+
+        // Show the print button after printing is done
+        document.getElementById("print-button").style.display = "block";
+      }
+    </script>

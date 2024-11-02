@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2024 at 08:57 AM
+-- Generation Time: Nov 02, 2024 at 11:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -84,7 +84,66 @@ INSERT INTO `auth_users_info` (`id`, `ip_address`, `usersid`, `email`, `device_n
 (39, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730180082),
 (40, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730183441),
 (41, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730258245),
-(42, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730351794);
+(42, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730351794),
+(43, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730519567);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `design_fields`
+--
+
+CREATE TABLE `design_fields` (
+  `id` int(11) NOT NULL,
+  `org_fields_id` int(11) NOT NULL,
+  `design_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `is_name_en` int(11) NOT NULL,
+  `is_name_bn` int(11) NOT NULL,
+  `is_father_name_en` int(11) NOT NULL,
+  `is_father_name_bn` int(11) NOT NULL,
+  `is_mother_name_en` int(11) NOT NULL,
+  `is_mother_name_bn` int(11) NOT NULL,
+  `is_mobile_no` int(11) NOT NULL,
+  `is_email` int(11) NOT NULL,
+  `is_village_en` int(11) NOT NULL,
+  `is_village_bn` int(11) NOT NULL,
+  `is_post_office_en` int(11) NOT NULL,
+  `is_post_office_bn` int(11) NOT NULL,
+  `is_upazila_en` int(11) NOT NULL,
+  `is_upazila_bn` int(11) NOT NULL,
+  `is_zilla_en` int(11) NOT NULL,
+  `is_zilla_bn` int(11) NOT NULL,
+  `is_present_address_en` int(11) NOT NULL,
+  `is_present_address_bn` int(11) NOT NULL,
+  `is_permanent_address_en` int(11) NOT NULL,
+  `is_permanent_address_bn` int(11) NOT NULL,
+  `is_designation` int(11) NOT NULL,
+  `is_department` int(11) NOT NULL,
+  `is_employee_id` int(11) NOT NULL,
+  `is_index_no` int(11) NOT NULL,
+  `is_class` int(11) NOT NULL,
+  `is_class_roll` int(11) NOT NULL,
+  `is_date_of_birth` int(11) NOT NULL,
+  `is_gender` int(11) NOT NULL,
+  `is_id_number` int(11) NOT NULL,
+  `is_blood_group` int(11) NOT NULL,
+  `is_marital_status` int(11) NOT NULL,
+  `is_photo` int(11) NOT NULL,
+  `is_signature` int(11) NOT NULL,
+  `is_nationality` int(11) NOT NULL,
+  `is_active` int(11) NOT NULL,
+  `create_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `design_fields`
+--
+
+INSERT INTO `design_fields` (`id`, `org_fields_id`, `design_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
+(1, 10, 2, 'This Is Regit', 'w', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1730525244),
+(2, 11, 1, 'Smart ID Card Zone', 'asds', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1730538467);
 
 -- --------------------------------------------------------
 
@@ -121,6 +180,10 @@ INSERT INTO `organizations` (`id`, `name`, `name_bn`, `slug`, `mobile_no`, `emai
 
 CREATE TABLE `org_fields` (
   `id` int(11) NOT NULL,
+  `date_code` year(4) NOT NULL,
+  `month_code` float NOT NULL,
+  `code_random` int(11) NOT NULL,
+  `code_no` varchar(255) NOT NULL,
   `organization_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
@@ -166,8 +229,9 @@ CREATE TABLE `org_fields` (
 -- Dumping data for table `org_fields`
 --
 
-INSERT INTO `org_fields` (`id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
-(8, 4, 'SMART ID CARD ZOON', 'please check & filed up all data ', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1730267970);
+INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
+(10, '2024', 11, 1, '2411001', 4, 'SMart card', 'aa', 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1730521542),
+(11, '2024', 11, 1, '2411001', 4, 'Smart ID Card Zone', 'Please entry correct', 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1730538244);
 
 -- --------------------------------------------------------
 
@@ -283,7 +347,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `employee_id`, `department_id`, `designation_id`, `ip_address`, `first_name`, `last_name`, `email`, `password`, `roles_id`, `qualification`, `work_exp`, `father_name`, `mother_name`, `contact_no`, `emergency_contact_no`, `dob`, `marital_status`, `date_of_joining`, `date_of_leaving`, `local_address`, `permanent_address`, `gender`, `account_title`, `bank_account_no`, `bank_name`, `lang_id`, `bank_branch`, `basic_salary`, `facebook`, `twitter`, `linkedin`, `instagram`, `resume`, `joining_letter`, `is_active`, `last_login`, `picture`, `create_user`, `create_date`) VALUES
-(1, '', 0, 0, '', 'Admin', '', 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, '', '', '', '', '', '', 0, '', 0, 0, '', '', '', '', '', '', '', '', 0.00, '', '', '', '', '', '', 1, 1730351794, '0.png', 0, 0),
+(1, '', 0, 0, '', 'Admin', '', 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, '', '', '', '', '', '', 0, '', 0, 0, '', '', '', '', '', '', '', '', 0.00, '', '', '', '', '', '', 1, 1730519567, '0.png', 0, 0),
 (2, '43443', 0, 0, '', 'Md Abir', 'Hossan', 'abir@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 2, '4334', 'Resolving Conflicts Between Designers And Engineers', 'dsfds', 'sdfds', 'sdffds', 'sd3454', 1727560800, 'Single', 1727560800, 1727560800, '443', '4443', 'Male', '', '', '', '', '', 0.00, '43443', '444', '444', '44', '', '', 1, 1728289651, '3714aef45111e7229a46f298ff89c56b.JPG', 1, 1727601998),
 (3, '43443', 0, 0, '', 'Md Abir', 'Hossan', 'mitu@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, '4334', 'Resolving Conflicts Between Designers And Engineers', 'dsfds', 'sdfds', 'sdffds', 'sd3454', 1727560800, 'Single', 1727560800, 1727560800, '443', '4443', 'Female', '', '', '', '', '', 0.00, '43443', '444', '444', '44', '', '', 1, 1728291674, '3714aef45111e7229a46f298ff89c56b.JPG', 1, 1727601998);
 
@@ -345,7 +409,8 @@ CREATE TABLE `users_fields` (
 --
 
 INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_active`, `create_date`) VALUES
-(7, '::1', '2024', 10, 1, '24104001', 4, 8, 'ewasda', '33', '33', '3', '33', '3333', '33', '33@gail.com', '33', '33', '33', '33', '33', '333', '33', '33', '33', '33', '333', '33', '', '33', 0, 'Male', '33', 'O-', '', '33', '', '', '', '', '0.png', '', 1, 0);
+(9, '::1', '2024', 11, 1, '24114001', 4, 10, 'Md Litan Sarkar', '', 'Ibrahil mIah', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '111', '', '', '', '', '', '', '', '0.png', '0.png', 1, 0),
+(10, '::1', '2024', 11, 2, '24114002', 4, 11, 'Md Litan Sarkar', '', 'Md Ibrahim', '', 'Lipi Begum', '', '01829017469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', 'Class-6', '1', 0, 'Male', '123', '', '', '', '', '', '', '', '910e6e4d38e8c49c618bb9dc04a9e527.JPG', '8be7856592973999d727bbcb1c3e03c2.png', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -355,6 +420,12 @@ INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code
 -- Indexes for table `auth_users_info`
 --
 ALTER TABLE `auth_users_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `design_fields`
+--
+ALTER TABLE `design_fields`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -401,7 +472,13 @@ ALTER TABLE `users_fields`
 -- AUTO_INCREMENT for table `auth_users_info`
 --
 ALTER TABLE `auth_users_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT for table `design_fields`
+--
+ALTER TABLE `design_fields`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `organizations`
@@ -413,7 +490,7 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT for table `org_fields`
 --
 ALTER TABLE `org_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -437,7 +514,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `users_fields`
 --
 ALTER TABLE `users_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

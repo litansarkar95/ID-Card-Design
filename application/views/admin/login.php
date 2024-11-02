@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - M Hasan High School</title>
+    <title>Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <style>
@@ -108,10 +108,10 @@ input[type="email"],
 input[type="password"] {
     width: 100%;
     padding: 12px;
-    border: none;  /* No border on focus or default state */
+    border: none;  
     border-radius: 4px;
     margin-bottom: 10px;
-    outline: none; /* Prevents the default outline when focused */
+    outline: none; 
 }
 
 

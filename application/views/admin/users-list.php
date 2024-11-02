@@ -69,12 +69,14 @@ textarea[type="text"] {
                         <p>Mob ::<?php echo $pdt->org_mobile_no;?></P>
                         </td>
                           <td><?php echo $pdt->registration_no;?></td>
-                          <td><?php echo $pdt->name;?></td>
+                          <td><?php echo $pdt->name_en;?></td>
                           <td><?php echo $pdt->mobile_no;?></td>
                           <td>
 
-                              <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."admin/users/design/{$pdt->id}";?>"><i class=" mdi mdi-link "></i></a>
-                             
+                              <!-- <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."admin/users/design/{$pdt->id}";?>"><i class=" mdi mdi-link "></i></a>
+                                -->
+                              <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."admin/card/custom/designchoose/{$pdt->id}?v={$pdt->org_fields_id}";?>"><i class=" mdi mdi-link "></i></a>
+                            
                             </td>
                     
                           <td>

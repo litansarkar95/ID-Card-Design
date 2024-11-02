@@ -51,6 +51,7 @@ textarea[type="text"] {
                             <th>SL</th>
                             <th>Org Name</th>
                             <th>Title </th>
+                            <th>Card Design</th>
                             <th>URL</th>
                             <th>Action</th>
                           </tr>
@@ -67,6 +68,9 @@ textarea[type="text"] {
                         <p>Mob ::<?php echo $pdt->org_mobile_no;?></P>
                         </td>
                           <td><?php echo $pdt->title;?></td>
+                          <td>
+                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/card/custom/design/{$pdt->id}";?>">Click</a>
+                             </td>
                           <td>
                           <input type="hidden" id="linkToCopy<?php echo $pdt->id ?>" value="<?php echo base_url()."userform/{$pdt->org_slug}?v={$pdt->id}";?>" readonly class="form-control">
                               <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."userform/{$pdt->org_slug}?v={$pdt->id}";?>"><i class=" mdi mdi-link "></i></a>

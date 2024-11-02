@@ -23,8 +23,17 @@ class Main_model extends CI_Model {
         $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
-    }
-    
+    }  
+    public function PrintUserData($id) {
+       
+		$this->db->select("users_fields.*,design_fields.title dtitle ,design_fields.is_name_en dis_name_en ,design_fields.is_name_bn dis_name_bn ,design_fields.is_father_name_en dis_father_name_en,design_fields.is_photo  dis_photo , organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
+        $this->db->from("users_fields");
+        $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
+        $this->db->join('design_fields', "users_fields.org_fields_id = design_fields.org_fields_id",'left');
+        $this->db->where("users_fields.id",$id); 
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    } 
          /*invoice no generator*/
          public function  SalesDateId($table) {
             $CurrentYear = date('Y');
@@ -96,5 +105,25 @@ class Main_model extends CI_Model {
     
     
        }
+
+       
+
+       public function CardDesignID($id) {
+        // Use query builder for safer queries
+        $this->db->select('design_id');
+        $this->db->from('design_fields');
+        $this->db->where('org_fields_id', $id);
+        
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            // Fetch the first row
+            $row = $query->row_array();
+            return $row['design_id'];
+        }
+        
+        return 0; 
+    }
+    
 
 }
