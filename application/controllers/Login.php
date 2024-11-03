@@ -87,4 +87,11 @@ if ($this->form_validation->run() == NULL) {
  //  $data['content'] = $this->load->view("front/login", $data, TRUE);
    $this->load->view('admin/login', $data);
 }
+
+
+
+public function logout() {
+  $this->session->sess_destroy();
+  redirect("");
+}
 }

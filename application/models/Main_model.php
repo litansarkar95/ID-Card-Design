@@ -26,11 +26,19 @@ class Main_model extends CI_Model {
     }  
     public function PrintUserData($id) {
        
-		$this->db->select("users_fields.*,design_fields.title dtitle ,design_fields.is_name_en dis_name_en ,design_fields.is_name_bn dis_name_bn ,design_fields.is_father_name_en dis_father_name_en,design_fields.is_photo  dis_photo , organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
+		$this->db->select("users_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
         $this->db->from("users_fields");
         $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
-        $this->db->join('design_fields', "users_fields.org_fields_id = design_fields.org_fields_id",'left');
-        $this->db->where("users_fields.id",$id); 
+        $this->db->where("users_fields.org_fields_id",$id); 
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    } 
+
+    public function get_org_fields($id) {
+       
+		$this->db->select("org_fields.*");
+        $this->db->from("org_fields");
+        $this->db->where("org_fields.id",$id); 
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     } 

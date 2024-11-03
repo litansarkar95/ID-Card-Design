@@ -175,6 +175,7 @@
         Print
       </button>
 
+
       <?php
    if(isset($allPdt)){
     foreach($allPdt as $pdt){
@@ -230,7 +231,7 @@
                   margin-bottom: 5px;
                 "
               >    <?php   
-                if($pdt->dis_photo == 1){
+                if( $this->input->post('photo') == 1){
                
                 ?>
                 <img
@@ -261,7 +262,7 @@
                   "
                 >
                 <?php   
-                if($pdt->dis_name_en == 1){
+                if( $this->input->post('name_en')== 1){
                     echo $pdt->name_en;
                 }
                 ?>

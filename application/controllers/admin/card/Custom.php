@@ -19,93 +19,63 @@ class Custom extends CI_Controller {
 
     public function design($id=null){
 
-        $this->form_validation->set_rules("fields_code", "Fields Code", "required");
-        $this->form_validation->set_rules("title", "Title", "required");
-        //$this->form_validation->set_rules("mobile_no", "Mobile Number", "required");
-        if ($this->form_validation->run() == NULL) {
-      
-        } else {
-            
-            $date = date("Y-m-d H:i:s");
-            $data = array(   
-                "org_fields_id"                     => $this->common_model->xss_clean($this->input->post("fields_code")),
-                "title"                             => $this->common_model->xss_clean($this->input->post("title")),
-                "description"                       => $this->common_model->xss_clean($this->input->post("description")),
-                "is_name_en"                        => $this->common_model->xss_clean($this->input->post("is_name_en")),
-                "is_name_bn"                        => $this->common_model->xss_clean($this->input->post("is_name_bn")),
-                "is_father_name_en"                 => $this->common_model->xss_clean($this->input->post("is_father_name_en")),
-                "is_father_name_bn"                 => $this->common_model->xss_clean($this->input->post("is_father_name_bn")),
-                "is_mother_name_en"                 => $this->common_model->xss_clean($this->input->post("is_mother_name_en")),
-                "is_mother_name_bn"                 => $this->common_model->xss_clean($this->input->post("is_mother_name_bn")),
-                "is_mobile_no"                      => $this->common_model->xss_clean($this->input->post("is_mobile_no")),
-                "is_email"                          => $this->common_model->xss_clean($this->input->post("is_email")),
-                "is_village_en"                     => $this->common_model->xss_clean($this->input->post("is_village_en")),
-                "is_village_bn"                     => $this->common_model->xss_clean($this->input->post("is_village_bn")),
-                "is_post_office_en"                 => $this->common_model->xss_clean($this->input->post("is_post_office_en")),
-                "is_post_office_bn"                 => $this->common_model->xss_clean($this->input->post("is_post_office_bn")),
-                "is_upazila_en"                     => $this->common_model->xss_clean($this->input->post("is_upazila_en")),
-                "is_upazila_bn"                     => $this->common_model->xss_clean($this->input->post("is_upazila_bn")),
-                "is_zilla_en"                       => $this->common_model->xss_clean($this->input->post("is_zilla_en")),
-                "is_zilla_bn"                       => $this->common_model->xss_clean($this->input->post("is_zilla_bn")),
-                "is_present_address_en"             => $this->common_model->xss_clean($this->input->post("is_present_address_en")),
-                "is_present_address_bn"             => $this->common_model->xss_clean($this->input->post("is_present_address_bn")),
-                "is_permanent_address_en"           => $this->common_model->xss_clean($this->input->post("is_permanent_address_en")),
-                "is_permanent_address_bn"           => $this->common_model->xss_clean($this->input->post("is_permanent_address_bn")),
-                "is_designation"                    => $this->common_model->xss_clean($this->input->post("is_designation")),
-                "is_department"                     => $this->common_model->xss_clean($this->input->post("is_department")),
-                "is_employee_id"                    => $this->common_model->xss_clean($this->input->post("is_employee_id")),
-                "is_index_no"                       => $this->common_model->xss_clean($this->input->post("is_index_no")),
-                "is_class"                          => $this->common_model->xss_clean($this->input->post("is_class")),
-                "is_class_roll"                     => $this->common_model->xss_clean($this->input->post("is_class_roll")),
-                "is_date_of_birth"                  => $this->common_model->xss_clean($this->input->post("is_date_of_birth")),
-                "is_gender"                         => $this->common_model->xss_clean($this->input->post("is_gender")),
-                "is_id_number"                      => $this->common_model->xss_clean($this->input->post("is_id_number")),
-                "is_blood_group"                    => $this->common_model->xss_clean($this->input->post("is_blood_group")),
-                "is_marital_status"                 => $this->common_model->xss_clean($this->input->post("is_marital_status")),
-                "is_photo"                          => $this->common_model->xss_clean($this->input->post("is_photo")),
-                "is_signature"                      => $this->common_model->xss_clean($this->input->post("is_signature")),
-                "is_nationality"                    => $this->common_model->xss_clean($this->input->post("is_nationality")),
-                "is_active"                         => 1,
-                "create_date"                       => strtotime($date),
-               
-            );
-  
-      
-        
-          if ($this->common_model->save_data("design_fields", $data)) {
-            $id=$this->common_model->Id;
-          
-            $this->session->set_flashdata('success', 'Save Successfully');
-            }else{
-                $this->session->set_flashdata('error', 'Server error.');
-            }
-            redirect(base_url() . "admin/customfields/list", "refresh");
-
-        }
+       
         $data = array();
         $data['active'] = "users";
         $data['title'] =  "Card Design";
+        $data['allTemp'] = $this->common_model->view_data("card_design", array("is_active" => 1), "id", "ASC");
         $data['allCat'] = $this->common_model->view_data("org_fields", array("is_active" => 1), "id", "DESC");
-        $data['content'] = $this->load->view("admin/custom/fiels-requird", $data, TRUE);
+        $data['content'] = $this->load->view("admin/custom/card-design", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
 
 
-    public function designchoose($id){
+    public function fetch_accounts() {
+        $paymentTypeId = $this->input->post('payment_type_id');
+
+         $accounts = $this->main_model->get_org_fields($paymentTypeId);
+         $data['allPdt'] = $accounts;
+        // Prepare the response
+        if ($accounts) {
+            $response = [
+                'success' => true,
+                'html' => $this->load->view('admin/custom/card-design-data', $data, true) // Load a view to create HTML
+            ];
+        } else {
+            $response = [
+                'success' => false,
+                'html' => ''
+            ];
+        }
+
+        // Return JSON response
+        echo json_encode($response);
+    }
+
+
+    public function printdesign(){
         $data = array();
         $data['active'] = "users";
         $design_id = $_GET['v'];
         $data['title'] =  "Users List";
+        $id = $this->input->post('fields_code');
+
         $data['allPdt'] = $this->main_model->PrintUserData($id);
-        $design = $this->main_model->CardDesignID($design_id);
-        if($design == 1){
+    // echo "<pre>";   print_r($data['allPdt']);exit();
+        $template_id = $this->input->post('template_id');
+        if($template_id == 1){
             $this->load->view('admin/custom/design-choose-dynamic', $data);
-        }else if ($design == 2){
+        }else if ($template_id == 2){
             $this->load->view('admin/card/card-design-001', $data);
         }
  
        
   
+    }
+
+    public function savedate(){
+        echo $this->input->post('name_ok');
+        echo $this->input->post('name_cchek');
     }
 
 

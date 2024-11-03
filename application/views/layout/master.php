@@ -130,37 +130,35 @@
 
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="mdi mdi-monitor-dashboard menu-icon"></i>
+                <i class="mdi mdi-clipboard-text menu-icon"></i>
                   <span class="menu-title">ID Card</span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/card/card_design">Card Design</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/card/custom/design/">Card Design</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">Card Design Custom Fields  </a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>admin/card/card_design">Card Design Forment</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">Custom Fields List</a>
-                    </li>
+                   
                   </ul>
                 </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <i class="mdi mdi-clipboard-text menu-icon"></i>
-                  <span class="menu-title">Forms</span>
+                  <span class="menu-title">Excel Data Entry</span>
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <i class="mdi mdi-contacts menu-icon"></i>
-                  <span class="menu-title">Icons</span>
+                  <span class="menu-title">Visiting Card Design</span>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#">
                   <i class="mdi mdi-chart-bar menu-icon"></i>
                   <span class="menu-title">Charts</span>
@@ -176,7 +174,7 @@
                 <a href="#" class="nav-link" target="_blank">
                   <i class="mdi mdi-file-document-box menu-icon"></i>
                   <span class="menu-title">Docs</span></a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <div class="nav-link d-flex">
                   <button class="btn btn-sm bg-danger text-white"> Trailing </button>
