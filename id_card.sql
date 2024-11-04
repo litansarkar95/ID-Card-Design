@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2024 at 11:21 AM
+-- Generation Time: Nov 04, 2024 at 08:06 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -86,7 +86,8 @@ INSERT INTO `auth_users_info` (`id`, `ip_address`, `usersid`, `email`, `device_n
 (41, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730258245),
 (42, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730351794),
 (43, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730519567),
-(44, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730608461);
+(44, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730608461),
+(45, '::1', 1, 'admin@gmail.com', 'Windows 10', 'Chrome 130.0.0.0', 0, 1730694297);
 
 -- --------------------------------------------------------
 
@@ -115,56 +116,6 @@ CREATE TABLE `card_design` (
 INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_front_side`, `is_back_side`, `is_both_side`, `picture`, `is_active`, `create_date`) VALUES
 (1, '001', 'template-1', 'Template-1', 'template-1', 0, 0, 0, 'studen-001.jpg', 1, 0),
 (2, '002', 'template-2', 'Template 2', 'template-2', 1, 0, 0, 'st-102.jpg', 1, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `design_fields`
---
-
-CREATE TABLE `design_fields` (
-  `id` int(11) NOT NULL,
-  `org_fields_id` int(11) NOT NULL,
-  `design_id` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `is_name_en` int(11) NOT NULL,
-  `is_name_bn` int(11) NOT NULL,
-  `is_father_name_en` int(11) NOT NULL,
-  `is_father_name_bn` int(11) NOT NULL,
-  `is_mother_name_en` int(11) NOT NULL,
-  `is_mother_name_bn` int(11) NOT NULL,
-  `is_mobile_no` int(11) NOT NULL,
-  `is_email` int(11) NOT NULL,
-  `is_village_en` int(11) NOT NULL,
-  `is_village_bn` int(11) NOT NULL,
-  `is_post_office_en` int(11) NOT NULL,
-  `is_post_office_bn` int(11) NOT NULL,
-  `is_upazila_en` int(11) NOT NULL,
-  `is_upazila_bn` int(11) NOT NULL,
-  `is_zilla_en` int(11) NOT NULL,
-  `is_zilla_bn` int(11) NOT NULL,
-  `is_present_address_en` int(11) NOT NULL,
-  `is_present_address_bn` int(11) NOT NULL,
-  `is_permanent_address_en` int(11) NOT NULL,
-  `is_permanent_address_bn` int(11) NOT NULL,
-  `is_designation` int(11) NOT NULL,
-  `is_department` int(11) NOT NULL,
-  `is_employee_id` int(11) NOT NULL,
-  `is_index_no` int(11) NOT NULL,
-  `is_class` int(11) NOT NULL,
-  `is_class_roll` int(11) NOT NULL,
-  `is_date_of_birth` int(11) NOT NULL,
-  `is_gender` int(11) NOT NULL,
-  `is_id_number` int(11) NOT NULL,
-  `is_blood_group` int(11) NOT NULL,
-  `is_marital_status` int(11) NOT NULL,
-  `is_photo` int(11) NOT NULL,
-  `is_signature` int(11) NOT NULL,
-  `is_nationality` int(11) NOT NULL,
-  `is_active` int(11) NOT NULL,
-  `create_date` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -234,6 +185,7 @@ CREATE TABLE `org_fields` (
   `is_index_no` int(11) NOT NULL,
   `is_class` int(11) NOT NULL,
   `is_class_roll` int(11) NOT NULL,
+  `is_sessions` int(11) NOT NULL,
   `is_date_of_birth` int(11) NOT NULL,
   `is_gender` int(11) NOT NULL,
   `is_id_number` int(11) NOT NULL,
@@ -250,10 +202,12 @@ CREATE TABLE `org_fields` (
 -- Dumping data for table `org_fields`
 --
 
-INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
-(10, '2024', 11, 1, '2411001', 4, 'SMart card', 'aa', 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1730521542),
-(11, '2024', 11, 1, '2411001', 4, 'Smart ID Card Zone', 'Please entry correct', 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1730538244),
-(12, '2024', 11, 1, '2411001', 4, 'Smart 001', 'ww', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1730614124);
+INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
+(10, '2024', 11, 1, '2411001', 4, 'SMart card', 'aa', 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1730521542),
+(11, '2024', 11, 1, '2411001', 4, 'Smart ID Card Zone', 'Please entry correct', 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1730538244),
+(12, '2024', 11, 1, '2411001', 4, 'Smart 001', 'ww', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1730614124),
+(13, '2024', 11, 2, '24114002', 4, 'Smart Zoon', 'Test Purpose Data Entry', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1730695026),
+(14, '2024', 11, 3, '24114003', 4, 'New Design Part', 'Test Purpose', 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1730700425);
 
 -- --------------------------------------------------------
 
@@ -369,7 +323,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `employee_id`, `department_id`, `designation_id`, `ip_address`, `first_name`, `last_name`, `email`, `password`, `roles_id`, `qualification`, `work_exp`, `father_name`, `mother_name`, `contact_no`, `emergency_contact_no`, `dob`, `marital_status`, `date_of_joining`, `date_of_leaving`, `local_address`, `permanent_address`, `gender`, `account_title`, `bank_account_no`, `bank_name`, `lang_id`, `bank_branch`, `basic_salary`, `facebook`, `twitter`, `linkedin`, `instagram`, `resume`, `joining_letter`, `is_active`, `last_login`, `picture`, `create_user`, `create_date`) VALUES
-(1, '', 0, 0, '', 'Admin', '', 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, '', '', '', '', '', '', 0, '', 0, 0, '', '', '', '', '', '', '', '', 0.00, '', '', '', '', '', '', 1, 1730608461, '0.png', 0, 0),
+(1, '', 0, 0, '', 'Admin', '', 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, '', '', '', '', '', '', 0, '', 0, 0, '', '', '', '', '', '', '', '', 0.00, '', '', '', '', '', '', 1, 1730694297, '0.png', 0, 0),
 (2, '43443', 0, 0, '', 'Md Abir', 'Hossan', 'abir@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 2, '4334', 'Resolving Conflicts Between Designers And Engineers', 'dsfds', 'sdfds', 'sdffds', 'sd3454', 1727560800, 'Single', 1727560800, 1727560800, '443', '4443', 'Male', '', '', '', '', '', 0.00, '43443', '444', '444', '44', '', '', 1, 1728289651, '3714aef45111e7229a46f298ff89c56b.JPG', 1, 1727601998),
 (3, '43443', 0, 0, '', 'Md Abir', 'Hossan', 'mitu@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, '4334', 'Resolving Conflicts Between Designers And Engineers', 'dsfds', 'sdfds', 'sdffds', 'sd3454', 1727560800, 'Single', 1727560800, 1727560800, '443', '4443', 'Female', '', '', '', '', '', 0.00, '43443', '444', '444', '44', '', '', 1, 1728291674, '3714aef45111e7229a46f298ff89c56b.JPG', 1, 1727601998);
 
@@ -410,6 +364,7 @@ CREATE TABLE `users_fields` (
   `index_no` varchar(255) NOT NULL,
   `class` varchar(255) NOT NULL,
   `class_roll` varchar(255) NOT NULL,
+  `sessions` varchar(255) NOT NULL,
   `date_of_birth` int(11) NOT NULL,
   `gender` varchar(255) NOT NULL,
   `id_number` varchar(255) NOT NULL,
@@ -430,9 +385,13 @@ CREATE TABLE `users_fields` (
 -- Dumping data for table `users_fields`
 --
 
-INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_active`, `create_date`) VALUES
-(9, '::1', '2024', 11, 1, '24114001', 4, 10, 'Md Litan Sarkar', '', 'Ibrahil mIah', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '111', '', '', '', '', '', '', '', '0.png', '0.png', 1, 0),
-(10, '::1', '2024', 11, 2, '24114002', 4, 11, 'Md Litan Sarkar', '', 'Md Ibrahim', '', 'Lipi Begum', '', '01829017469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', 'Class-6', '1', 0, 'Male', '123', '', '', '', '', '', '', '', '910e6e4d38e8c49c618bb9dc04a9e527.JPG', '8be7856592973999d727bbcb1c3e03c2.png', 1, 0);
+INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_active`, `create_date`) VALUES
+(9, '::1', '2024', 11, 1, '24114001', 4, 10, 'Md Litan Sarkar', '', 'Ibrahil mIah', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '111', '', '', '', '', '', '', '', '0.png', '0.png', 1, 0),
+(10, '::1', '2024', 11, 2, '24114002', 4, 11, 'Md Litan Sarkar', '', 'Md Ibrahim', '', 'Lipi Begum', '', '01829017469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', 'Class-6', '1', '', 0, 'Male', '123', '', '', '', '', '', '', '', '910e6e4d38e8c49c618bb9dc04a9e527.JPG', '8be7856592973999d727bbcb1c3e03c2.png', 1, 0),
+(11, '::1', '2024', 11, 3, '24114003', 4, 13, 'Md Litan Sarkar', '', 'Ibrahim Miah', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', 'Class -6', '', '', 0, 'Male', '', '', '', '', '', '', '', '', '3c5d53fe0af83b2182b0caf91746af5f.JPG', '0.png', 1, 0),
+(12, '::1', '2024', 11, 4, '24114004', 4, 13, 'Joy Kobir', '', 'Hossain Ali', '', '', '', '01920568406', 'kobir@gamail.com', '', '', '', '', '', '', '', '', '', '', '', '', 'Class -6 ', '', '', 1384365600, 'Male', '', '', '', '', '', '', '', '', '0c1a6954c8e7c967e33a625ccd846854.jpg', '0.png', 1, 0),
+(13, '::1', '2024', 11, 5, '24114005', 4, 14, 'Md Litan Sarkar', '', 'Ibrahim Miah', '', 'Lipi Begum', '', '01829107469', '', 'Shovoki', '', 'Koiguri', '', 'Delduar', '', 'Tangail', '', '', '', '', '', 'Class -9', '', '', 847908000, 'Male', '', '', '', '', '', '', '', '', 'e65714222b1224249db9da7b3a958a16.JPG', '0.png', 1, 0),
+(14, '::1', '2024', 11, 6, '24114006', 4, 14, 'Md Litan Sarkar ', '', 'Ibrahim Miah', '', 'Lipi Begum', '', '01829107469', '', 'Shovoki', '', 'Koiguri', '', 'Delduar', '', 'Tangail', '', '', '', '', '', 'Class-9', '', '2023-2024', 627069600, 'Male', '', '', '', '', '', '', '', '', 'b2ed98e72e2e2d158cc13c4ea1cf7192.JPG', '0.png', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -448,12 +407,6 @@ ALTER TABLE `auth_users_info`
 -- Indexes for table `card_design`
 --
 ALTER TABLE `card_design`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `design_fields`
---
-ALTER TABLE `design_fields`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -500,18 +453,12 @@ ALTER TABLE `users_fields`
 -- AUTO_INCREMENT for table `auth_users_info`
 --
 ALTER TABLE `auth_users_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `card_design`
 --
 ALTER TABLE `card_design`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `design_fields`
---
-ALTER TABLE `design_fields`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -524,7 +471,7 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT for table `org_fields`
 --
 ALTER TABLE `org_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -548,7 +495,7 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `users_fields`
 --
 ALTER TABLE `users_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -421,6 +421,21 @@ p{
             }
             ?>
             <!-- END FORM -->
+                <!-- FORM -->
+            <?php
+            if($pdt->is_sessions  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="class_roll">Session</label>
+                <input type="text" class="form-control" id="sessions" name="sessions" value="<?php echo set_value('sessions'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
                <!-- FORM -->
             <?php
             if($pdt->is_date_of_birth  == 1){

@@ -132,14 +132,9 @@ select[type="text"]{
                          <label for="side_id">Side<code>*</code></label>
                          <select type="text" class="form-control select2" id="side_id" value="<?php echo set_value('side_id'); ?>" name="side_id"   >
                       <option value="">Select</option>   
-                      <?php
-                                        foreach ($allCat as $cat){
-                                          ?>
-                                          <option value="<?php echo base_url()."public/static/assets/images/card_design/studen-001.jpg" ?>"><?php echo "{$cat->code_no} - {$cat->title}"; ?></option>
-                       
-                                      <?php
-                                        }
-                                    ?>
+                      <option value="front_side">Front Side</option>  
+                      <option value="back_side">Back Side</option>  
+                      <option value="both_side">Both Side</option>  
                        
                       </select> 
                         <span class="text-red small"><?php echo form_error('side_id'); ?></span>

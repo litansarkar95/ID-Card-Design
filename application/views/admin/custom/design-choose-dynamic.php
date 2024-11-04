@@ -176,12 +176,9 @@
       </button>
 
 
-      <?php
-   if(isset($allPdt)){
-    foreach($allPdt as $pdt){
-   
-   ?>
+    
       <div class="page-a4">
+   
         <!-- Students Identity Card  -->
         <div
           class="admit-container"
@@ -195,6 +192,11 @@
             width: 100%;
           "
         >
+        <?php
+   if(isset($allPdt)){
+    foreach($allPdt as $pdt){
+   
+   ?>
           <!-- Identity-card -1 Start -->
           <div class="admit">
             <div class="header-section">
@@ -206,6 +208,10 @@
                   alt=""
                 />
               </div>
+              <?php   
+               
+               if($this->input->post('sessions') == 1){
+               ?>
               <div
                 class="session"
                 style="
@@ -218,8 +224,11 @@
               >
                 <p>SESSION</p>
 
-                <p style="color: #000 !important">2023-24</p>
+                <p style="color: #000 !important"><?php echo   $pdt->sessions;?></p>
               </div>
+              <?php
+                }
+                ?>
             </div>
 
             <div class="content-section">
@@ -277,7 +286,7 @@
                   "
                 >
                 <?php   
-                if($pdt->dis_name_bn == 1){
+                if($this->input->post('name_en') == 1){
                     echo $pdt->name_bn;
                 }
                 ?>
@@ -288,7 +297,8 @@
                 >
 
                 <?php   
-                if($pdt->dis_father_name_en == 1){
+               
+                if($this->input->post('father_name_en') == 1){
                 
                 ?>
                   <div class="space-item">
@@ -305,56 +315,95 @@
                   <?php
                 }
                   ?>
+
+                  
+                <?php   
+               
+               if($this->input->post('mother_name_en') == 1){
+               ?>
                   <div class="space-item">
                     <label>Mother's Name </label>
                     <input
                       readonly
                       required
                       type="text"
-                      value=": &nbsp; KUSUM KUMARI"
+                      value=": &nbsp; <?php echo  $pdt->mother_name_en;?>"
                       style="width: 182px"
                     />
                   </div>
+                  <?php
+                }
+                  ?>
+
+<?php   
+               
+               if($this->input->post('class') == 1){
+               ?>
                   <div class="space-item">
                     <label>Class </label>
                     <input
                       readonly
                       required
                       type="text"
-                      value=": &nbsp; 1st-A"
+                      value=": &nbsp; <?php echo  $pdt->class;?>"
                       style="width: 182px"
                     />
                   </div>
+
+                  <?php
+                }
+                  ?>
+                  <?php   
+               
+               if($this->input->post('date_of_birth') == 1){
+               ?>
                   <div class="space-item">
                     <label>D.O.B </label>
                     <input
                       readonly
                       required
                       type="text"
-                      value=": &nbsp; 21/02/2013"
+                      value=": &nbsp; <?php echo  date("d F Y",$pdt->date_of_birth);?>"
                       style="width: 182px"
                     />
                   </div>
+                  <?php
+                }
+                  ?>
+                     <?php   
+            
+               if($this->input->post('village_en') == 1){
+               ?>
                   <div class="space-item">
                     <label>Address </label>
                     <input
                       readonly
                       required
                       type="text"
-                      value=": &nbsp; KHANPUR"
+                      value=": &nbsp; <?php echo  $pdt->village_en;?>"
                       style="width: 182px"
                     />
                   </div>
+                  <?php
+                }
+                  ?>
+                  <?php   
+               
+               if($this->input->post('mobile_no') == 1){
+               ?>
                   <div class="space-item">
-                    <label>M.No. </label>
+                    <label>Mobile No. </label>
                     <input
                       readonly
                       required
                       type="text"
-                      value=": &nbsp; 9411809570"
+                      value=": &nbsp; <?php echo  $pdt->mobile_no;?>"
                       style="width: 182px"
                     />
                   </div>
+                  <?php
+                }
+                  ?>
                 </div>
               </div>
             </div>
@@ -369,12 +418,26 @@
                   padding: 5px 0;
                 "
               >
-                Vill.Kutubpur Gawri, Jalilpur (Bijnor) U.P.-246725 <br />
-                Cont. No. 9719461053, 9719461356
+              <?php   
+               
+               if($this->input->post('village_en') == 1){
+               ?>
+               Vill: 
+               <?php echo  $pdt->village_en;?>,   <?php echo  $pdt->post_office_en;?> ,   <?php echo  $pdt->upazila_en;?> ,  <?php echo  $pdt->zilla_en;?>
+                <?php
+               }
+                ?>
+                    <!-- Vill.Kutubpur Gawri, Jalilpur (Bijnor) U.P.-246725 -->
+                <br />
+                <!-- Cont. No. 9719461053, 9719461356 -->
               </p>
             </div>
           </div>
+          <?php
+    }
 
+}
+?>
           <!-- Identity-card -1 End -->
        
           <!-- Identity-card -2 Start -->
@@ -383,15 +446,11 @@
       
           <!-- Identity-card -2 End -->
         </div>
+        
       </div>
-<?php
-    }
 
-}
-?>
 
-      <!-- Students Fee Receipt -->
-    </div>
+  
 
     <!-- Your JavaScript file -->
     <script>

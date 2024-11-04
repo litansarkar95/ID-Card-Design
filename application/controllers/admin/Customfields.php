@@ -67,6 +67,7 @@ class Customfields extends CI_Controller {
               "is_index_no"                       => $this->common_model->xss_clean($this->input->post("is_index_no")),
               "is_class"                          => $this->common_model->xss_clean($this->input->post("is_class")),
               "is_class_roll"                     => $this->common_model->xss_clean($this->input->post("is_class_roll")),
+              "is_sessions"                       => $this->common_model->xss_clean($this->input->post("is_sessions")),
               "is_date_of_birth"                  => $this->common_model->xss_clean($this->input->post("is_date_of_birth")),
               "is_gender"                         => $this->common_model->xss_clean($this->input->post("is_gender")),
               "is_id_number"                      => $this->common_model->xss_clean($this->input->post("is_id_number")),
