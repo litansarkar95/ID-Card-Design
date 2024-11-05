@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Organization extends CI_Controller {
+class Agents extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -14,27 +14,38 @@ class Organization extends CI_Controller {
           
      
     }
-	public function index()
+
+    public function index()
 	{
-        $this->form_validation->set_rules("agent", "Agent Name", "required");
-        $this->form_validation->set_rules("company_name", "Company Name", "required");
-        $this->form_validation->set_rules("company_name_bn", "Company Name Bnagla", "required");
-        $this->form_validation->set_rules("mobile_no", "Mobile Number", "required");
+        $data = array();
+        $data['active'] = "agents";
+        $data['title'] =  "Agents List";
+        $data['allPdt'] = $this->common_model->view_data("agents", "", "id", "asc");
+        $data['content'] = $this->load->view("admin/agents/list", $data, TRUE);
+        $this->load->view('layout/master', $data);
+    }
+	public function create()
+	{
+        $this->form_validation->set_rules("agent_name", "Agent Name", "required");
+        $this->form_validation->set_rules("email", "Email", "required");
+        $this->form_validation->set_rules("password", "Password", "required");
+        $this->form_validation->set_rules("role", "Roles", "required");
         if ($this->form_validation->run() == NULL) {
       
         } else {
             
           $date = date("Y-m-d H:i:s");
-          $company_name = $this->common_model->xss_clean($this->input->post("company_name"));
-          $slug = $this->generate_slug($company_name);
+          $agent_name = $this->common_model->xss_clean($this->input->post("agent_name"));
+          $slug = $this->generate_slug($agent_name);
          
           $data = array(   
-              "agent_id"                   => $this->common_model->xss_clean($this->input->post("agent")),
-              "name"                       => $this->common_model->xss_clean($this->input->post("company_name")),
-              "name_bn"                    => $this->common_model->xss_clean($this->input->post("company_name_bn")),
+      
+              "name"                       => $this->common_model->xss_clean($this->input->post("agent_name")),
+              "name_bn"                    => $this->common_model->xss_clean($this->input->post("agent_name_bn")),
               "slug"                       => $slug,
               "mobile_no"                  => $this->common_model->xss_clean($this->input->post("mobile_no")),
               "email"                      => $this->common_model->xss_clean($this->input->post("email")),
+              "roles_id"                   => $this->common_model->xss_clean($this->input->post("role")),
               "address"                    => $this->common_model->xss_clean($this->input->post("address")),
               "is_active"                  => 1,
               "create_user"                => $this->session->userdata('id'),
@@ -44,7 +55,7 @@ class Organization extends CI_Controller {
          
         if ($_FILES['pic']['name'] != "") {
             $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
-            $config['upload_path'] = "./public/static/images/organization/";
+            $config['upload_path'] = "./public/static/images/agents/";
             $config['encrypt_name'] = TRUE;
             $this->load->library('upload', $config);
             if ($this->upload->do_upload("pic")) {
@@ -55,22 +66,31 @@ class Organization extends CI_Controller {
             $data['picture'] = "0.png";
         }
       
-        if ($this->common_model->save_data("organizations", $data)) {
-          $id=$this->common_model->Id;
+        if ($this->common_model->save_data("agents", $data)) {
+            $id = $this->common_model->Id;
+
+            $sdata =array (
+              "user_id"                    => $id,
+              "username"                   => $this->common_model->xss_clean($this->input->post("email")),
+              "password"                   => $this->common_model->Encryptor('encrypt', $this->input->post('password')),
+              "role"                       => $this->common_model->xss_clean($this->input->post("role")),
+              "active"                     => 1,
+            );
+            $this->common_model->save_data("login_credential", $sdata);
         
           $this->session->set_flashdata('success', 'Save Successfully');
           }else{
               $this->session->set_flashdata('error', 'Server error.');
           }
-          redirect(base_url() . "admin/organization", "refresh");
+          redirect(base_url() . "admin/agents", "refresh");
         }
 
 
 		$data = array();
-        $data['active'] = "company";
-        $data['title'] =  "Company";
-        $data['allPdt'] = $this->common_model->view_data("organizations", "", "id", "DESC");
-        $data['content'] = $this->load->view("admin/org/company-list", $data, TRUE);
+        $data['active'] = "agents";
+        $data['title'] =  "Agents";
+        $data['allRole'] = $this->common_model->Role();
+        $data['content'] = $this->load->view("admin/agents/agent", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
 

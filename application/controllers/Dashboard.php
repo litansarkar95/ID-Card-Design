@@ -19,7 +19,7 @@ class Dashboard extends CI_Controller {
 		$data = array();
         $data['active'] = "dashboard";
         $data['title'] =  "Dashboard";
-
+        $data['allCus'] = $this->main_model->CustomerListDashboard();
        $data['content'] = $this->load->view("admin/dashboard", $data, TRUE);
        $this->load->view('layout/master', $data);
 	}

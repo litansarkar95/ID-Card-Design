@@ -1,5 +1,27 @@
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+   /* Custom Styling */
+.page-title{
+    font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size:30px;
+}
+
+.card-title{
+    font-family: "Oswald", serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size:18px;
+  padding:0 0 10px;
+}
+
+.form-group{
+    font-family: "Poppins", serif;
+  font-weight: 400;
+ 
+}
 .label{
   margin-bottom:5px;
 }
@@ -23,20 +45,35 @@ textarea[type="text"] {
             <div class="page-header">
               <h3 class="page-title">Organization</h3>
               <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Organization</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"> Organization List </li>
-                </ol>
+              
               </nav>
             </div>
             <div class="row">
-              <div class="col-md-5 grid-margin stretch-card">
+              <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Organization Create</h4>
              
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/organization" method="post" enctype="multipart/form-data">
-                      <div class="form-group">
+             
+                          <div class="form-group ">
+                     
+                         <label for="agent">Agent Name<code>*</code></label>
+                        <select type="text" class="form-control select2" id="agent" value="<?php echo set_value('agent'); ?>" name="agent"   >
+                      <option value="">Select</option>   
+                      <?php
+                                        foreach ($allAgent as $agent){
+                                      echo "<option value='{$agent->id}'>{$agent->name}</option>";
+                                        }
+                                    ?>
+                       
+                      </select> 
+                        <span class="text-red small"><?php echo form_error('agent'); ?></span>
+                            
+                         </div>  
+                       
+                      <!-- END FORM -->
+                    <div class="form-group">
                         <label for="company_name">Company Name<code>*</code></label>
                         <input type="text" class="form-control" id="company_name" value="<?php echo set_value('company_name'); ?>" name="company_name"   />
                         <span class="text-red small"><?php echo form_error('company_name'); ?></span>
@@ -72,10 +109,10 @@ textarea[type="text"] {
                   </div>
                 </div>
               </div>
-              <div class="col-md-7 grid-margin ">
+              <div class="col-md-8 grid-margin ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">List</h4>
+                    <h4 class="card-title">Organization List</h4>
                     <p class="card-description">
                     </p>
                     <div class="table-responsive">
@@ -101,8 +138,22 @@ textarea[type="text"] {
                           <td><?php echo $pdt->name;?></td>
                           <td><?php echo $pdt->mobile_no;?></td>
                           <td><?php echo $pdt->email;?></td>
-                          <td><img src="<?php echo base_url()."public/static/images/organization/$pdt->picture"; ?>" width="80px" height="80px" alt="" class="img-circle"></td>
-                            <td>
+                          <td>
+                          <?php 
+                             
+                             if($pdt->picture != NULL){
+                             ?>
+                          <img src="<?php echo base_url()."public/static/images/organization/$pdt->picture"; ?>" width="80px" height="80px" alt="" class="img-circle">
+                        <?php
+                             }else{
+                        ?>
+                          <img src="<?php echo base_url()."public/static/images/organization/0.png"; ?>" width="80px" height="80px" alt="" class="img-circle">
+                       
+                        <?php
+                             }
+                        ?>
+                          
+                           <td>
                          
                               <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/organization?edit={$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
                               <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/organization/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>

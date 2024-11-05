@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/css/vendor.bundle.base.css">
-
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/jquery-bar-rating/css-stars.css" />
@@ -20,7 +21,8 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/css/demo_2/style.css" />
-      
+        <!-- dataTables css -->
+   <link href="<?php echo base_url(); ?>public/assets/datatables/dataTables.dataTables.css" rel="stylesheet" type="text/css"/>
     <!-- End layout styles -->
     <!-- <link rel="shortcut icon" href="<?php echo base_url(); ?>public/assets/images/favicon.png" /> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" ></script>
@@ -94,6 +96,23 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
+                  <span class="menu-title">Agents</span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                  <ul class="submenu-item">
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/agents/create">Agents Create</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/agents">Agents List</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="mdi mdi-monitor-dashboard menu-icon"></i>
                   <span class="menu-title">Base</span>
                   <i class="menu-arrow"></i>
                 </a>
@@ -111,7 +130,6 @@
                   </ul>
                 </div>
               </li>
-
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
@@ -249,6 +267,19 @@
     <script src="<?php echo base_url(); ?>public/assets/vendors/flot/jquery.flot.stack.js"></script>
     <script src="<?php echo base_url(); ?>public/assets/js/jquery.cookie.js" type="text/javascript"></script>
     <!-- End plugin js for this page -->
+              <!-- Plugin js for this page -->
+    <script src="<?php echo base_url(); ?>public/assets/vendors/select2/select2.min.js"></script>
+    <script src="<?php echo base_url(); ?>public/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>public/assets/js/select2.js"></script>
+                 <!-- Plugin css for this page -->
+                 <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/select2/select2.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css" />
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/css/demo_2/style.css" />
+          <!-- dataTables js -->
+          <script src="<?php echo base_url(); ?>public/assets/datatables/dataTables.js" type="text/javascript"></script>
+          
     <!-- inject:js -->
     <script src="<?php echo base_url(); ?>public/assets/js/off-canvas.js"></script>
     <script src="<?php echo base_url(); ?>public/assets/js/hoverable-collapse.js"></script>
@@ -261,3 +292,7 @@
     <!-- End custom js for this page -->
   </body>
 </html>
+
+<script>
+new DataTable('#tableData');       
+</script>

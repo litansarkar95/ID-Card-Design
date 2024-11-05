@@ -139,7 +139,7 @@ public function sms_save_data($sender_id, $message,$date=null,$sms_type=null,$re
         $this->db->from("roles");
         $this->db->where("roles.is_active",1); 
         $this->db->where("roles.is_superadmin",0); 
-        $this->db->order_by("id", "DESC");
+        $this->db->order_by("name", "ASC");
         return $this->db->get()->result();
     }
 

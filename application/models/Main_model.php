@@ -24,6 +24,16 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }  
+    public function CustomerListDashboard() {
+       
+		$this->db->select("users_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
+        $this->db->from("users_fields");
+        $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
+       
+        $this->db->order_by("id", "DESC");
+        $this->db->limit(10);
+        return $this->db->get()->result();
+    } 
     public function PrintUserData($id) {
        
 		$this->db->select("users_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
@@ -33,7 +43,6 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     } 
-
     public function get_org_fields($id) {
        
 		$this->db->select("org_fields.*");

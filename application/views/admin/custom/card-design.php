@@ -1,15 +1,6 @@
 
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/select2/select2.min.css" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css" />
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/css/demo_2/style.css" />
- 
+<style>
 
-    <style>
-.label{
-  margin-bottom:5px;
-}
 input[type="text"],
 input[type="file"],
 textarea[type="text"] ,
@@ -24,7 +15,25 @@ select[type="text"]{
 .design-card img{
   width:200px;
 }
+.label{
+ 
 
+  font-size: 18px !important;
+}
+.form-group ,option ,.select2-selection{
+    font-family: "Oswald", serif;
+  font-weight: 500;
+  font-size:18px;
+
+
+
+}
+.card-title{
+    font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size:30px;
+}
   </style>
 <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
@@ -191,11 +200,7 @@ select[type="text"]{
 
 
 
-    <!-- Plugin js for this page -->
-    <script src="<?php echo base_url(); ?>public/assets/vendors/select2/select2.min.js"></script>
-    <script src="<?php echo base_url(); ?>public/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
 
-    <script src="<?php echo base_url(); ?>public/assets/js/select2.js"></script>
   
     <script>
          function value() {
@@ -213,9 +218,8 @@ select[type="text"]{
 
     <script>
 
-
-
-        $('#fields_code').change(function() {
+$(document).ready(function(){
+  $('#fields_code').change(function() {
             var categoryId = $(this).val();
 
             if (categoryId) {
@@ -241,5 +245,8 @@ select[type="text"]{
                 $('#choose-filds').empty(); // Clear the output if no category is selected
             }
         });
+});
+
+       
 
 </script>
