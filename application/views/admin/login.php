@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <style>
 * {
@@ -104,6 +103,7 @@ footer span {
     color: #00ff88;
 }
 
+input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: 100%;
@@ -122,10 +122,21 @@ input[type="password"] {
         <div class="login-box">
             <img src="<?php echo base_url(); ?>public/static/images/logo.png" alt="Rodasi IT Logo" class="logo">
             <h2>ID Card</h2>
-            <form action="<?php echo base_url(); ?>login" method="post">
+            <form action="<?php echo base_url(); ?>authentication" method="post">
+            <?php  $error =  $this->session->userdata('error'); 
+    if($error){
+    
+    ?>
+      <p class="login-box-msg" style="color:#842E4B">  <?php echo $this->session->userdata('error'); ?></p>
+ 
+      <?php
+     $this->session->unset_userdata('error'); 
+                           
+    }
+      ?>
                 <div class="input-field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php echo set_value('email'); ?>" placeholder="Email">
+                    <label for="email">Username</label>
+                    <input type="text" id="email" name="email" value="<?php echo set_value('email'); ?>" placeholder="Username">
                     <span class="help-block small"><?php echo form_error('email'); ?></span>
                 </div>
                 <div class="input-field">

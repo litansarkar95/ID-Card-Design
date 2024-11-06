@@ -6,11 +6,11 @@ class Customfields extends CI_Controller {
     public function __construct() {
         parent::__construct();
 
-        $myid = $this->session->userdata("authenticated");
+        $myid = $this->session->userdata("loggedin");
       
-         if($myid ==null){
-             redirect(base_url() . "login", "refresh");
-         }
+        if($myid ==null){
+            redirect(base_url() . "authentication", "refresh");
+        }
           
      
     }

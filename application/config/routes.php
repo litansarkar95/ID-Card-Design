@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'login';
+$route['default_controller'] = 'authentication';
 $route['404_override'] = 'page_not_found';
 $route['translate_uri_dashes'] = FALSE;
 $route["logout"] = "login/logout"; 
@@ -10,7 +10,7 @@ $route["logout"] = "login/logout";
 // $route['userform/:any'] = "userform/index";
 // $route['userformsubmit/:any'] = 'userform/userformsubmit';
  $route['thanks'] = 'userform/thanks';
-
+ $route['import'] = 'import';
 
 
 define('EXT', '.php');

@@ -55,6 +55,7 @@ textarea[type="text"] {
                             <th>Title </th>
                             <th>Card Design</th>
                             <th>URL</th>
+                            <th>Excel Import</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -82,7 +83,9 @@ textarea[type="text"] {
                               <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."userform/{$pdt->org_slug}?v={$pdt->id}";?>"><i class=" mdi mdi-link "></i></a>
                               <button  onclick="copyLink(<?php echo $pdt->id;?>)" title="Copy" class="btn btn-add btn-sm badge-danger text-white"  ><i class=" mdi mdi-content-copy"></i></button>
                             </td>
-                    
+                            <td>                  <a class="btn btn-add btn-sm badge-warning text-white"  href="<?php echo base_url()."admin/export/userformimport/view/{$pdt->id}";?>" class="quick-link">
+                            <i class="fa fa-arrow-circle-up"></i> Import</a>
+  </td>
                           <td>
                               <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/organization/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
                               <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/organization/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>

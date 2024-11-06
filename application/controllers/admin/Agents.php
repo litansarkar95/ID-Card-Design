@@ -6,11 +6,11 @@ class Agents extends CI_Controller {
     public function __construct() {
         parent::__construct();
 
-        $myid = $this->session->userdata("authenticated");
+        $myid = $this->session->userdata("loggedin");
       
-         if($myid ==null){
-             redirect(base_url() . "login", "refresh");
-         }
+        if($myid ==null){
+            redirect(base_url() . "authentication", "refresh");
+        }
           
      
     }
@@ -48,7 +48,7 @@ class Agents extends CI_Controller {
               "roles_id"                   => $this->common_model->xss_clean($this->input->post("role")),
               "address"                    => $this->common_model->xss_clean($this->input->post("address")),
               "is_active"                  => 1,
-              "create_user"                => $this->session->userdata('id'),
+              "create_user"                => $this->session->userdata('loggedin_id'),
               "create_date"                => strtotime($date),
              
           );
