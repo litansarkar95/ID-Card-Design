@@ -47,7 +47,7 @@ textarea[type="text"] {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Agents</h3>
+              <h3 class="page-title">Import Users Information</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 
@@ -55,20 +55,21 @@ textarea[type="text"] {
               </nav>
             </div>
             <div class="row">
-            <div class="col-md-12 grid-margin stretch-card ">
+            <div class="col-md-9 grid-margin stretch-card ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Agents Create</h4>
-             
-                    <form class="forms-sample"  action="<?php echo base_url(); ?>admin/agents/create" method="post" enctype="multipart/form-data">
+                    <h4 class="card-title">Import Users Information</h4>
+                    <?php echo form_open_multipart('admin/export/userformimport/import_excel'); ?>
+                  
                    <div class="row">
-                   <div class="col-md-4">
+                   <div class="col-md-6">
                       <div class="form-group">
                         <label for="pic">Upload Files<code>*</code></label>
-                        <input type="file" class="form-control" id="pic" value="<?php echo set_value('pic'); ?>" name="pic"   />
+                        <input type="file" class="form-control" name="excel_file" id="excel_file" accept=".xls, .xlsx" required>
+                     
                         <span class="text-red small"><?php echo form_error('pic'); ?></span>
                     </div> </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                     
                     <div class="form-group">
                     <label for="pic">Upload Files Forment<code>*</code></label><br>
@@ -90,9 +91,9 @@ textarea[type="text"] {
                      
                     
                      
-                      <button type="submit" class="btn btn-primary me-2"><i class="fa fa-arrow-circle-up"></i> Submit </button>
+                      <button type="submit" class="btn btn-primary me-2"><i class="fa fa-arrow-circle-up"></i> Upload </button>
                       <button class="btn btn-light">Cancel</button>
-                    </form>
+                      <?php echo form_close(); ?>
                   </div>
                 </div>
               </div>

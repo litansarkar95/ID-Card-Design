@@ -8,8 +8,8 @@
 <body>
     <h1>Import Excel File</h1>
     
-    <?php echo form_open_multipart('import/import_excel'); ?>
-    
+
+    <form action="<?php echo site_url('import/import_excel'); ?>" method="post" enctype="multipart/form-data">
     <label for="excel_file">Select Excel file (XLSX):</label>
     <input type="file" name="excel_file" id="excel_file" accept=".xls, .xlsx" required>
     
