@@ -16,7 +16,8 @@ class Organization extends CI_Controller {
     }
 	public function index()
 	{
-        $this->form_validation->set_rules("agent", "Agent Name", "required");
+
+      
         $this->form_validation->set_rules("company_name", "Company Name", "required");
         $this->form_validation->set_rules("company_name_bn", "Company Name Bnagla", "required");
         $this->form_validation->set_rules("mobile_no", "Mobile Number", "required");
@@ -29,7 +30,7 @@ class Organization extends CI_Controller {
           $slug = $this->generate_slug($company_name);
          
           $data = array(   
-              "agent_id"                   => $this->common_model->xss_clean($this->input->post("agent")),
+              "agent_id"                   => $this->session->userdata('loggedin_id'),
               "name"                       => $this->common_model->xss_clean($this->input->post("company_name")),
               "name_bn"                    => $this->common_model->xss_clean($this->input->post("company_name_bn")),
               "slug"                       => $slug,
@@ -57,6 +58,15 @@ class Organization extends CI_Controller {
       
         if ($this->common_model->save_data("organizations", $data)) {
           $id=$this->common_model->Id;
+
+          $sdata =array (
+            "user_id"                    => $id,
+            "username"                   => $this->common_model->xss_clean($this->input->post("email")),
+            "password"                   => $this->common_model->Encryptor('encrypt', $this->input->post('password')),
+            "role"                       => 4,
+            "active"                     => 1,
+          );
+          $this->common_model->save_data("login_credential", $sdata);
         
           $this->session->set_flashdata('success', 'Save Successfully');
           }else{

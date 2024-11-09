@@ -5,7 +5,7 @@ class Agents extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-
+        $this->load->library('upload');
         $myid = $this->session->userdata("loggedin");
       
         if($myid ==null){
@@ -20,8 +20,20 @@ class Agents extends CI_Controller {
         $data = array();
         $data['active'] = "agents";
         $data['title'] =  "Agents List";
-        $data['allPdt'] = $this->common_model->view_data("agents", "", "id", "asc");
+        $data['allPdt'] = $this->main_model->AgentList();
         $data['content'] = $this->load->view("admin/agents/list", $data, TRUE);
+        $this->load->view('layout/master', $data);
+    }
+
+    public function edit($id)
+	{
+        $data = array();
+        $data['active'] = "agents";
+        $data['title'] =  "Agents Edit";
+        $data['allRole'] = $this->common_model->Role();
+        $data['allPdt'] = $this->main_model->AgentList($id);
+        //print_r( $data['allPdt'] );exit();
+        $data['content'] = $this->load->view("admin/agents/edit", $data, TRUE);
         $this->load->view('layout/master', $data);
     }
 	public function create()
@@ -52,18 +64,32 @@ class Agents extends CI_Controller {
               "create_date"                => strtotime($date),
              
           );
+
+            // Set configuration
+       
          
         if ($_FILES['pic']['name'] != "") {
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
-            $config['upload_path'] = "./public/static/images/agents/";
-            $config['encrypt_name'] = TRUE;
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload("pic")) {
+
+            $config['upload_path'] = './public/static/images/agents/"';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['max_size'] = 81048; // 2MB
+            $config['file_name'] = uniqid(); 
+            $this->upload->initialize($config);
+    
+            // Check if file upload was successful
+            if (!$this->upload->do_upload('pic')) {
+                // If upload failed, display error
+                
+                $error = $this->upload->display_errors();
+              
+            } else {
                 $data['picture'] = $this->upload->data('file_name');
-                //$arrayMsg['enc_name'] = "1";
+          
             }
+
+            
         }else{
-            $data['picture'] = "0.png";
+             $data['picture'] = "0.png";
         }
       
         if ($this->common_model->save_data("agents", $data)) {
@@ -120,23 +146,92 @@ class Agents extends CI_Controller {
 
 
     public function delete($id) {
-        $dt = $this->common_model->view_data("organizations", array("id" => $id), "id", "asc");
+        $dt = $this->common_model->view_data("agents", array("id" => $id), "id", "asc");
         foreach ($dt as $pdt){
             $old_ext=$pdt->picture;
         }
-        if(file_exists("public/static/images/organization/{$old_ext}")){
-            unlink("public/static/images/organization/{$old_ext}");
+        if(file_exists("public/static/images/agents/{$old_ext}")){
+            unlink("public/static/images/agents/{$old_ext}");
         }
         if ($dt) {
            
-            $this->common_model->delete_data("organizations", array("id" => $id));
+            $this->common_model->delete_data("agents", array("id" => $id));
         
             $this->session->set_flashdata('success', 'Delete Successfully');
         } else {
             $this->session->set_flashdata('error', 'Server error.');
         }
         $this->session->set_userdata($sdata);
-        redirect(base_url() . "admin/organization", "refresh");
+        redirect(base_url() . "admin/agents", "refresh");
+    }
+
+
+    public function change(){
+    
+        $id=$this->input->post("aid");
+        $selPdt=$this->common_model->view_data("login_credential",array("id"=>$id),"id","desc");
+       
+        $data = array(
+            "password"         => $this->common_model->Encryptor('encrypt', $this->input->post('password')),
+                        
+            );
+            if ($this->common_model->update_data("login_credential", $data,array("id"=>$id))) {
+                $this->session->set_flashdata('success', 'Change Password Successfully');
+            }
+            else{
+                $this->session->set_flashdata('error', 'Server error.');
+            }
+            $this->session->set_userdata($sdata);
+            redirect(base_url() . "admin/agents", "refresh");
+    }
+
+
+    public function update(){
+    
+        $id = $this->input->post("id");
+        $selPdt=$this->common_model->view_data("agents",array("id"=>$id),"id","desc");
+      
+        $data = array(
+            "name"                       => $this->common_model->xss_clean($this->input->post("agent_name")),
+            "name_bn"                    => $this->common_model->xss_clean($this->input->post("agent_name_bn")),
+            "mobile_no"                  => $this->common_model->xss_clean($this->input->post("mobile_no")),
+            "email"                      => $this->common_model->xss_clean($this->input->post("email")),
+            "roles_id"                   => $this->common_model->xss_clean($this->input->post("role")),
+            "address"                    => $this->common_model->xss_clean($this->input->post("address")),
+            "is_active"                  => $this->common_model->xss_clean($this->input->post("status")),
+                        
+            );
+            if ($_FILES['pic']['name'] != "") {
+                $config['upload_path'] = './public/static/images/agents/"';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['max_size'] = 81048; // 2MB
+                $config['file_name'] = uniqid(); 
+                $this->upload->initialize($config);    
+                if ($this->upload->do_upload("pic")) {
+                    $data['picture'] = $this->upload->data('file_name');
+                    //$arrayMsg['enc_name'] = "1";
+                }
+            }
+
+          
+         
+            if ($this->common_model->update_data("agents", $data,array("id"=>$id))) {
+               $lid =  $this->common_model->xss_clean($this->input->post("lid"));
+                $sdata =array (
+                    "username"                   => $this->common_model->xss_clean($this->input->post("email")),
+                    "role"                       => $this->common_model->xss_clean($this->input->post("role")),
+                    "active"                     => $this->common_model->xss_clean($this->input->post("status")),
+                  );
+               
+                  $this->common_model->update_data("login_credential", $sdata,array("id"=>$lid));
+
+                $this->session->set_flashdata('success', 'Delete Successfully');
+            }
+            else{
+                $this->session->set_flashdata('error', 'Something error.');
+            }
+            $this->session->set_userdata($sdata);
+           redirect(base_url() . "admin/agents", "refresh");
     }
 
 

@@ -33,10 +33,12 @@ public function index()
             if ($login_credential->role == 2) {
                 $userType = 'admin';
             } elseif($login_credential->role == 3) {
-                $userType = 'user';
+                $userType = 'agent';
             } elseif($login_credential->role == 4) {
-              $userType = 'agent';
-          } else {
+              $userType = 'customer';
+          } elseif($login_credential->role == 5) {
+            $userType = 'user';
+        }else {
                 $userType = 'superdamin';
             }
             $getUser = $this->authentication_model->getUserNameByRoleID($login_credential->role, $login_credential->user_id);

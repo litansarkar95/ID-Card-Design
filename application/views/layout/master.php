@@ -31,6 +31,8 @@
       <!-- Include Toastr JavaScript -->
       <script src="<?php echo base_url(); ?>public/toastr/toastr.min.js"></script>
   </head>
+
+
   <body>
     <div class="container-scroller">
  
@@ -65,7 +67,9 @@
                       <img src="<?php echo base_url(); ?>public/assets/images/0.png" alt="image" />
                     </div>
                     <div class="nav-profile-text">
-                      <p class="text-black font-weight-semibold m-0"> Md Litan Sarkar </p>
+                      <p class="text-black font-weight-semibold m-0"> <?php
+                      echo $this->session->userdata('name');
+                      ?> </p>
                       <span class="font-13 online-color">online <i class="mdi mdi-chevron-down"></i></span>
                     </div>
                   </a>
@@ -86,14 +90,20 @@
         </nav>
         <nav class="bottom-navbar">
           <div class="container">
-            <ul class="nav page-navigation">
+            <ul class="nav page-navigation"  style="display: inline-flex !important;">
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
                   <i class="mdi mdi-compass-outline menu-icon"></i>
                   <span class="menu-title">Dashboard</span>
                 </a>
               </li>
-              <li class="nav-item">
+           
+              <?php
+                      $loggedin_type =  $this->session->userdata('loggedin_type');
+                      if($loggedin_type == 'superdamin'){
+?>
+
+<li class="nav-item" style="float: left !important;">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
                   <span class="menu-title">Agents</span>
@@ -110,6 +120,74 @@
                   </ul>
                 </div>
               </li>
+              <li class="nav-item">
+          
+             
+          </li><li class="nav-item">
+          
+             
+          </li><li class="nav-item">
+          
+             
+          </li><li class="nav-item">
+          
+             
+          </li>
+              <li class="nav-item">
+          
+             
+              </li>
+              <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+          <li class="nav-item" style="float: left !important;">
+          
+             
+          </li>
+              
+<?php
+                      }else if($loggedin_type == 'agent'){
+                      ?>
+          
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
@@ -215,6 +293,10 @@
                   <a class="text-white" href="#"><i class="mdi mdi-home-circle"></i></a>
                 </div>
               </li>
+
+              <?php
+                      }
+              ?>
             </ul>
           </div>
         </nav>

@@ -56,21 +56,7 @@ textarea[type="text"] {
              
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/organization" method="post" enctype="multipart/form-data">
              
-                          <div class="form-group ">
-                     
-                         <label for="agent">Agent Name<code>*</code></label>
-                        <select type="text" class="form-control select2" id="agent" value="<?php echo set_value('agent'); ?>" name="agent"   >
-                      <option value="">Select</option>   
-                      <?php
-                                        foreach ($allAgent as $agent){
-                                      echo "<option value='{$agent->id}'>{$agent->name}</option>";
-                                        }
-                                    ?>
-                       
-                      </select> 
-                        <span class="text-red small"><?php echo form_error('agent'); ?></span>
-                            
-                         </div>  
+                      
                        
                       <!-- END FORM -->
                     <div class="form-group">

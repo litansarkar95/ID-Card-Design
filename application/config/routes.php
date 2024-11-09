@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'authentication';
 $route['404_override'] = 'page_not_found';
 $route['translate_uri_dashes'] = FALSE;
-$route["logout"] = "login/logout"; 
+$route["logout"] = "authentication/logout"; 
 
 
 // $route['userform/:any'] = "userform/index";

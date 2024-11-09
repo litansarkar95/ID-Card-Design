@@ -24,6 +24,18 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }  
+    public function AgentList($id=NULL) {
+        if($id){
+            $this->db->where("agents.id",$id); 
+        }
+		$this->db->select("agents.* , login_credential.id lid");
+        $this->db->from("agents");
+        $this->db->where("login_credential.role",3); 
+        $this->db->join('login_credential', "agents.id = login_credential.user_id",'left');
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }
+
     public function CustomerListDashboard() {
        
 		$this->db->select("users_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");

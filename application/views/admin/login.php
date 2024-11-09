@@ -6,6 +6,7 @@
     <title>Login</title>
 </head>
 <style>
+        @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap");
 * {
     margin: 0;
     padding: 0;
@@ -13,12 +14,13 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Rajdhani", sans-serif;
     background: linear-gradient(to right, #005596, #0b2e8e);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
 
 .login-container {
@@ -86,12 +88,13 @@ h2 {
 .login-btn {
     width: 100%;
     padding: 10px;
-    background-color: #00aaff;
+    background-image: -webkit-linear-gradient(45deg, hsl(11, 92%, 31%), hsl(225, 99%, 61%));
     border: none;
     border-radius: 5px;
     color: white;
     font-size: 18px;
     cursor: pointer;
+
 }
 
 footer p {
@@ -113,15 +116,37 @@ input[type="password"] {
     margin-bottom: 10px;
     outline: none; 
 }
-
-
+.text-content  a {
+	background-image: -webkit-linear-gradient(45deg, hsl(45, 99%, 61%), hsl(225, 99%, 61%));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    font-size:42px;
+    margin:20px;
+    text-decoration: none;
+}
+.login-box-msg{
+    background-image: -webkit-linear-gradient(45deg, hsl(45, 11%, 61%), hsl(000, 112%, 61%));
+    height:30px;
+    line-height:30px;
+}
+footer p{
+    font-size:24px;
+}
+footer a{
+    font-size:24px;
+    color: #fff;
+	text-decoration: none;
+    background-image: -webkit-linear-gradient(45deg, hsl(45, 11%, 61%), hsl(000, 112%, 61%));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 
     </style>
 <body>
     <div class="login-container">
         <div class="login-box">
             <img src="<?php echo base_url(); ?>public/static/images/logo.png" alt="Rodasi IT Logo" class="logo">
-            <h2>ID Card</h2>
+            <h1 class="text-content"><a href="<?php echo base_url(); ?>" >Administrator</a></h1>
             <form action="<?php echo base_url(); ?>authentication" method="post">
             <?php  $error =  $this->session->userdata('error'); 
     if($error){
@@ -151,7 +176,7 @@ input[type="password"] {
                 <button type="submit" class="login-btn">Login</button>
             </form>
             <footer>
-                <p>Software by: <span>Rodasi IT</span></p>
+                <p>Software by: <span><a href="https://www.rodasiit.com" target="_blank">» Rodasi IT</a></span></p>
             </footer>
         </div>
     </div>
