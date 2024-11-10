@@ -87,8 +87,9 @@ p{
      
             <div class="row">
 
-            <input  class="form-control" type="hidden" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
-            <input  class="form-control" type="hidden" id="id" name="id" value="<?php echo $pdt->id; ?>"  >
+            <input  class="form-control" type="" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
+            <input  class="form-control" type="" id="agent_id" name="agent_id" value="<?php echo $pdt->agent_id; ?>"  >
+            <input  class="form-control" type="" id="id" name="id" value="<?php echo $pdt->id; ?>"  >
                <!-- FORM -->
             <?php
             if($pdt->is_name_en  == 1){

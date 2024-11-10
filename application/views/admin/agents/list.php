@@ -75,7 +75,7 @@ textarea[type="text"] {
                         ?>
                         </td>
                         <td>
-                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/agents/edit/{$pdt->id}";?>"><i class="fa fa-sign-in"></i></a>
+                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/agents/login/{$pdt->id}";?>"><i class="fa fa-sign-in"></i></a>
                             </td>
                           <td>
                           <button type="button" class="btn btn-success btn-sm"  data-bs-toggle="modal" data-bs-target="#change_password<?php echo $pdt->id;?>"   ><i class="fa fa-lock"></i> </button>

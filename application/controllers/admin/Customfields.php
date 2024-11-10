@@ -23,7 +23,7 @@ class Customfields extends CI_Controller {
         } else {
             
           $date = date("Y-m-d H:i:s");
-          $organization_id = $this->session->userdata('loggedin_id');
+          $organization_id = $this->session->userdata('loggedin_userid');
    
           $code_random = $this->main_model->number_generator("org_fields",$organization_id);
 
@@ -38,7 +38,7 @@ class Customfields extends CI_Controller {
               "month_code"                        => date('m'),
               "code_random"                       => $code_random,
               "code_no"                           => $code, 
-              "agent_id"                          => $this->session->userdata('loggedin_id'),
+              "agent_id"                          => $this->session->userdata('loggedin_userid'),
               "organization_id"                   => $this->common_model->xss_clean($this->input->post("company_name")),
               "title"                             => $this->common_model->xss_clean($this->input->post("title")),
               "description"                       => $this->common_model->xss_clean($this->input->post("description")),

@@ -23,9 +23,11 @@ class Userform extends CI_Controller {
 
 
     public function userformsubmit(){
+
+   
     
-            $organization_id = $this->common_model->xss_clean($this->input->post("organization_id"));
-            $code_random = $this->main_model->number_generator("users_fields",$organization_id);
+            $agent_id = $this->common_model->xss_clean($this->input->post("agent_id"));
+            $code_random = $this->main_model->number_generator("users_fields",$agent_id);
 
             $y= date('y');
             $m=date('m');
@@ -38,6 +40,7 @@ class Userform extends CI_Controller {
                 "month_code"                        => date('m'),
                 "code_random"                       => $code_random,
                 "registration_no"                   => $code, 
+                "agent_id"                          => $this->common_model->xss_clean($this->input->post("agent_id")),
                 "organization_id"                   => $this->common_model->xss_clean($this->input->post("organization_id")),
                 "org_fields_id"                     => $this->common_model->xss_clean($this->input->post("id")),
                 "name_en"                           => $this->common_model->xss_clean($this->input->post("name_en")),
@@ -83,6 +86,8 @@ class Userform extends CI_Controller {
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
                 $config['upload_path'] = "./public/static/images/users/";
                 $config['encrypt_name'] = TRUE;
+                $config['file_name'] = uniqid(); 
+                $this->upload->initialize($config);
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload("pic")) {
                     $data['photo'] = $this->upload->data('file_name');
@@ -97,6 +102,7 @@ class Userform extends CI_Controller {
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
                 $config['upload_path'] = "./public/static/images/users/";
                 $config['encrypt_name'] = TRUE;
+                $this->upload->initialize($config);
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload("signature")) {
                     $data['signature'] = $this->upload->data('file_name');
@@ -125,5 +131,6 @@ class Userform extends CI_Controller {
       // $data['content'] = $this->load->view("admin/dashboard", $data, TRUE);
        $this->load->view('front/thanks', $data);
     }
+
 
 }

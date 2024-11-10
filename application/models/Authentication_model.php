@@ -47,20 +47,35 @@ class Authentication_model extends CI_Model
         }
         return FALSE;
     }
-
+    // checking Adminlogin credential
+    public function admin_credential($id)
+    {
+        $this->db->select('*');
+        $this->db->from('login_credential');
+        $this->db->where('user_id', $id);
+        $this->db->limit(1);
+        $query = $this->db->get();
+      
+        if ($query->num_rows() == 1) {
+            return $query->row();
+            
+        }
+        return FALSE;
+    }
 
     public function getUserNameByRoleID($roleID, $userID = '')
     {
-        // if ($roleID == 6) {
-        //     $sql = "SELECT name,email,picture FROM parent WHERE id = " . $this->db->escape($userID);
-        //     return $this->db->query($sql)->row_array();
+     
+         if ($roleID == 3) {
+             $sql = "SELECT name,email,picture FROM agents WHERE id = " . $this->db->escape($userID);
+             return $this->db->query($sql)->row_array();
         // } elseif ($roleID == 7) {
         //     $sql = "SELECT student.id, CONCAT(student.first_name,' ',student.last_name) as name, student.email, student.photo FROM student INNER JOIN enroll ON enroll.student_id = student.id WHERE student.id = " . $this->db->escape($userID);
         //     return $this->db->query($sql)->row_array();
-        // } else {
+         } else {
             $sql = "SELECT CONCAT(staff.first_name,' ',staff.last_name) as name,email,picture FROM staff WHERE id = " . $this->db->escape($userID);
             return $this->db->query($sql)->row_array();
-       // }
+        }
     }
 
 

@@ -41,19 +41,38 @@ $data = [];
 
 foreach ($values as $value) {
     $row = [
-        'organization_id' => $value['id'],  
+        'organization_id' => $value['organization_id'],  
+        'org_fields_id'   => $value['id'],
     ];
 
     if ($value['is_name_en'] == 1) {
-        $row['name_en'] = 'John Doe';  
+        $row['name_en'] = '';  
     }
 
     if ($value['is_name_bn'] == 1) {
-        $row['name_bn'] = 'John Doe sss';  
+        $row['name_bn'] = '';  
+    }
+    if ($value['is_father_name_en'] == 1) {
+        $row['father_name_en'] = '';  
+    }
+    if ($value['is_father_name_bn'] == 1) {
+        $row['father_name_bn'] = '';  
+    }
+    if ($value['is_mother_name_en'] == 1) {
+        $row['mother_name_en'] = '';  
+    }
+    if ($value['is_mother_name_bn'] == 1) {
+        $row['name_bn'] = '';  
+    }
+    if ($value['is_mobile_no'] == 1) {
+        $row['mobile_no'] = '';  
+    }
+    if ($value['is_email'] == 1) {
+        $row['email'] = '';  
     }
 
     // Add email
-    $row['email'] = 'john@example.com'; 
+    //$row['email'] = 'email@example.com'; 
     $row = array_change_key_case($row, CASE_LOWER);
     $data[] = $row;
 }
@@ -113,51 +132,66 @@ public function import_excel() {
         // Get uploaded file data
         $upload_data = $this->upload->data();
         $file_path = './uploads/' . $upload_data['file_name'];
-
+        $file_name = $upload_data['file_name'];  // Get the file name
         // Load the Excel file
         $spreadsheet = IOFactory::load($file_path);
         $sheet = $spreadsheet->getActiveSheet();
         $data = $sheet->toArray();  // Convert sheet data into an array
 
         // Process the data
-        $this->process_imported_data($data);
+        $this->process_imported_data($data, $file_name);
     } else {
         $this->session->set_flashdata('error', $this->upload->display_errors());
         redirect(base_url() . "admin/customfields/list", "refresh");
     }
 }
 
-// Process dynamic data from Excel
-private function process_imported_data($data) {
-    $date =  date('Y-m-d H:i:s');
-    // Get the header row (column names)
-    $headers = array_shift($data);  // This will remove the first row (header) from the data
-
-    // Initialize an array to hold the insert data
-    $insert_data = [];
+private function process_imported_data($data, $file_name) {
+    $date = date('Y-m-d H:i:s');
+    $headers = array_shift($data);
+  
     
-
-    // Loop through the rest of the rows and map them to the dynamic columns
     foreach ($data as $row) {
-        // Map each row dynamically based on headers
-        $row_data = [];
-        $row_data['ip_address']  = $_SERVER['REMOTE_ADDR'];
-        $row_data['date_code']   =  date('y');
-        $row_data['month_code']   =   date('m');
+        $insert_data = [];
+        // Generate unique code for each row
+        $agent_id = $this->session->userdata('loggedin_userid');
+        $code_random = $this->main_model->number_generator("users_fields", $agent_id);
+        $y = date('y');
+        $m = date('m');
+      
+ 
+        // Generate registration code
+        $code = $y . $m . $agent_id . str_pad($code_random, 3, "0", STR_PAD_LEFT);
+
+        // Prepare row data
+        $row_data = [
+            'ip_address' => $_SERVER['REMOTE_ADDR'],
+            'date_code' => $y,
+            'month_code' => $m,
+            'code_random' => $code_random,
+            'registration_no' => $code,
+            'agent_id' => $agent_id,
+            'is_excel' => 1,
+            'file_name' => $file_name,
+            'is_active' => 1,
+            'create_user' => $this->session->userdata('loggedin_id'),
+            'create_date' => strtotime($date),
+        ];
+
+        // Process each header value
         foreach ($headers as $index => $header) {
-            // Check if there is a value for the column, otherwise set it as null
             $row_data[$header] = isset($row[$index]) ? $row[$index] : null;
         }
-        $row_data['create_user'] = $this->session->userdata('loggedin_id'); 
-        $row_data['create_date']             = strtotime($date);
+      
         // Add this row of data to the insert array
         $insert_data[] = $row_data;
+        $this->importexport_model->insert_batch($insert_data);
+      
     }
 
     // Insert the data into the database
     if (!empty($insert_data)) {
-        // Insert into the 'users' table (replace with your actual table)
-        $this->importexport_model->insert_batch($insert_data);
+       // $this->importexport_model->insert_batch($insert_data);
         $this->session->set_flashdata('success', 'Data imported successfully!');
     } else {
         $this->session->set_flashdata('error', 'No valid data found in the file.');
@@ -165,4 +199,5 @@ private function process_imported_data($data) {
 
     redirect(base_url() . "admin/customfields/list", "refresh");
 }
+
 }

@@ -24,16 +24,7 @@ textarea[type="text"] {
             
               </div>
               <div class="header-right d-flex flex-wrap mt-md-2 mt-lg-0">
-                <div class="d-flex align-items-center">
-                  <a href="#">
-                    <p class="m-0 pe-3">Users  List</p>
-                  </a>
-                  <a class="ps-3 me-4" href="#">
-                
-                  </a>
-                </div>
-                <a href="<?php echo base_url(); ?>admin/customfields" type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
-                  <i class="mdi mdi-plus-circle"></i> Custom Fields Create</a>
+            
               </div>
             </div>
             <div class="row">
@@ -75,13 +66,15 @@ textarea[type="text"] {
 
                               <!-- <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."admin/users/design/{$pdt->id}";?>"><i class=" mdi mdi-link "></i></a>
                                 -->
-                              <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."admin/card/custom/designchoose/{$pdt->id}?v={$pdt->org_fields_id}";?>"><i class=" mdi mdi-link "></i></a>
-                            
+
+                              <!-- <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."admin/card/custom/designchoose/{$pdt->id}?v={$pdt->org_fields_id}";?>"><i class=" mdi mdi-link "></i></a>
+                             -->
+                         
                             </td>
                     
                           <td>
-                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/organization/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
-                              <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/organization/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
+                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/users/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
+                              <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/users/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
                             </td>
                           </tr>
                    

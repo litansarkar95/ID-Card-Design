@@ -235,4 +235,48 @@ class Agents extends CI_Controller {
     }
 
 
+    public function login($id)
+	{
+
+        $password    = $this->security->xss_clean($this->input->post("password"));
+    
+
+        $login_credential = $this->authentication_model->admin_credential($id);
+      
+    
+        if ($login_credential) {
+                if ($login_credential->active) {
+                    if ($login_credential->role == 2) {
+                        $userType = 'admin';
+                    } elseif($login_credential->role == 3) {
+                        $userType = 'agent';
+                    } elseif($login_credential->role == 4) {
+                    $userType = 'customer';
+                } elseif($login_credential->role == 5) {
+                    $userType = 'user';
+                }else {
+                        $userType = 'superdamin';
+                    }
+        $getUser = $this->authentication_model->getUserNameByRoleID($login_credential->role, $login_credential->user_id);
+                   // get logger name
+                   $sessionData = array(
+                    'name' => $getUser['name'],
+                    'logger_photo' => $getUser['picture'],
+                    'loggedin_id' => $login_credential->id,
+                    'loggedin_userid' => $login_credential->user_id,
+                    'loggedin_role_id' => $login_credential->role,
+                    'loggedin_type' => $userType,
+                    'loggedin' => true,
+                );
+                if ($this->session->has_userdata('redirect_url')) {
+                    redirect($this->session->userdata('redirect_url'));
+                } else {
+                    redirect(base_url('dashboard'));
+                }
+            }
+            }
+                
+    }
+
+  
 }

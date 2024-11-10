@@ -194,7 +194,7 @@
       <span>Design Forment</span>
     </a>
 
-    <a href="<?php echo base_url(); ?>admin/agents/create" class="quick-link">
+    <!-- <a href="<?php echo base_url(); ?>admin/agents/create" class="quick-link">
     <i class="fa-solid fa-clipboard-question"></i>
       <span>Create Agent</span>
     </a>
@@ -202,7 +202,7 @@
     <a href="<?php echo base_url(); ?>admin/agents" class="quick-link">
     <i class="fa-solid fa-house-chimney-medical"></i>
       <span>Agent List</span>
-    </a>
+    </a> -->
     <a href="#contact" class="quick-link">
     <i class="fa-solid fa-circle-h"></i>
       <span>Contact</span>

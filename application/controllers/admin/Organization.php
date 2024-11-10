@@ -30,7 +30,7 @@ class Organization extends CI_Controller {
           $slug = $this->generate_slug($company_name);
          
           $data = array(   
-              "agent_id"                   => $this->session->userdata('loggedin_id'),
+              "agent_id"                   => $this->session->userdata('loggedin_userid'),
               "name"                       => $this->common_model->xss_clean($this->input->post("company_name")),
               "name_bn"                    => $this->common_model->xss_clean($this->input->post("company_name_bn")),
               "slug"                       => $slug,

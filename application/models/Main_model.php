@@ -15,12 +15,15 @@ class Main_model extends CI_Model {
         return $this->db->get()->result();
     }
     public function UsersList($id=NULL) {
+        $agent_id  = $this->session->userdata('loggedin_userid');
+
         if($id){
             $this->db->where("users_fields.id",$id); 
         }
 		$this->db->select("users_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
         $this->db->from("users_fields");
         $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
+        $this->db->where('organizations.agent_id', $agent_id);
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }  
@@ -98,7 +101,7 @@ class Main_model extends CI_Model {
             }
             return $invoice_no;
         }
-        public function  number_generator($table,$organization_id) {
+        public function  number_generator($table,$agent_id) {
             $ThisYear = date('Y');
             $ThisMonth = date('m');
     
@@ -108,7 +111,7 @@ class Main_model extends CI_Model {
             $this->db->select_max('code_random', 'code_random');
             $this->db->where('date_code',$ThisYear);
             $this->db->where('month_code',$ThisMonth);
-            $this->db->where('organization_id',$organization_id);
+            $this->db->where('agent_id',$agent_id);
             $query      = $this->db->get($table);
             $result     = $query->result_array();
          

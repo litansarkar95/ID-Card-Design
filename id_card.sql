@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2024 at 11:45 AM
+-- Generation Time: Nov 10, 2024 at 12:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,9 +47,7 @@ CREATE TABLE `agents` (
 --
 
 INSERT INTO `agents` (`id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `roles_id`, `address`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
-(1, 'Sonali Agents ', 'Sonali Agents৩৪৪৩২', 'sonali-agents', '0192872', 'sonali1@gmail.com', '3', 'Sonali Agents1', '0.png', 1, 1, 1730789480),
-(17, 'Tiku Photoshop', 'Tiku Photoshop', 'tiku-photoshop', '1122232', 'tiku@gmail.com', '3', 'asasa', '0.png', 1, 1, 1731132945),
-(31, 'Sarkar Print House', 'Sarkar Print House', 'sarkar-print-house', '01829107469', 'sarkar@gmail.com', '3', 'Dhaka', '672f1ade83a3e.jpeg', 1, 1, 1731140318);
+(32, 'New Prining House', 'New Prining House', 'new-prining-house', '0182827', 'info@gmail.com', '3', 'df', '0.png', 1, 1, 1731215732);
 
 -- --------------------------------------------------------
 
@@ -171,25 +169,10 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'VFVFeVROVGVqUlMxODB1MWx6dG9tZz09', 1, 1, '2024-11-09 11:39:32', '2024-10-21 15:42:57', '2024-11-09 12:07:09'),
-(4, 3, '01938166998', 'TnYrMzY2TlVVSjdjQVBlSGJTZnZqdz09', 4, 1, NULL, '2024-10-23 10:50:56', '2024-10-23 10:50:56'),
-(5, 1, 'sonali1@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 3, 1, NULL, '2024-11-05 12:51:20', '2024-11-09 12:47:15'),
-(6, 17, 'tiku@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, NULL, '2024-11-09 12:15:45', '2024-11-09 12:15:45'),
-(7, 18, 'saddas@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, NULL, '2024-11-09 13:58:39', '2024-11-09 13:58:39'),
-(8, 19, 'ewre@gnail.com', 'RVduUlJhSTUrbk5ab1l1VisvRVArdz09', 2, 1, NULL, '2024-11-09 14:00:06', '2024-11-09 14:00:06'),
-(9, 20, 'ASsa', 'NS81RWpQVGFFSi8wZU5EUkhUZlBQdz09', 3, 1, NULL, '2024-11-09 14:02:20', '2024-11-09 14:02:20'),
-(10, 21, 'zxcx', 'b1NoWGVSSVlDTnN0VlFiQXVLcjlxUT09', 2, 1, NULL, '2024-11-09 14:04:24', '2024-11-09 14:04:24'),
-(11, 22, 'dasds', 'dzhrQWpUM0h5Q29sRzhSQktqNTFZdz09', 2, 1, NULL, '2024-11-09 14:05:48', '2024-11-09 14:05:48'),
-(12, 23, 'dasads', 'YzRUS1BtSzI1KzhWa2hmWERMQ1Q1dz09', 3, 1, NULL, '2024-11-09 14:06:07', '2024-11-09 14:06:07'),
-(13, 24, 'dasads', 'Wkg4WGptNFdOeEd4NjlpUCtKWFZQUT09', 3, 1, NULL, '2024-11-09 14:07:03', '2024-11-09 14:07:03'),
-(14, 25, 'dasads', 'ZDhrVzRuSHJOSGIrU2xBNzNIMDZDUT09', 2, 1, NULL, '2024-11-09 14:07:21', '2024-11-09 14:07:21'),
-(15, 26, 'dasads', 'ZDhrVzRuSHJOSGIrU2xBNzNIMDZDUT09', 2, 1, NULL, '2024-11-09 14:08:17', '2024-11-09 14:08:17'),
-(16, 27, 'dasads', 'U0FCbjk3aFh2U25BRjhGVjl6SEJLZz09', 3, 1, NULL, '2024-11-09 14:08:24', '2024-11-09 14:08:24'),
-(17, 28, 'dasads', 'U0FCbjk3aFh2U25BRjhGVjl6SEJLZz09', 3, 1, NULL, '2024-11-09 14:09:35', '2024-11-09 14:09:35'),
-(18, 29, 'dssdsaddssdssd', 'Y0JudS84YmVvK3FSME00eUdNMFJBZz09', 3, 1, NULL, '2024-11-09 14:12:54', '2024-11-09 14:12:54'),
-(19, 30, 'dssdsaddssdssd', 'SjJOSDc0cVY3ODQ3cnk5ZkJOSWdXUT09', 3, 1, NULL, '2024-11-09 14:14:16', '2024-11-09 14:14:16'),
-(20, 31, 'sarkar@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-09 14:25:40', '2024-11-09 14:18:38', '2024-11-09 14:25:40'),
-(21, 5, 'print@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-09 14:33:06', '2024-11-09 14:33:06');
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-11-10 15:25:08', '2024-10-21 15:42:57', '2024-11-10 15:25:08'),
+(22, 32, 'info@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-10 11:16:08', '2024-11-10 11:15:32', '2024-11-10 11:16:08'),
+(23, 6, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:16:52', '2024-11-10 11:16:52'),
+(24, 7, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:18:48', '2024-11-10 11:18:48');
 
 -- --------------------------------------------------------
 
@@ -217,7 +200,7 @@ CREATE TABLE `organizations` (
 --
 
 INSERT INTO `organizations` (`id`, `agent_id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `address`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
-(5, 20, 'New Prining House', 'New Prining House', 'new-prining-house', '019272', 'print@gmail.com', 'aasAS', '0.png', 1, 20, 1731141186);
+(7, 32, 'Sonali Agent', 'Sonali ', 'sonali-agent', 'eer', 'sonali@gmail.com', 's', '0.png', 1, 22, 1731215928);
 
 -- --------------------------------------------------------
 
@@ -279,7 +262,7 @@ CREATE TABLE `org_fields` (
 --
 
 INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
-(16, '2024', 11, 1, '24115001', 20, 5, 'Please Up', 'ss', 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1731141456);
+(18, '2024', 11, 1, '241132001', 32, 7, 'Please Feild up', 'd', 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1731216199);
 
 -- --------------------------------------------------------
 
@@ -480,8 +463,9 @@ CREATE TABLE `users_fields` (
   `permanent_address_en` text NOT NULL,
   `permanent_address_bn` text NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `image` varchar(333) NOT NULL,
   `signature` varchar(255) NOT NULL,
+  `is_excel` int(11) NOT NULL,
+  `file_name` varchar(300) NOT NULL,
   `is_active` int(11) NOT NULL,
   `create_user` int(11) NOT NULL,
   `create_date` int(11) NOT NULL
@@ -491,8 +475,16 @@ CREATE TABLE `users_fields` (
 -- Dumping data for table `users_fields`
 --
 
-INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `agent_id`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `image`, `signature`, `is_active`, `create_user`, `create_date`) VALUES
-(29, '::1', '2024', 11, 1, '24115001', 0, 5, 16, 'Md Litan Sarkar', '', 'Inrahim', '', '', '', '018291019817', 'liat@gmail.com', 'saS', 'ASA', 'SASA', 'assa', 'aSSA', '', '', '', '', '', '', '', 'asa', 'asasa', '2022', 0, 'Male', '', '', '', '', '', '', '', '', '', '', '0.png', 1, 0, 0);
+INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `agent_id`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_excel`, `file_name`, `is_active`, `create_user`, `create_date`) VALUES
+(96, '::1', '2024', 11, 1, '241132001', 32, 18, 0, 'John Doe', '', '', '', '', '', '', 'john@example.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235453),
+(97, '::1', '2024', 11, 2, '241132002', 32, 18, 0, 'litan', '', '', '', '', '', '', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235453),
+(98, '::1', '2024', 11, 3, '241132003', 32, 18, 0, 'John Doe', '', '', '', '', '', '', 'john@example.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235468),
+(99, '::1', '2024', 11, 4, '241132004', 32, 18, 0, 'litan', '', '', '', '', '', '', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235468),
+(100, '::1', '2024', 11, 5, '241132005', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 1, '', 0, 22, 1731236015),
+(101, '::1', '2024', 11, 6, '241132006', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 1, '', 0, 22, 1731236188),
+(102, '::1', '2024', 11, 7, '241132007', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 1, 'imported_file_1731236425.xlsx', 0, 22, 1731236425),
+(103, '::1', '2024', 11, 8, '241132008', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 1, 'imported_file_1731236497.xlsx', 1, 22, 1731236497),
+(104, '::1', '2024', 11, 9, '241132009', 32, 7, 18, 'joy anl', '', 'a', '', 'a', '', '33', '33@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 1, 'imported_file_1731236497.xlsx', 1, 22, 1731236497);
 
 --
 -- Indexes for dumped tables
@@ -572,7 +564,7 @@ ALTER TABLE `users_fields`
 -- AUTO_INCREMENT for table `agents`
 --
 ALTER TABLE `agents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `auth_users_info`
@@ -590,19 +582,19 @@ ALTER TABLE `card_design`
 -- AUTO_INCREMENT for table `login_credential`
 --
 ALTER TABLE `login_credential`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `org_fields`
 --
 ALTER TABLE `org_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -632,7 +624,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_fields`
 --
 ALTER TABLE `users_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
