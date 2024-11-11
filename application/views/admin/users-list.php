@@ -41,10 +41,12 @@ textarea[type="text"] {
                           <tr>
                             <th>SL</th>
                             <th>Org Name</th>
+                            <th>ID</th>
+                       
                             <th>Registration No </th>
                             <th>Name </th>
                             <th>Mobile</th>
-                            <th>ID CARD</th>
+                            <th>Picture</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -56,14 +58,26 @@ textarea[type="text"] {
                                         ?>
                           <tr>
                           <td><?php  echo $i; $i++;?></td>
-                          <td><?php echo $pdt->org_name;?>
-                        <p>Mob ::<?php echo $pdt->org_mobile_no;?></P>
-                        </td>
+                          <td><?php echo $pdt->org_name;?>  </td>
+                          <td><?php echo $pdt->id;?>  </td>
+                       
                           <td><?php echo $pdt->registration_no;?></td>
                           <td><?php echo $pdt->name_en;?></td>
                           <td><?php echo $pdt->mobile_no;?></td>
                           <td>
-
+                          <?php 
+                             
+                             if($pdt->photo != NULL){
+                             ?>
+                          <img src="<?php echo base_url()."public/static/images/users/$pdt->photo"; ?>" width="80px" height="80px" alt="" class="img-circle">
+                        <?php
+                             }else{
+                        ?>
+                          <img src="<?php echo base_url()."public/static/images/agents/0.png"; ?>" width="80px" height="80px" alt="" class="img-circle">
+                       
+                        <?php
+                             }
+                        ?>
                               <!-- <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."admin/users/design/{$pdt->id}";?>"><i class=" mdi mdi-link "></i></a>
                                 -->
 

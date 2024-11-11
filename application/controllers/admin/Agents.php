@@ -257,7 +257,7 @@ class Agents extends CI_Controller {
                 }else {
                         $userType = 'superdamin';
                     }
-        $getUser = $this->authentication_model->getUserNameByRoleID($login_credential->role, $login_credential->user_id);
+              $getUser = $this->authentication_model->getUserNameByRoleID($login_credential->role, $login_credential->user_id);
                    // get logger name
                    $sessionData = array(
                     'name' => $getUser['name'],
@@ -268,6 +268,8 @@ class Agents extends CI_Controller {
                     'loggedin_type' => $userType,
                     'loggedin' => true,
                 );
+                $this->session->set_userdata($sessionData);
+                $this->db->update('login_credential', array('last_login' => date('Y-m-d H:i:s')), array('id' => $login_credential->id));
                 if ($this->session->has_userdata('redirect_url')) {
                     redirect($this->session->userdata('redirect_url'));
                 } else {

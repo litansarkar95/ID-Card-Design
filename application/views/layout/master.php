@@ -243,9 +243,9 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url(); ?>admin/export/Import_image">
                   <i class="mdi mdi-clipboard-text menu-icon"></i>
-                  <span class="menu-title">Excel Data Entry</span>
+                  <span class="menu-title">Excel Photo Import</span>
                 </a>
               </li>
               <li class="nav-item">
