@@ -16,7 +16,12 @@ class Userform extends CI_Controller {
         $id = $_GET['v'];
         $data['active'] = "dashboard";
         $data['title'] =  "Dashboard";
+        $data['allCat'] = $this->main_model->AgentOrgList();
+        $data['allClass'] = $this->main_model->CustomerClasses("classes",$id);
+        $data['allSect'] = $this->main_model->CustomerClasses("sections",$id);
+        $data['allSession'] = $this->main_model->CustomerClasses("sessions",$id);
         $data['allPdt'] = $this->main_model->CustomfieldsList($id);
+    
       // $data['content'] = $this->load->view("admin/dashboard", $data, TRUE);
        $this->load->view('front/user-form', $data);
 	}
@@ -66,6 +71,7 @@ class Userform extends CI_Controller {
                 "class"                             => $this->common_model->xss_clean($this->input->post("class")),
                 "class_roll"                        => $this->common_model->xss_clean($this->input->post("class_roll")),
                 "sessions"                          => $this->common_model->xss_clean($this->input->post("sessions")),
+                "sections"                          => $this->common_model->xss_clean($this->input->post("sections")),
                 "date_of_birth"                     => strtotime($this->common_model->xss_clean($this->input->post("date_of_birth"))),
                 "gender"                            => $this->common_model->xss_clean($this->input->post("gender")),
                 "id_number"                         => $this->common_model->xss_clean($this->input->post("id_number")),

@@ -87,9 +87,9 @@ p{
      
             <div class="row">
 
-            <input  class="form-control" type="" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
-            <input  class="form-control" type="" id="agent_id" name="agent_id" value="<?php echo $pdt->agent_id; ?>"  >
-            <input  class="form-control" type="" id="id" name="id" value="<?php echo $pdt->id; ?>"  >
+            <input  class="form-control" type="hidden" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
+            <input  class="form-control" type="hidden" id="agent_id" name="agent_id" value="<?php echo $pdt->agent_id; ?>"  >
+            <input  class="form-control" type="hidden" id="id" name="id" value="<?php echo $pdt->id; ?>"  >
                <!-- FORM -->
             <?php
             if($pdt->is_name_en  == 1){
@@ -398,7 +398,19 @@ p{
                 <div class="col-md-10">
                 <div class="form-group">
                 <label for="class">Class</label>
-                <input type="text" class="form-control" id="class" name="class" value="<?php echo set_value('class'); ?>">
+                <select type="text" class="form-control select2" id="class"  name="class"   >
+                      <option value="">Select</option>   
+                      <?php
+                                        foreach ($allClass as $cls){
+                                       
+                                                echo "<option value='{$cls->id}'>{$cls->name} </option>";
+                                          
+                                     
+                                        }
+                                    ?>
+                       
+                      </select> 
+
                 </div>
 
                 </div>
@@ -423,13 +435,25 @@ p{
             ?>
             <!-- END FORM -->
                 <!-- FORM -->
-            <?php
-            if($pdt->is_sessions  == 1){
+                <?php
+            if($pdt->is_sections  == 1){
             ?>
                 <div class="col-md-10">
                 <div class="form-group">
-                <label for="class_roll">Session</label>
-                <input type="text" class="form-control" id="sessions" name="sessions" value="<?php echo set_value('sessions'); ?>">
+                <label for="class_roll">Sections</label>
+                <select type="text" class="form-control select2" id="sections"  name="sections"   >
+                      <option value="">Select</option>   
+                      <?php
+                                        foreach ($allSect as $sect){
+                                       
+                                                echo "<option value='{$sect->id}'>{$sect->name} </option>";
+                                          
+                                     
+                                        }
+                                    ?>
+                       
+                      </select> 
+              
                 </div>
 
                 </div>
@@ -437,6 +461,35 @@ p{
             }
             ?>
             <!-- END FORM -->
+                <!-- FORM -->
+            <?php
+            if($pdt->is_sessions  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="class_roll">Session</label>
+                <select type="text" class="form-control select2" id="sessions"  name="sessions"   >
+                      <option value="">Select</option>   
+                      <?php
+                                        foreach ($allSession as $session){
+                                       
+                                                echo "<option value='{$session->id}'>{$session->name} </option>";
+                                          
+                                     
+                                        }
+                                    ?>
+                       
+                      </select> 
+              
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+
+          
                <!-- FORM -->
             <?php
             if($pdt->is_date_of_birth  == 1){

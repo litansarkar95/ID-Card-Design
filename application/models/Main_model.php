@@ -14,6 +14,30 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }
+
+    public function CustomerClasses2($id) {
+       
+		$this->db->select("org_fields.* ,classes.name classes , classes.id cid");
+        $this->db->from("org_fields");
+        $this->db->join('organizations', "org_fields.organization_id = organizations.id",'left');
+        $this->db->join('classes', "classes.organization_id = organizations.id",'left');
+        $this->db->where("org_fields.id",$id); 
+        $this->db->where("classes.is_active",1); 
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }
+
+    public function CustomerClasses($table,$id) {
+     
+		$this->db->select("$table.* ");
+        $this->db->from($table);
+        $this->db->join('organizations', "$table.organization_id = organizations.id",'left');
+        $this->db->join('org_fields', "org_fields.organization_id = organizations.id",'left');
+        $this->db->where("org_fields.id",$id); 
+        $this->db->where("$table.is_active",1); 
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }
     public function UsersList($id=NULL) {
         $agent_id  = $this->session->userdata('loggedin_userid');
 
@@ -27,6 +51,33 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }  
+    public function AgentOrgList($id=NULL) {
+        $agent_id  = $this->session->userdata('loggedin_userid');
+        if($id){
+            $this->db->where("organizations.id",$id); 
+        }
+		$this->db->select("organizations.* ");
+        $this->db->from("organizations");
+        $this->db->where("organizations.is_active",1); 
+        $this->db->where('organizations.agent_id', $agent_id);
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }
+
+
+    public function AgentOrgClassesList($table,$id=NULL) {
+        $agent_id  = $this->session->userdata('loggedin_userid');
+        if($id){
+            $this->db->where("$table.id",$id); 
+        }
+		$this->db->select("$table.* , organizations.name org_name,  organizations.mobile_no org_mobile_no");
+        $this->db->from($table);
+        $this->db->where("$table.is_delete",0); 
+        $this->db->where("$table.agent_id", $agent_id);
+        $this->db->join('organizations', "$table.organization_id = organizations.id",'left');
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }
     public function AgentList($id=NULL) {
         if($id){
             $this->db->where("agents.id",$id); 
@@ -156,6 +207,14 @@ class Main_model extends CI_Model {
         
         return 0; 
     }
+
     
+      // Fetch classes by orgnation_id
+      public function fetch_classes($category_id,$table ){
+        $this->db->where('organization_id', $category_id);
+        $query = $this->db->get($table);
+        return $query->result();
+    }
+
 
 }

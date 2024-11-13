@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2024 at 07:49 AM
+-- Generation Time: Nov 13, 2024 at 12:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -149,6 +149,29 @@ INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_fron
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `classes`
+--
+
+CREATE TABLE `classes` (
+  `id` int(11) NOT NULL,
+  `agent_id` int(11) NOT NULL,
+  `organization_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `is_active` int(11) NOT NULL,
+  `create_date` int(11) NOT NULL,
+  `is_delete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
+(2, 32, 7, 'Class 1', 1, 1731472461, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login_credential`
 --
 
@@ -169,8 +192,8 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-11-11 11:04:35', '2024-10-21 15:42:57', '2024-11-11 11:04:35'),
-(22, 32, 'info@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-11 11:06:25', '2024-11-10 11:15:32', '2024-11-11 11:06:25'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-11-13 09:56:32', '2024-10-21 15:42:57', '2024-11-13 09:56:32'),
+(22, 32, 'info@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-13 09:56:45', '2024-11-10 11:15:32', '2024-11-13 09:56:45'),
 (23, 6, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:16:52', '2024-11-10 11:16:52'),
 (24, 7, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:18:48', '2024-11-10 11:18:48');
 
@@ -245,6 +268,7 @@ CREATE TABLE `org_fields` (
   `is_class` int(11) NOT NULL,
   `is_class_roll` int(11) NOT NULL,
   `is_sessions` int(11) NOT NULL,
+  `is_sections` int(11) NOT NULL,
   `is_date_of_birth` int(11) NOT NULL,
   `is_gender` int(11) NOT NULL,
   `is_id_number` int(11) NOT NULL,
@@ -261,8 +285,8 @@ CREATE TABLE `org_fields` (
 -- Dumping data for table `org_fields`
 --
 
-INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
-(18, '2024', 11, 1, '241132001', 32, 7, 'Please Feild up', 'd', 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1731216199);
+INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_sections`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
+(18, '2024', 11, 1, '241132001', 32, 7, 'Please Feild up', 'd', 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1731216199);
 
 -- --------------------------------------------------------
 
@@ -289,6 +313,53 @@ INSERT INTO `roles` (`id`, `name`, `slug`, `is_active`, `is_system`, `is_superad
 (3, 'Agent', 'agent', 1, 1, 0),
 (4, 'Customer', 'customer', 1, 1, 0),
 (5, 'Users', 'user', 1, 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sections`
+--
+
+CREATE TABLE `sections` (
+  `id` int(11) NOT NULL,
+  `agent_id` int(11) NOT NULL,
+  `organization_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `is_active` int(11) NOT NULL,
+  `create_date` int(11) NOT NULL,
+  `is_delete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sections`
+--
+
+INSERT INTO `sections` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
+(1, 32, 7, 'A', 1, 1731477164, 0),
+(2, 32, 7, 'B', 1, 1731477170, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` int(11) NOT NULL,
+  `agent_id` int(11) NOT NULL,
+  `organization_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `is_active` int(11) NOT NULL,
+  `create_date` int(11) NOT NULL,
+  `is_delete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
+(1, 32, 7, '2020', 1, 1731477045, 0);
 
 -- --------------------------------------------------------
 
@@ -452,6 +523,7 @@ CREATE TABLE `users_fields` (
   `class` varchar(255) NOT NULL,
   `class_roll` varchar(255) NOT NULL,
   `sessions` varchar(255) NOT NULL,
+  `sections` int(11) NOT NULL,
   `date_of_birth` int(11) NOT NULL,
   `gender` varchar(255) NOT NULL,
   `id_number` varchar(255) NOT NULL,
@@ -475,16 +547,16 @@ CREATE TABLE `users_fields` (
 -- Dumping data for table `users_fields`
 --
 
-INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `agent_id`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_excel`, `file_name`, `is_active`, `create_user`, `create_date`) VALUES
-(96, '::1', '2024', 11, 1, '241132001', 32, 18, 0, 'John Doe', '', '', '', '', '', '', 'john@example.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235453),
-(97, '::1', '2024', 11, 2, '241132002', 32, 18, 0, 'litan', '', '', '', '', '', '', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235453),
-(98, '::1', '2024', 11, 3, '241132003', 32, 18, 0, 'John Doe', '', '', '', '', '', '', 'john@example.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235468),
-(99, '::1', '2024', 11, 4, '241132004', 32, 18, 0, 'litan', '', '', '', '', '', '', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235468),
-(100, '::1', '2024', 11, 5, '241132005', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 1, '', 0, 22, 1731236015),
-(101, '::1', '2024', 11, 6, '241132006', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 1, '', 0, 22, 1731236188),
-(102, '::1', '2024', 11, 7, '241132007', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '241132007.jpeg', '', 1, 'imported_file_1731236425.xlsx', 0, 22, 1731236425),
-(103, '::1', '2024', 11, 8, '241132008', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '241132008.jpg', '', 1, 'imported_file_1731236497.xlsx', 1, 22, 1731236497),
-(104, '::1', '2024', 11, 9, '241132009', 32, 7, 18, 'joy anl', '', 'a', '', 'a', '', '33', '33@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '241132009.jpg', '', 1, 'imported_file_1731236497.xlsx', 1, 22, 1731236497);
+INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `agent_id`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `sections`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_excel`, `file_name`, `is_active`, `create_user`, `create_date`) VALUES
+(96, '::1', '2024', 11, 1, '241132001', 32, 18, 0, 'John Doe', '', '', '', '', '', '', 'john@example.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235453),
+(97, '::1', '2024', 11, 2, '241132002', 32, 18, 0, 'litan', '', '', '', '', '', '', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235453),
+(98, '::1', '2024', 11, 3, '241132003', 32, 18, 0, 'John Doe', '', '', '', '', '', '', 'john@example.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235468),
+(99, '::1', '2024', 11, 4, '241132004', 32, 18, 0, 'litan', '', '', '', '', '', '', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, 22, 1731235468),
+(100, '::1', '2024', 11, 5, '241132005', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', 1, '', 0, 22, 1731236015),
+(101, '::1', '2024', 11, 6, '241132006', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '', '', 1, '', 0, 22, 1731236188),
+(102, '::1', '2024', 11, 7, '241132007', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '241132007.jpeg', '', 1, 'imported_file_1731236425.xlsx', 0, 22, 1731236425),
+(103, '::1', '2024', 11, 8, '241132008', 32, 7, 18, 'litan Sarkar ', '', 'ibrahim miah', '', 'lipi', '', '1829287', 'lipi@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '241132008.jpg', '', 1, 'imported_file_1731236497.xlsx', 1, 22, 1731236497),
+(104, '::1', '2024', 11, 9, '241132009', 32, 7, 18, 'joy anl', '', 'a', '', 'a', '', '33', '33@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '', '', '', '', '', '', '241132009.jpg', '', 1, 'imported_file_1731236497.xlsx', 1, 22, 1731236497);
 
 --
 -- Indexes for dumped tables
@@ -509,6 +581,12 @@ ALTER TABLE `card_design`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `login_credential`
 --
 ALTER TABLE `login_credential`
@@ -530,6 +608,18 @@ ALTER TABLE `org_fields`
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sections`
+--
+ALTER TABLE `sections`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -579,6 +669,12 @@ ALTER TABLE `card_design`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `login_credential`
 --
 ALTER TABLE `login_credential`
@@ -601,6 +697,18 @@ ALTER TABLE `org_fields`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `sections`
+--
+ALTER TABLE `sections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sessions`
+--
+ALTER TABLE `sessions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `setting`

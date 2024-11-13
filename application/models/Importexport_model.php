@@ -14,6 +14,15 @@ class Importexport_model extends CI_Model {
         
         
     }
+
+
+    public function export_without_date($id) {
+        $this->db->select("org_fields.*");
+        $this->db->from("org_fields");
+        $this->db->where("org_fields.id",$id); 
+        $query = $this->db->get();
+        return $query->result_array();          
+    }
     public function get_data3() {
         return $query->result_array();
     }

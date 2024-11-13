@@ -200,6 +200,15 @@
                       <a class="nav-link" href="<?php echo base_url(); ?>admin/organization">Organization List</a>
                     </li>
                     <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/classes">Class  </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sections">Section  </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sessions">Session  </a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">Organization Custom Fields  </a>
                     </li>
                     <li class="nav-item">
@@ -242,12 +251,26 @@
                   </ul>
                 </div>
               </li>
+              
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>admin/export/Import_image">
-                  <i class="mdi mdi-clipboard-text menu-icon"></i>
-                  <span class="menu-title">Excel Photo Import</span>
+                <a href="#" class="nav-link">
+                <i class="mdi mdi-clipboard-text menu-icon"></i>
+                  <span class="menu-title">Excel Import</span>
+                  <i class="menu-arrow"></i>
                 </a>
+                <div class="submenu">
+                  <ul class="submenu-item">
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excelimportorg">Excel Import</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excelimportimgorg">Excel Photo Import</a>
+                    </li>
+                   
+                  </ul>
+                </div>
               </li>
+        
               <li class="nav-item">
                 <a class="nav-link" href="#">
                   <i class="mdi mdi-contacts menu-icon"></i>
@@ -313,12 +336,14 @@
     <?php if ($this->session->flashdata('error')): ?>
         toastr.error('<?php echo $this->session->flashdata('error'); ?>');
     <?php endif; ?>
+   
 </script>
        <?php
        if(isset($content)){
         echo $content;
        }
        ?>
+
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
             <div class="container">

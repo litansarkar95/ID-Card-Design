@@ -56,6 +56,7 @@ textarea[type="text"] {
                             <th>Card Design</th>
                             <th>URL</th>
                             <th>Excel Import</th>
+                            <th>Excel Image Import</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -85,7 +86,10 @@ textarea[type="text"] {
                             </td>
                             <td>                  <a class="btn btn-add btn-sm badge-warning text-white"  href="<?php echo base_url()."admin/export/userformimport/view/{$pdt->id}";?>" class="quick-link">
                             <i class="fa fa-arrow-circle-up"></i> Import</a>
-  </td>
+                           </td>
+                           <td>                  <a class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/export/Import_image";?>" class="quick-link">
+                            <i class="fa fa-arrow-circle-up"></i> Import Image</a>
+                           </td>
                           <td>
                               <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/organization/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
                               <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/organization/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
