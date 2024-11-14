@@ -98,7 +98,9 @@ class Customfields extends CI_Controller {
 		$data = array();
         $data['active'] = "customfields";
         $data['title'] =  "Custom fields";
-        $data['allCat'] = $this->common_model->view_data("organizations", array("is_active" => 1), "name", "asc");
+        $agent_id =  $this->session->userdata('loggedin_userid');
+        $data['allCat'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");
+       
        $data['content'] = $this->load->view("admin/customfields-create", $data, TRUE);
        $this->load->view('layout/master', $data);
 	}

@@ -99,7 +99,8 @@ textarea[type="text"] {
                         <label for="images[]">Picture<code>*</code></label>
                         <input type="file" class="form-control" name="images[]" multiple>
                         <span class="text-red small"><?php echo form_error('images[]'); ?></span>
-                    </div> </div>
+                    </div> 
+                  </div>
                     
 
 

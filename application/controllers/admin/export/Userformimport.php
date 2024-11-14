@@ -132,7 +132,7 @@ public function import_excel() {
         // Get uploaded file data
         $upload_data = $this->upload->data();
         $file_path = './uploads/' . $upload_data['file_name'];
-        $file_name = $upload_data['file_name'];  // Get the file name
+   //     $file_name = $upload_data['file_name'];  // Get the file name
         // Load the Excel file
         $spreadsheet = IOFactory::load($file_path);
         $sheet = $spreadsheet->getActiveSheet();
@@ -146,20 +146,20 @@ public function import_excel() {
     }
 }
 
-private function process_imported_data($data, $file_name) {
+private function process_imported_data($data) {
     $date = date('Y-m-d H:i:s');
-    $headers = array_shift($data);
-  
+    $headers = array_shift($data);  // Extract headers
     
+    // Prepare the insert data array outside of the loop
+    $insert_data = [];
+
     foreach ($data as $row) {
-        $insert_data = [];
         // Generate unique code for each row
         $agent_id = $this->session->userdata('loggedin_userid');
         $code_random = $this->main_model->number_generator("users_fields", $agent_id);
         $y = date('y');
         $m = date('m');
-      
- 
+        
         // Generate registration code
         $code = $y . $m . $agent_id . str_pad($code_random, 3, "0", STR_PAD_LEFT);
 
@@ -172,32 +172,34 @@ private function process_imported_data($data, $file_name) {
             'registration_no' => $code,
             'agent_id' => $agent_id,
             'is_excel' => 1,
-            'file_name' => $file_name,
             'is_active' => 1,
             'create_user' => $this->session->userdata('loggedin_id'),
             'create_date' => strtotime($date),
         ];
 
-        // Process each header value
+        // Process each header value and add it to the row_data
         foreach ($headers as $index => $header) {
             $row_data[$header] = isset($row[$index]) ? $row[$index] : null;
         }
-      
-        // Add this row of data to the insert array
+        
+        // Add this row to the insert data array
         $insert_data[] = $row_data;
         $this->importexport_model->insert_batch($insert_data);
-      
     }
 
     // Insert the data into the database
     if (!empty($insert_data)) {
-       // $this->importexport_model->insert_batch($insert_data);
+        // Perform the batch insert if we have data to insert
+      
         $this->session->set_flashdata('success', 'Data imported successfully!');
     } else {
+        // If there's no valid data, set an error message
         $this->session->set_flashdata('error', 'No valid data found in the file.');
     }
 
-    redirect(base_url() . "admin/customfields/list", "refresh");
+    // Redirect to the list page or wherever necessary after the import
+     redirect(base_url() . "admin/users", "refresh");
 }
+
 
 }

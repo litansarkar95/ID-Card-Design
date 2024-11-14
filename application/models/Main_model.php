@@ -8,9 +8,11 @@ class Main_model extends CI_Model {
         if($id){
             $this->db->where("org_fields.id",$id); 
         }
+        $agent_id  = $this->session->userdata('loggedin_userid');
 		$this->db->select("org_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
         $this->db->from("org_fields");
         $this->db->join('organizations', "org_fields.organization_id = organizations.id",'left');
+        $this->db->where('organizations.agent_id', $agent_id);
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }
@@ -215,6 +217,67 @@ class Main_model extends CI_Model {
         $query = $this->db->get($table);
         return $query->result();
     }
+
+    public function update_image_with_class($data, $organization_id, $org_fields_id, $class, $id_number, $sections = NULL) {
+        // Set the basic conditions
+        $this->db->where('users_fields.organization_id', $organization_id);
+        $this->db->where('users_fields.org_fields_id', $org_fields_id);
+        $this->db->where('users_fields.id_number', $id_number);
+    
+        // Handle the 'class' condition with 'sections' being optional
+        if ($sections !== NULL) {
+            // If $sections is not null, check for both 'class' and 'sections'
+            $this->db->group_start()
+                     ->where('users_fields.class', $class)
+                     ->or_where('users_fields.class', $sections)
+                     ->group_end();
+        } else {
+            // Only filter by 'class'
+            $this->db->where('users_fields.class', $class);
+        }
+    
+        // Perform the update
+        $this->db->update('users_fields', $data);
+    
+        // Check if rows were updated
+        if ($this->db->affected_rows() > 0) {
+            return true;  // Successful update
+        } else {
+            return false;  // No rows updated
+        }
+    }
+
+    public function update_image_with_class_roll($data, $organization_id, $org_fields_id, $class, $class_roll, $sections = NULL) {
+        // Set the basic conditions
+  
+        $this->db->where('users_fields.organization_id', $organization_id);
+        $this->db->where('users_fields.org_fields_id', $org_fields_id);
+        $this->db->where('users_fields.class_roll', $class_roll);
+    
+        // Handle the 'class' condition with 'sections' being optional
+        if ($sections !== NULL) {
+            // If $sections is not null, check for both 'class' and 'sections'
+            $this->db->group_start()
+                     ->where('users_fields.class', $class)
+                     ->or_where('users_fields.class', $sections)
+                     ->group_end();
+        } else {
+            // Only filter by 'class'
+            $this->db->where('users_fields.class', $class);
+        }
+    
+        // Perform the update
+        $this->db->update('users_fields', $data);
+    
+        // Check if rows were updated
+        if ($this->db->affected_rows() > 0) {
+            return true;  // Successful update
+        } else {
+            return false;  // No rows updated
+        }
+    }
+    
+    
 
 
 }

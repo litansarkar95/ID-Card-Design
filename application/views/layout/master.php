@@ -261,10 +261,10 @@
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excelimportorg">Excel Import</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_org">Excel Import</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excelimportimgorg">Excel Photo Import</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_multipicture">Excel Photo Import</a>
                     </li>
                    
                   </ul>

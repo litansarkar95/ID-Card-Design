@@ -79,7 +79,8 @@ class Organization extends CI_Controller {
 		$data = array();
         $data['active'] = "company";
         $data['title'] =  "Company";
-        $data['allPdt'] = $this->common_model->view_data("organizations", "", "id", "DESC");
+        $agent_id =  $this->session->userdata('loggedin_userid');
+        $data['allPdt'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");
         $data['content'] = $this->load->view("admin/org/company-list", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
