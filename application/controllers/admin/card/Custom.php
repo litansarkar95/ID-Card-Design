@@ -67,6 +67,45 @@ class Custom extends CI_Controller {
             $this->load->view('admin/custom/design-choose-dynamic', $data);
         }else if ($template_id == 2){
             $this->load->view('admin/card/card-design-001', $data);
+        }else if ($template_id == 3){
+
+            $allPdt = $this->main_model->PrintUserData($id);
+        
+            // Initialize an empty array to store user QR codes
+            $qr_images = [];
+    
+            if ($allPdt) {
+                // Loop through the user data (if multiple users)
+                foreach ($allPdt as $pdt) {
+                    // Extract user data
+                    $name = $pdt->name_en;
+                    $email = $pdt->email;
+                    $phone = $pdt->phone; // Make sure to use the correct field for phone number
+                    $photo = $pdt->photo;
+                    // Create the vCard data string
+                    $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nEND:VCARD";
+    
+                    // Generate and save the QR code as an image in the 'qrcodes' folder
+                    $qr_code_filename = 'qrcodes/' . strtolower(str_replace(' ', '_', $name)) . '_vcard.png';
+                    $this->qr_code->generate($datap, $qr_code_filename);
+    
+                    // Add the generated QR code path to the array
+                    $qr_images[] = [
+                        'qr_code_image' => $qr_code_filename,
+                        'name' => $name,
+                        'email' => $email,
+                        'phone' => $phone,
+                        'photo' => $photo
+                    ];
+                }
+            } else {
+                // If no user data found, set the QR image to null or handle error
+                $qr_images = null;
+            }
+    
+            // Pass the data (including the QR code image) to the view
+            $data['qr_images'] = $qr_images;
+            $this->load->view('admin/card/card-design-003', $data);
         }
  
        

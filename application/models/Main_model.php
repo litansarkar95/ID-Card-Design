@@ -17,6 +17,16 @@ class Main_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function AgentCustomFields($id) {
+      
+
+		$this->db->select("org_fields.*");
+        $this->db->from("org_fields");;
+        $this->db->where("org_fields.id",$id); 
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }
+
     public function CustomerClasses2($id) {
        
 		$this->db->select("org_fields.* ,classes.name classes , classes.id cid");

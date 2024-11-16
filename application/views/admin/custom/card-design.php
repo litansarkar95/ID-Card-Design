@@ -153,6 +153,43 @@ select[type="text"]{
                          </div>
                       <!-- END FORM -->
 
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                          <div class="form-group ">
+                         <div class="form-check form-check-success">
+                         <label for="qr_tpye">QR /Bar Code Type<code>*</code></label>
+                         <select type="text" class="form-control select2" id="qr_tpye" value="<?php echo set_value('qr_tpye'); ?>" name="qr_tpye"   >
+                      <option value="">Select</option>   
+                      <option value="front_side">QR Code</option>  
+                      <option value="back_side">Bar Code</option>  
+                    
+                       
+                      </select> 
+                        <span class="text-red small"><?php echo form_error('qr_tpye'); ?></span>
+                            
+                              </div>
+                         </div>  
+                         </div>
+                      <!-- END FORM -->
+                                   <!-- FORM -->
+                                   <div class="col-md-6">
+                          <div class="form-group ">
+                         <div class="form-check form-check-success">
+                         <label for="qr_system">QR /Bar Name<code>*</code></label>
+                         <select type="text" class="form-control select2" id="qr_system"  name="qr_system"   >
+                      <option value="">Select</option>   
+                      <option value="front_side">Online</option>  
+                      <option value="back_side">Offline</option>  
+                    
+                       
+                      </select> 
+                        <span class="text-red small"><?php echo form_error('qr_system'); ?></span>
+                            
+                              </div>
+                         </div>  
+                         </div>
+                      <!-- END FORM -->
+
     
                       </div>
                    

@@ -80,8 +80,8 @@ textarea[type="text"] {
 
                              </td>
                           <td>
-                          <input type="hidden" id="linkToCopy<?php echo $pdt->id ?>" value="<?php echo base_url()."userform/{$pdt->org_slug}?v={$pdt->id}";?>" readonly class="form-control">
-                              <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."userform/{$pdt->org_slug}?v={$pdt->id}";?>"><i class=" mdi mdi-link "></i></a>
+                          <input type="hidden" id="linkToCopy<?php echo $pdt->id ?>" value="<?php echo base_url()."up-form/{$pdt->id}";?>" readonly class="form-control">
+                              <a  class="btn btn-add btn-sm badge-primary text-white"  target="_blank"  href="<?php echo base_url()."up-form/{$pdt->id}";?>"><i class=" mdi mdi-link "></i></a>
                               <button  onclick="copyLink(<?php echo $pdt->id;?>)" title="Copy" class="btn btn-add btn-sm badge-danger text-white"  ><i class=" mdi mdi-content-copy"></i></button>
                             </td>
                             <td>                  <a class="btn btn-add btn-sm badge-warning text-white"  href="<?php echo base_url()."admin/export/userformimport/view/{$pdt->id}";?>" class="quick-link">

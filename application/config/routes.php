@@ -11,7 +11,7 @@ $route["logout"] = "authentication/logout";
 // $route['userformsubmit/:any'] = 'userform/userformsubmit';
  $route['thanks'] = 'userform/thanks';
  $route['import'] = 'import';
-
+ $route["p-form/(:any)"] = "profile/details/$1";
 
 define('EXT', '.php');
 require_once( BASEPATH . 'database/DB' . EXT );
@@ -21,7 +21,7 @@ $db->select("org_fields.*, organizations.slug org_slug")->from("org_fields");
 $db->join("organizations", "org_fields.organization_id = organizations.id");
 $result = $db->get()->result();
 foreach ($result as $value) {
-    $route["userform"."/".ReplaceR($value->org_slug)] = "userform/index";
+    $route["up-form/(:num)"] = "Userform/index/$1";
     $route["userformsubmit"."/".ReplaceR($value->org_slug)] = "userForm/userformsubmit";
 }
 

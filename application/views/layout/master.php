@@ -5,11 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title> Admin Panel</title>
-
+ <!-- Include Toastr CSS -->
+ <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/toastr/toastr.min.css">
     <!-- plugins:css -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/css/vendor.bundle.base.css">
+      
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
     <!-- endinject -->
@@ -26,8 +28,7 @@
     <!-- End layout styles -->
     <!-- <link rel="shortcut icon" href="<?php echo base_url(); ?>public/assets/images/favicon.png" /> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" ></script>
-         <!-- Include Toastr CSS -->
-         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/toastr/toastr.min.css">
+      
       <!-- Include Toastr JavaScript -->
       <script src="<?php echo base_url(); ?>public/toastr/toastr.min.js"></script>
   </head>
@@ -226,9 +227,11 @@
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/create">Users Create</a>
+                    </li>
+                    <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url(); ?>admin/users">Users List</a>
                     </li>
-                  
                   </ul>
                 </div>
               </li>
