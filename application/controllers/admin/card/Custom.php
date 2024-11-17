@@ -24,7 +24,7 @@ class Custom extends CI_Controller {
         $data['active'] = "users";
         $data['title'] =  "Card Design";
         $data['allTemp'] = $this->common_model->view_data("card_design", array("is_active" => 1), "id", "ASC");
-        $data['allCat'] = $this->common_model->view_data("org_fields", array("is_active" => 1), "id", "DESC");
+        $data['allCat'] = $this->main_model->OrgFieldsAgent();
         $data['content'] = $this->load->view("admin/custom/card-design", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
@@ -80,8 +80,19 @@ class Custom extends CI_Controller {
                     // Extract user data
                     $name = $pdt->name_en;
                     $email = $pdt->email;
-                    $phone = $pdt->phone; // Make sure to use the correct field for phone number
+                    $phone = $pdt->mobile_no; // Make sure to use the correct field for phone number
                     $photo = $pdt->photo;
+                    $gender  = $pdt->gender;
+                    $class = $pdt->class;
+                    $sections = $pdt->sections;
+                    $class_roll = $pdt->class_roll;
+                    $org_name = $pdt->org_name;
+                    $org_address  = $pdt->org_address;
+                    $website = $pdt->website;
+                    $org_mobile_no = $pdt->org_mobile_no;
+                    $signature_name = $pdt->signature_name;
+                    $signature_picture = $pdt->signature_picture;
+                    $picture = $pdt->org_picture;
                     // Create the vCard data string
                     $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nEND:VCARD";
     
@@ -95,7 +106,18 @@ class Custom extends CI_Controller {
                         'name' => $name,
                         'email' => $email,
                         'phone' => $phone,
-                        'photo' => $photo
+                        'photo' => $photo,
+                        'gender' => $gender,
+                        'class'  => $class,
+                        'sections' => $sections,
+                        'class_roll' => $class_roll,
+                        'org_name' =>$org_name,
+                        'org_mobile_no' => $org_mobile_no,
+                        'org_address' => $org_address,
+                        'website' => $website,
+                        'signature_name' => $signature_name,
+                        'signature_picture' => $signature_picture,
+                        'picture' => $picture
                     ];
                 }
             } else {

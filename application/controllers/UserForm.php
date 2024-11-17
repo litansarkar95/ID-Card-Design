@@ -8,15 +8,15 @@ class Userform extends CI_Controller {
 
      
     }
-	public function index()
+	public function index($id)
 	{
 
        
 		$data = array();
-        $id = $_GET['v'];
+      
         $data['active'] = "dashboard";
-        $data['title'] =  "Dashboard";
-        $data['allCat'] = $this->main_model->AgentOrgList();
+        $data['title'] =  "User Form";
+        $data['allCat'] = $this->main_model->AgentOrgList($id);
         $data['allClass'] = $this->main_model->CustomerClasses("classes",$id);
         $data['allSect'] = $this->main_model->CustomerClasses("sections",$id);
         $data['allSession'] = $this->main_model->CustomerClasses("sessions",$id);
@@ -37,7 +37,7 @@ class Userform extends CI_Controller {
             $y= date('y');
             $m=date('m');
   
-            $code = $y.$m.$organization_id.str_pad($code_random,3,"0",STR_PAD_LEFT);
+            $code = $y.$m.$agent_id.str_pad($code_random,3,"0",STR_PAD_LEFT);
           
             $data = array(  
                 "ip_address"                        => $_SERVER['REMOTE_ADDR'],
@@ -115,7 +115,7 @@ class Userform extends CI_Controller {
                     //$arrayMsg['enc_name'] = "1";
                 }
             }else{
-                $data['signature'] = "0.png";
+                //$data['signature'] = "0.png";
             }
         
           if ($this->common_model->save_data("users_fields", $data)) {

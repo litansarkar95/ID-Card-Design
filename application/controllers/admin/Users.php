@@ -201,8 +201,15 @@ class Users extends CI_Controller {
         $data = array();
         $data['active'] = "users";
         $data['title'] =  "Users List";
-        $data['allPdt'] = $this->main_model->UsersList($id);
-        $data['content'] = $this->load->view("admin/users-edit", $data, TRUE);
+        $org_id = $_GET['v'];
+        $data['allClass'] = $this->main_model->CustomerClasses("classes",$org_id);
+        $data['allSect'] = $this->main_model->CustomerClasses("sections",$org_id);
+        $data['allSession'] = $this->main_model->CustomerClasses("sessions",$org_id);
+        $data['allPdt'] =   $this->main_model->AgentCustomFields($org_id);
+        $data['allStu'] = $this->main_model->UsersList($id);
+
+      //  echo "<pre>";print_r($data['allStu']);exit();
+        $data['content'] = $this->load->view("admin/users/users-edit", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
 

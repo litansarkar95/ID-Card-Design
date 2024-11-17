@@ -87,7 +87,7 @@ textarea[type="text"] {
                             </td>
                     
                           <td>
-                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/users/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
+                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/users/edit/{$pdt->id}?v={$pdt->org_fields_id}";?>"><i class="fa fa-pencil"></i></a>
                               <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/users/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
                             </td>
                           </tr>

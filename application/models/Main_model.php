@@ -16,7 +16,15 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }
-
+    public function OrgFieldsAgent(){
+        $agent_id  = $this->session->userdata('loggedin_userid');
+        $this->db->select("org_fields.*");
+        $this->db->from("org_fields");;
+        $this->db->where("org_fields.is_active",1); 
+        $this->db->where('org_fields.agent_id', $agent_id);
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }
     public function AgentCustomFields($id) {
       
 
@@ -114,9 +122,11 @@ class Main_model extends CI_Model {
     } 
     public function PrintUserData($id) {
        
-		$this->db->select("users_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
+		$this->db->select("users_fields.*,classes.name  class, sections.name sections, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.website , organizations.signature_name , organizations.signature_picture ,organizations.picture org_picture");
         $this->db->from("users_fields");
         $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
+        $this->db->join('classes', "users_fields.class = classes.id",'left');
+        $this->db->join('sections', "users_fields.sections = sections.id",'left');
         $this->db->where("users_fields.org_fields_id",$id); 
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();

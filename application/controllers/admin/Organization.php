@@ -36,7 +36,9 @@ class Organization extends CI_Controller {
               "slug"                       => $slug,
               "mobile_no"                  => $this->common_model->xss_clean($this->input->post("mobile_no")),
               "email"                      => $this->common_model->xss_clean($this->input->post("email")),
+              "website"                    => $this->common_model->xss_clean($this->input->post("website")),
               "address"                    => $this->common_model->xss_clean($this->input->post("address")),
+              "signature_name"             => $this->common_model->xss_clean($this->input->post("signature_name")),
               "is_active"                  => 1,
               "create_user"                => $this->session->userdata('loggedin_id'),
               "create_date"                => strtotime($date),
@@ -54,6 +56,18 @@ class Organization extends CI_Controller {
             }
         }else{
             $data['picture'] = "0.png";
+        }
+        if ($_FILES['signature_picture']['name'] != "") {
+            $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
+            $config['upload_path'] = "./public/static/images/organization/";
+            $config['encrypt_name'] = TRUE;
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload("signature_picture")) {
+                $data['signature_picture'] = $this->upload->data('file_name');
+                //$arrayMsg['enc_name'] = "1";
+            }
+        }else{
+            $data['signature_picture'] = "signature.png";
         }
       
         if ($this->common_model->save_data("organizations", $data)) {
@@ -84,6 +98,58 @@ class Organization extends CI_Controller {
         $data['content'] = $this->load->view("admin/org/company-list", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
+
+
+    public function update(){
+    $id = $this->input->post("id");
+    $selPdt=$this->common_model->view_data("organizations",array("id"=>$id),"id","desc");
+  
+    $data = array(
+    
+              "name"                       => $this->common_model->xss_clean($this->input->post("ecompany_name")),
+              "name_bn"                    => $this->common_model->xss_clean($this->input->post("ecompany_name_bn")),
+              "mobile_no"                  => $this->common_model->xss_clean($this->input->post("emobile_no")),
+              "email"                      => $this->common_model->xss_clean($this->input->post("eemail")),
+              "website"                    => $this->common_model->xss_clean($this->input->post("ewebsite")),
+              "address"                    => $this->common_model->xss_clean($this->input->post("eaddress")),
+              "signature_name"             => $this->common_model->xss_clean($this->input->post("esignature_name")),
+              "is_active"                  => $this->common_model->xss_clean($this->input->post("status")),
+                    
+        );
+        if ($_FILES['epic']['name'] != "") {
+            $config['upload_path'] = './public/static/images/organization/"';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['max_size'] = 81048; // 2MB
+            $config['file_name'] = uniqid(); 
+            $this->upload->initialize($config);    
+            if ($this->upload->do_upload("epic")) {
+                $data['picture'] = $this->upload->data('file_name');
+                //$arrayMsg['enc_name'] = "1";
+            }
+        }
+        if ($_FILES['esignature_picture']['name'] != "") {
+            $config['upload_path'] = './public/static/images/organization/"';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['max_size'] = 81048; // 2MB
+            $config['file_name'] = uniqid(); 
+            $this->upload->initialize($config);    
+            if ($this->upload->do_upload("esignature_picture")) {
+                $data['signature_picture'] = $this->upload->data('file_name');
+                //$arrayMsg['enc_name'] = "1";
+            }
+        }
+      
+     
+        if ($this->common_model->update_data("organizations", $data,array("id"=>$id))) {
+        
+            $this->session->set_flashdata('success', 'Update Successfully');
+        }
+        else{
+            $this->session->set_flashdata('error', 'Something error.');
+        }
+        $this->session->set_userdata($sdata);
+       redirect(base_url() . "admin/organization", "refresh");
+}
 
 
     private function generate_slug($name) {

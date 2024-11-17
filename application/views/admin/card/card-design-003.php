@@ -204,36 +204,12 @@ body {
     ?>
   <?php   
                
-               if($this->input->post('side_id') == 'back_side'){
+               if($this->input->post('side_id') == 'front_side' ){
                ?>
-<div class="id-card-back">
-    <div class="header">
-      <p>If found please return to</p>
-    </div>
-    <div class="main-content">
-      <h3>PRINCIPAL ABUL KALAM MAZUMDER MOHILA COLLEGE</h3>
-      <p>Bagmara, Laksam, Cumilla.</p>
-      <p>www.pakmmc.edu.bd</p>
-      <p>01309105961</p>
-      <p>কলেজ অ্যাপস ডাউনলোড করতে QR Code স্ক্যান করুন</p>
-      <img src="<?php echo base_url($qr['qr_code_image']); ?>" alt="QR Code" class="qr-code">
-    </div>
-    <div class="footer">
-      <p>-------------------------------------------</p>
-      <p>Principal</p>
-    </div>
-  </div>
-
-<?php
-               }else if($this->input->post('side_id') == 'front_side'){
-?>
-  <?php
-    }
-?>
 <div class="id-card">
     <div class="header">
-      <img src="logo-placeholder.png" alt="College Logo" class="logo">
-      <h2>PRINCIPAL ABUL KALAM MAZUMDER MOHILA COLLEGE</h2>
+      <!-- <img src="<?php echo base_url()."public/static/images/organization/".$qr['picture']; ?>" alt="College Logo" class="logo"> -->
+        <h2><?php echo $qr['org_name']; ?></h2>
     </div>
  
     <div class="content">
@@ -242,18 +218,159 @@ body {
         <h3><?php echo $qr['name']; ?></h3>
       </div>
       <div class="info-section">
-        <p><strong>Class:</strong> Eleven</p>
-        <p><strong>Group:</strong> Science</p>
-        <p><strong>Section:</strong> A</p>
-        <p><strong>Shift:</strong> Day</p>
+      <?php
+                 if($this->input->post('gender') == 1){
+        ?>
+           <p><strong>Gender :</strong> <?php echo $qr['gender']; ?></p>
+           <?php
+        }
+        ?>
+           <?php   
+               
+               if($this->input->post('class') == 1){
+               ?>
+        <p><strong>Class:</strong> <?php echo $qr['class']; ?></p>
+        <?php
+        }
+        ?>
+        <?php
+                 if($this->input->post('sections') == 1){
+        ?>
+        <p><strong>Section:</strong> <?php echo $qr['sections']; ?></p>
+        <?php
+        }
+        ?>
+        <!-- <p><strong>Shift:</strong> Day</p> -->
+        <?php
+                 if($this->input->post('class_roll') == 1){
+        ?>
         <p><strong>Roll:</strong> <?php echo $qr['class_roll']; ?></p>
-        <p><strong>Cell:</strong> <?php echo $qr['mobile_no']; ?></p>
+        <?php
+        }
+        ?>
+        <?php
+                 if($this->input->post('mobile_no') == 1){
+        ?>
+        <p><strong>Mobile No:</strong> <?php echo $qr['phone']; ?></p>
+        <?php
+        }
+        ?>
       </div>
     </div>
     <div class="footer">
-      <p>202300651003</p>
+      <p><?php echo $qr['org_address']; ?></p>
     </div>
   </div>
+
+<?php
+               }else if($this->input->post('side_id') == 'back_side'){
+?>
+
+<div class="id-card-back">
+    <div class="header">
+      <p>If found please return to</p>
+    </div>
+    <div class="main-content">
+      <h3><?php echo $qr['org_name']; ?></h3>
+      <p><?php echo $qr['org_address']; ?></p>
+      <p><?php echo $qr['website']; ?></p>
+      <p><?php echo $qr['org_mobile_no']; ?></p>
+      <p>কলেজ অ্যাপস ডাউনলোড করতে QR Code স্ক্যান করুন</p>
+      <img src="<?php echo base_url($qr['qr_code_image']); ?>" alt="QR Code" class="qr-code">
+    </div>
+    <div class="footer">
+    <img src="<?php echo base_url()."public/static/images/organization/".$qr['signature_picture']; ?>" width="100px" height="50px" alt="College Logo" >
+      <p>-------------------------------------------</p>
+      <p><?php echo $qr['signature_name']; ?></p>
+    </div>
+  </div>
+
+
+
+  <?php
+    }  else if( $this->input->post('side_id') == 'both_side'){
+?>
+
+
+<div class="id-card">
+    <div class="header">
+      <!-- <img src="<?php echo base_url()."public/static/images/organization/".$qr['picture']; ?>" alt="College Logo" class="logo"> -->
+        <h2><?php echo $qr['org_name']; ?></h2>
+    </div>
+ 
+    <div class="content">
+      <div class="photo-section">
+        <img src="<?php echo base_url()."public/static/images/users/".$qr['photo']; ?>" alt="Student Photo" class="student-photo">
+        <h3><?php echo $qr['name']; ?></h3>
+      </div>
+      <div class="info-section">
+      <?php
+                 if($this->input->post('gender') == 1){
+        ?>
+           <p><strong>Gender :</strong> <?php echo $qr['gender']; ?></p>
+           <?php
+        }
+        ?>
+           <?php   
+               
+               if($this->input->post('class') == 1){
+               ?>
+        <p><strong>Class:</strong> <?php echo $qr['class']; ?></p>
+        <?php
+        }
+        ?>
+        <?php
+                 if($this->input->post('sections') == 1){
+        ?>
+        <p><strong>Section:</strong> <?php echo $qr['sections']; ?></p>
+        <?php
+        }
+        ?>
+        <!-- <p><strong>Shift:</strong> Day</p> -->
+        <?php
+                 if($this->input->post('class_roll') == 1){
+        ?>
+        <p><strong>Roll:</strong> <?php echo $qr['class_roll']; ?></p>
+        <?php
+        }
+        ?>
+        <?php
+                 if($this->input->post('mobile_no') == 1){
+        ?>
+        <p><strong>Mobile No:</strong> <?php echo $qr['phone']; ?></p>
+        <?php
+        }
+        ?>
+      </div>
+    </div>
+    <div class="footer">
+      <p><?php echo $qr['org_address']; ?></p>
+    </div>
+  </div>
+
+  <div class="id-card-back">
+    <div class="header">
+      <p>If found please return to</p>
+    </div>
+    <div class="main-content">
+      <h3><?php echo $qr['org_name']; ?></h3>
+      <p><?php echo $qr['org_address']; ?></p>
+      <p><?php echo $qr['website']; ?></p>
+      <p><?php echo $qr['org_mobile_no']; ?></p>
+      <p>কলেজ অ্যাপস ডাউনলোড করতে QR Code স্ক্যান করুন</p>
+      <img src="<?php echo base_url($qr['qr_code_image']); ?>" alt="QR Code" class="qr-code">
+    </div>
+    <div class="footer">
+    <img src="<?php echo base_url()."public/static/images/organization/".$qr['signature_picture']; ?>" width="100px" height="50px" alt="College Logo" >
+      <p>-------------------------------------------</p>
+      <p><?php echo $qr['signature_name']; ?></p>
+    </div>
+  </div>
+<?php
+  
+
+}
+?>
   <?php
     }
 
