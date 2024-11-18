@@ -82,6 +82,7 @@ class Custom extends CI_Controller {
                     $email = $pdt->email;
                     $phone = $pdt->mobile_no; // Make sure to use the correct field for phone number
                     $photo = $pdt->photo;
+                    $registration_no = $pdt->registration_no;
                     $gender  = $pdt->gender;
                     $class = $pdt->class;
                     $sections = $pdt->sections;
@@ -93,8 +94,19 @@ class Custom extends CI_Controller {
                     $signature_name = $pdt->signature_name;
                     $signature_picture = $pdt->signature_picture;
                     $picture = $pdt->org_picture;
+
+                    //input 
+                    $qr_system = $this->input->post('qr_system');
+                    if($qr_system == 'online'){
+                        // Create the vCard data string
+                      //  $datap = 
+                      $datap = base_url() . "verification/".ReplaceR($name)."/".$registration_no;
+                  //   $url = 'https://www.example.com';
+                    }else if($qr_system == 'offline'){
                     // Create the vCard data string
                     $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nEND:VCARD";
+                    }
+               
     
                     // Generate and save the QR code as an image in the 'qrcodes' folder
                     $qr_code_filename = 'qrcodes/' . strtolower(str_replace(' ', '_', $name)) . '_vcard.png';

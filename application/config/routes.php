@@ -24,7 +24,7 @@ foreach ($result as $value) {
     $route["up-form/(:num)"] = "Userform/index/$1";
     $route["userformsubmit"."/".ReplaceR($value->org_slug)] = "userForm/userformsubmit";
 }
-
+$route["verification/(:any)"] = "verification/users/$1";
 
 function ReplaceR($data) {
     $data = trim($data);

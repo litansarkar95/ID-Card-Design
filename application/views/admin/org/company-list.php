@@ -104,6 +104,20 @@ textarea[type="text"] {
                         <textarea type="text" class="form-control" id="eaddress" name="eaddress"   ><?php echo $val->address; ?></textarea>
                         <span class="text-red small"><?php echo form_error('eaddress'); ?></span>
                     </div>
+               
+                          <div class="form-group ">
+                     
+                         <label for="status">Status<code>*</code></label>
+                        <select type="text" class="form-control select2" id="status"  name="status"   >
+                      <option value="">Select</option>   
+                      <option value="1" <?php if($pdt->is_active == 1){ echo "selected"; } ?>>Active</option> 
+                      <option value="0" <?php if($pdt->is_active == 0){ echo "selected"; } ?>>Deactive</option> 
+                       
+                      </select> 
+                        <span class="text-red small"><?php echo form_error('status'); ?></span>
+                            
+                         </div>  
+                       
                       <div class="form-group">
                         <label for="epic">Logo<code></code></label>
                         <input type="file" class="form-control" id="epic"  name="epic"   />

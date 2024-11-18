@@ -1,4 +1,25 @@
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> 
+    
+<script>
+$(document).ready(function() {
+    // Initialize the datepicker with year selection
+    $("#dob, #date_of_joining, #date_of_leaving").datepicker({
+        dateFormat: 'dd-mm-yy',
+        changeYear: true,      // Enable year selection
+        yearRange: "1900:2100" // Set the range of years available
+    });
+
+    // Set a default date (e.g., today's date)
+    var today = $.datepicker.formatDate('dd-mm-yy', new Date());
+    $("#dob, #date_of_joining, #date_of_leaving").val(today);
+});
+
+
+    </script>
+
 <style>
 
 input[type="text"],
@@ -45,17 +66,7 @@ select[type="text"]{
             
               </div>
               <div class="header-right d-flex flex-wrap mt-md-2 mt-lg-0">
-                <div class="d-flex align-items-center">
-                  <a href="#">
-                    <p class="m-0 pe-3">Custom Fields</p>
-                  </a>
-                  <a class="ps-3 me-4" href="#">
-                
-                  </a>
-                </div>
-                <a href="<?php echo base_url(); ?>admin/customfields/list" type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
-                  <i class="mdi mdi-table-large"></i> Custom Fields List</a>
-              </div>
+             
             </div>
             <div class="row">
               <div class="col-md-8 grid-margin stretch-card">
@@ -178,8 +189,8 @@ select[type="text"]{
                          <label for="qr_system">QR /Bar Name<code>*</code></label>
                          <select type="text" class="form-control select2" id="qr_system"  name="qr_system"   >
                       <option value="">Select</option>   
-                      <option value="front_side">Online</option>  
-                      <option value="back_side">Offline</option>  
+                      <option value="online">Online</option>  
+                      <option value="offline">Offline</option>  
                     
                        
                       </select> 
@@ -189,8 +200,20 @@ select[type="text"]{
                          </div>  
                          </div>
                       <!-- END FORM -->
-
-    
+                      <div class="col-md-6">
+  
+            <div class="form-group ">
+            <input type="checkbox" class="form-check-input" id="is_valid" name="is_valid" value="1"> Is Valid until Date
+            </div>
+            </div>
+            <div id="hiddenDiv" style="display:none;">
+                      <div class="form-group col-md-6">
+                                 <label for="dob">Valid until Date</label>
+                                 <input type="text" id="dob" class="form-control Date" name="dob"  value="<?php echo set_value('dob'); ?>" >
+                                 <span class="text-red small"><?php echo form_error('dob'); ?></span>
+                              </div>
+                              </div>
+         <!-- END FORM -->
                       </div>
                    
               
@@ -287,3 +310,38 @@ $(document).ready(function(){
        
 
 </script>
+
+
+
+    
+<script>
+$(document).ready(function() {
+    // Initialize the datepicker with year selection
+    $("#dob, #date_of_joining, #date_of_leaving").datepicker({
+        dateFormat: 'dd-mm-yy',
+        changeYear: true,      // Enable year selection
+        yearRange: "1900:2100" // Set the range of years available
+    });
+
+    // Set a default date (e.g., today's date)
+    var today = $.datepicker.formatDate('dd-mm-yy', new Date());
+    $("#dob, #date_of_joining, #date_of_leaving").val(today);
+});
+
+
+    </script>
+
+
+<script>
+    $(document).ready(function() {
+      // Listen for checkbox click event
+      $("#is_valid").change(function() {
+        // Toggle the visibility of the div based on the checkbox state
+        if ($(this).is(":checked")) {
+          $("#hiddenDiv").fadeIn(); // Show div with a fade-in effect
+        } else {
+          $("#hiddenDiv").fadeOut(); // Hide div with a fade-out effect
+        }
+      });
+    });
+  </script>

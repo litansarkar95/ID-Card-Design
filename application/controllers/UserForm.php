@@ -20,7 +20,7 @@ class Userform extends CI_Controller {
         $data['allClass'] = $this->main_model->CustomerClasses("classes",$id);
         $data['allSect'] = $this->main_model->CustomerClasses("sections",$id);
         $data['allSession'] = $this->main_model->CustomerClasses("sessions",$id);
-        $data['allPdt'] = $this->main_model->CustomfieldsList($id);
+        $data['allPdt'] = $this->main_model->CustomfieldsInputData($id);
     
       // $data['content'] = $this->load->view("admin/dashboard", $data, TRUE);
        $this->load->view('front/user-form', $data);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2024 at 07:49 AM
+-- Generation Time: Nov 18, 2024 at 12:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -197,11 +197,11 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-11-16 09:18:53', '2024-10-21 15:42:57', '2024-11-16 09:18:53'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-11-18 12:14:52', '2024-10-21 15:42:57', '2024-11-18 12:14:52'),
 (22, 32, 'info@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-14 10:54:08', '2024-11-10 11:15:32', '2024-11-14 10:54:08'),
 (23, 6, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:16:52', '2024-11-10 11:16:52'),
 (24, 7, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:18:48', '2024-11-10 11:18:48'),
-(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-17 09:23:47', '2024-11-14 14:34:45', '2024-11-17 09:23:47'),
+(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-18 12:14:59', '2024-11-14 14:34:45', '2024-11-18 12:14:59'),
 (26, 8, 'mhasan@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-14 14:49:09', '2024-11-14 14:49:09');
 
 -- --------------------------------------------------------
@@ -234,7 +234,7 @@ CREATE TABLE `organizations` (
 
 INSERT INTO `organizations` (`id`, `agent_id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `website`, `address`, `signature_name`, `signature_picture`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
 (7, 32, 'Sonali Agent', 'Sonali ', 'sonali-agent', 'eer', 'sonali@gmail.com', '', 's', '', '', '0.png', 1, 22, 1731215928),
-(8, 33, 'M Hasan School', 'M Hasan School', 'm-hasan-school', '019272625', 'mhasan@gmail.com', 'www.mhasanschool.com', 'dhaka', 'Principle', '6739829235306.jpeg', '0.png', 0, 25, 1731574149);
+(8, 33, 'M Hasan School', 'M Hasan School', 'm-hasan-school', '019272625', 'mhasan@gmail.com', 'www.mhasanschool.com', 'dhaka', 'Principle', '6739829235306.jpeg', '0.png', 1, 25, 1731574149);
 
 -- --------------------------------------------------------
 
@@ -564,9 +564,7 @@ CREATE TABLE `users_fields` (
 
 INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `agent_id`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `sections`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_excel`, `file_name`, `is_active`, `create_user`, `create_date`) VALUES
 (114, '::1', '2024', 11, 1, '241132001', 32, 7, 18, 'ss', '', 'ss', '', 'ss', '', 'ss', 'ss', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 22, 1731567526),
-(115, '::1', '2024', 11, 1, '241132001', 32, 7, 18, 'rr', '', 'r', '', 'rrr', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', 1, '', 1, 22, 1731567526),
 (116, '::1', '2024', 11, 2, '241132002', 32, 7, 18, 'litan ', '', '', '', '2', '', '2', 'a', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 22, 1731567539),
-(117, '::1', '2024', 11, 2, '241132002', 32, 7, 18, '2', '', '', '', '2', '', '2', 'a', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 22, 1731567539),
 (118, '::1', '2024', 11, 3, '241132003', 32, 0, 0, 'lopa', '', 'a', '', 'a', '', 'a', 'a', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 22, 1731567738),
 (119, '::1', '2024', 11, 1, '2411001', 33, 8, 19, 'Abir', '', 'Abbas', '', '', '', '0192727', 'abir@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '5', '1', '', 0, '2024-11-01', 'Male', '123', '', '', '', '', '', '', '', '0.png', '0.png', 0, '', 1, 0, 0),
 (124, '::1', '2024', 11, 2, '241133002', 33, 8, 19, 'sonali', '', '1', '', '', '', '18272', 'w@gmai.com', '', '', '', '', '', '', '', '', '', '', '', '', '3', '1', '', 3, '2024-11-14', 'Male', '223', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 25, 1731576304),

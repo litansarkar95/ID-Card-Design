@@ -26,11 +26,13 @@
         <!-- dataTables css -->
    <link href="<?php echo base_url(); ?>public/assets/datatables/dataTables.dataTables.css" rel="stylesheet" type="text/css"/>
     <!-- End layout styles -->
+         <!-- Include Toastr JavaScript -->
+         <script src="<?php echo base_url(); ?>public/toastr/toastr.min.js"></script>
     <!-- <link rel="shortcut icon" href="<?php echo base_url(); ?>public/assets/images/favicon.png" /> -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" ></script>
-      
-      <!-- Include Toastr JavaScript -->
-      <script src="<?php echo base_url(); ?>public/toastr/toastr.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+          <!-- plugins:js -->
+    <script src="<?php echo base_url(); ?>public/assets/vendors/js/vendor.bundle.base.js"></script>
+
   </head>
 
 
@@ -364,8 +366,7 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="<?php echo base_url(); ?>public/assets/vendors/js/vendor.bundle.base.js"></script>
+
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="<?php echo base_url(); ?>public/assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>

@@ -357,7 +357,7 @@ body {
       <p><?php echo $qr['org_address']; ?></p>
       <p><?php echo $qr['website']; ?></p>
       <p><?php echo $qr['org_mobile_no']; ?></p>
-      <p>কলেজ অ্যাপস ডাউনলোড করতে QR Code স্ক্যান করুন</p>
+      <p>বিস্তারিত জানতে  QR Code স্ক্যান করুন</p>
       <img src="<?php echo base_url($qr['qr_code_image']); ?>" alt="QR Code" class="qr-code">
     </div>
     <div class="footer">
