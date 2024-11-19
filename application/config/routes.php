@@ -9,7 +9,7 @@ $route["logout"] = "authentication/logout";
 
 // $route['userform/:any'] = "userform/index";
 // $route['userformsubmit/:any'] = 'userform/userformsubmit';
- $route['thanks'] = 'userform/thanks';
+ $route['thanks'] = 'userforms/thanks';
  $route['import'] = 'import';
  $route["p-form/(:any)"] = "profile/details/$1";
 
@@ -21,8 +21,8 @@ $db->select("org_fields.*, organizations.slug org_slug")->from("org_fields");
 $db->join("organizations", "org_fields.organization_id = organizations.id");
 $result = $db->get()->result();
 foreach ($result as $value) {
-    $route["up-form/(:num)"] = "Userform/index/$1";
-    $route["userformsubmit"."/".ReplaceR($value->org_slug)] = "userForm/userformsubmit";
+    $route["up-form/(:num)"] = "Userforms/index/$1";
+    $route["userformsubmit"."/".ReplaceR($value->org_slug)] = "userforms/userformsubmit";
 }
 $route["verification/(:any)"] = "verification/users/$1";
 

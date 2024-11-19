@@ -343,9 +343,9 @@ body {
         ?>
       </div>
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
       <p><?php echo $qr['org_address']; ?></p>
-    </div>
+    </div> -->
   </div>
 
   <div class="id-card-back">

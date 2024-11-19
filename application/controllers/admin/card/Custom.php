@@ -100,7 +100,7 @@ class Custom extends CI_Controller {
                     if($qr_system == 'online'){
                         // Create the vCard data string
                       //  $datap = 
-                      $datap = base_url() . "verification/".ReplaceR($name)."/".$registration_no;
+                      $datap = base_url() . "verification/".ReplaceR($name)."?v=".$registration_no;
                   //   $url = 'https://www.example.com';
                     }else if($qr_system == 'offline'){
                     // Create the vCard data string
