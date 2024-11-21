@@ -21,8 +21,8 @@ $db->select("org_fields.*, organizations.slug org_slug")->from("org_fields");
 $db->join("organizations", "org_fields.organization_id = organizations.id");
 $result = $db->get()->result();
 foreach ($result as $value) {
-    $route["up-form/(:num)"] = "Usersform/index/$1";
-    $route["userformsubmit"."/".ReplaceR($value->org_slug)] = "usersform/userformsubmit";
+    $route["up-form/(:num)"] = "Userforms/index/$1";
+    $route["userformsubmit"."/".ReplaceR($value->org_slug)] = "userforms/userformsubmit";
 }
 $route["verification/(:any)"] = "verification/users/$1";
 
