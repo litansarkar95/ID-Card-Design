@@ -162,7 +162,6 @@ class Usersform extends CI_Controller {
             'name' => 'John Doe',
             'verification_link' => base_url('verify/email') // Example verification link
         );
-
         // Prepare the email body using a view file
         $message = $this->load->view('front/email_template', $data, TRUE);
 
@@ -177,6 +176,7 @@ class Usersform extends CI_Controller {
             echo 'Email sent successfully.';
         } else {
             echo 'Failed to send email.';
+            
             echo $this->email->print_debugger(); // For debugging purposes
         }
       
