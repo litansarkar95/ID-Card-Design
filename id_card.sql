@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 11:25 AM
+-- Generation Time: Nov 30, 2024 at 07:26 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -144,10 +144,11 @@ CREATE TABLE `card_design` (
 --
 
 INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_front_side`, `is_back_side`, `is_both_side`, `picture`, `is_active`, `create_date`) VALUES
-(1, '001', 'template-1', 'Template-1', 'template-1', 0, 0, 0, 'studen-001.jpg', 1, 0),
+(1, '001', 'template-1', 'Template-1', 'template-1', 0, 0, 0, 'studen-001.jpg', 0, 0),
 (2, '002', 'template-2', 'Template 2', 'template-2', 1, 0, 0, 'st-102.jpg', 1, 0),
 (3, '003', 'template-3', 'Template 3', 'template-3', 1, 0, 0, 'st-102.jpg', 1, 0),
-(4, '004', 'template-4', 'Template 4', 'template-4', 1, 0, 0, 'st-102.jpg', 1, 0);
+(4, '004', 'template-4', 'Template 4', 'template-4', 1, 0, 0, 'st-102.jpg', 1, 0),
+(5, '005', 'template-5', 'Template 5', 'template-5', 1, 0, 0, 'st-105.jpg', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -173,7 +174,10 @@ INSERT INTO `classes` (`id`, `agent_id`, `organization_id`, `name`, `is_active`,
 (2, 32, 7, 'Class 1', 1, 1731472461, 0),
 (3, 33, 8, 'Class 6', 1, 1731574159, 0),
 (4, 33, 8, 'Class 7', 1, 1731574164, 0),
-(5, 33, 8, 'Class 8', 1, 1731574170, 0);
+(5, 33, 8, 'Class 8', 1, 1731574170, 0),
+(6, 33, 9, '7', 1, 1732945589, 0),
+(7, 33, 9, '8', 1, 1732945603, 0),
+(8, 33, 9, '9', 1, 1732945609, 0);
 
 -- --------------------------------------------------------
 
@@ -198,11 +202,11 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-11-28 15:23:00', '2024-10-21 15:42:57', '2024-11-28 15:23:00'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-11-30 09:45:51', '2024-10-21 15:42:57', '2024-11-30 09:45:51'),
 (22, 32, 'info@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-14 10:54:08', '2024-11-10 11:15:32', '2024-11-14 10:54:08'),
 (23, 6, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:16:52', '2024-11-10 11:16:52'),
 (24, 7, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:18:48', '2024-11-10 11:18:48'),
-(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-28 15:23:08', '2024-11-14 14:34:45', '2024-11-28 15:23:08'),
+(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-30 09:45:56', '2024-11-14 14:34:45', '2024-11-30 09:45:56'),
 (26, 8, 'mhasan@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-14 14:49:09', '2024-11-14 14:49:09'),
 (27, 9, 'labibait@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-28 12:33:56', '2024-11-28 12:33:56');
 
@@ -237,7 +241,7 @@ CREATE TABLE `organizations` (
 INSERT INTO `organizations` (`id`, `agent_id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `website`, `address`, `signature_name`, `signature_picture`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
 (7, 32, 'Sonali Agent', 'Sonali ', 'sonali-agent', 'eer', 'sonali@gmail.com', '', 's', '', '', '0.png', 1, 22, 1731215928),
 (8, 33, 'M Hasan School', 'M Hasan School', 'm-hasan-school', '019272625', 'mhasan@gmail.com', 'www.mhasanschool.com', 'dhaka', 'Principle', '6739829235306.jpeg', '0.png', 1, 25, 1731574149),
-(9, 33, 'কুমিল্লা সরকারী মহিলা কলেজ', 'কুমিল্লা সরকারী মহিলা কলেজ', '-', '+৮৮০২৩৩৪৪০৫৮৫৩', 'labibait@gmail.com', 'www.labibait.com', 'মনোহরপুর , কুমিল্লা সদর , কুমিল্লা ', 'অধ্যক্ষ', '67483bd362b73.png', '0.png', 0, 25, 1732775636);
+(9, 33, 'কুমিল্লা সরকারী মহিলা কলেজ', 'কুমিল্লা সরকারী মহিলা কলেজ', '-', '+৮৮০২৩৩৪৪০৫৮৫৩', 'labibait@gmail.com', 'www.labibait.com', 'মনোহরপুর , কুমিল্লা সদর , কুমিল্লা ', 'অধ্যক্ষ', '67483bd362b73.png', '0.png', 1, 25, 1732775636);
 
 -- --------------------------------------------------------
 
@@ -303,7 +307,9 @@ INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_
 (18, '2024', 11, 1, '241132001', 32, 7, 'Please Feild up', 'd', 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1731216199),
 (19, '2024', 11, 1, '241133001', 33, 8, 'Student New Id Card Form', 'Please input form', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1731574246),
 (20, '2024', 11, 2, '241133002', 33, 8, 'Student infomation -001', 'please information this data', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1731814668),
-(21, '2024', 11, 3, '241133003', 33, 9, 'Staff  Infomation Allow', 'Staff  Infomation Allow', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1732775727);
+(21, '2024', 11, 3, '241133003', 33, 9, 'Staff  Infomation Allow', 'Staff  Infomation Allow', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1732775727),
+(22, '2024', 11, 4, '241133004', 33, 9, 'Student Infomation ', 'Please input ', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1732945479),
+(23, '2024', 11, 5, '241133005', 33, 9, 'Student information -2024', 'Student information -2024', 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1732946168);
 
 -- --------------------------------------------------------
 
@@ -355,7 +361,9 @@ INSERT INTO `sections` (`id`, `agent_id`, `organization_id`, `name`, `is_active`
 (1, 32, 7, 'A', 1, 1731477164, 0),
 (2, 32, 7, 'B', 1, 1731477170, 0),
 (3, 33, 8, 'A', 1, 1731574178, 0),
-(4, 33, 8, 'B', 1, 1731574181, 0);
+(4, 33, 8, 'B', 1, 1731574181, 0),
+(5, 33, 9, 'A', 1, 1732945621, 0),
+(6, 33, 9, 'B', 1, 1732945625, 0);
 
 -- --------------------------------------------------------
 
@@ -378,7 +386,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
-(1, 32, 7, '2020', 1, 1731477045, 0);
+(1, 32, 7, '2020', 1, 1731477045, 0),
+(3, 33, 9, '2021-2022', 1, 1732945636, 0),
+(4, 33, 9, '2022-2024', 1, 1732945699, 0);
 
 -- --------------------------------------------------------
 
@@ -576,7 +586,8 @@ INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code
 (126, '::1', '2024', 11, 2, '241133002', 33, 8, 19, 'abir', '', 'dd', '', '', '', '18272', 'w@gmai.com', '', '', '', '', '', '', '', '', '', '', '', '', '3', '3', '', 3, '2024-11-16', 'Male', '56', '', '', '', '', '', '', '', '', '', 1, '', 1, 25, 1731576304),
 (127, '::1', '2024', 11, 2, '241133002', 33, 8, 19, 'nil', '', 'dd', '', '', '', '18272', 'w@gmai.com', '', '', '', '', '', '', '', '', '', '', '', '', '3', '4', '', 3, '2024-11-17', 'Male', '55', '', '', '', '', '', '', '', '', '', 1, '', 1, 25, 1731576304),
 (146, '::1', '2024', 11, 3, '2411003', 33, 8, 20, 'Md Litan Sarkar', '', 'Ibrahim', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '2011', '', '3', '2', '', 0, '0000-00-00', 'Male', '', '', '', '', '', '', '', '', 'e241d6c852f8bf5ace33e1c2781edad0.jpg', '0.png', 0, '', 1, 0, 0),
-(147, '::1', '2024', 11, 4, '241133004', 33, 9, 21, 'মোঃ লিটন সরকার ', '', 'ইব্রাহিম মিয়া ', '', '', '', '01829107469', 'litansarkar95@gmail.com', '', '', '', '', '', '', '', '', 'ড্রাইবার ', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', 'Single', '', '', '', '', '', '9a6cacc3560741bc145a76ffce4a8f37.jpg', '', 0, '', 1, 0, 0);
+(147, '::1', '2024', 11, 4, '241133004', 33, 9, 21, 'মোঃ লিটন সরকার ', '', 'ইব্রাহিম মিয়া ', '', '', '', '01829107469', 'litansarkar95@gmail.com', '', '', '', '', '', '', '', '', 'ড্রাইবার ', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', 'Single', '', '', '', '', '', '9a6cacc3560741bc145a76ffce4a8f37.jpg', '', 0, '', 1, 0, 0),
+(148, '::1', '2024', 11, 5, '241133005', 33, 9, 23, 'Md Litan Sarkar', '', '', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', 'Science', '', '', '8', '12', '4', 5, '0000-00-00', 'Male', '42584', '', '', '', '', '', '', '', 'b0b5487001a8c8989c5f9d3d2b076d0f.JPG', '', 0, '', 1, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -686,13 +697,13 @@ ALTER TABLE `auth_users_info`
 -- AUTO_INCREMENT for table `card_design`
 --
 ALTER TABLE `card_design`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `login_credential`
@@ -710,7 +721,7 @@ ALTER TABLE `organizations`
 -- AUTO_INCREMENT for table `org_fields`
 --
 ALTER TABLE `org_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -722,13 +733,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `setting`
@@ -752,7 +763,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_fields`
 --
 ALTER TABLE `users_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

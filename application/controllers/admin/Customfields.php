@@ -69,6 +69,7 @@ class Customfields extends CI_Controller {
               "is_class"                          => $this->common_model->xss_clean($this->input->post("is_class")),
               "is_class_roll"                     => $this->common_model->xss_clean($this->input->post("is_class_roll")),
               "is_sessions"                       => $this->common_model->xss_clean($this->input->post("is_sessions")),
+              "is_sections"                       => $this->common_model->xss_clean($this->input->post("is_section")),
               "is_date_of_birth"                  => $this->common_model->xss_clean($this->input->post("is_date_of_birth")),
               "is_gender"                         => $this->common_model->xss_clean($this->input->post("is_gender")),
               "is_id_number"                      => $this->common_model->xss_clean($this->input->post("is_id_number")),
@@ -82,7 +83,7 @@ class Customfields extends CI_Controller {
              
           );
 
-    
+ //echo "<pre>";   print_r($data);exit();
       
         if ($this->common_model->save_data("org_fields", $data)) {
           $id=$this->common_model->Id;
