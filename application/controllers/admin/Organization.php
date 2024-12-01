@@ -197,4 +197,25 @@ class Organization extends CI_Controller {
     }
 
 
+
+    public function formlist(){
+        $data = array();
+        $data['active'] = "formlist";
+        $data['title'] =  "formlist";
+        $agent_id =  $this->session->userdata('loggedin_userid');
+        $data['allPdt'] = $this->main_model->org_fieldsListUsers();
+        $data['content'] = $this->load->view("admin/org/formlist-list", $data, TRUE);
+        $this->load->view('layout/master', $data);
+	}
+   
+    public function userview($id){
+        $data = array();
+        $data['active'] = "userview";
+        $data['title'] =  "userview";
+        $agent_id =  $this->session->userdata('loggedin_userid');
+        $data['allPdt'] = $this->main_model->FieldsListUsers($id);
+        $data['content'] = $this->load->view("admin/org/userview-list", $data, TRUE);
+        $this->load->view('layout/master', $data);
+	}
+
 }

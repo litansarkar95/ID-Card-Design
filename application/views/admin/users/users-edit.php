@@ -3,6 +3,27 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css" />
     <!-- Layout styles -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/css/demo_2/style.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" ></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> 
+    
+
+</head>
+<script>
+$(document).ready(function() {
+    // Initialize the datepicker with year selection
+    $("#dob, #date_of_joining, #date_of_leaving").datepicker({
+        dateFormat: 'yy-mm-dd',
+        changeYear: true,      // Enable year selection
+        yearRange: "1900:2100" // Set the range of years available
+    });
+
+    // Set a default date (e.g., today's date)
+  
+});
+
+
+    </script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
    /* Custom Styling */
@@ -59,12 +80,7 @@ textarea[type="text"] {
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Users Create</h4>
-             
-                    <form class="forms-sample"  action="<?php echo base_url(); ?>admin/users/update" method="post" enctype="multipart/form-data">
-                   <div class="row">
-               
-                      <!-- END FORM -->
-                      <?php
+                    <?php
         if(isset($allPdt)){
             foreach($allPdt as $pdt){
 
@@ -72,6 +88,13 @@ textarea[type="text"] {
                 foreach($allStu as $val){
               
         ?> 
+                    <form class="forms-sample"  action="<?php echo base_url(); ?>admin/users/update" method="post" enctype="multipart/form-data">
+                    <input type="" class="form-control" id="id" name="id" value="<?php echo $val->id; ?>">
+                   
+                    <div class="row">
+               
+                      <!-- END FORM -->
+         
  <!-- FORM -->
  <?php
             if($pdt->is_name_en  == 1){
@@ -335,7 +358,7 @@ textarea[type="text"] {
                 <div class="col-md-4">
                 <div class="form-group">
                 <label for="department">Department</label>
-                <input type="text" class="form-control" id="department" name="department" value="<?php echo set_value('department'); ?>">
+                <input type="text" class="form-control" id="department" name="department" value="<?php echo $val->department; ?>">
                 </div>
 
                 </div>
@@ -384,8 +407,12 @@ textarea[type="text"] {
                       <option value="">Select</option>   
                       <?php
                                         foreach ($allClass as $cls){
-                                       
-                                                echo "<option value='{$cls->id}'>{$cls->name} </option>";
+                                           if($cls->id == $val->class){
+                                            echo "<option value='{$cls->id}' selected>{$cls->name} </option>";
+                                           }else{
+                                            echo "<option value='{$cls->id}'>{$cls->name} </option>";
+                                           }
+                                                
                                           
                                      
                                         }
@@ -427,8 +454,13 @@ textarea[type="text"] {
                       <option value="">Select</option>   
                       <?php
                                         foreach ($allSect as $sect){
-                                       
+                                            if($sect->id == $val->sections){
+                                                echo "<option value='{$sect->id}' selected>{$sect->name} </option>";
+                                            }else{
                                                 echo "<option value='{$sect->id}'>{$sect->name} </option>";
+                                            }
+                                       
+                                               
                                           
                                      
                                         }
@@ -453,9 +485,14 @@ textarea[type="text"] {
                 <select type="text" class="form-control select2" id="sessions"  name="sessions"   >
                       <option value="">Select</option>   
                       <?php
+                      
                                         foreach ($allSession as $session){
-                                       
+                                            if($session->id == $val->sessions){
+                                                echo "<option value='{$session->id}' selected>{$session->name} </option>";
+                                            }else{
                                                 echo "<option value='{$session->id}'>{$session->name} </option>";
+                                            }
+                                             
                                           
                                      
                                         }
@@ -479,7 +516,7 @@ textarea[type="text"] {
                 <div class="col-md-4">
                 <div class="form-group">
                 <label for="full_name">Date of Birth</label>
-                <input type="text" class="form-control" id="dob" name="date_of_birth" value="<?php echo set_value('date_of_birth'); ?>">
+                <input type="text" class="form-control" id="dob" name="date_of_birth" value="<?php echo $val->date_of_birth; ?>">
                 </div>
 
                 </div>
@@ -496,9 +533,9 @@ textarea[type="text"] {
                 <label for="gender">Gender</label>
                 <select class="form-control" type="text" id="gender" name="gender" value="<?php echo set_value('gender'); ?>" >
                 <option value="">Select</option>
-                <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Others">Others</option>
+                <option value="Male" <?php if($val->gender =="Male" ){ echo "selected"; }?>>Male</option>
+                                    <option value="Female" <?php if($val->gender =="Female" ){ echo "selected"; }?>>Female</option>
+                                    <option value="Others" <?php if($val->gender =="Others" ){ echo "selected"; }?>>Others</option>
             </select>
               
                 </div>
@@ -515,7 +552,7 @@ textarea[type="text"] {
                 <div class="col-md-4">
                 <div class="form-group">
                 <label for="id_number">ID No</label>
-                <input type="text" class="form-control" id="id_number" name="id_number" value="<?php echo set_value('id_number'); ?>">
+                <input type="text" class="form-control" id="id_number" name="id_number" value="<?php echo $val->id_number; ?>">
                 </div>
 
                 </div>
@@ -532,14 +569,14 @@ textarea[type="text"] {
                 <label for="blood_group">Blood Group</label>
                 <select class="form-control" type="text" id="blood_group" name="blood_group" value="<?php echo set_value('blood_group'); ?>" >
                 <option value="">Select</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
+                <option value="A+" <?php if($val->blood_group =="A+" ){ echo "selected"; }?>>A+</option>
+                <option value="A-" <?php if($val->blood_group =="A-" ){ echo "selected"; }?>>A-</option>
+                <option value="B+" <?php if($val->blood_group =="B+" ){ echo "selected"; }?>>B+</option>
+                <option value="B-" <?php if($val->blood_group =="B-" ){ echo "selected"; }?>>B-</option>
+                <option value="O+" <?php if($val->blood_group =="O+" ){ echo "selected"; }?>>O+</option>
+                <option value="O-" <?php if($val->blood_group =="O-" ){ echo "selected"; }?>>O-</option>
+                <option value="AB+" <?php if($val->blood_group =="AB+" ){ echo "selected"; }?>>AB+</option>
+                <option value="AB-" <?php if($val->blood_group =="AB-" ){ echo "selected"; }?>>AB-</option>
             </select>
             </div>
                 </div>
@@ -556,11 +593,11 @@ textarea[type="text"] {
                 <label for="marital_status">Marital Status</label>
                 <select class="form-control" type="text" id="marital_status" name="marital_status" value="<?php echo set_value('marital_status'); ?>" >
                 <option value="">Select</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Widowed">Widowed</option>
-                <option value="Separated">Separated</option>
-                <option value="Not Specified">Not Specified</option>
+                <option value="Single" <?php if($val->marital_status =="Single" ){ echo "selected"; }?>>Single</option>
+                <option value="Married" <?php if($val->marital_status =="Married" ){ echo "selected"; }?>>Married</option>
+                <option value="Widowed" <?php if($val->marital_status =="Widowed" ){ echo "selected"; }?>>Widowed</option>
+                <option value="Separated" <?php if($val->marital_status =="Separated" ){ echo "selected"; }?>>Separated</option>
+                <option value="Not Specified" <?php if($val->marital_status =="Not Specified" ){ echo "selected"; }?>>Not Specified</option>
             </select>
             
             </div>
@@ -623,9 +660,10 @@ textarea[type="text"] {
                 <div class="col-md-4">
                 <div class="form-group">
                 <label for="is_photo">Photo</label>
+               
                 <input  class="form-control" type="file" id="is_photo" name="pic" value="<?php echo set_value('pic'); ?>" >
                 </div>
-
+                <img src="<?php echo base_url()."public/static/images/users/$val->photo"; ?>" width="80px" height="80px" alt="" class="img-circle">
                 </div>
                 <?php
             }
@@ -640,7 +678,8 @@ textarea[type="text"] {
                 <div class="form-group">
                 <label for="signature">Signature</label>
                 <input  class="form-control" type="file" id="signature" name="signature" accept="image/png" value="<?php echo set_value('signature'); ?>" >
-                </div>
+                <img src="<?php echo base_url()."public/static/images/users/$val->signature"; ?>" width="80px" height="80px" alt="" class="img-circle">
+            </div>
 
                 </div>
                 <?php
@@ -677,7 +716,7 @@ textarea[type="text"] {
                      
                     
                      
-                      <button type="submit" class="btn btn-primary me-2"> Submit </button>
+                      <button type="submit" class="btn btn-primary me-2"> Update </button>
                       <button class="btn btn-light">Cancel</button>
                     </form>
                   </div>

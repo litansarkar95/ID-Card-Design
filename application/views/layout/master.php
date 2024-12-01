@@ -228,6 +228,9 @@
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
+                  <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization/formlist">Organization Form List </a>
+                    </li>
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url(); ?>admin/users/create">Users Create</a>
                     </li>

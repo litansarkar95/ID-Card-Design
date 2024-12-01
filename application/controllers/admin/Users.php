@@ -105,7 +105,7 @@ class Users extends CI_Controller {
             "class_roll"                        => $this->common_model->xss_clean($this->input->post("class_roll")),
             "sessions"                          => $this->common_model->xss_clean($this->input->post("sessions")),
             "sections"                          => $this->common_model->xss_clean($this->input->post("sections")),
-            "date_of_birth"                     => strtotime($this->common_model->xss_clean($this->input->post("date_of_birth"))),
+            "date_of_birth"                     => $this->common_model->xss_clean($this->input->post("date_of_birth")),
             "gender"                            => $this->common_model->xss_clean($this->input->post("gender")),
             "id_number"                         => $this->common_model->xss_clean($this->input->post("id_number")),
             "blood_group"                       => $this->common_model->xss_clean($this->input->post("blood_group")),
@@ -147,8 +147,6 @@ class Users extends CI_Controller {
                 $data['signature'] = $this->upload->data('file_name');
                 //$arrayMsg['enc_name'] = "1";
             }
-        }else{
-            $data['signature'] = "0.png";
         }
     
       if ($this->common_model->save_data("users_fields", $data)) {
@@ -212,6 +210,85 @@ class Users extends CI_Controller {
         $data['content'] = $this->load->view("admin/users/users-edit", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
-
+    public function update(){
+        $id = $this->input->post("id");
+        $selPdt=$this->common_model->view_data("users_fields",array("id"=>$id),"id","desc");
+      
+     
+    
+        $data = array(
+        
+            "name_en"                           => $this->common_model->xss_clean($this->input->post("name_en")),
+            "name_bn"                           => $this->common_model->xss_clean($this->input->post("name_bn")),
+            "father_name_en"                    => $this->common_model->xss_clean($this->input->post("father_name_en")),
+            "father_name_bn"                    => $this->common_model->xss_clean($this->input->post("father_name_bn")),
+            "mother_name_en"                    => $this->common_model->xss_clean($this->input->post("mother_name_en")),
+            "mother_name_bn"                    => $this->common_model->xss_clean($this->input->post("mother_name_bn")),
+            "mobile_no"                         => $this->common_model->xss_clean($this->input->post("mobile_no")),
+            "email"                             => $this->common_model->xss_clean($this->input->post("email")),
+            "village_en"                        => $this->common_model->xss_clean($this->input->post("village_en")),
+            "village_bn"                        => $this->common_model->xss_clean($this->input->post("village_bn")),
+            "post_office_en"                    => $this->common_model->xss_clean($this->input->post("post_office_en")),
+            "post_office_bn"                    => $this->common_model->xss_clean($this->input->post("post_office_bn")),
+            "upazila_en"                        => $this->common_model->xss_clean($this->input->post("upazila_en")),
+            "upazila_bn"                        => $this->common_model->xss_clean($this->input->post("upazila_bn")),
+            "zilla_en"                          => $this->common_model->xss_clean($this->input->post("zilla_en")),
+            "zilla_bn"                          => $this->common_model->xss_clean($this->input->post("zilla_bn")),
+            "designation"                       => $this->common_model->xss_clean($this->input->post("designation")),
+            "department"                        => $this->common_model->xss_clean($this->input->post("department")),
+            "employee_id"                       => $this->common_model->xss_clean($this->input->post("employee_id")),
+            "index_no"                          => $this->common_model->xss_clean($this->input->post("index_no")),
+            "class"                             => $this->common_model->xss_clean($this->input->post("class")),
+            "class_roll"                        => $this->common_model->xss_clean($this->input->post("class_roll")),
+            "sessions"                          => $this->common_model->xss_clean($this->input->post("sessions")),
+            "sections"                          => $this->common_model->xss_clean($this->input->post("sections")),
+            "date_of_birth"                     => $this->common_model->xss_clean($this->input->post("date_of_birth")),
+            "gender"                            => $this->common_model->xss_clean($this->input->post("gender")),
+            "id_number"                         => $this->common_model->xss_clean($this->input->post("id_number")),
+            "blood_group"                       => $this->common_model->xss_clean($this->input->post("blood_group")),
+            "marital_status"                    => $this->common_model->xss_clean($this->input->post("marital_status")),
+            "nationality"                       => $this->common_model->xss_clean($this->input->post("nationality")),
+            "present_address_en"                => $this->common_model->xss_clean($this->input->post("present_address_en")),
+            "present_address_bn"                => $this->common_model->xss_clean($this->input->post("present_address_bn")),
+            "permanent_address_en"              => $this->common_model->xss_clean($this->input->post("permanent_address_en")),
+            "permanent_address_bn"              => $this->common_model->xss_clean($this->input->post("permanent_address_bn")),
+                        
+            );
+            if ($_FILES['pic']['name'] != "") {
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
+                $config['upload_path'] = "./public/static/images/users/";
+                $config['encrypt_name'] = TRUE;
+                $config['file_name'] = uniqid(); 
+                $this->upload->initialize($config);
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload("pic")) {
+                    $data['photo'] = $this->upload->data('file_name');
+                    //$arrayMsg['enc_name'] = "1";
+                }
+            }
+    
+    
+            if ($_FILES['signature']['name'] != "") {
+                $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
+                $config['upload_path'] = "./public/static/images/users/";
+                $config['encrypt_name'] = TRUE;
+                $this->upload->initialize($config);
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload("signature")) {
+                    $data['signature'] = $this->upload->data('file_name');
+                    //$arrayMsg['enc_name'] = "1";
+                }
+            }
+         
+            if ($this->common_model->update_data("users_fields", $data,array("id"=>$id))) {
+            
+                $this->session->set_flashdata('success', 'Update Successfully');
+            }
+            else{
+                $this->session->set_flashdata('error', 'Something error.');
+            }
+            $this->session->set_userdata($sdata);
+           redirect(base_url() . "admin/organization/formlist", "refresh");
+    }
 
 }

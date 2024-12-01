@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2024 at 07:26 AM
+-- Generation Time: Dec 01, 2024 at 10:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -202,11 +202,11 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-11-30 09:45:51', '2024-10-21 15:42:57', '2024-11-30 09:45:51'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-01 10:01:01', '2024-10-21 15:42:57', '2024-12-01 10:01:01'),
 (22, 32, 'info@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-14 10:54:08', '2024-11-10 11:15:32', '2024-11-14 10:54:08'),
 (23, 6, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:16:52', '2024-11-10 11:16:52'),
 (24, 7, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:18:48', '2024-11-10 11:18:48'),
-(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-30 09:45:56', '2024-11-14 14:34:45', '2024-11-30 09:45:56'),
+(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-01 10:01:10', '2024-11-14 14:34:45', '2024-12-01 10:01:10'),
 (26, 8, 'mhasan@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-14 14:49:09', '2024-11-14 14:49:09'),
 (27, 9, 'labibait@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-28 12:33:56', '2024-11-28 12:33:56');
 
@@ -587,7 +587,7 @@ INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code
 (127, '::1', '2024', 11, 2, '241133002', 33, 8, 19, 'nil', '', 'dd', '', '', '', '18272', 'w@gmai.com', '', '', '', '', '', '', '', '', '', '', '', '', '3', '4', '', 3, '2024-11-17', 'Male', '55', '', '', '', '', '', '', '', '', '', 1, '', 1, 25, 1731576304),
 (146, '::1', '2024', 11, 3, '2411003', 33, 8, 20, 'Md Litan Sarkar', '', 'Ibrahim', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '2011', '', '3', '2', '', 0, '0000-00-00', 'Male', '', '', '', '', '', '', '', '', 'e241d6c852f8bf5ace33e1c2781edad0.jpg', '0.png', 0, '', 1, 0, 0),
 (147, '::1', '2024', 11, 4, '241133004', 33, 9, 21, 'মোঃ লিটন সরকার ', '', 'ইব্রাহিম মিয়া ', '', '', '', '01829107469', 'litansarkar95@gmail.com', '', '', '', '', '', '', '', '', 'ড্রাইবার ', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', 'Single', '', '', '', '', '', '9a6cacc3560741bc145a76ffce4a8f37.jpg', '', 0, '', 1, 0, 0),
-(148, '::1', '2024', 11, 5, '241133005', 33, 9, 23, 'Md Litan Sarkar', '', '', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', 'Science', '', '', '8', '12', '4', 5, '0000-00-00', 'Male', '42584', '', '', '', '', '', '', '', 'b0b5487001a8c8989c5f9d3d2b076d0f.JPG', '', 0, '', 1, 0, 0);
+(148, '::1', '2024', 11, 5, '241133005', 33, 9, 23, 'Md Litan Sarkar', '', '', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', 'Science', '', '', '8', '12', '3', 5, '2010-12-08', 'Male', '42584', '', '', '', '', '', '', '', 'b0b5487001a8c8989c5f9d3d2b076d0f.JPG', '', 0, '', 1, 0, 0);
 
 --
 -- Indexes for dumped tables
