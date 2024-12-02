@@ -237,6 +237,9 @@
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo base_url(); ?>admin/users">Users List</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/reports">Users Reports </a>
+                    </li>
                   </ul>
                 </div>
               </li>

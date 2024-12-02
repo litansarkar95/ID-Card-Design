@@ -23,11 +23,18 @@ class Importexport_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();          
     }
+
+    public function export_Userfields_date($id) {
+        $this->db->select("users_fields.*");
+        $this->db->from("users_fields");
+        $this->db->where("users_fields.org_fields_id",$id); 
+        return $this->db->get()->result();         
+    }
     public function get_data3() {
         return $query->result_array();
     }
 
     public function insert_batch($data) {
-        $this->db->insert_batch('users_fields', $data);  // Replace 'users' with your actual table name
+        $this->db->insert_batch('users_fields', $data);  
     }
 }

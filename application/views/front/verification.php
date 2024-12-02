@@ -134,6 +134,35 @@
       <?php
                  }
       ?>
+          <?php
+                 if($pdt->sections != NULL){
+        ?>
+      <p class="title">Sections: <?php echo $pdt->sections; ?></p>
+      <?php
+                 }
+      ?>
+
+<?php
+                 if($pdt->sessions != NULL){
+        ?>
+      <p class="title">Sessions: <?php echo $pdt->sessions; ?></p>
+      <?php
+                 }
+      ?>
+      <?php
+                 if($pdt->id_number != NULL){
+        ?>
+      <p class="title">Id Number: <?php echo $pdt->id_number; ?></p>
+      <?php
+                 }
+      ?>
+        <?php
+                 if($pdt->gender != NULL){
+        ?>
+      <p class="title">Gender: <?php echo $pdt->gender; ?></p>
+      <?php
+                 }
+      ?>
       <?php
                  if($pdt->email != NULL){
         ?>
@@ -144,6 +173,13 @@
       <p>Phone: <?php echo $pdt->mobile_no; ?></p>
     </div>
     <p class="verified">✔ Verified</p>
+    <?php
+                 if($pdt->present_address_en != NULL){
+        ?>
+      <p>Address: <?php echo $pdt->present_address_en; ?></p>
+      <?php
+                 }
+      ?>
     <!-- Bottom Section -->
     <div class="bottom">
     <p>Valid Until: 2025-12-31</p>

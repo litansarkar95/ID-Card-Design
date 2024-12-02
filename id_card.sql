@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2024 at 10:31 AM
+-- Generation Time: Dec 02, 2024 at 11:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,14 +41,6 @@ CREATE TABLE `agents` (
   `create_user` int(11) NOT NULL,
   `create_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `agents`
---
-
-INSERT INTO `agents` (`id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `roles_id`, `address`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
-(32, 'New Prining House', 'New Prining House', 'new-prining-house', '0182827', 'info@gmail.com', '3', 'df', '0.png', 1, 1, 1731215732),
-(33, 'Nil Printing House', 'Nil Printing House', 'nil-printing-house', '019282726', 'nil@gmail.com', '3', 'Nil Printing House', '0.png', 1, 1, 1731573285);
 
 -- --------------------------------------------------------
 
@@ -139,17 +131,6 @@ CREATE TABLE `card_design` (
   `create_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `card_design`
---
-
-INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_front_side`, `is_back_side`, `is_both_side`, `picture`, `is_active`, `create_date`) VALUES
-(1, '001', 'template-1', 'Template-1', 'template-1', 0, 0, 0, 'studen-001.jpg', 0, 0),
-(2, '002', 'template-2', 'Template 2', 'template-2', 1, 0, 0, 'st-102.jpg', 1, 0),
-(3, '003', 'template-3', 'Template 3', 'template-3', 1, 0, 0, 'st-102.jpg', 1, 0),
-(4, '004', 'template-4', 'Template 4', 'template-4', 1, 0, 0, 'st-102.jpg', 1, 0),
-(5, '005', 'template-5', 'Template 5', 'template-5', 1, 0, 0, 'st-105.jpg', 1, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -165,19 +146,6 @@ CREATE TABLE `classes` (
   `create_date` int(11) NOT NULL,
   `is_delete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `classes`
---
-
-INSERT INTO `classes` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
-(2, 32, 7, 'Class 1', 1, 1731472461, 0),
-(3, 33, 8, 'Class 6', 1, 1731574159, 0),
-(4, 33, 8, 'Class 7', 1, 1731574164, 0),
-(5, 33, 8, 'Class 8', 1, 1731574170, 0),
-(6, 33, 9, '7', 1, 1732945589, 0),
-(7, 33, 9, '8', 1, 1732945603, 0),
-(8, 33, 9, '9', 1, 1732945609, 0);
 
 -- --------------------------------------------------------
 
@@ -202,11 +170,11 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-01 10:01:01', '2024-10-21 15:42:57', '2024-12-01 10:01:01'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-02 14:29:48', '2024-10-21 15:42:57', '2024-12-02 14:29:48'),
 (22, 32, 'info@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-14 10:54:08', '2024-11-10 11:15:32', '2024-11-14 10:54:08'),
 (23, 6, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:16:52', '2024-11-10 11:16:52'),
 (24, 7, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:18:48', '2024-11-10 11:18:48'),
-(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-01 10:01:10', '2024-11-14 14:34:45', '2024-12-01 10:01:10'),
+(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-02 14:29:53', '2024-11-14 14:34:45', '2024-12-02 14:29:53'),
 (26, 8, 'mhasan@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-14 14:49:09', '2024-11-14 14:49:09'),
 (27, 9, 'labibait@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-28 12:33:56', '2024-11-28 12:33:56');
 
@@ -233,15 +201,6 @@ CREATE TABLE `organizations` (
   `create_user` int(11) NOT NULL,
   `create_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `organizations`
---
-
-INSERT INTO `organizations` (`id`, `agent_id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `website`, `address`, `signature_name`, `signature_picture`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
-(7, 32, 'Sonali Agent', 'Sonali ', 'sonali-agent', 'eer', 'sonali@gmail.com', '', 's', '', '', '0.png', 1, 22, 1731215928),
-(8, 33, 'M Hasan School', 'M Hasan School', 'm-hasan-school', '019272625', 'mhasan@gmail.com', 'www.mhasanschool.com', 'dhaka', 'Principle', '6739829235306.jpeg', '0.png', 1, 25, 1731574149),
-(9, 33, 'কুমিল্লা সরকারী মহিলা কলেজ', 'কুমিল্লা সরকারী মহিলা কলেজ', '-', '+৮৮০২৩৩৪৪০৫৮৫৩', 'labibait@gmail.com', 'www.labibait.com', 'মনোহরপুর , কুমিল্লা সদর , কুমিল্লা ', 'অধ্যক্ষ', '67483bd362b73.png', '0.png', 1, 25, 1732775636);
 
 -- --------------------------------------------------------
 
@@ -299,18 +258,6 @@ CREATE TABLE `org_fields` (
   `create_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `org_fields`
---
-
-INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_sections`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
-(18, '2024', 11, 1, '241132001', 32, 7, 'Please Feild up', 'd', 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1731216199),
-(19, '2024', 11, 1, '241133001', 33, 8, 'Student New Id Card Form', 'Please input form', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1731574246),
-(20, '2024', 11, 2, '241133002', 33, 8, 'Student infomation -001', 'please information this data', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1731814668),
-(21, '2024', 11, 3, '241133003', 33, 9, 'Staff  Infomation Allow', 'Staff  Infomation Allow', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1732775727),
-(22, '2024', 11, 4, '241133004', 33, 9, 'Student Infomation ', 'Please input ', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1732945479),
-(23, '2024', 11, 5, '241133005', 33, 9, 'Student information -2024', 'Student information -2024', 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1732946168);
-
 -- --------------------------------------------------------
 
 --
@@ -353,18 +300,6 @@ CREATE TABLE `sections` (
   `is_delete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `sections`
---
-
-INSERT INTO `sections` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
-(1, 32, 7, 'A', 1, 1731477164, 0),
-(2, 32, 7, 'B', 1, 1731477170, 0),
-(3, 33, 8, 'A', 1, 1731574178, 0),
-(4, 33, 8, 'B', 1, 1731574181, 0),
-(5, 33, 9, 'A', 1, 1732945621, 0),
-(6, 33, 9, 'B', 1, 1732945625, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -380,15 +315,6 @@ CREATE TABLE `sessions` (
   `create_date` int(11) NOT NULL,
   `is_delete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `sessions`
---
-
-INSERT INTO `sessions` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
-(1, 32, 7, '2020', 1, 1731477045, 0),
-(3, 33, 9, '2021-2022', 1, 1732945636, 0),
-(4, 33, 9, '2022-2024', 1, 1732945699, 0);
 
 -- --------------------------------------------------------
 
@@ -573,23 +499,6 @@ CREATE TABLE `users_fields` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users_fields`
---
-
-INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `agent_id`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `sections`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_excel`, `file_name`, `is_active`, `create_user`, `create_date`) VALUES
-(114, '::1', '2024', 11, 1, '241132001', 32, 7, 18, 'ss', '', 'ss', '', 'ss', '', 'ss', 'ss', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 22, 1731567526),
-(116, '::1', '2024', 11, 2, '241132002', 32, 7, 18, 'litan ', '', '', '', '2', '', '2', 'a', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 22, 1731567539),
-(118, '::1', '2024', 11, 3, '241132003', 32, 0, 0, 'lopa', '', 'a', '', 'a', '', 'a', 'a', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 22, 1731567738),
-(119, '::1', '2024', 11, 1, '2411001', 33, 8, 19, 'Abir', '', 'Abbas', '', '', '', '0192727', 'abir@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '5', '1', '', 0, '2024-11-01', 'Male', '123', '', '', '', '', '', '', '', '0.png', '0.png', 0, '', 1, 0, 0),
-(124, '::1', '2024', 11, 2, '241133002', 33, 8, 19, 'sonali', '', '1', '', '', '', '18272', 'w@gmai.com', '', '', '', '', '', '', '', '', '', '', '', '', '3', '1', '', 3, '2024-11-14', 'Male', '223', '', '', '', '', '', '', '', '0.png', '', 1, '', 1, 25, 1731576304),
-(125, '::1', '2024', 11, 2, '241133002', 33, 8, 19, 'mithau', '', 'dd', '', '', '', '18272', 'w2@gmai.com', '', '', '', '', '', '', '', '', '', '', '', '', '3', '2', '', 3, '2024-11-15', 'Male', '3', '', '', '', '', '', '', '', '', '', 1, '', 1, 25, 1731576304),
-(126, '::1', '2024', 11, 2, '241133002', 33, 8, 19, 'abir', '', 'dd', '', '', '', '18272', 'w@gmai.com', '', '', '', '', '', '', '', '', '', '', '', '', '3', '3', '', 3, '2024-11-16', 'Male', '56', '', '', '', '', '', '', '', '', '', 1, '', 1, 25, 1731576304),
-(127, '::1', '2024', 11, 2, '241133002', 33, 8, 19, 'nil', '', 'dd', '', '', '', '18272', 'w@gmai.com', '', '', '', '', '', '', '', '', '', '', '', '', '3', '4', '', 3, '2024-11-17', 'Male', '55', '', '', '', '', '', '', '', '', '', 1, '', 1, 25, 1731576304),
-(146, '::1', '2024', 11, 3, '2411003', 33, 8, 20, 'Md Litan Sarkar', '', 'Ibrahim', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '2011', '', '3', '2', '', 0, '0000-00-00', 'Male', '', '', '', '', '', '', '', '', 'e241d6c852f8bf5ace33e1c2781edad0.jpg', '0.png', 0, '', 1, 0, 0),
-(147, '::1', '2024', 11, 4, '241133004', 33, 9, 21, 'মোঃ লিটন সরকার ', '', 'ইব্রাহিম মিয়া ', '', '', '', '01829107469', 'litansarkar95@gmail.com', '', '', '', '', '', '', '', '', 'ড্রাইবার ', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', 'Single', '', '', '', '', '', '9a6cacc3560741bc145a76ffce4a8f37.jpg', '', 0, '', 1, 0, 0),
-(148, '::1', '2024', 11, 5, '241133005', 33, 9, 23, 'Md Litan Sarkar', '', '', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', 'Science', '', '', '8', '12', '3', 5, '2010-12-08', 'Male', '42584', '', '', '', '', '', '', '', 'b0b5487001a8c8989c5f9d3d2b076d0f.JPG', '', 0, '', 1, 0, 0);
-
---
 -- Indexes for dumped tables
 --
 
@@ -763,7 +672,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_fields`
 --
 ALTER TABLE `users_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

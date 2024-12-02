@@ -291,4 +291,17 @@ class Users extends CI_Controller {
            redirect(base_url() . "admin/organization/formlist", "refresh");
     }
 
+
+    public function reports(){
+        $data = array();
+        $data['active'] = "users";
+        $data['title'] =  "Users Reports";
+        $data['allCat'] = $this->main_model->AgentOrgList();
+        $data['allPdt'] = $this->common_model->view_data("agents", "", "id", "asc");
+
+      //  echo "<pre>";print_r($data['allStu']);exit();
+        $data['content'] = $this->load->view("admin/users/users-reports-new", $data, TRUE);
+        $this->load->view('layout/master', $data);
+	}
+
 }

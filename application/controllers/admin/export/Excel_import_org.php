@@ -300,5 +300,80 @@ private function process_imported_data($data) {
      redirect(base_url() . "admin/users", "refresh");
 }
 
-
+public function userreport_export() {
+     // Fetch data from the database
+     $id = $this->input->post('org_form_id');
+     $values = $this->importexport_model->export_without_date($id);
+     $allPdt = $this->importexport_model->export_Userfields_date($id);
+ 
+     // Initialize the data array for Excel export
+     $data = [];
+ 
+     foreach ($values as $value) {
+        // Process 'name_en' and other fields
+      
+            foreach ($allPdt as $pdt) {
+                // Initialize a new row for each product
+                $row = [];
+                if ($value['is_name_en'] == 1) {
+                // Add product name to the row
+                $row['Name'] = $pdt->name_en;
+            }
+                // Add mobile number if required
+                if ($value['is_mobile_no'] == 1) {
+                    $row['Mobile No'] = $pdt->mobile_no;  // Add mobile number to this row
+                }
+    
+                // Add email if required
+                if ($value['is_email'] == 1) {
+                    $row['Email'] = $pdt->email;  // Add email to this row
+                }
+                if ($value['is_class'] == 1) {
+                    $row['class'] = $pdt->class;  // Add email to this row
+                }
+    
+                // Add the row to the data array
+                $data[] = $row;
+            }
+      
+    }
+    
+    // Load PhpSpreadsheet library
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+    
+    // Dynamically set headers (row 1) based on the keys of the first row of data
+    $headers = array_keys($data[0]);  // Get the keys of the first row to use as headers
+    
+    // Set the header row dynamically
+    $colIndex = 1;  // Excel columns start from 1 (not 0)
+    foreach ($headers as $header) {
+        $columnLetter = chr(64 + $colIndex);  // Get the column letter (A, B, C, ...)
+        $sheet->setCellValue("{$columnLetter}1", ucfirst($header));  // Capitalize the header for better readability
+        $colIndex++;
+    }
+    
+    // Write the data to the spreadsheet starting from row 2 (row 1 is for headers)
+    $rowIndex = 2;  // Starting from row 2 because row 1 is used for headers
+    foreach ($data as $rowData) {
+        $colIndex = 1;  // Reset the column index for each row
+        foreach ($headers as $header) {
+            $columnLetter = chr(64 + $colIndex);  // Get the column letter (A, B, C, ...)
+            $sheet->setCellValue("{$columnLetter}{$rowIndex}", isset($rowData[$header]) ? $rowData[$header] : '');
+            $colIndex++;  // Move to the next column
+        }
+        $rowIndex++;  // Move to the next row
+    }
+    
+    // Create a writer and output the file to the browser for download
+    $writer = new Xlsx($spreadsheet);
+    
+    // Set headers to trigger download of the Excel file
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="exported_data.xlsx"');
+    header('Cache-Control: max-age=0');
+    
+    // Save the file to the output stream (directly to the browser)
+    $writer->save('php://output');
+    }
 }
