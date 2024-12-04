@@ -35,7 +35,12 @@
 
   </head>
 
-
+<style>
+  .nav-item{
+    margin:0 !important;
+    padding:0 !important;
+  }
+  </style>
   <body>
     <div class="container-scroller">
  
@@ -97,7 +102,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
                   <i class="mdi mdi-compass-outline menu-icon"></i>
-                  <span class="menu-title">Dashboard</span>
+                  <span class="menu-title">ড্যাশবোর্ড</span>
                 </a>
               </li>
            
@@ -109,16 +114,16 @@
 <li class="nav-item" style="float: left !important;">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
-                  <span class="menu-title">Agents</span>
+                  <span class="menu-title">এজেন্ট</span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/agents/create">Agents Create</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/agents/create">নতুন এজেন্ট তৈরি করুন</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/agents">Agents List</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/agents">এজেন্ট তালিকা</a>
                     </li>
                   </ul>
                 </div>
@@ -194,28 +199,45 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
-                  <span class="menu-title">Base</span>
+                  <span class="menu-title">প্রাথমিক সেটাপ</span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization">Organization List</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization">নতুন কোম্পানি তৈরি করুন</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/classes">Class  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization/list">কোম্পানি তালিকা</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sections">Section  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/classes">ক্লাস  </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sessions">Session  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sections">সেকশন  </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">Organization Custom Fields  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sessions">সেশন  </a>
+                    </li>
+              
+                  </ul>
+                </div>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="mdi mdi-monitor-dashboard menu-icon"></i>
+                  <span class="menu-title">ফরম </span>
+                  <i class="menu-arrow"></i>
+                </a>
+                <div class="submenu">
+                  <ul class="submenu-item">
+                  
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">কোম্পানির  কাস্টম ফরম তৈরী করুন </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields/list">Custom Fields List</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields/list">কোম্পানির ফরম লিস্ট </a>
                     </li>
                   </ul>
                 </div>
@@ -223,7 +245,7 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
-                  <span class="menu-title">Users</span>
+                  <span class="menu-title">ইউজার </span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
@@ -247,16 +269,16 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="mdi mdi-clipboard-text menu-icon"></i>
-                  <span class="menu-title">ID Card</span>
+                  <span class="menu-title">আইডি কার্ড</span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/card/custom/design/">Card Design</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/card/custom/design/">আইডি কার্ড ডিজাইন করুন</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>admin/card/card_design">Card Design Forment</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>admin/card/card_design">আইডি কার্ড ডিজাইন দেখুন </a>
                     </li>
                    
                   </ul>
@@ -266,16 +288,16 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="mdi mdi-clipboard-text menu-icon"></i>
-                  <span class="menu-title">Excel Import</span>
+                  <span class="menu-title">বাল্ক</span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_org">Excel Import</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_org">বাল্ক ইম্পোর্ট</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_multipicture">Excel Photo Import</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_multipicture">ছবির  বাল্ক ইম্পোর্ট</a>
                     </li>
                    
                   </ul>
@@ -283,10 +305,10 @@
               </li>
         
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <!-- <a class="nav-link" href="#">
                   <i class="mdi mdi-contacts menu-icon"></i>
                   <span class="menu-title">Visiting Card Design</span>
-                </a>
+                </a> -->
               </li>
               <!-- <li class="nav-item">
                 <a class="nav-link" href="#">
@@ -305,7 +327,7 @@
                   <i class="mdi mdi-file-document-box menu-icon"></i>
                   <span class="menu-title">Docs</span></a>
               </li> -->
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <div class="nav-link d-flex">
                   <button class="btn btn-sm bg-danger text-white"> Trailing </button>
                   <div class="nav-item dropdown">
@@ -326,7 +348,7 @@
                   </div>
                   <a class="text-white" href="#"><i class="mdi mdi-home-circle"></i></a>
                 </div>
-              </li>
+              </li> -->
 
               <?php
                       }

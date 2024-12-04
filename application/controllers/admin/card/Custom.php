@@ -64,9 +64,11 @@ class Custom extends CI_Controller {
     // echo "<pre>";   print_r($data['allPdt']);exit();
         $template_id = $this->input->post('template_id');
         if($template_id == 1){
-            $this->load->view('admin/custom/design-choose-dynamic', $data);
+            $this->carddesignfour($id);
+         
         }else if ($template_id == 2){
-            $this->load->view('admin/card/card-design-001', $data);
+            $this->carddesign_five($id);
+  
         }else if ($template_id == 3){
 
             $allPdt = $this->main_model->PrintUserData($id);
@@ -141,11 +143,11 @@ class Custom extends CI_Controller {
             $data['qr_images'] = $qr_images;
             $this->load->view('admin/card/card-design-003', $data);
         }else if ($template_id == 4){
-            $this->carddesignfour($id);
+            $this->load->view('admin/custom/design-choose-dynamic', $data);
      
         }
         else if ($template_id == 5){
-            $this->carddesign_five($id);
+            $this->load->view('admin/card/card-design-001', $data);
         }
  
        

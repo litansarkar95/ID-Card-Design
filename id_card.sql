@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2024 at 11:58 AM
+-- Generation Time: Dec 04, 2024 at 11:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,6 +41,13 @@ CREATE TABLE `agents` (
   `create_user` int(11) NOT NULL,
   `create_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `agents`
+--
+
+INSERT INTO `agents` (`id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `roles_id`, `address`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
+(35, 'Blue Printing House', 'নীল প্রিন্টিং হাউস', 'blue-printing-house', '01829107469', 'blue@gmail.com', '3', 'dhaka', '674fd9a2c1060.jpeg', 1, 1, 1733286306);
 
 -- --------------------------------------------------------
 
@@ -131,6 +138,14 @@ CREATE TABLE `card_design` (
   `create_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `card_design`
+--
+
+INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_front_side`, `is_back_side`, `is_both_side`, `picture`, `is_active`, `create_date`) VALUES
+(1, '001', '001', 'Design 1', 'Design 1', 1, 1, 1, '01.jpg', 1, 0),
+(6, '002', '002', 'Design 2', 'Design 2', 1, 1, 1, '02.jpg', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -146,6 +161,14 @@ CREATE TABLE `classes` (
   `create_date` int(11) NOT NULL,
   `is_delete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `classes`
+--
+
+INSERT INTO `classes` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
+(9, 35, 10, 'Six', 1, 1733296014, 0),
+(10, 35, 10, 'Seven', 1, 1733296023, 0);
 
 -- --------------------------------------------------------
 
@@ -170,13 +193,9 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-02 14:29:48', '2024-10-21 15:42:57', '2024-12-02 14:29:48'),
-(22, 32, 'info@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-11-14 10:54:08', '2024-11-10 11:15:32', '2024-11-14 10:54:08'),
-(23, 6, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:16:52', '2024-11-10 11:16:52'),
-(24, 7, 'sonali@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-10 11:18:48', '2024-11-10 11:18:48'),
-(25, 33, 'nil@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-02 14:29:53', '2024-11-14 14:34:45', '2024-12-02 14:29:53'),
-(26, 8, 'mhasan@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-14 14:49:09', '2024-11-14 14:49:09'),
-(27, 9, 'labibait@gmail.com', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-11-28 12:33:56', '2024-11-28 12:33:56');
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-04 09:42:09', '2024-10-21 15:42:57', '2024-12-04 09:42:09'),
+(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-04 10:25:19', '2024-12-04 10:25:06', '2024-12-04 10:25:19'),
+(30, 10, '018291074689', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-04 12:09:56', '2024-12-04 12:09:56');
 
 -- --------------------------------------------------------
 
@@ -201,6 +220,13 @@ CREATE TABLE `organizations` (
   `create_user` int(11) NOT NULL,
   `create_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `organizations`
+--
+
+INSERT INTO `organizations` (`id`, `agent_id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `website`, `address`, `signature_name`, `signature_picture`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
+(10, 35, 'M Hasan High School', '', 'm-hasan-high-school', '018291074689', 'mhasan@gmail.com', 'www.mhasan.com', '12/A shshs sdhgd', 'Head Master', '', '', 1, 29, 1733292596);
 
 -- --------------------------------------------------------
 
@@ -258,6 +284,13 @@ CREATE TABLE `org_fields` (
   `create_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `org_fields`
+--
+
+INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_sections`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
+(24, '2024', 12, 1, '241235001', 35, 10, 'Class 6 Form', 'this is one', 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1733302371);
+
 -- --------------------------------------------------------
 
 --
@@ -300,6 +333,14 @@ CREATE TABLE `sections` (
   `is_delete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `sections`
+--
+
+INSERT INTO `sections` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
+(7, 35, 10, 'A', 1, 1733303160, 0),
+(8, 35, 10, 'B', 1, 1733303164, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -315,6 +356,13 @@ CREATE TABLE `sessions` (
   `create_date` int(11) NOT NULL,
   `is_delete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `agent_id`, `organization_id`, `name`, `is_active`, `create_date`, `is_delete`) VALUES
+(5, 35, 10, '2024', 1, 1733305153, 0);
 
 -- --------------------------------------------------------
 
@@ -594,7 +642,7 @@ ALTER TABLE `users_fields`
 -- AUTO_INCREMENT for table `agents`
 --
 ALTER TABLE `agents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `auth_users_info`
@@ -606,31 +654,31 @@ ALTER TABLE `auth_users_info`
 -- AUTO_INCREMENT for table `card_design`
 --
 ALTER TABLE `card_design`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `login_credential`
 --
 ALTER TABLE `login_credential`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `org_fields`
 --
 ALTER TABLE `org_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -642,13 +690,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `setting`

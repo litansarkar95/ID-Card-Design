@@ -30,21 +30,21 @@ textarea[type="text"] {
               <div class="col-md-12 grid-margin ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Agent List</h4>
+                    <h4 class="card-title">এজেন্ট তালিকা</h4>
                     <p class="card-description">
                     </p> 
                     <div class="table-responsive">
                     <table id="tableData" class="table table-bordered table-striped table-hover display " style="width:100%">
                         <thead>
                           <tr>
-                            <th>SL</th>
-                            <th> Name</th>
-                            <th>Mobile </th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Picture</th>
-                            <th>Login</th>
-                            <th>Action</th>
+                            <th>সিরিয়াল</th>
+                            <th> এজেন্ট নাম</th>
+                            <th>মোবাইল নম্বর (ব্যবহারকারীর নাম) </th>
+                            <th>ইমেইল</th>
+                            <th>ঠিকানা</th>
+                            <th>এজেন্ট লোগো</th>
+                            <th>লগইন করুন</th>
+                            <th>অ্যাকশন</th>
                           </tr>
                         </thead>
                         <tbody>

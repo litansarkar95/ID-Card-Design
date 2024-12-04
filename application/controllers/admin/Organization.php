@@ -14,13 +14,27 @@ class Organization extends CI_Controller {
           
      
     }
+
+    public function list(){
+        $data = array();
+        $data['active'] = "company";
+        $data['title'] =  "Company";
+        $agent_id =  $this->session->userdata('loggedin_userid');
+        $data['allPdt'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");
+        $data['content'] = $this->load->view("admin/org/company-list", $data, TRUE);
+        $this->load->view('layout/master', $data);
+	}
+   
 	public function index()
 	{
 
       
         $this->form_validation->set_rules("company_name", "Company Name", "required");
-        $this->form_validation->set_rules("company_name_bn", "Company Name Bnagla", "required");
-        $this->form_validation->set_rules("mobile_no", "Mobile Number", "required");
+        $this->form_validation->set_rules(
+            "mobile_no", 
+            "Mobile No", 
+            "required|numeric|min_length[10]|max_length[15]|is_unique[login_credential.username]"
+        );
         if ($this->form_validation->run() == NULL) {
       
         } else {
@@ -46,28 +60,49 @@ class Organization extends CI_Controller {
           );
          
         if ($_FILES['pic']['name'] != "") {
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
-            $config['upload_path'] = "./public/static/images/organization/";
-            $config['encrypt_name'] = TRUE;
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload("pic")) {
+
+            $config['upload_path'] = './public/static/images/organization/"';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['max_size'] = 81048; // 2MB
+            $config['file_name'] = uniqid(); 
+            $this->upload->initialize($config);
+    
+            // Check if file upload was successful
+            if (!$this->upload->do_upload('pic')) {
+                // If upload failed, display error
+                
+                $error = $this->upload->display_errors();
+              
+            } else {
                 $data['picture'] = $this->upload->data('file_name');
-                //$arrayMsg['enc_name'] = "1";
+          
             }
+
+
+           
         }else{
             $data['picture'] = "0.png";
         }
         if ($_FILES['signature_picture']['name'] != "") {
-            $config['allowed_types'] = 'gif|jpg|jpeg|png';  //supported image
-            $config['upload_path'] = "./public/static/images/organization/";
-            $config['encrypt_name'] = TRUE;
-            $this->load->library('upload', $config);
-            if ($this->upload->do_upload("signature_picture")) {
+
+
+            $config['upload_path'] = './public/static/images/organization/"';
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['max_size'] = 81048; // 2MB
+            $config['file_name'] = uniqid(); 
+            $this->upload->initialize($config);
+    
+            // Check if file upload was successful
+            if (!$this->upload->do_upload('pic')) {
+                // If upload failed, display error
+                
+                $error = $this->upload->display_errors();
+              
+            } else {
                 $data['signature_picture'] = $this->upload->data('file_name');
-                //$arrayMsg['enc_name'] = "1";
+          
             }
-        }else{
-            $data['signature_picture'] = "signature.png";
+         
         }
       
         if ($this->common_model->save_data("organizations", $data)) {
@@ -75,7 +110,7 @@ class Organization extends CI_Controller {
 
           $sdata =array (
             "user_id"                    => $id,
-            "username"                   => $this->common_model->xss_clean($this->input->post("email")),
+            "username"                   => $this->common_model->xss_clean($this->input->post("mobile_no")),
             "password"                   => $this->common_model->Encryptor('encrypt', $this->input->post('password')),
             "role"                       => 4,
             "active"                     => 1,
@@ -86,7 +121,7 @@ class Organization extends CI_Controller {
           }else{
               $this->session->set_flashdata('error', 'Server error.');
           }
-          redirect(base_url() . "admin/organization", "refresh");
+          redirect(base_url() . "admin/organization/list", "refresh");
         }
 
 
@@ -95,7 +130,7 @@ class Organization extends CI_Controller {
         $data['title'] =  "Company";
         $agent_id =  $this->session->userdata('loggedin_userid');
         $data['allPdt'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");
-        $data['content'] = $this->load->view("admin/org/company-list", $data, TRUE);
+        $data['content'] = $this->load->view("admin/org/company-create", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
 

@@ -39,9 +39,13 @@ class Agents extends CI_Controller {
 	public function create()
 	{
         $this->form_validation->set_rules("agent_name", "Agent Name", "required");
-        $this->form_validation->set_rules("email", "Email", "required");
+        $this->form_validation->set_rules(
+            "mobile_no", 
+            "Mobile No", 
+            "required|numeric|min_length[10]|max_length[15]|is_unique[login_credential.username]"
+        );
+        
         $this->form_validation->set_rules("password", "Password", "required");
-        $this->form_validation->set_rules("role", "Roles", "required");
         if ($this->form_validation->run() == NULL) {
       
         } else {
@@ -57,7 +61,7 @@ class Agents extends CI_Controller {
               "slug"                       => $slug,
               "mobile_no"                  => $this->common_model->xss_clean($this->input->post("mobile_no")),
               "email"                      => $this->common_model->xss_clean($this->input->post("email")),
-              "roles_id"                   => $this->common_model->xss_clean($this->input->post("role")),
+              "roles_id"                   => 3,
               "address"                    => $this->common_model->xss_clean($this->input->post("address")),
               "is_active"                  => 1,
               "create_user"                => $this->session->userdata('loggedin_id'),
@@ -97,9 +101,9 @@ class Agents extends CI_Controller {
 
             $sdata =array (
               "user_id"                    => $id,
-              "username"                   => $this->common_model->xss_clean($this->input->post("email")),
+              "username"                   => $this->common_model->xss_clean($this->input->post("mobile_no")),
               "password"                   => $this->common_model->Encryptor('encrypt', $this->input->post('password')),
-              "role"                       => $this->common_model->xss_clean($this->input->post("role")),
+              "role"                       => 3,
               "active"                     => 1,
             );
             $this->common_model->save_data("login_credential", $sdata);
@@ -146,16 +150,22 @@ class Agents extends CI_Controller {
 
 
     public function delete($id) {
-        $dt = $this->common_model->view_data("agents", array("id" => $id), "id", "asc");
+        $dt = $this->main_model->AgentList($id);
+ 
         foreach ($dt as $pdt){
             $old_ext=$pdt->picture;
+            $lid=$pdt->lid;
         }
+
+  
         if(file_exists("public/static/images/agents/{$old_ext}")){
             unlink("public/static/images/agents/{$old_ext}");
         }
         if ($dt) {
            
             $this->common_model->delete_data("agents", array("id" => $id));
+
+            $this->common_model->delete_data("login_credential", array("id" => $lid));
         
             $this->session->set_flashdata('success', 'Delete Successfully');
         } else {
@@ -196,7 +206,6 @@ class Agents extends CI_Controller {
             "name_bn"                    => $this->common_model->xss_clean($this->input->post("agent_name_bn")),
             "mobile_no"                  => $this->common_model->xss_clean($this->input->post("mobile_no")),
             "email"                      => $this->common_model->xss_clean($this->input->post("email")),
-            "roles_id"                   => $this->common_model->xss_clean($this->input->post("role")),
             "address"                    => $this->common_model->xss_clean($this->input->post("address")),
             "is_active"                  => $this->common_model->xss_clean($this->input->post("status")),
                         
@@ -218,8 +227,7 @@ class Agents extends CI_Controller {
             if ($this->common_model->update_data("agents", $data,array("id"=>$id))) {
                $lid =  $this->common_model->xss_clean($this->input->post("lid"));
                 $sdata =array (
-                    "username"                   => $this->common_model->xss_clean($this->input->post("email")),
-                    "role"                       => $this->common_model->xss_clean($this->input->post("role")),
+                    "username"                   => $this->common_model->xss_clean($this->input->post("mobile_no")),
                     "active"                     => $this->common_model->xss_clean($this->input->post("status")),
                   );
                

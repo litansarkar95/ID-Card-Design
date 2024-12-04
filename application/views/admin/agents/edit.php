@@ -47,7 +47,7 @@ textarea[type="text"] {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Agents</h3>
+              <h3 class="page-title">এজেন্ট</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 
@@ -56,10 +56,10 @@ textarea[type="text"] {
             </div>
             <div class="row">
 
-            <div class="col-md-12 grid-margin stretch-card ">
+            <div class="col-md-10 col-md-offset-1 grid-margin stretch-card ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Agents Edit</h4>
+                    <h4 class="card-title">এজেন্ট এডিট করুন</h4>
              <?php
             
             if(isset($allPdt)){
@@ -68,65 +68,44 @@ textarea[type="text"] {
              ?>
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/agents/update" method="post" enctype="multipart/form-data">
                    <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                     <input type="hidden" class="form-control" id="id" value="<?php echo $pdt->id; ?>" name="id"   />
                     <input type="hidden" class="form-control" id="lid" value="<?php echo $pdt->lid; ?>" name="lid"   />
                     <div class="form-group">
-                        <label for="agent_name">Agent Name<code>*</code></label>
+                        <label for="agent_name">এজেন্ট নাম<code>*</code></label>
                         <input type="text" class="form-control" id="agent_name" value="<?php echo $pdt->name; ?>" name="agent_name"   />
                         <span class="text-red small"><?php echo form_error('agent_name'); ?></span>
                     </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                     <div class="form-group">
-                        <label for="agent_name_bn">Agent Name Bangla<code>*</code></label>
+                    <label for="agent_name_bn">এজেন্টের নাম বাংলায় <code></code></label>
                         <input type="text" class="form-control" id="agent_name_bn" value="<?php echo $pdt->name_bn; ?>" name="agent_name_bn"   />
                         <span class="text-red small"><?php echo form_error('agent_name_bn'); ?></span>
                     </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                     <div class="form-group">
-                        <label for="mobile_no">Mobile Number<code></code></label>
+                    <label for="mobile_no">মোবাইল নম্বর (ব্যবহারকারীর নাম)<code>*</code></label>
                         <input type="text" class="form-control" id="mobile_no" value="<?php echo $pdt->mobile_no; ?>" name="mobile_no"   />
                         <span class="text-red small"><?php echo form_error('mobile_no'); ?></span>
                     </div>   </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                     <div class="form-group">
-                        <label for="email">Email<code>*</code></label>
+                    <label for="email">ইমেইল<code></code></label>
                         <input type="text" class="form-control" id="email" value="<?php echo $pdt->email; ?>" name="email"   />
                         <span class="text-red small"><?php echo form_error('email'); ?></span>
                     </div>
                     </div>
                 
 
-                    <div class="col-md-4">
-                          <div class="form-group ">
-                     
-                         <label for="role">Roles<code>*</code></label>
-                        <select type="text" class="form-control select2" id="role" value="<?php echo set_value('role'); ?>" name="role"   >
-                      <option value="">Select</option>   
-                      <?php
-                                        foreach ($allRole as $role){
-                                            if($pdt->roles_id == $role->id){
-                                                echo "<option value='{$role->id}' selected>{$role->name}</option>";
-                                            }else{
-                                                echo "<option value='{$role->id}'>{$role->name}</option>";
-                                            }
-                                    
-                                        }
-                                    ?>
-                       
-                      </select> 
-                        <span class="text-red small"><?php echo form_error('roles'); ?></span>
-                            
-                         </div>  
-                         </div>
+                  
 
-                         <div class="col-md-4">
+                         <div class="col-md-6">
                           <div class="form-group ">
                      
-                         <label for="status">Status<code>*</code></label>
+                         <label for="status">স্ট্যাটাস<code>*</code></label>
                         <select type="text" class="form-control select2" id="status"  name="status"   >
                       <option value="">Select</option>   
                       <option value="1" <?php if($pdt->is_active == 1){ echo "selected"; } ?>>Active</option> 
@@ -138,15 +117,15 @@ textarea[type="text"] {
                          </div>  
                          </div>
                       <!-- END FORM -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                     <div class="form-group">
-                        <label for="address">Address<code>*</code></label>
+                    <label for="address">ঠিকানা<code></code></label>
                         <textarea type="text" class="form-control" id="address" name="address"   ><?php echo $pdt->address; ?></textarea>
                         <span class="text-red small"><?php echo form_error('address'); ?></span>
                     </div> </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <div class="form-group">
-                        <label for="pic">Logo<code>*</code></label>
+                      <label for="pic">এজেন্ট লোগো<code></code></label>
                         <input type="file" class="form-control" id="pic" name="pic"   />
                         <span class="text-red small"><?php echo form_error('pic'); ?></span>
                     </div> </div>

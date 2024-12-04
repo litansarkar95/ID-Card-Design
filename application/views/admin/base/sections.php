@@ -52,7 +52,7 @@ textarea[type="text"] {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Sections</h3>
+              <h3 class="page-title">সেকশন</h3>
               <nav aria-label="breadcrumb">
               
               </nav>
@@ -68,12 +68,12 @@ textarea[type="text"] {
  <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Sections Create</h4>
+                    <h4 class="card-title">নতুন সেকশন তৈরি করুন</h4>
              
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/base/sections/update" method="post" enctype="multipart/form-data">
                     <input type="hidden" class="form-control" id="id" value="<?php echo $val->id; ?>" name="id"   />
                     <div class="form-group">
-                        <label for="eorganization_name">Organization Name<code>*</code></label>
+                        <label for="eorganization_name">কোম্পানির নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="eorganization_name"  name="eorganization_name"   >
                       <option value="">Select</option>   
                       <?php
@@ -93,13 +93,13 @@ textarea[type="text"] {
                        
                       <!-- END FORM -->
                     <div class="form-group">
-                        <label for="eclass_id">Sections Name<code>*</code></label>
+                        <label for="eclass_id">সেকশন নাম<code>*</code></label>
                         <input type="text" class="form-control" id="eclass_id" value="<?php echo $val->name; ?>" name="eclass_id"   />
                         <span class="text-red small"><?php echo form_error('eclass_id'); ?></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="is_active">Is Active<code>*</code></label>
+                        <label for="is_active">স্ট্যাটাস<code>*</code></label>
                         <select type="text" class="form-control select2" id="is_active"  name="is_active"   >
                       <option value="">Select</option>   
                       <option value="1" <?php if($val->is_active == 1) { echo "selected"; }?>>Active</option>   
@@ -124,12 +124,12 @@ textarea[type="text"] {
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Sections Create</h4>
+                  <h4 class="card-title">নতুন সেকশন তৈরি করুন</h4>
              
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/base/sections" method="post" enctype="multipart/form-data">
              
                     <div class="form-group">
-                        <label for="organization_name">Organization Name<code>*</code></label>
+                    <label for="eorganization_name">কোম্পানির নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="organization_name" value="<?php echo set_value('organization_name'); ?>" name="organization_name"   >
                       <option value="">Select</option>   
                       <?php
@@ -144,7 +144,7 @@ textarea[type="text"] {
                        
                       <!-- END FORM -->
                     <div class="form-group">
-                        <label for="class_id">Sections Name<code>*</code></label>
+                    <label for="eclass_id">সেকশন নাম<code>*</code></label>
                         <input type="text" class="form-control" id="class_id" value="<?php echo set_value('class_id'); ?>" name="class_id"   />
                         <span class="text-red small"><?php echo form_error('class_id'); ?></span>
                     </div>
@@ -161,18 +161,18 @@ textarea[type="text"] {
               <div class="col-md-8 grid-margin ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Sections  List</h4>
+                    <h4 class="card-title">সেকশন  লিস্ট</h4>
                     <p class="card-description">
                     </p>
                     <div class="table-responsive">
                     <table id="tableData" class="table table-bordered table-striped table-hover display " style="width:100%">
                         <thead>
                           <tr>
-                            <th>SL</th>
-                            <th>Org Name</th>
-                            <th>Name</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                          <th>সিরিয়াল</th>
+                          <th>কোম্পানির নাম</th>
+                            <th>সেকশন নাম</th>
+                            <th>স্ট্যাটাস</th>
+                            <th>অ্যাকশন</th>
                           </tr>
                         </thead>
                         <tbody>

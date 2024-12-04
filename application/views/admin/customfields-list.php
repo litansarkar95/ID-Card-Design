@@ -43,7 +43,7 @@ textarea[type="text"] {
               <div class="col-md-12 grid-margin ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Custom Fields List</h4>
+                    <h4 class="card-title">কাস্টম ফিল্ডস লিস্ট</h4>
                     <p class="card-description">
                     </p> 
                     <div class="table-responsive">
@@ -91,8 +91,8 @@ textarea[type="text"] {
                             <i class="fa fa-arrow-circle-up"></i> Import Image</a>
                            </td>
                           <td>
-                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/organization/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
-                              <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/organization/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
+                              <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/customfields/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
+                              <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/customfields/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
                             </td>
                           </tr>
                    

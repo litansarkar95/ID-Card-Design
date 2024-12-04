@@ -27,27 +27,19 @@ select[type="text"]{
             
               </div>
               <div class="header-right d-flex flex-wrap mt-md-2 mt-lg-0">
-                <div class="d-flex align-items-center">
-                  <a href="#">
-                    <p class="m-0 pe-3">Custom Fields</p>
-                  </a>
-                  <a class="ps-3 me-4" href="#">
-                
-                  </a>
-                </div>
-                <a href="<?php echo base_url(); ?>admin/customfields/list" type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
-                  <i class="mdi mdi-table-large"></i> Custom Fields List</a>
+               
+        
               </div>
             </div>
             <div class="row">
               <div class="col-md-8 offset-md-2 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Custom Fields Create</h4>
+                    <h4 class="card-title">কোম্পানির  কাস্টম ফরম তৈরী করুন</h4>
                     <hr style="border: 1px solid #0033C4;">
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/customfields" method="post" enctype="multipart/form-data">
                       <div class="form-group">
-                        <label for="company_name">Company Name<code>*</code></label>
+                        <label for="company_name">কোম্পানির নাম<code>*</code></label>
                         <select type="text" class="form-control" id="company_name" value="<?php echo set_value('company_name'); ?>" name="company_name"   >
                       <option value="">Select</option>   
                       <?php
@@ -60,12 +52,12 @@ select[type="text"]{
                         <span class="text-red small"><?php echo form_error('company_name'); ?></span>
                     </div>
                       <div class="form-group">
-                        <label for="title">Title<code>*</code></label>
+                        <label for="title">শিরোনাম<code>*</code></label>
                         <input type="text" class="form-control" id="title" value="<?php echo set_value('title'); ?>" name="title"   />
                         <span class="text-red small"><?php echo form_error('title'); ?></span>
                     </div>
                     <div class="form-group">
-                        <label for="description">Description<code>*</code></label>
+                        <label for="description">বর্ণনা<code>*</code></label>
                         <textarea type="text" class="form-control" id="description"  name="description"   ><?php echo set_value('description'); ?></textarea>
                         <span class="text-red small"><?php echo form_error('description'); ?></span>
                     </div>
