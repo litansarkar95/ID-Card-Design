@@ -134,4 +134,82 @@ class Customfields extends CI_Controller {
         $this->load->view('layout/master', $data);
 	}
 
+
+    public function update(){
+    
+        $id = $this->input->post("id");
+        $selPdt=$this->common_model->view_data("org_fields",array("id"=>$id),"id","desc");
+      
+        $data = array(
+            "organization_id"                   => $this->common_model->xss_clean($this->input->post("company_name")),
+            "title"                             => $this->common_model->xss_clean($this->input->post("title")),
+            "description"                       => $this->common_model->xss_clean($this->input->post("description")),
+            "is_name_en"                        => $this->common_model->xss_clean($this->input->post("is_name_en")),
+            "is_name_bn"                        => $this->common_model->xss_clean($this->input->post("is_name_bn")),
+            "is_father_name_en"                 => $this->common_model->xss_clean($this->input->post("is_father_name_en")),
+            "is_father_name_bn"                 => $this->common_model->xss_clean($this->input->post("is_father_name_bn")),
+            "is_mother_name_en"                 => $this->common_model->xss_clean($this->input->post("is_mother_name_en")),
+            "is_mother_name_bn"                 => $this->common_model->xss_clean($this->input->post("is_mother_name_bn")),
+            "is_mobile_no"                      => $this->common_model->xss_clean($this->input->post("is_mobile_no")),
+            "is_email"                          => $this->common_model->xss_clean($this->input->post("is_email")),
+            "is_village_en"                     => $this->common_model->xss_clean($this->input->post("is_village_en")),
+            "is_village_bn"                     => $this->common_model->xss_clean($this->input->post("is_village_bn")),
+            "is_post_office_en"                 => $this->common_model->xss_clean($this->input->post("is_post_office_en")),
+            "is_post_office_bn"                 => $this->common_model->xss_clean($this->input->post("is_post_office_bn")),
+            "is_upazila_en"                     => $this->common_model->xss_clean($this->input->post("is_upazila_en")),
+            "is_upazila_bn"                     => $this->common_model->xss_clean($this->input->post("is_upazila_bn")),
+            "is_zilla_en"                       => $this->common_model->xss_clean($this->input->post("is_zilla_en")),
+            "is_zilla_bn"                       => $this->common_model->xss_clean($this->input->post("is_zilla_bn")),
+            "is_present_address_en"             => $this->common_model->xss_clean($this->input->post("is_present_address_en")),
+            "is_present_address_bn"             => $this->common_model->xss_clean($this->input->post("is_present_address_bn")),
+            "is_permanent_address_en"           => $this->common_model->xss_clean($this->input->post("is_permanent_address_en")),
+            "is_permanent_address_bn"           => $this->common_model->xss_clean($this->input->post("is_permanent_address_bn")),
+            "is_designation"                    => $this->common_model->xss_clean($this->input->post("is_designation")),
+            "is_department"                     => $this->common_model->xss_clean($this->input->post("is_department")),
+            "is_employee_id"                    => $this->common_model->xss_clean($this->input->post("is_employee_id")),
+            "is_index_no"                       => $this->common_model->xss_clean($this->input->post("is_index_no")),
+            "is_class"                          => $this->common_model->xss_clean($this->input->post("is_class")),
+            "is_class_roll"                     => $this->common_model->xss_clean($this->input->post("is_class_roll")),
+            "is_sessions"                       => $this->common_model->xss_clean($this->input->post("is_sessions")),
+            "is_sections"                       => $this->common_model->xss_clean($this->input->post("is_section")),
+            "is_date_of_birth"                  => $this->common_model->xss_clean($this->input->post("is_date_of_birth")),
+            "is_gender"                         => $this->common_model->xss_clean($this->input->post("is_gender")),
+            "is_id_number"                      => $this->common_model->xss_clean($this->input->post("is_id_number")),
+            "is_blood_group"                    => $this->common_model->xss_clean($this->input->post("is_blood_group")),
+            "is_marital_status"                 => $this->common_model->xss_clean($this->input->post("is_marital_status")),
+            "is_photo"                          => $this->common_model->xss_clean($this->input->post("is_photo")),
+            "is_signature"                      => $this->common_model->xss_clean($this->input->post("is_signature")),
+            "is_nationality"                    => $this->common_model->xss_clean($this->input->post("is_nationality")),
+            "is_active"                         => $this->common_model->xss_clean($this->input->post("is_active")),
+                        
+            );
+        
+          
+         
+            if ($this->common_model->update_data("org_fields", $data,array("id"=>$id))) {
+             
+
+                $this->session->set_flashdata('success', 'Delete Successfully');
+            }
+            else{
+                $this->session->set_flashdata('error', 'Something error.');
+            }
+            $this->session->set_userdata($sdata);
+           redirect(base_url() . "admin/customfields/list", "refresh");
+    }
+
+    public function delete($id) {
+        $dt = $this->common_model->view_data("org_fields", array("id" => $id), "id", "asc");
+       
+        if ($dt) {
+           
+            $this->common_model->delete_data("org_fields", array("id" => $id));
+        
+            $this->session->set_flashdata('success', 'Delete Successfully');
+        } else {
+            $this->session->set_flashdata('error', 'Server error.');
+        }
+        $this->session->set_userdata($sdata);
+        redirect(base_url() . "admin/customfields/list", "refresh");
+    }
 }

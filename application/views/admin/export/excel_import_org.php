@@ -47,7 +47,7 @@ textarea[type="text"] {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Import Users Information</h3>
+              <h3 class="page-title">ইউজার ইমপোর্ট   ইনফরমেশন</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 
@@ -58,13 +58,13 @@ textarea[type="text"] {
             <div class="col-md-8 grid-margin stretch-card ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Export Users Information</h4>
+                    <h4 class="card-title">ইউজার ইমপোর্ট   ইনফরমেশন</h4>
                     <?php echo form_open_multipart('admin/export/excel_import_org/import_excel'); ?>
                   
                    <div class="row">
                    <div class="col-md-6">
                    <div class="form-group">
-                        <label for="eorganization_name">Organization Name<code>*</code></label>
+                        <label for="eorganization_name">কোম্পানির নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="eorganization_name"  name="eorganization_name"   >
                       <option value="">Select</option>   
                       <?php
@@ -82,7 +82,7 @@ textarea[type="text"] {
 
                     <div class="col-md-6">
                    <div class="form-group">
-                        <label for="org_name_form_id">Form Name<code>*</code></label>
+                        <label for="org_name_form_id">ফর্ম নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="org_name_form_id"  name="org_name_form_id"   >
                         <option value="">Select Organition</option>   
                    
@@ -93,7 +93,7 @@ textarea[type="text"] {
 
                     <div class="col-md-6">
                    <div class="form-group">
-                        <label for="class_id">Class Name<code>*</code></label>
+                        <label for="class_id">ক্লাসের নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="class_id"  name="class_id"   >
                         <option value="">Select Organition</option>    
                   
@@ -103,7 +103,7 @@ textarea[type="text"] {
                     </div>    </div>
                     <div class="col-md-6">
                    <div class="form-group">
-                        <label for="section_id">Section Name<code>*</code></label>
+                        <label for="section_id">সেকশন নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="section_id"  name="section_id"   >
                       <option value="">Select Organition</option>   
                  
@@ -114,7 +114,7 @@ textarea[type="text"] {
 
                     <div class="col-md-6">
                    <div class="form-group">
-                        <label for="session_id">Session Name<code>*</code></label>
+                        <label for="session_id">সেশন নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="session_id"  name="session_id"   >
                         <option value="">Select Organition</option>   
                    
@@ -125,7 +125,7 @@ textarea[type="text"] {
 
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label for="pic">Upload Files<code>*</code></label>
+                        <label for="pic">আপলোড ফাইল<code>*</code></label>
                         <input type="file" class="form-control" name="excel_file" id="excel_file" accept=".xls, .xlsx" required>
                      
                         <span class="text-red small"><?php echo form_error('pic'); ?></span>
@@ -137,7 +137,7 @@ textarea[type="text"] {
 
                     </div>
                     
-                    <button type="submit" class="btn btn-primary me-2"><i class="fa fa-arrow-circle-up"></i> Upload </button>
+                    <button type="submit" class="btn btn-primary me-2"><i class="fa fa-arrow-circle-up"></i> আপলোড  </button>
                     
                       <button class="btn btn-light">Cancel</button>
                       <?php echo form_close(); ?>
@@ -151,13 +151,13 @@ textarea[type="text"] {
             <div class="col-md-4 grid-margin stretch-card ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Export Users Information</h4>
+                    <h4 class="card-title">ইউজার এক্সপোর্ট   ইনফরমেশন</h4>
                     <?php echo form_open_multipart('admin/export/excel_import_org/export'); ?>
                   
                    <div class="row">
                    <div class="col-md-12">
                    <div class="form-group">
-                        <label for="organization_id">Organization Name<code>*</code></label>
+                        <label for="organization_id">কোম্পানির নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="organization_id"  name="organization_id"   >
                       <option value="">Select</option>   
                       <?php
@@ -174,7 +174,7 @@ textarea[type="text"] {
                     </div>    </div>
                     <div class="col-md-12">
                    <div class="form-group">
-                        <label for="org_form_id">Form Name<code>*</code></label>
+                        <label for="org_form_id">ফর্ম নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="org_form_id"  name="org_form_id"   >
                         <option value="">Select Organition</option>   
                    
@@ -187,7 +187,7 @@ textarea[type="text"] {
                 
                     
                     <button class="btn btn-add btn-sm badge-warning text-white quick-link" type="submit">
-                    <i class="fa fa-arrow-circle-down"></i> Export</button>
+                    <i class="fa fa-arrow-circle-down"></i> এক্সপোর্ট</button>
                     </div>
                     </div>
             

@@ -47,7 +47,7 @@ textarea[type="text"] {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Users</h3>
+              <h3 class="page-title">ইউজার</h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 
@@ -55,17 +55,17 @@ textarea[type="text"] {
               </nav>
             </div>
             <div class="row">
-            <div class="col-md-12 grid-margin stretch-card ">
+            <div class="col-md-9 grid-margin stretch-card ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Users Create</h4>
+                    <h4 class="card-title">নতুন  ইউজার তৈরি করুন</h4>
              
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/users/insert" method="post" enctype="multipart/form-data">
                    <div class="row">
-                   <div class="col-md-4">
+                   <div class="col-md-6">
                           <div class="form-group ">
                      
-                         <label for="organization_id">Organization<code>*</code></label>
+                         <label for="organization_id">কোম্পানির নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="organization_id" value="<?php echo set_value('organization_id'); ?>" name="organization_id"   >
                       <option value="">Select</option>   
                       <?php
@@ -83,9 +83,9 @@ textarea[type="text"] {
                          </div>  
                          </div>
                       <!-- END FORM -->
-                      <div class="col-md-4">
+                      <div class="col-md-6">
                    <div class="form-group">
-                        <label for="org_form_id">Form Name<code>*</code></label>
+                        <label for="org_form_id">ফর্ম নাম <code>*</code></label>
                         <select type="text" class="form-control select2" id="org_form_id"  name="org_form_id"   >
                         <option value="">Select Organition</option>   
                    

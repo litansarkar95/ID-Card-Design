@@ -106,7 +106,7 @@ class Custom extends CI_Controller {
                   //   $url = 'https://www.example.com';
                     }else if($qr_system == 'offline'){
                     // Create the vCard data string
-                    $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nEND:VCARD";
+                    $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nGender:$gender\nBlood Group:$blood_group\nEND:VCARD";
                     }
                
     
@@ -202,7 +202,7 @@ class Custom extends CI_Controller {
                   //   $url = 'https://www.example.com';
                     }else if($qr_system == 'offline'){
                     // Create the vCard data string
-                    $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nEND:VCARD";
+                    $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nGender:$gender\nBlood Group:$blood_group\nEND:VCARD";
                     }
                
     
@@ -283,13 +283,25 @@ class Custom extends CI_Controller {
                   //   $url = 'https://www.example.com';
                     }else if($qr_system == 'offline'){
                     // Create the vCard data string
-                    $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nEND:VCARD";
+                  //  $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nEND:VCARD";
+             
+                  
+                  $vcard  = "BEGIN:VCARD\n";
+                  $datap .= "VERSION:3.0\n";
+                  $vcard  .= "FN:$name\n";
+                  $vcard  .= "TEL:$phone\n";
+                  $vcard  .= "EMAIL:$email\n";
+                  $vcard  .= "GENDER:$gender\n";
+                  $vcard  .= "X-BLOOD-GROUP:$blood_group\n"; // Custom property for blood group
+                  $vcard  .= "END:VCARD";
+              
+                     // Generate and save the QR code as an image in the 'qrcodes' folder
+                     $qr_code_filename = 'qrcodes/' . strtolower(str_replace(' ', '_', $name)) . '_vcard.png';
+                     $this->qr_code->generate($vcard , $qr_code_filename);
                     }
                
     
-                    // Generate and save the QR code as an image in the 'qrcodes' folder
-                    $qr_code_filename = 'qrcodes/' . strtolower(str_replace(' ', '_', $name)) . '_vcard.png';
-                    $this->qr_code->generate($datap, $qr_code_filename);
+                 
     
                     // Add the generated QR code path to the array
                     $qr_images[] = [
@@ -320,7 +332,7 @@ class Custom extends CI_Controller {
     
             // Pass the data (including the QR code image) to the view
             $data['qr_images'] = $qr_images;
-    $this->load->view('admin/card/card-design-005', $data);
+           $this->load->view('admin/card/card-design-005', $data);
   }
 
 }

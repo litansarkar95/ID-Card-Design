@@ -463,14 +463,24 @@ select[type="text"]{
                             </div>
                        </div>    </div>
                          <!-- END FORM -->
-      </div>  
-                     
+        <div class="col-md-12">
+      <div class="form-group">
+                        <label for="is_active">স্ট্যাটাস<code>*</code></label>
+                        <select type="text" class="form-control select2" id="is_active"  name="is_active"   >
+                      <option value="">Select</option>   
+                      <option value="1" <?php if($val->is_active == 1) { echo "selected"; }?>>Active</option>   
+                      <option value="0" <?php if($val->is_active == 0) { echo "selected"; }?>>Inactive</option>   
                     
-                     
+                       
+                      </select> 
+                        <span class="text-red small"><?php echo form_error('is_active'); ?></span>
+                    </div>
+                    
+                    </div>
                       
                      
                        
-
+                    </div>
                  
                       <button type="submit" class="btn btn-primary me-2"> Update </button>
                       <button class="btn btn-light">Cancel</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2024 at 11:43 AM
+-- Generation Time: Dec 05, 2024 at 11:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -144,7 +144,7 @@ CREATE TABLE `card_design` (
 
 INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_front_side`, `is_back_side`, `is_both_side`, `picture`, `is_active`, `create_date`) VALUES
 (1, '001', '001', 'Design 1', 'Design 1', 1, 1, 1, '01.jpg', 1, 0),
-(6, '002', '002', 'Design 2', 'Design 2', 1, 1, 1, '02.jpg', 1, 0);
+(2, '002', '002', 'Design 2', 'Design 2', 1, 1, 1, '02.jpg', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -194,7 +194,7 @@ CREATE TABLE `login_credential` (
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
 (1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-04 09:42:09', '2024-10-21 15:42:57', '2024-12-04 09:42:09'),
-(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-04 10:25:19', '2024-12-04 10:25:06', '2024-12-04 10:25:19'),
+(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-05 09:55:55', '2024-12-04 10:25:06', '2024-12-05 09:55:55'),
 (30, 10, '018291074689', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-04 12:09:56', '2024-12-04 12:09:56');
 
 -- --------------------------------------------------------
@@ -289,7 +289,7 @@ CREATE TABLE `org_fields` (
 --
 
 INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_sections`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
-(24, '2024', 12, 1, '241235001', 35, 10, 'Class 6 Form', 'this is one', 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1733302371);
+(24, '2024', 12, 1, '241235001', 35, 10, 'Class 6 Form', 'this is one', 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1733302371);
 
 -- --------------------------------------------------------
 
@@ -547,6 +547,15 @@ CREATE TABLE `users_fields` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `users_fields`
+--
+
+INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `agent_id`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `sections`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_excel`, `file_name`, `is_active`, `create_user`, `create_date`) VALUES
+(150, '127.0.0.1', '2024', 12, 1, '241235001', 35, 10, 24, 'Md Litan Sarkar', '', '', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '12', '5', 7, '0000-00-00', 'Male', '', 'B+', '', '', '', '', '', '', 'b537610f5fe316b5542c3986efaa0981.JPG', '', 0, '', 1, 0, 0),
+(151, '::1', '2024', 12, 2, '241235002', 35, 10, 24, 'Nill Hasan', '', '', '', '', '', '0182726262', 'nilahasan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '6', '', 8, '0000-00-00', 'Female', '', 'AB+', '', '', '', '', '', '', '2a7dbcc26bc65e6e9b59e317d4abebc4.png', '', 0, '', 1, 0, 0),
+(152, '::1', '2024', 12, 3, '241235003', 35, 10, 24, 'Sonali Akter', '', '', '', '', '', '01827262', '22@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '2', '5', 8, '2019-12-12', 'Male', '', 'A-', '', '', '', '', '', '', 'bbb0310d0ea7acaff960326c27c8ca66.png', '', 0, '', 1, 0, 0);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -720,7 +729,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_fields`
 --
 ALTER TABLE `users_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
