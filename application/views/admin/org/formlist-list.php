@@ -32,22 +32,22 @@ textarea[type="text"] {
               <div class="col-md-12 grid-margin ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Users  List</h4>
+                    <h4 class="card-title">কোম্পানি  ফর্ম তালিকা</h4>
                     <p class="card-description">
                     </p> 
                     <div class="table-responsive">
                     <table id="tableData" class="table table-bordered table-striped table-hover display " style="width:100%">
                         <thead>
                           <tr>
-                            <th>SL</th>
-                            <th>Org Name</th>
-                            <th>Code</th>
+                          <th>সিরিয়াল</th>
+                          <th>কোম্পানি নাম</th>
+                            <th>কোড</th>
                        
-                            <th>Form Title </th>
-                            <th>TotalForm Submit </th>
-                            <th>Form View</th>
-                            <th>Create Date</th>
-                            <th>Action</th>
+                            <th>ফর্ম শিরোনাম</th>
+                            <th>মোট ফর্ম জমা দিছে</th>
+                            <th>ইউজার দেখুন</th>
+                            <th>তারিখ </th>
+                            <th>অ্যাকশন</th>
                           </tr>
                         </thead>
                         <tbody>

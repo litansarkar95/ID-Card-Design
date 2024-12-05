@@ -73,14 +73,14 @@ select[type="text"]{
                 <div class="card">
                   <div class="card-body">
                     <form  action="<?php echo base_url(); ?>admin/card/custom/printdesign" method="post" >
-                    <h4 class="card-title">Custom ID Card Design</h4>
+                    <h4 class="card-title">আইডি কার্ড ডিজাইন করুন</h4>
                     <hr style="border: 1px solid #0033C4;">
                     <div class="row">
                           <!-- FORM -->
                           <div class="col-md-6">
                           <div class="form-group ">
                          <div class="form-check form-check-success">
-                         <label for="fields_code">Title<code>*</code></label>
+                         <label for="fields_code">শিরোনাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="fields_code" value="<?php echo set_value('fields_code'); ?>" name="fields_code"   >
                       <option value="">Select</option>   
                       <?php
@@ -124,7 +124,7 @@ select[type="text"]{
                           <div class="col-md-6">
                           <div class="form-group ">
                          <div class="form-check form-check-success">
-                         <label for="template_id">Template<code>*</code></label>
+                         <label for="template_id">কার্ড ডিজাইন<code>*</code></label>
                          <select type="text" class="form-control " id="template_id" value="<?php echo set_value('side_id'); ?>" name="template_id"   >
                       <option value="" data-id="no-image.png">Select</option>   
                     
@@ -149,12 +149,12 @@ select[type="text"]{
                          <div class="col-md-6">
                           <div class="form-group ">
                          <div class="form-check form-check-success">
-                         <label for="side_id">Side<code>*</code></label>
+                         <label for="side_id">সাইড<code>*</code></label>
                          <select type="text" class="form-control select2" id="side_id" value="<?php echo set_value('side_id'); ?>" name="side_id"   >
                       <option value="">Select</option>   
-                      <option value="front_side">Front Side</option>  
-                      <option value="back_side">Back Side</option>  
-                      <option value="both_side">Both Side</option>  
+                      <option value="front_side">ফ্রন্ট সাইড</option>  
+                      <option value="back_side">ব্যাক সাইড</option>  
+                      <option value="both_side">ফুল সাইড</option>  
                        
                       </select> 
                         <span class="text-red small"><?php echo form_error('side_id'); ?></span>
@@ -168,11 +168,11 @@ select[type="text"]{
                         <div class="col-md-6">
                           <div class="form-group ">
                          <div class="form-check form-check-success">
-                         <label for="qr_tpye">QR /Bar Code Type<code>*</code></label>
+                         <label for="qr_tpye">কিউ আর কোড টাইপ<code>*</code></label>
                          <select type="text" class="form-control select2" id="qr_tpye" value="<?php echo set_value('qr_tpye'); ?>" name="qr_tpye"   >
                       <option value="">Select</option>   
-                      <option value="front_side">QR Code</option>  
-                      <option value="back_side">Bar Code</option>  
+                      <option value="front_side">কিউ আর কোড</option>  
+                      <option value="back_side">বার কোড</option>  
                     
                        
                       </select> 
@@ -186,11 +186,11 @@ select[type="text"]{
                                    <div class="col-md-6">
                           <div class="form-group ">
                          <div class="form-check form-check-success">
-                         <label for="qr_system">QR /Bar Name<code>*</code></label>
+                         <label for="qr_system">কিউ আর/বার নাম<code>*</code></label>
                          <select type="text" class="form-control select2" id="qr_system"  name="qr_system"   >
                       <option value="">Select</option>   
-                      <option value="online">Online</option>  
-                      <option value="offline">Offline</option>  
+                      <option value="online">অনলাইন</option>  
+                      <option value="offline">অফলাইন</option>  
                     
                        
                       </select> 

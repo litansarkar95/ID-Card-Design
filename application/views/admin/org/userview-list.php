@@ -32,20 +32,20 @@ textarea[type="text"] {
               <div class="col-md-12 grid-margin ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Users  List</h4>
+                    <h4 class="card-title">ইউজার তালিকা </h4>
                     <p class="card-description">
                     </p> 
                     <div class="table-responsive">
                     <table id="tableData" class="table table-bordered table-striped table-hover display " style="width:100%">
                         <thead>
                           <tr>
-                            <th>SL</th>
-                            <th>ID</th>                       
-                            <th>Registration No </th>
-                            <th>Name </th>
-                            <th>Mobile</th>
-                            <th>Picture</th>
-                            <th>Action</th>
+                          <th>সিরিয়াল</th>
+                            <th>আইডি</th>                       
+                            <th>রেজিস্ট্রেশন নং </th>
+                            <th>নাম </th>
+                            <th>মোবাইল</th>
+                            <th>ছবি</th>
+                            <th>অ্যাকশন</th>
                           </tr>
                         </thead>
                         <tbody>

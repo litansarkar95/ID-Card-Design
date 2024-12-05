@@ -16,13 +16,13 @@
 $(document).ready(function() {
     // Initialize the datepicker with year selection
     $("#dob, #date_of_joining, #date_of_leaving").datepicker({
-        dateFormat: 'dd-mm-yy',
+        dateFormat: 'yy-mm-dd',
         changeYear: true,      // Enable year selection
         yearRange: "1900:2100" // Set the range of years available
     });
 
     // Set a default date (e.g., today's date)
-    var today = $.datepicker.formatDate('dd-mm-yy', new Date());
+    var today = $.datepicker.formatDate('yy-mm-dd', new Date());
     $("#dob, #date_of_joining, #date_of_leaving").val(today);
 });
 
@@ -610,7 +610,7 @@ p{
                 <div class="col-md-10">
                 <div class="form-group">
                 <label for="present_address_en">Present Address</label>
-                <textarea class="form-control" id="present_address_en" rows="3" placeholder="Your Address"><?php echo set_value('present_address_en'); ?></textarea>
+                <textarea class="form-control" id="present_address_en" name="present_address_en" rows="3" placeholder="Your Address"><?php echo set_value('present_address_en'); ?></textarea>
                 </div>
 
                 </div>
@@ -626,7 +626,7 @@ p{
                 <div class="col-md-10">
                 <div class="form-group">
                 <label for="permanent_address_en">Permanent Address</label>
-                <textarea class="form-control" id="permanent_address_en" rows="3" ><?php echo set_value('permanent_address_en'); ?></textarea>
+                <textarea class="form-control" id="permanent_address_en" name="permanent_address_en" rows="3" ><?php echo set_value('permanent_address_en'); ?></textarea>
                 </div>
 
                 </div>

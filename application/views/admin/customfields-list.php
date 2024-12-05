@@ -50,14 +50,14 @@ textarea[type="text"] {
                     <table id="tableData" class="table table-bordered table-striped table-hover display " style="width:100%">
                         <thead>
                           <tr>
-                            <th>SL</th>
-                            <th>Org Name</th>
-                            <th>Title </th>
-                            <th>Card Design</th>
-                            <th>URL</th>
-                            <th>Excel Import</th>
-                            <th>Excel Image Import</th>
-                            <th>Action</th>
+                          <th>সিরিয়াল</th>
+                          <th>কোম্পানি নাম</th>
+                            <th>শিরোনাম </th>
+                            <th>কার্ড ডিজাইন</th>
+                            <th>লিংক </th>
+                            <th>এক্সেল ইমপোর্ট </th>
+                            <th>এক্সেল ছবি  ইমপোর্ট</th>
+                            <th>অ্যাকশন</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -85,10 +85,10 @@ textarea[type="text"] {
                               <button  onclick="copyLink(<?php echo $pdt->id;?>)" title="Copy" class="btn btn-add btn-sm badge-danger text-white"  ><i class=" mdi mdi-content-copy"></i></button>
                             </td>
                             <td>                  <a class="btn btn-add btn-sm badge-warning text-white"  href="<?php echo base_url()."admin/export/userformimport/view/{$pdt->id}";?>" class="quick-link">
-                            <i class="fa fa-arrow-circle-up"></i> Import</a>
+                            <i class="fa fa-arrow-circle-up"></i> ইমপোর্ট</a>
                            </td>
                            <td>                  <a class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/export/Import_image";?>" class="quick-link">
-                            <i class="fa fa-arrow-circle-up"></i> Import Image</a>
+                            <i class="fa fa-arrow-circle-up"></i>  ছবি  ইমপোর্ট</a>
                            </td>
                           <td>
                               <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/customfields/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>

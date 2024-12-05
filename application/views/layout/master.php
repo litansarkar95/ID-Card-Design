@@ -251,16 +251,16 @@
                 <div class="submenu">
                   <ul class="submenu-item">
                   <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization/formlist">Organization Form List </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization/formlist">ফরম ও ইউজার এর তালিকা  </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/create">Users Create</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/create">নতুন  ইউজার তৈরি করুন </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users">Users List</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users">ইউজার এর তালিকা</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/reports">Users Reports </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/reports">ইউজার রিপোর্ট </a>
                     </li>
                   </ul>
                 </div>

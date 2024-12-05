@@ -1,8 +1,27 @@
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> 
+    
+<script>
+$(document).ready(function() {
+    // Initialize the datepicker with year selection
+    $("#dob, #date_of_joining, #date_of_leaving").datepicker({
+        dateFormat: 'dd-mm-yy',
+        changeYear: true,      // Enable year selection
+        yearRange: "1900:2100" // Set the range of years available
+    });
+
+    // Set a default date (e.g., today's date)
+    var today = $.datepicker.formatDate('dd-mm-yy', new Date());
+    $("#dob, #date_of_joining, #date_of_leaving").val(today);
+});
+
+
+    </script>
+
 <style>
-.label{
-  margin-bottom:5px;
-}
+
 input[type="text"],
 input[type="file"],
 textarea[type="text"] ,
@@ -14,8 +33,28 @@ select[type="text"]{
     margin-bottom: 10px;
     outline: none; /* Prevents the default outline when focused */
 }
+.design-card img{
+  width:200px;
+}
+.label{
+ 
+
+  font-size: 18px !important;
+}
+.form-group ,option ,.select2-selection{
+    font-family: "Oswald", serif;
+  font-weight: 500;
+  font-size:18px;
 
 
+
+}
+.card-title{
+    font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size:30px;
+}
   </style>
 <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
@@ -40,7 +79,7 @@ select[type="text"]{
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/customfields" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                         <label for="company_name">কোম্পানির নাম<code>*</code></label>
-                        <select type="text" class="form-control" id="company_name" value="<?php echo set_value('company_name'); ?>" name="company_name"   >
+                        <select type="text" class="form-control select2" id="company_name" value="<?php echo set_value('company_name'); ?>" name="company_name"   >
                       <option value="">Select</option>   
                       <?php
                                         foreach ($allCat as $cat){

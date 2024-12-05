@@ -1,8 +1,27 @@
 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> 
+    
+<script>
+$(document).ready(function() {
+    // Initialize the datepicker with year selection
+    $("#dob, #date_of_joining, #date_of_leaving").datepicker({
+        dateFormat: 'dd-mm-yy',
+        changeYear: true,      // Enable year selection
+        yearRange: "1900:2100" // Set the range of years available
+    });
+
+    // Set a default date (e.g., today's date)
+    var today = $.datepicker.formatDate('dd-mm-yy', new Date());
+    $("#dob, #date_of_joining, #date_of_leaving").val(today);
+});
+
+
+    </script>
+
 <style>
-.label{
-  margin-bottom:5px;
-}
+
 input[type="text"],
 input[type="file"],
 textarea[type="text"] ,
@@ -14,59 +33,76 @@ select[type="text"]{
     margin-bottom: 10px;
     outline: none; /* Prevents the default outline when focused */
 }
+.design-card img{
+  width:200px;
+}
+.label{
+ 
+
+  font-size: 18px !important;
+}
+.form-group ,option ,.select2-selection{
+    font-family: "Oswald", serif;
+  font-weight: 500;
+  font-size:18px;
 
 
+
+}
+.card-title{
+    font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size:30px;
+}
   </style>
 <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
           <div class="content-wrapper">
            
 
-            <div class="page-header flex-wrap">
-              <div class="header-left">
-            
-              </div>
-              <div class="header-right d-flex flex-wrap mt-md-2 mt-lg-0">
-                <div class="d-flex align-items-center">
-                  <a href="#">
-                    <p class="m-0 pe-3">Custom Fields</p>
-                  </a>
-                  <a class="ps-3 me-4" href="#">
-                
-                  </a>
-                </div>
-                <a href="<?php echo base_url(); ?>admin/customfields/list" type="button" class="btn btn-primary mt-2 mt-sm-0 btn-icon-text">
-                  <i class="mdi mdi-table-large"></i> Custom Fields List</a>
-              </div>
-            </div>
+          
             <div class="row">
               <div class="col-md-8 offset-md-2 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Custom Fields Create</h4>
+                    <h4 class="card-title">কোম্পানির কাস্টম ফরম এডিট  করুন</h4>
                     <hr style="border: 1px solid #0033C4;">
+                    <?php
+                    if(isset($allPdt)){
+                      foreach($allPdt as $val){
+                    
+                    ?>
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/customfields/update" method="post" enctype="multipart/form-data">
-                      <div class="form-group">
-                        <label for="company_name">Company Name<code>*</code></label>
-                        <select type="text" class="form-control" id="company_name" value="<?php echo set_value('company_name'); ?>" name="company_name"   >
+                    <input type="hidden" class="form-control" id="id" value="<?php echo $val->id; ?>" name="id"   />
+                    
+                    <div class="form-group">
+                        <label for="company_name">কোম্পানির নাম<code>*</code></label>
+                        <select type="text" class="form-control select2" id="company_name" value="<?php echo set_value('company_name'); ?>" name="company_name"   >
                       <option value="">Select</option>   
                       <?php
                                         foreach ($allCat as $cat){
-                                      echo "<option value='{$cat->id}'>{$cat->name} - {$cat->mobile_no}</option>";
+                                          if($cat->id == $val->organization_id){
+                                            echo "<option value='{$cat->id}' selected>{$cat->name} - {$cat->mobile_no}</option>";
+                                          }else{
+                                            echo "<option value='{$cat->id}'>{$cat->name} - {$cat->mobile_no}</option>";
+                                          }
+                                   
                                         }
                                     ?>
                        
                       </select> 
                         <span class="text-red small"><?php echo form_error('company_name'); ?></span>
                     </div>
+                    
                       <div class="form-group">
-                        <label for="title">Title<code>*</code></label>
-                        <input type="text" class="form-control" id="title" value="<?php echo set_value('title'); ?>" name="title"   />
+                        <label for="title">শিরোনাম<code>*</code></label>
+                        <input type="text" class="form-control" id="title" value="<?php echo $val->title; ?>" name="title"   />
                         <span class="text-red small"><?php echo form_error('title'); ?></span>
                     </div>
                     <div class="form-group">
                         <label for="description">Description<code>*</code></label>
-                        <textarea type="text" class="form-control" id="description"  name="description"   ><?php echo set_value('description'); ?></textarea>
+                        <textarea type="text" class="form-control" id="description"  name="description"   ><?php echo $val->description; ?></textarea>
                         <span class="text-red small"><?php echo form_error('description'); ?></span>
                     </div>
 
@@ -76,7 +112,7 @@ select[type="text"]{
                           <div class="form-group ">
                          <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_name_en">
-                                <input type="checkbox" class="form-check-input" id="is_name_en" name="is_name_en" value="1"> Name English</label>
+                                <input type="checkbox" class="form-check-input" id="is_name_en" name="is_name_en" value="1" <?php if($val->is_name_en == 1){ echo "checked"; } ?> > Name English</label>
                             </div>
                          </div>  
                          </div>
@@ -86,7 +122,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_name_bn">
-                                <input type="checkbox" class="form-check-input" id="is_name_bn" name="is_name_bn" value="1"> Name Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_name_bn" name="is_name_bn" value="1" <?php if($val->is_name_bn == 1){ echo "checked"; } ?>> Name Bangla</label>
                             </div>
                     </div>   </div>
                 <!-- END FORM -->
@@ -96,7 +132,7 @@ select[type="text"]{
                            <div class="form-group">
                          <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_father_name_en">
-                                <input type="checkbox" class="form-check-input" id="is_father_name_en" name="is_father_name_en" value="1"> Father's Name English</label>
+                                <input type="checkbox" class="form-check-input" id="is_father_name_en" name="is_father_name_en" value="1" <?php if($val->is_father_name_en == 1){ echo "checked"; } ?>> Father's Name English</label>
                             </div>
                          </div>   </div>
                       <!-- END FORM -->
@@ -105,7 +141,7 @@ select[type="text"]{
                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_father_name_bn">
-                                <input type="checkbox" class="form-check-input" id="is_father_name_bn" name="is_father_name_bn" value="1"> Father's Name Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_father_name_bn" name="is_father_name_bn" value="1" <?php if($val->is_father_name_bn == 1){ echo "checked"; } ?>> Father's Name Bangla</label>
                             </div>
                          </div>  </div>
                       <!-- END FORM -->
@@ -115,7 +151,7 @@ select[type="text"]{
                              <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_mother_name_en">
-                                <input type="checkbox" class="form-check-input" id="is_mother_name_en" name="is_mother_name_en" value="1"> Mother Name English</label>
+                                <input type="checkbox" class="form-check-input" id="is_mother_name_en" name="is_mother_name_en" value="1" <?php if($val->is_mother_name_en == 1){ echo "checked"; } ?>> Mother Name English</label>
                             </div>
                          </div>   </div>
                       <!-- END FORM -->
@@ -124,7 +160,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_mother_name_bn">
-                                <input type="checkbox" class="form-check-input" id="is_mother_name_bn" name="is_mother_name_bn" value="1">Mother Name Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_mother_name_bn" name="is_mother_name_bn" value="1" <?php if($val->is_mother_name_bn == 1){ echo "checked"; } ?>>Mother Name Bangla</label>
                             </div>
                          </div>
                          </div>
@@ -136,7 +172,7 @@ select[type="text"]{
                            <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_mobile_no">
-                                <input type="checkbox" class="form-check-input" id="is_mobile_no" name="is_mobile_no" value="1"> Mobile No</label>
+                                <input type="checkbox" class="form-check-input" id="is_mobile_no" name="is_mobile_no" value="1" <?php if($val->is_mobile_no == 1){ echo "checked"; } ?>> Mobile No</label>
                             </div>
                          </div>      </div>
                       <!-- END FORM -->
@@ -146,7 +182,7 @@ select[type="text"]{
                         <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_email">
-                                <input type="checkbox" class="form-check-input" id="is_email" name="is_email" value="1"> Email</label>
+                                <input type="checkbox" class="form-check-input" id="is_email" name="is_email" value="1" <?php if($val->is_email == 1){ echo "checked"; } ?>> Email</label>
                             </div>
                          </div>      </div>
                       <!-- END FORM -->
@@ -156,7 +192,7 @@ select[type="text"]{
                           <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_village_en">
-                                <input type="checkbox" class="form-check-input" id="is_village_en" name="is_village_en" value="1"> Village English</label>
+                                <input type="checkbox" class="form-check-input" id="is_village_en" name="is_village_en" value="1" <?php if($val->is_village_en == 1){ echo "checked"; } ?>> Village English</label>
                             </div>
                          </div>
                          </div>
@@ -166,7 +202,7 @@ select[type="text"]{
                           <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_village_bn">
-                                <input type="checkbox" class="form-check-input" id="is_village_bn" name="is_village_bn" value="1"> Village Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_village_bn" name="is_village_bn" value="1" <?php if($val->is_village_bn == 1){ echo "checked"; } ?>> Village Bangla</label>
                             </div>
                          </div>  
                           </div>
@@ -177,7 +213,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_post_office_en">
-                                <input type="checkbox" class="form-check-input" id="is_post_office_en" name="is_post_office_en" value="1"> Post Office English</label>
+                                <input type="checkbox" class="form-check-input" id="is_post_office_en" name="is_post_office_en" value="1" <?php if($val->is_post_office_en == 1){ echo "checked"; } ?>> Post Office English</label>
                             </div>
                          </div>
                          </div>
@@ -188,7 +224,7 @@ select[type="text"]{
                              <div class="form-group">
                              <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_post_office_bn">
-                                <input type="checkbox" class="form-check-input" id="is_post_office_bn" name="is_post_office_bn" value="1"> Post Office Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_post_office_bn" name="is_post_office_bn" value="1" <?php if($val->is_post_office_bn == 1){ echo "checked"; } ?>> Post Office Bangla</label>
                             </div>
                          </div>
                          </div>
@@ -200,7 +236,7 @@ select[type="text"]{
                          <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_upazila_en">
-                                <input type="checkbox" class="form-check-input" id="is_upazila_en" name="is_upazila_en" value="1">Upazila English</label>
+                                <input type="checkbox" class="form-check-input" id="is_upazila_en" name="is_upazila_en" value="1" <?php if($val->is_upazila_en == 1){ echo "checked"; } ?>>Upazila English</label>
                             </div>
                          </div>
                          </div>
@@ -211,7 +247,7 @@ select[type="text"]{
                            <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_upazila_bn">
-                                <input type="checkbox" class="form-check-input" id="is_upazila_bn" name="is_upazila_bn" value="1"> Upazila Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_upazila_bn" name="is_upazila_bn" value="1" <?php if($val->is_upazila_bn == 1){ echo "checked"; } ?>> Upazila Bangla</label>
                             </div>
                          </div>
                          </div>
@@ -222,7 +258,7 @@ select[type="text"]{
                           <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_zilla_en">
-                                <input type="checkbox" class="form-check-input" id="is_zilla_en" name="is_zilla_en" value="1"> Zilla English</label>
+                                <input type="checkbox" class="form-check-input" id="is_zilla_en" name="is_zilla_en" value="1" <?php if($val->is_zilla_en == 1){ echo "checked"; } ?> > Zilla English</label>
                             </div>
                          </div>
                          </div>
@@ -233,7 +269,7 @@ select[type="text"]{
                         <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_zilla_bn">
-                                <input type="checkbox" class="form-check-input" id="is_zilla_bn" name="is_zilla_bn" value="1"> Zilla Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_zilla_bn" name="is_zilla_bn" value="1" <?php if($val->is_zilla_bn == 1){ echo "checked"; } ?> > Zilla Bangla</label>
                             </div>
                          </div>
                          </div>
@@ -243,7 +279,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_present_address_en">
-                                <input type="checkbox" class="form-check-input" id="is_present_address_en" name="is_present_address_en" value="1"> Present Address English</label>
+                                <input type="checkbox" class="form-check-input" id="is_present_address_en" name="is_present_address_en" value="1" <?php if($val->is_present_address_en == 1){ echo "checked"; } ?> > Present Address English</label>
                             </div>
                        </div>
                         </div>
@@ -253,7 +289,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_present_address_bn">
-                                <input type="checkbox" class="form-check-input" id="is_present_address_bn" name="is_present_address_bn" value="1"> Present Address Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_present_address_bn" name="is_present_address_bn" value="1" <?php if($val->is_present_address_bn == 1){ echo "checked"; } ?> > Present Address Bangla</label>
                             </div>
                        </div>
                         </div>
@@ -263,7 +299,7 @@ select[type="text"]{
                        <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_permanent_address_en">
-                                <input type="checkbox" class="form-check-input" id="is_permanent_address_en" name="is_permanent_address_en" value="1"> Permanent Address English</label>
+                                <input type="checkbox" class="form-check-input" id="is_permanent_address_en" name="is_permanent_address_en" value="1" <?php if($val->is_permanent_address_en == 1){ echo "checked"; } ?> > Permanent Address English</label>
                             </div>
                        </div>
                        </div>
@@ -273,7 +309,7 @@ select[type="text"]{
                        <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_permanent_address_bn">
-                                <input type="checkbox" class="form-check-input" id="is_permanent_address_bn" name="is_permanent_address_bn" value="1"> Permanent Address Bangla</label>
+                                <input type="checkbox" class="form-check-input" id="is_permanent_address_bn" name="is_permanent_address_bn" value="1" <?php if($val->is_permanent_address_bn == 1){ echo "checked"; } ?> > Permanent Address Bangla</label>
                             </div>
                        </div>
                        </div>
@@ -283,7 +319,7 @@ select[type="text"]{
                         <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_designation">
-                                <input type="checkbox" class="form-check-input" id="is_designation" name="is_designation" value="1">Designation</label>
+                                <input type="checkbox" class="form-check-input" id="is_designation" name="is_designation" value="1" <?php if($val->is_designation == 1){ echo "checked"; } ?> >Designation</label>
                             </div>
                          </div>
                          </div>
@@ -294,7 +330,7 @@ select[type="text"]{
                         <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_department">
-                                <input type="checkbox" class="form-check-input" id="is_department" name="is_department" value="1">Department</label>
+                                <input type="checkbox" class="form-check-input" id="is_department" name="is_department" value="1" <?php if($val->is_department == 1){ echo "checked"; } ?> >Department</label>
                             </div>
                          </div>
                          </div>
@@ -305,7 +341,7 @@ select[type="text"]{
                    <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_employee_id">
-                                <input type="checkbox" class="form-check-input" id="is_employee_id" name="is_employee_id" value="1">Employee ID</label>
+                                <input type="checkbox" class="form-check-input" id="is_employee_id" name="is_employee_id" value="1" <?php if($val->is_employee_id == 1){ echo "checked"; } ?> >Employee ID</label>
                             </div>
                     </div>
                     </div>
@@ -316,7 +352,7 @@ select[type="text"]{
                    <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_index_no">
-                                <input type="checkbox" class="form-check-input" id="is_index_no" name="is_index_no" value="1">Index No</label>
+                                <input type="checkbox" class="form-check-input" id="is_index_no" name="is_index_no" value="1" <?php if($val->is_index_no == 1){ echo "checked"; } ?> >Index No</label>
                             </div>
                     </div>
                     </div>
@@ -325,7 +361,7 @@ select[type="text"]{
                 <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_class">
-                                <input type="checkbox" class="form-check-input" id="is_class" name="is_class" value="1"> Class  </label>
+                                <input type="checkbox" class="form-check-input" id="is_class" name="is_class" value="1" <?php if($val->is_class == 1){ echo "checked"; } ?> > Class  </label>
                             </div>
                     </div>
                     </div>
@@ -334,7 +370,7 @@ select[type="text"]{
                 <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_class_roll">
-                                <input type="checkbox" class="form-check-input" id="is_class_roll" name="is_class_roll" value="1"> Class Roll </label>
+                                <input type="checkbox" class="form-check-input" id="is_class_roll" name="is_class_roll" value="1" <?php if($val->is_class_roll == 1){ echo "checked"; } ?> > Class Roll </label>
                             </div>
                     </div>
                     </div>
@@ -343,7 +379,7 @@ select[type="text"]{
                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_section">
-                                <input type="checkbox" class="form-check-input" id="is_section" name="is_section" value="1"> Section </label>
+                                <input type="checkbox" class="form-check-input" id="is_section" name="is_section" value="1" <?php if($val->is_section == 1){ echo "checked"; } ?> > Section </label>
                             </div>
                     </div>
                     </div>
@@ -352,7 +388,7 @@ select[type="text"]{
                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_sessions">
-                                <input type="checkbox" class="form-check-input" id="is_sessions" name="is_sessions" value="1"> Session </label>
+                                <input type="checkbox" class="form-check-input" id="is_sessions" name="is_sessions" value="1" <?php if($val->is_sessions == 1){ echo "checked"; } ?> > Session </label>
                             </div>
                     </div>
                     </div>
@@ -361,7 +397,7 @@ select[type="text"]{
                           <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_date_of_birth">
-                                <input type="checkbox" class="form-check-input" id="is_date_of_birth" name="is_date_of_birth" value="1"> Birthday </label>
+                                <input type="checkbox" class="form-check-input" id="is_date_of_birth" name="is_date_of_birth" value="1" <?php if($val->is_date_of_birth == 1){ echo "checked"; } ?> > Birthday </label>
                             </div>
                     </div>
                     </div>
@@ -370,7 +406,7 @@ select[type="text"]{
                 <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_gender">
-                                <input type="checkbox" class="form-check-input" id="is_gender" name="is_gender" value="1"> Gender </label>
+                                <input type="checkbox" class="form-check-input" id="is_gender" name="is_gender" value="1" <?php if($val->is_gender == 1){ echo "checked"; } ?> > Gender </label>
                             </div>
                        </div>
                        </div>
@@ -379,7 +415,7 @@ select[type="text"]{
                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_id_number">
-                                <input type="checkbox" class="form-check-input" id="is_id_number" name="is_id_number" value="1"> ID Number </label>
+                                <input type="checkbox" class="form-check-input" id="is_id_number" name="is_id_number" value="1" <?php if($val->is_id_number == 1){ echo "checked"; } ?> > ID Number </label>
                             </div>
                        </div>
                        </div>
@@ -388,7 +424,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_blood_group">
-                                <input type="checkbox" class="form-check-input" id="is_blood_group" name="is_blood_group" value="1">Blood Group</label>
+                                <input type="checkbox" class="form-check-input" id="is_blood_group" name="is_blood_group" value="1" <?php if($val->is_blood_group == 1){ echo "checked"; } ?> >Blood Group</label>
                             </div>
                        </div>   </div>
                     <!-- END FORM -->
@@ -396,7 +432,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_marital_status">
-                                <input type="checkbox" class="form-check-input" id="is_marital_status" name="is_marital_status" value="1">Marital Status</label>
+                                <input type="checkbox" class="form-check-input" id="is_marital_status" name="is_marital_status" value="1"<?php if($val->is_marital_status == 1){ echo "checked"; } ?> >Marital Status</label>
                             </div>
                        </div>   </div>
                       <!-- END FORM -->
@@ -404,7 +440,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_photo">
-                                <input type="checkbox" class="form-check-input" id="is_photo" name="is_photo" value="1">Photo</label>
+                                <input type="checkbox" class="form-check-input" id="is_photo" name="is_photo" value="1" <?php if($val->is_photo == 1){ echo "checked"; } ?> >Photo</label>
                             </div>
                        </div>
                       </div>
@@ -414,7 +450,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_signature">
-                                <input type="checkbox" class="form-check-input" id="is_signature" name="is_signature" value="1">Signature</label>
+                                <input type="checkbox" class="form-check-input" id="is_signature" name="is_signature" value="1" <?php if($val->is_signature == 1){ echo "checked"; } ?> >Signature</label>
                             </div>
                        </div>
                       </div>
@@ -423,7 +459,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_nationality">
-                                <input type="checkbox" class="form-check-input" id="is_nationality" name="is_nationality" value="1">Nationality</label>
+                                <input type="checkbox" class="form-check-input" id="is_nationality" name="is_nationality" value="1" <?php if($val->is_nationality == 1){ echo "checked"; } ?> >Nationality</label>
                             </div>
                        </div>    </div>
                          <!-- END FORM -->
@@ -436,9 +472,14 @@ select[type="text"]{
                        
 
                  
-                      <button type="submit" class="btn btn-primary me-2"> Submit </button>
+                      <button type="submit" class="btn btn-primary me-2"> Update </button>
                       <button class="btn btn-light">Cancel</button>
                     </form>
+
+                    <?php
+                      }
+                    }
+                    ?>
                   </div>
                 </div>
               </div>
