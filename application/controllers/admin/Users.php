@@ -299,9 +299,24 @@ class Users extends CI_Controller {
         $data['allCat'] = $this->main_model->AgentOrgList();
         $data['allPdt'] = $this->common_model->view_data("agents", "", "id", "asc");
 
-      //  echo "<pre>";print_r($data['allStu']);exit();
+      //  echo "<pre>";print_r($data['allStu']);exit(); 
         $data['content'] = $this->load->view("admin/users/users-reports-new", $data, TRUE);
         $this->load->view('layout/master', $data);
+	}
+
+    public function reportspdf(){
+        $data = array();
+        $data['active'] = "users";
+        $data['title'] =  "Users Reports";
+        $data['allCat'] = $this->main_model->AgentOrgList();
+        $data['allPdt'] = $this->common_model->view_data("agents", "", "id", "asc");
+        $data['css'] = [
+            base_url('public/reports/assets/css/main.css'),
+            base_url('public/reports/assets/css/bootstrap.min.css')
+        ];
+      //  echo "<pre>";print_r($data['allStu']);exit(); 
+       
+        $this->load->view('admin/users/users-reports-pdf', $data);
 	}
 
 }

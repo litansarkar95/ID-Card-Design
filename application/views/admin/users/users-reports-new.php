@@ -47,7 +47,7 @@ textarea[type="text"] {
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">Import Users Information</h3>
+              <h3 class="page-title">ইউজার রিপোর্ট </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 
@@ -63,13 +63,13 @@ textarea[type="text"] {
             <div class="col-md-8 grid-margin stretch-card ">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Export Users Information</h4>
-                    <?php echo form_open_multipart('admin/export/excel_import_org/userreport_export'); ?>
-                  
+                    <h4 class="card-title">ইউজার রিপোর্ট </h4>
+                    <?php echo form_open_multipart('admin/users/reportspdf'); ?>
+                    <!-- <?php //echo form_open_multipart('admin/export/excel_import_org/userreport_export'); ?> -->
                    <div class="row">
                    <div class="col-md-12">
                    <div class="form-group">
-                        <label for="organization_id">Organization Name<code>*</code></label>
+                        <label for="organization_id">কোম্পানির নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="organization_id"  name="organization_id"   >
                       <option value="">Select</option>   
                       <?php
@@ -86,7 +86,7 @@ textarea[type="text"] {
                     </div>    </div>
                     <div class="col-md-12">
                    <div class="form-group">
-                        <label for="org_form_id">Form Name<code>*</code></label>
+                        <label for="org_form_id">ফর্ম নাম<code>*</code></label>
                         <select type="text" class="form-control select2" id="org_form_id"  name="org_form_id"   >
                         <option value="">Select Organition</option>   
                    
@@ -99,7 +99,9 @@ textarea[type="text"] {
                 
                     
                     <button class="btn btn-add btn-sm badge-warning text-white quick-link" type="submit">
-                    <i class="fa fa-arrow-circle-down"></i> Export</button>
+                    <i class="fa fa-arrow-circle-down"></i> পিডিএফ ডাউনলোড</button>
+
+                  
                     </div>
                     </div>
             
