@@ -47,7 +47,7 @@
                 <button type="submit" class="login-btn">Login</button>
             </form>
             <footer>
-                <p>Software by: <span><a href="https://www.rodasiit.com" target="_blank">» Rodasi IT</a></span></p>
+                <p>Software by: <span><a href="https://www.labibait.com" target="_blank">» Labiba IT</a></span></p>
             </footer>
         </div>
     </div>

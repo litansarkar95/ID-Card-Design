@@ -192,6 +192,7 @@ class Custom extends CI_Controller {
                     $signature_name = $pdt->signature_name;
                     $signature_picture = $pdt->signature_picture;
                     $picture = $pdt->org_picture;
+                    $address = $pdt->present_address_en;
 
                     //input 
                     $qr_system = $this->input->post('qr_system');
@@ -202,7 +203,9 @@ class Custom extends CI_Controller {
                   //   $url = 'https://www.example.com';
                     }else if($qr_system == 'offline'){
                     // Create the vCard data string
-                    $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nGender:$gender\nBlood Group:$blood_group\nEND:VCARD";
+                           
+                    $datap = "$name\nEmail: $email\nMobile No: $phone\nAddress: $address\nGender:$gender\nBlood Group:$blood_group\n";
+                   // $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nGender:$gender\nBlood Group:$blood_group\nEND:VCARD";
                     }
                
     
@@ -273,32 +276,19 @@ class Custom extends CI_Controller {
                     $picture = $pdt->org_picture;
                     $blood_group = $pdt->blood_group;
                     $id_number = $pdt->id_number;
-
+                    $address = $pdt->present_address_en;
                     //input 
                     $qr_system = $this->input->post('qr_system');
                     if($qr_system == 'online'){
-                        // Create the vCard data string
-                      //  $datap = 
                       $datap = base_url() . "verification/".ReplaceR($name)."?v=".$registration_no;
-                  //   $url = 'https://www.example.com';
                     }else if($qr_system == 'offline'){
-                    // Create the vCard data string
-                  //  $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nEND:VCARD";
-             
-                  
-                  $vcard  = "BEGIN:VCARD\n";
-                  $datap .= "VERSION:3.0\n";
-                  $vcard  .= "FN:$name\n";
-                  $vcard  .= "TEL:$phone\n";
-                  $vcard  .= "EMAIL:$email\n";
-                  $vcard  .= "GENDER:$gender\n";
-                  $vcard  .= "X-BLOOD-GROUP:$blood_group\n"; // Custom property for blood group
-                  $vcard  .= "END:VCARD";
-              
-                     // Generate and save the QR code as an image in the 'qrcodes' folder
-                     $qr_code_filename = 'qrcodes/' . strtolower(str_replace(' ', '_', $name)) . '_vcard.png';
-                     $this->qr_code->generate($vcard , $qr_code_filename);
-                    }
+                   $datap = "$name\nEmail: $email\nMobile No: $phone\nAddress: $address\nGender:$gender\nBlood Group:$blood_group\n";
+                   }
+               
+    
+                    // Generate and save the QR code as an image in the 'qrcodes' folder
+                    $qr_code_filename = 'qrcodes/' . strtolower(str_replace(' ', '_', $name)) . '_vcard.png';
+                    $this->qr_code->generate($datap, $qr_code_filename);
                
     
                  

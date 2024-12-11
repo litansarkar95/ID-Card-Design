@@ -102,7 +102,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url(); ?>dashboard">
                   <i class="mdi mdi-compass-outline menu-icon"></i>
-                  <span class="menu-title">ড্যাশবোর্ড</span>
+                  <span class="menu-title">১ - ড্যাশবোর্ড</span>
                 </a>
               </li>
            
@@ -199,25 +199,25 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
-                  <span class="menu-title">প্রাথমিক সেটাপ</span>
+                  <span class="menu-title">২ -প্রাথমিক সেটাপ</span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization">নতুন কোম্পানি তৈরি করুন</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization">১ - নতুন কোম্পানি তৈরি করুন</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization/list">কোম্পানি তালিকা</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization/list">২ - কোম্পানি তালিকা</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/classes">ক্লাস  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/classes">৩ - ক্লাস  </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sections">সেকশন  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sections">৪ - সেকশন  </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sessions">সেশন  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/base/sessions">৫ - সেশন  </a>
                     </li>
               
                   </ul>
@@ -227,17 +227,17 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
-                  <span class="menu-title">ফরম </span>
+                  <span class="menu-title">৩ - আইডি কার্ড ফরম </span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                   
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">কোম্পানির  কাস্টম ফরম তৈরী করুন </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields">১ - কোম্পানির  আইডি কার্ড তৈরী করুন </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields/list">কোম্পানির ফরম লিস্ট </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/customfields/list">২ - কোম্পানির  আইডি কার্ড লিস্ট </a>
                     </li>
                   </ul>
                 </div>
@@ -245,22 +245,22 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
-                  <span class="menu-title">ইউজার </span>
+                  <span class="menu-title">৪ - ইউজার </span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                   <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization/formlist">ফরম ও ইউজার এর তালিকা  </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/organization/formlist">১ - ফরম ও ইউজার এর তালিকা  </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/create">নতুন  ইউজার তৈরি করুন </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/create">২ - নতুন  ইউজার তৈরি করুন </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users">ইউজার এর তালিকা</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users">৩ - ইউজার এর তালিকা</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/reports">ইউজার রিপোর্ট </a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/users/reports">৪ - ইউজার রিপোর্ট </a>
                     </li>
                   </ul>
                 </div>
@@ -269,16 +269,16 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="mdi mdi-clipboard-text menu-icon"></i>
-                  <span class="menu-title">আইডি কার্ড</span>
+                  <span class="menu-title">৫ - আইডি কার্ড</span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/card/custom/design/">আইডি কার্ড ডিজাইন করুন</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/card/custom/design/">১ - আইডি কার্ড  জেনারেট করুন </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>admin/card/card_design">আইডি কার্ড ডিজাইন দেখুন </a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>admin/card/card_design">২ - আইডি কার্ড ডিজাইন দেখুন </a>
                     </li>
                    
                   </ul>
@@ -288,16 +288,16 @@
               <li class="nav-item">
                 <a href="#" class="nav-link">
                 <i class="mdi mdi-clipboard-text menu-icon"></i>
-                  <span class="menu-title">বাল্ক</span>
+                  <span class="menu-title">৬ - বাল্ক ডাটা ইম্পোর্ট</span>
                   <i class="menu-arrow"></i>
                 </a>
                 <div class="submenu">
                   <ul class="submenu-item">
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_org">বাল্ক ইম্পোর্ট</a>
+                      <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_org">১ - বাল্ক ডাটা ইম্পোর্ট</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_multipicture">ছবির  বাল্ক ইম্পোর্ট</a>
+                    <a class="nav-link" href="<?php echo base_url(); ?>admin/export/excel_import_multipicture">২ - ছবির বাল্ক ডাটা ইম্পোর্ট</a>
                     </li>
                    
                   </ul>

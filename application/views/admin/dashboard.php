@@ -217,67 +217,9 @@
           
          
             </div>
-   
-            <div class="col-xl-12 stretch-card grid-margin">
-                <div class="card">
-                  <div class="card-body pb-0">
-                    <h4 class="card-title">Last Data List</h4>
-                  </div>
-                  <div class="card-body p-0">
-                    <div class="table-responsive">
-                
 
-                      <table class="table custom-table text-dark ">
-                        <thead>
-                          <tr style=" background-color: #6f42c1;">
-                          <th>Picture</th>
-                            <th>Registration No</th>
-                            <th>Name</th>
-                            <th>Father's Name</th>
-                            <th>Mobile No</th>
-                            <th>Email</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                          if(isset($allCus)){
-                            foreach($allCus as $cus){
-                          
-                          ?>
-                          <tr>
-                          <td>
-                              <?php
-                              if($cus->photo != NULL){
-                              ?>
-                              <img src="<?php echo base_url()."public/static/images/users/{$cus->photo}"; ?>" class="mr-2" alt="image" /> 
-                           <?php
-                              }else{
-                           ?>
-                          <img src="<?php echo base_url()."public/static/images/users/0.png"; ?>" class="mr-2" alt="image" /> 
-                      
-                            <?php
-                              }
-                           ?>
-                              </td>       
-                              <td><?php echo $cus->registration_no; ?></td>  
-                              <td><?php echo $cus->name_en; ?></td>
-                              <td><?php echo $cus->father_name_en; ?></td>
-                              <td><?php echo $cus->mobile_no; ?></td>
-                            <td><?php echo $cus->email; ?></td>
-                          </tr>
-                          <?php
-                            }
-                          }
-                          ?>
-                   </tbody>
-                      </table>
-                    </div>
-               
-                  </div>
-                </div>
-              </div>
-         
-          </div>
-          <!-- content-wrapper ends -->
+
+            </div>
+
      
           
