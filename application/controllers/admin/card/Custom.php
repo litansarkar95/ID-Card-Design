@@ -96,7 +96,8 @@ class Custom extends CI_Controller {
                     $signature_name = $pdt->signature_name;
                     $signature_picture = $pdt->signature_picture;
                     $picture = $pdt->org_picture;
-
+                    $blood_group = $pdt->blood_group;
+                    $address = $pdt->present_address_en;
                     //input 
                     $qr_system = $this->input->post('qr_system');
                     if($qr_system == 'online'){
@@ -106,7 +107,7 @@ class Custom extends CI_Controller {
                   //   $url = 'https://www.example.com';
                     }else if($qr_system == 'offline'){
                     // Create the vCard data string
-                    $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nGender:$gender\nBlood Group:$blood_group\nEND:VCARD";
+                    $datap = "$name\nEmail: $email\nMobile No: $phone\nAddress: $address\nGender:$gender\nBlood Group:$blood_group\n";
                     }
                
     
@@ -131,7 +132,8 @@ class Custom extends CI_Controller {
                         'website' => $website,
                         'signature_name' => $signature_name,
                         'signature_picture' => $signature_picture,
-                        'picture' => $picture
+                        'picture' => $picture,
+                        'blood_group' => $blood_group,
                     ];
                 }
             } else {

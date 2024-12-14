@@ -356,7 +356,7 @@ select[type="text"]{
                 <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_class">
-                                <input type="checkbox" class="form-check-input" id="is_class" name="is_class" value="1"> Class  </label>
+                                <input type="checkbox" class="form-check-input" id="is_class" name="is_class" value="1"> Class   ( Dropdown)</label>
                             </div>
                     </div>
                     </div>
@@ -374,7 +374,7 @@ select[type="text"]{
                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_section">
-                                <input type="checkbox" class="form-check-input" id="is_section" name="is_section" value="1"> Section </label>
+                                <input type="checkbox" class="form-check-input" id="is_section" name="is_section" value="1"> Section ( Dropdown)</label>
                             </div>
                     </div>
                     </div>
@@ -383,7 +383,7 @@ select[type="text"]{
                      <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_sessions">
-                                <input type="checkbox" class="form-check-input" id="is_sessions" name="is_sessions" value="1"> Session </label>
+                                <input type="checkbox" class="form-check-input" id="is_sessions" name="is_sessions" value="1"> Session ( Dropdown)</label>
                             </div>
                     </div>
                     </div>
@@ -401,7 +401,7 @@ select[type="text"]{
                 <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_gender">
-                                <input type="checkbox" class="form-check-input" id="is_gender" name="is_gender" value="1"> Gender </label>
+                                <input type="checkbox" class="form-check-input" id="is_gender" name="is_gender" value="1"> Gender ( Dropdown)</label>
                             </div>
                        </div>
                        </div>
@@ -419,7 +419,7 @@ select[type="text"]{
                       <div class="form-group">
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_blood_group">
-                                <input type="checkbox" class="form-check-input" id="is_blood_group" name="is_blood_group" value="1">Blood Group</label>
+                                <input type="checkbox" class="form-check-input" id="is_blood_group" name="is_blood_group" value="1">Blood Group ( Dropdown)</label>
                             </div>
                        </div>   </div>
                     <!-- END FORM -->

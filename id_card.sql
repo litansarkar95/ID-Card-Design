@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2024 at 11:28 AM
+-- Generation Time: Dec 14, 2024 at 12:34 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -144,7 +144,8 @@ CREATE TABLE `card_design` (
 
 INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_front_side`, `is_back_side`, `is_both_side`, `picture`, `is_active`, `create_date`) VALUES
 (1, '001', '001', 'Design 1', 'Design 1', 1, 1, 1, '01.jpg', 1, 0),
-(2, '002', '002', 'Design 2', 'Design 2', 1, 1, 1, '02.jpg', 1, 0);
+(2, '002', '002', 'Design 2', 'Design 2', 1, 1, 1, 'design-002.jpg', 1, 0),
+(3, '003', '003', 'Design 3', 'Design 3', 1, 1, 1, 'design-003.jpg', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -193,8 +194,8 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-04 09:42:09', '2024-10-21 15:42:57', '2024-12-04 09:42:09'),
-(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-05 09:55:55', '2024-12-04 10:25:06', '2024-12-05 09:55:55'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-14 16:12:48', '2024-10-21 15:42:57', '2024-12-14 16:12:48'),
+(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-14 16:12:54', '2024-12-04 10:25:06', '2024-12-14 16:12:54'),
 (30, 10, '018291074689', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-04 12:09:56', '2024-12-04 12:09:56');
 
 -- --------------------------------------------------------
@@ -663,7 +664,7 @@ ALTER TABLE `auth_users_info`
 -- AUTO_INCREMENT for table `card_design`
 --
 ALTER TABLE `card_design`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `classes`

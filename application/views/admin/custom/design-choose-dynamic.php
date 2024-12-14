@@ -347,7 +347,7 @@
                       type="text"
                       value=": &nbsp; <?php echo  $pdt->class;?>"
                       style="width: 182px"
-                    />
+                    /> 
                   </div>
 
                   <?php
