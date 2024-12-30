@@ -1,440 +1,403 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fauna+One&family=Shadows+Into+Light+Two&display=swap"
+        rel="stylesheet">
 </head>
-
-<body style="margin: 0;">
-
-    <style>
-        body {
-            font-family: arial;
-            font-size: 11px
-        }
-
-        h2 {
-            font-family: arial;
-        }
-
-        h3 {
-            font-family: arial;
-            text-align: center;
-            font-size: 18px;
-            color: #990066;
-            margin: 10px
-        }
-
-        .fixd {
-            overflow: hidden
-        }
-
-        .page-size {
-            padding: 5px;
-            width: 1027px;
-            height: 700px;
-            margin-bottom: 9px
-        }
-
-        .card_size {
-            width: 822px;
-        }
-
-        .seat_plan tr {
-            border: 1px dashed
-        }
-
-        .seat_plan td {
-            border: 1px dashed
-        }
-
-        .seat_area {
-            position: relative;
-            border: 1px solid;
-            width: 5.25cm;
-            height: 8.28cm;
-            margin: 5px;
-        }
-
-        .seat_area h2 {
-            font-size: 15px;
-            font-weight: bold;
-            text-align: center;
-            margin: 0px;
-            padding: 0px
-        }
-
-        .seat_area p {
-            font-size: 12px;
-            text-align: center;
-            margin: 0
-        }
-
-        .clear {
-            clear: both;
-        }
-
-        .name_address_left {
-            width: 70%;
-            float: left;
-            font-size: 10px;
-            margin-left: 5%
-        }
-
-        ul {
-            list-style: outside none none;
-            margin: 0;
-            padding: 0;
-        }
-
-        /*li{margin:-1px 0px;}*/
-     
-
-      
-        .roll {
-            width: 25%;
-            float: left;
-            text-align: center;
-            font-size: 15px;
-            font-weight: bold;
-        }
-
-        .r {
-            border: 2px solid;
-            margin: 5px;
-        }
-
-        .r hr {
-            margin: 2px 0px;
-            border: 1px solid
-        }
-
-        .card_head,
-        .id_number {
-            float: left;
-            width: 15%;
-            height: 100px;
-        }
-
-        .rotate {
-            background: #E67E22;
-            color: #fff;
-            padding: 3px;
-            transform: rotate(-90deg);
-            margin-top: 39px;
-            width: 100px;
-            font-size: 12px;
-            text-align: center;
-            font-weight: bold
-        }
-
-        .rotate1 {
-            margin-left: -43px;
-        }
-
-        .rotate2 {
-            margin-left: -34px;
-        }
-
-        .pf {
-            float: left;
-            width: 70%
-        }
-
-      ul li{
-        padding:2px;
-      }
-
-      ul {
-    margin-left: 10px;
-    margin-top: 2rem;
-    padding-left: 0;  
-}
-
-li {
-    display: flex;
-  
-    
-}
-
-.a, .b {
-    display: inline-block; 
-
-}
-
-.a {
-    width: 100px;
-
-}
-
-.b {
-    flex-grow: 1; 
-}
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-
-        .chart img {
-            width: 100px
-        }
-
-        .head_sign img {
-            height: 40px
-        }
-
-        .seat_area h2 {
-            font-size: 15px;
-            font-weight: bold;
-            text-align: center;
-            margin: 0px;
-            padding: 0px;
-        }
-
-        h2 {
-            display: block;
-            font-size: 1.5em;
-            margin-block-start: 0.83em;
-            margin-block-end: 0.83em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-            font-weight: bold;
-            unicode-bidi: isolate;
-        }
-
-        @media print {
-        .container {
-            position: relative;
-            height: 200px; /* Set a height to allow positioning */
-            background: #f0f0f0;
-        }
-        .bottom-bar {
-            height: 12px;
-            background: #E67E22;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }  }
-    </style>
-
-    <button class="btn btn-primary" style="width:150px" id="print-button" onclick="printSelectedContent()"><span
-            class="fa fa-print"></span> Print</button>
-            <?php
-    if(isset($qr_images)){
-     foreach($qr_images  as $qr){
-    
-    ?>
-
-    <div id="id_card" style="">
-        <div class="page-size ">
-            <div class="card_size">
-                <table class="seat_plan">
-                    <tbody>
-                        <tr>
-                        <?php
-   if( $this->input->post('side_id') == 'front_side'){
-?>
-  <td>
-                                <div class="seat_area ">
-                                    <div style="text-align:center;">
-                                        <table style="width:100%;">
-                                            <tbody>
-                                                <tr style="border: none;">
-                                                    <td style="border:0px solid black !important;">
-                                                        <img style="height:50px; margin-top:5px;margin-left:5px;"
-                                                            src="/site_photos/logo/ins_short_logoaab3238922bcc25a6f606eb525ffdc56ins_logoc51ce410c124a10e0db5e4b97fc2af39IMG-20230404-WA00041.jpg"
-                                                            alt="">
-                                                    </td>
-                                                    <td colspan="2" style="border:0px solid black !important;">
-                                                        <h2 style="font-size:12px; color:#E67E22"><?php echo $qr['org_name']; ?></h2>
-                                                    </td>
-
-
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div style="margin-top:5px; height:100px; text-align:center;" class="">
-                                        <div class="card_head">
-                                            <div class="rotate rotate1">IDENTITY CARD</div>
-                                        </div>
-                                        <div class="pf">
-                                            <img style="height: 96px; width: 90px; border:1px solid gray; padding: 1px;"
-                                                src="<?php echo base_url()."public/static/images/users/".$qr['photo']; ?>">
-                                        </div>
-                                        <div class="id_number">
-                                            <div class="rotate rotate2"><?php echo $qr['id_number']; ?></div>
-                                        </div>
-                                    </div>
-                                    <div style="height: 113px; margin-top:10px" class="" >
-                                        <h3><?php echo $qr['name']; ?></h3>
-                                  
-                                        <ul style="margin-left: 10px; margin-top: 1rem;">
-                                        <li><span class="a">Class </span> <span class="b">: <?php echo $qr['class']; ?></span></li>
-                                    
-                                        <li><span class="a">Section </span><span class="b">: <?php echo $qr['sections']; ?></span></li>
-                                        <li><span class="a">Roll </span><span class="b">: <?php echo $qr['class_roll']; ?></span></li>
-                                        <li><span class="a">Blood </span><span class="b">: <?php echo $qr['blood_group']; ?></span></li>
-                                        <li><span class="a">Gender </span><span class="b">: <?php echo $qr['gender']; ?></span></li>
-                                        <li><span class="a">Cell </span><span class="b">: <?php echo $qr['phone']; ?></span></li>
-                                    </ul>
-
-                                    </div>
-                                    <div  class="bottom-bar" style="height: 12px; background: #E67E22;  position: absolute; bottom: 0; width: 100%;"></div>
-
-                                </div>
-                            
-                            </td>
-<?php
-   }  else if( $this->input->post('side_id') == 'back_side'){
-?>
-   <td>
-                                <div class="seat_area fixd">
-                                    <div
-                                        style="text-align:center; font-size:14px;  padding: 5px; color:#fff; background:#E67E22; ">
-                                        If found please return to</div>
-                                    <hr style="border:2px solid #000; margin:0px; margin-top:3px">
-                                    <div style="height:45px; text-align:center; padding:3px 3px 0px 3px">
-                                        <h2 style="font-size:14px; color:#000"><?php echo $qr['org_name']; ?></h2>
-                                    </div>
-                                    <div style="margin-top:0px; height:57px; text-align:center; z-index:999"
-                                        class="fixd">
-                                        <p><?php echo $qr['org_address']; ?></p>
-                                        <p><?php echo $qr['website']; ?></p>
-                                        <p><?php echo $qr['org_mobile_no']; ?> </p>
-                                    </div>
-                                    <div style="margin-top:0px; height:100px; text-align:center;" class="chart fixd">
-
-                                    <img src="<?php echo base_url($qr['qr_code_image']); ?>" alt="QR Code" class="qr-code">
-                                    </div>
-                                    <div style="margin-top:0px; height:62px; text-align:center" class="fixd head_sign">
-                                        <div style="width:10px; height:10px; text-align:center; margin:auto" class="signa">
-                                        <img src="<?php echo base_url()."public/static/images/organization/".$qr['signature_picture']; ?>" width="40px" height="50px" alt="signature" > 
-                                        </div>
-                                  
-                                        <div style="width:100px; text-align:center; margin:auto">
-                                            
-                                            <div style="height: 20px;">&nbsp;</div>
-                                            
-                                            <hr style="border:1px dashed #000; margin:0px; padding:0px 15px" ;="">
-                                            <?php echo $qr['signature_name']; ?> 
-                                        </div>
-                                    </div>
-                                    <div style="height:12px; background:#E67E22"></div>
-                                </div>
-                            </td>
-
-                        <?php
-   }  else if( $this->input->post('side_id') == 'both_side'){
-?>
-                            <td>
-                                <div class="seat_area ">
-                                    <div style="text-align:center;">
-                                        <table style="width:100%;">
-                                            <tbody>
-                                                <tr style="border: none;">
-                                                    <td style="border:0px solid black !important;">
-                                                        <img style="height:50px; margin-top:5px;margin-left:5px;"
-                                                            src="/site_photos/logo/ins_short_logoaab3238922bcc25a6f606eb525ffdc56ins_logoc51ce410c124a10e0db5e4b97fc2af39IMG-20230404-WA00041.jpg"
-                                                            alt="">
-                                                    </td>
-                                                    <td colspan="2" style="border:0px solid black !important;">
-                                                        <h2 style="font-size:12px; color:#E67E22"><?php echo $qr['org_name']; ?></h2>
-                                                    </td>
-
-
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div style="margin-top:5px; height:100px; text-align:center;" class="">
-                                        <div class="card_head">
-                                            <div class="rotate rotate1">IDENTITY CARD</div>
-                                        </div>
-                                        <div class="pf">
-                                            <img style="height: 96px; width: 90px; border:1px solid gray; padding: 1px;"
-                                                src="<?php echo base_url()."public/static/images/users/".$qr['photo']; ?>">
-                                        </div>
-                                        <div class="id_number">
-                                            <div class="rotate rotate2"><?php echo $qr['id_number']; ?></div>
-                                        </div>
-                                    </div>
-                                    <div style="height: 113px; margin-top:10px" class="" >
-                                        <h3><?php echo $qr['name']; ?></h3>
-                                  
-                                        <ul style="margin-left: 10px; margin-top: 1rem;">
-                                        <li><span class="a">Class </span> <span class="b">: <?php echo $qr['class']; ?></span></li>
-                                    
-                                        <li><span class="a">Section </span><span class="b">: <?php echo $qr['sections']; ?></span></li>
-                                        <li><span class="a">Roll </span><span class="b">: <?php echo $qr['class_roll']; ?></span></li>
-                                        <li><span class="a">Blood </span><span class="b">: <?php echo $qr['blood_group']; ?></span></li>
-                                        <li><span class="a">Gender </span><span class="b">: <?php echo $qr['gender']; ?></span></li>
-                                        <li><span class="a">Cell </span><span class="b">: <?php echo $qr['phone']; ?></span></li>
-                                    </ul>
-
-                                    </div>
-                                    <div  class="bottom-bar" style="height: 12px; background: #E67E22;  position: absolute; bottom: 0; width: 100%;"></div>
-
-                                </div>
-                            
-                            </td>
-                            <td>
-                                <div class="seat_area fixd">
-                                    <div
-                                        style="text-align:center; font-size:14px;  padding: 5px; color:#fff; background:#E67E22; ">
-                                        If found please return to</div>
-                                    <hr style="border:2px solid #000; margin:0px; margin-top:3px">
-                                    <div style="height:45px; text-align:center; padding:3px 3px 0px 3px">
-                                        <h2 style="font-size:14px; color:#000"><?php echo $qr['org_name']; ?></h2>
-                                    </div>
-                                    <div style="margin-top:0px; height:57px; text-align:center; z-index:999"
-                                        class="fixd">
-                                        <p><?php echo $qr['org_address']; ?></p>
-                                        <p><?php echo $qr['website']; ?></p>
-                                        <p><?php echo $qr['org_mobile_no']; ?> </p>
-                                    </div>
-                                    <div style="margin-top:0px; height:100px; text-align:center;" class="chart fixd">
-
-                                    <img src="<?php echo base_url($qr['qr_code_image']); ?>" alt="QR Code" class="qr-code">
-                                    </div>
-                                    <div style="margin-top:0px; height:62px; text-align:center" class="fixd head_sign">
-                                        <div style="width:10px; height:10px; text-align:center; margin:auto" class="signa">
-                                        <img src="<?php echo base_url()."public/static/images/organization/".$qr['signature_picture']; ?>" width="40px" height="50px" alt="signature" > 
-                                        </div>
-                                  
-                                        <div style="width:100px; text-align:center; margin:auto">
-                                            
-                                            <div style="height: 20px;">&nbsp;</div>
-                                            
-                                            <hr style="border:1px dashed #000; margin:0px; padding:0px 15px" ;="">
-                                            <?php echo $qr['signature_name']; ?> 
-                                        </div>
-                                    </div>
-                                    <div style="height:12px; background:#E67E22"></div>
-                                </div>
-                            </td>
-
-                            <?php
-   }
-                            ?>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div style="clear: both;  display:block;  page-break-before:always; " class="clear"></div>
-    </div>
-    <?php
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        
     }
 
-}
-?>
+    body {
+        background: black;
+       
+    }
 
+    .container {
+      
+        overflow: hidden;
+        display: flex;
+      flex-wrap: wrap;  /* Allow wrapping of items */
+      gap: 10px;
+      width:800px;
+      margin:0 auto;
+    }
+    .item {
+   
+    }
+    .font-side {
+        background: white;
+        width: 350px;
+        height: 500px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        margin:2rem;
+      
+    }
+
+    .font-side::after {
+        content: '';
+      
+        display: block;
+        background-color: #fff;
+    
+        border-radius: 0 5px 5px 0;
+    }
+
+    .bg {
+        position: relative;
+        left: -100px;
+
+    }
+
+    .circle1 {
+        width: 550px;
+        height: 550px;
+        background-color: #EC3951;
+
+    }
+
+    .circle2 {
+        width: 550px;
+        height: 550px;
+        background-color: #241F21;
+        border-radius: 50%;
+        position: absolute;
+        top: -380px;
+
+    }
+
+    .circle3 {
+        width: 550px;
+        height: 550px;
+        background-color: white;
+        border-radius: 50%;
+        position: relative;
+        top: -350px;
+
+    }
+
+    .info {
+        position: absolute;
+        top: 30px;
+        width: 100%;
+    }
+
+    .info_pic img {
+        border: 2px solid #EC3951;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+
+    }
+
+    .details {
+        padding: 0.4rem 1.5rem 0;
+    }
+
+    .details h2 {
+        text-align: center;
+        color: #EC3951;
+        font-weight: bold;
+        font-family: "Fauna One", serif;
+        text-transform: uppercase;
+        letter-spacing: .2rem;
+    }
+
+    .details p {
+        text-align: center;
+        font-family: "Fauna One", serif;
+        font-style: italic;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .info h1 {
+        text-align: center;
+        font-family: "Shadows Into Light Two", serif;
+        color: white;
+        font-size: 26px;
+        height: 90px;
+
+    }
+
+    .details-info {
+        margin: 1rem;
+        text-align: center;
+        align-items: center;
+
+    }
+
+    .details-info h3 {
+        text-align: justify;
+        font-family: "Fauna One", serif;
+        font-size: 16px;
+    }
+
+    .details-info label {
+        color: darkslategray;
+
+
+    }
+
+
+
+    .details-info strong {
+        padding-left: .3rem;
+        margin: 1rem;
+    }
+
+    .barcode {
+        text-align: center;
+
+    }
+
+    .barcode img {
+        width: 200px;
+        height: 70px;
+        text-align: center;
+    }
+
+    .bg-info {
+        background-color: #EC3951;
+        padding: 10px;
+        color: white;
+        text-align: center;
+        font-family: "Fauna One", serif;
+        letter-spacing: 3px;
+
+        display: block;
+        height: 16px;
+        /**  margin: 0 auto;
+        width: 100%;
+        position: fixed;
+        bottom: -11px;
+        **/
+
+    }
+
+    /**  Back Side **/
+
+    /* .back-side is the main container */
+    .back-side {
+        background: #241F21;
+        width: 350px;
+        height: 500px;
+        margin-top: 2rem;
+        overflow: hidden;
+        border-radius: 10px;
+     
+        position: relative;
+        font-family: "Fauna One", serif;
+    }
+
+    .back-details-info {
+        padding: 20px;
+    }
+
+    .back-details-info,
+    .back-details-address {
+        z-index: 1;
+        position: relative;
+
+
+    }
+
+    .back-side h4 {
+        margin: 0px 20px;
+
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+
+
+    .back-side strong {
+        font-weight: 600;
+    }
+
+    .circle5 {
+        width: 550px;
+
+        height: 550px;
+
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -295px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+
+    .back_bg {
+        position: relative;
+        z-index: 0;
+
+    }
+
+    .back-details-address-return {
+        background-color: #EAEAEA;
+
+
+    }
+
+    .back-details-address-return h3 {
+        margin: .5rem;
+        text-align: center;
+        font-family: "Shadows Into Light Two", serif;
+    }
+
+    .back-details-address-return p {
+        margin: .5rem;
+        text-align: center;
+        font-weight: 100;
+
+    }
+
+    .back-details-address-return h4 {
+        text-align: center;
+
+    }
+
+    .return {
+        margin: 0px 20px;
+        padding: 10px;
+        list-style: 10px;
+        line-height: 20px;
+        font-family: "Shadows Into Light Two", serif;
+
+    }
+
+    .qr-code-img {
+        text-align: center;
+        align-items: center;
+    }
+
+    .qr-code-img img {
+        width: 100px;
+        height: 100px;
+        margin-top: .5rem;
+        text-align: center;
+    }
+
+
+    @media print {
+        .container {
+           
+        }
+       }
+</style>
+
+<body>
+<button class="btn btn-primary" style="width:150px" id="print-button" onclick="printSelectedContent()"><span
+class="fa fa-print"></span> Print</button>
+    <div class="container">
+        
+    <?php
+        if(isset($allPdt)){
+            foreach($allPdt as $pdt){
+        
+        ?>
+        <div class="font-side item">
+
+
+            <div class="bg">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+            </div>
+            <div class="info">
+                <h1>Web Code Pro Ltd </h1>
+                <div class="info_pic">
+                    <img src="b36bda80eacedd48bf3d460d0298c25d.JPG">
+                </div>
+
+
+                <div class="details">
+                    <h2>Riya Sharma</h2>
+                    <p>Web Designder</p>
+                    <div class="details-info">
+                        <h3><label>ID No </label><strong>: &nbsp; 15442</strong></h3>
+                        <h3><label>Blood </label><strong>: &nbsp;&nbsp;A+</strong></h3>
+                        <h3><label>Phone</label><strong>: &nbsp;01829107469</strong></h3>
+
+                    </div>
+
+
+                </div>
+
+                <div class="bg-info">
+                    <h4>www.labibait.com</h4>
+                </div>
+                <div class="barcode">
+                    <img src="barcode-illustration-isolated_23-2150584086.avif">
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <!-- Start Backside-->
+
+        <div class="back-side item">
+            <div class="back-details-info">
+                <h4><Strong>Phone</Strong>: 0128726262</h4>
+                <h4><Strong>Blood Group</Strong>: AB+</h4>
+                <h4><Strong>Emergency</Strong>: 0128726262</h4>
+                <h4><Strong>Address</Strong>: 12/A Dhaja Tangail, Bangaldesh</h4>
+            </div>
+
+
+            <div class="back_bg">
+                <div class="circle5"></div>
+            </div>
+
+            <div class="back-details-address">
+                <div class="back-details-address-return">
+                    <p class="return">If Found please Return The Card or Contact</p>
+
+                    <h3>M Hasan High School</h3>
+                    <p>Ploat ussh hdsgsgsd sadjksdghdsg asdhsddsdgsa sasdagdags</p>
+                    <h4><Strong>Phone</Strong>: 0128726262</h4>
+                    <h4><Strong>Blood Group</Strong>: AB+</h4>
+                </div>
+                <div class="qr-code-img">
+                    <img src="md_litan_sarkar_vcard.png">
+                </div>
+            </div>
+
+
+
+
+        </div>
+        <?php
+            }
+        }
+        ?>
+
+
+        <!-- End Backside-->
+    </div>
 </body>
 
 </html>
+
 <script>
     // Function to print the selected content
     function printSelectedContent() {

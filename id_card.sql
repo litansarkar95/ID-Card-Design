@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2024 at 12:09 PM
+-- Generation Time: Dec 30, 2024 at 11:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -146,7 +146,8 @@ INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_fron
 (1, '001', '001', 'Design 1', 'Design 1', 1, 1, 1, '01.jpg', 1, 0),
 (2, '002', '002', 'Design 2', 'Design 2', 1, 1, 1, 'design-002.jpg', 1, 0),
 (3, '003', '003', 'Design 3', 'Design 3', 1, 1, 1, 'design-003.jpg', 1, 0),
-(4, '004', '004', 'Design 4', 'Design 4', 1, 1, 1, 'design-004.jpg', 1, 0);
+(4, '004', '004', 'Design 4', 'Design 4', 1, 1, 1, 'design-004.jpg', 1, 0),
+(5, '005', '005', 'Design 5', 'Design 5', 1, 1, 1, 'design-005.jpg', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -195,8 +196,8 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-29 16:30:20', '2024-10-21 15:42:57', '2024-12-29 16:30:20'),
-(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-29 16:30:27', '2024-12-04 10:25:06', '2024-12-29 16:30:27'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2024-12-30 14:42:45', '2024-10-21 15:42:57', '2024-12-30 14:42:45'),
+(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2024-12-30 14:42:50', '2024-12-04 10:25:06', '2024-12-30 14:42:50'),
 (30, 10, '018291074689', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-04 12:09:56', '2024-12-04 12:09:56');
 
 -- --------------------------------------------------------
@@ -555,7 +556,8 @@ CREATE TABLE `users_fields` (
 INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code_random`, `registration_no`, `agent_id`, `organization_id`, `org_fields_id`, `name_en`, `name_bn`, `father_name_en`, `father_name_bn`, `mother_name_en`, `mother_name_bn`, `mobile_no`, `email`, `village_en`, `village_bn`, `post_office_en`, `post_office_bn`, `upazila_en`, `upazila_bn`, `zilla_en`, `zilla_bn`, `designation`, `department`, `employee_id`, `index_no`, `class`, `class_roll`, `sessions`, `sections`, `date_of_birth`, `gender`, `id_number`, `blood_group`, `marital_status`, `nationality`, `present_address_en`, `present_address_bn`, `permanent_address_en`, `permanent_address_bn`, `photo`, `signature`, `is_excel`, `file_name`, `is_active`, `create_user`, `create_date`) VALUES
 (150, '127.0.0.1', '2024', 12, 1, '241235001', 35, 10, 24, 'Md Litan Sarkar', '', '', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '12', '5', 7, '0000-00-00', 'Male', '', 'B+', '', '', '', '', '', '', 'b537610f5fe316b5542c3986efaa0981.JPG', '', 0, '', 1, 0, 0),
 (151, '::1', '2024', 12, 2, '241235002', 35, 10, 24, 'Nill Hasan', '', '', '', '', '', '0182726262', 'nilahasan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '6', '', 8, '0000-00-00', 'Female', '', 'AB+', '', '', '', '', '', '', '2a7dbcc26bc65e6e9b59e317d4abebc4.png', '', 0, '', 1, 0, 0),
-(152, '::1', '2024', 12, 3, '241235003', 35, 10, 24, 'Sonali Akter', '', '', '', '', '', '01827262', '22@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '2', '5', 8, '2019-12-12', 'Male', '', 'A-', '', '', '', '', '', '', 'bbb0310d0ea7acaff960326c27c8ca66.png', '', 0, '', 1, 0, 0);
+(152, '::1', '2024', 12, 3, '241235003', 35, 10, 24, 'Sonali Akter', '', '', '', '', '', '01827262', '22@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '2', '5', 8, '2019-12-12', 'Male', '', 'A-', '', '', '', '', '', '', 'bbb0310d0ea7acaff960326c27c8ca66.png', '', 0, '', 1, 0, 0),
+(153, '::1', '2024', 12, 4, '241235004', 35, 10, 24, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 0, '', 1, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -665,7 +667,7 @@ ALTER TABLE `auth_users_info`
 -- AUTO_INCREMENT for table `card_design`
 --
 ALTER TABLE `card_design`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `classes`
@@ -731,7 +733,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_fields`
 --
 ALTER TABLE `users_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -78,7 +78,8 @@ class Custom extends CI_Controller {
      
         }
         else if ($template_id == 5){
-            $this->carddesign_five($id);
+         
+            $this->carddesignfive($id);
         }
  
        
@@ -426,5 +427,92 @@ class Custom extends CI_Controller {
         $this->load->view('admin/card/card-design-004', $data);
     }
 
+
+    ###########################################################
+    ########################### Five 
+    ###########################################
+    public function carddesignfive($id){
+       
+        $data['allPdt'] = $this->main_model->PrintUserData($id);
+      //echo "<pre>";   print_r($data['allPdt']);exit();
+        $template_id = $this->input->post('template_id');
+    
+
+            $allPdt = $this->main_model->PrintUserData($id);
+        
+            // Initialize an empty array to store user QR codes
+            $qr_images = [];
+    
+            if ($allPdt) {
+                // Loop through the user data (if multiple users)
+                foreach ($allPdt as $pdt) {
+                    // Extract user data
+                    $name = $pdt->name_en;
+                    $email = $pdt->email;
+                    $phone = $pdt->mobile_no; // Make sure to use the correct field for phone number
+                    $photo = $pdt->photo;
+                    $registration_no = $pdt->registration_no;
+                    $gender  = $pdt->gender;
+                    $class = $pdt->class;
+                    $sections = $pdt->sections;
+                    $class_roll = $pdt->class_roll;
+                    $org_name = $pdt->org_name;
+                    $org_address  = $pdt->org_address;
+                    $website = $pdt->website;
+                    $org_mobile_no = $pdt->org_mobile_no;
+                    $signature_name = $pdt->signature_name;
+                    $signature_picture = $pdt->signature_picture;
+                    $picture = $pdt->org_picture;
+                    $address = $pdt->present_address_en;
+
+                    //input 
+                    $qr_system = $this->input->post('qr_system');
+                    if($qr_system == 'online'){
+                        // Create the vCard data string
+                      //  $datap = 
+                      $datap = base_url() . "verification/".ReplaceR($name)."?v=".$registration_no;
+                  //   $url = 'https://www.example.com';
+                    }else if($qr_system == 'offline'){
+                    // Create the vCard data string
+                           
+                    $datap = "$name\nEmail: $email\nMobile No: $phone\nAddress: $address\nGender:$gender\nBlood Group:$blood_group\n";
+                   // $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nGender:$gender\nBlood Group:$blood_group\nEND:VCARD";
+                    }
+               
+    
+                    // Generate and save the QR code as an image in the 'qrcodes' folder
+                    $qr_code_filename = 'qrcodes/' . strtolower(str_replace(' ', '_', $name)) . '_vcard.png';
+                    $this->qr_code->generate($datap, $qr_code_filename);
+    
+                    // Add the generated QR code path to the array
+                    $qr_images[] = [
+                        'qr_code_image' => $qr_code_filename,
+                        'name' => $name,
+                        'email' => $email,
+                        'phone' => $phone,
+                        'photo' => $photo,
+                        'gender' => $gender,
+                        'class'  => $class,
+                        'sections' => $sections,
+                        'class_roll' => $class_roll,
+                        'org_name' =>$org_name,
+                        'org_mobile_no' => $org_mobile_no,
+                        'org_address' => $org_address,
+                        'website' => $website,
+                        'signature_name' => $signature_name,
+                        'signature_picture' => $signature_picture,
+                        'picture' => $picture
+                    ];
+                }
+            } else {
+                // If no user data found, set the QR image to null or handle error
+                $qr_images = null;
+            }
+    
+            // Pass the data (including the QR code image) to the view
+            $data['qr_images'] = $qr_images;
+     
+        $this->load->view('admin/card/card-design-005', $data);
+    }
 
 }

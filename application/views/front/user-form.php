@@ -1,96 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  
-    <title>Users</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" ></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> 
-    
+  <meta charset="UTF-8">
+  <title>GDPR-Compliant Contact Form</title>
+  <link rel="stylesheet" href="./style.css">
 
 </head>
-<script>
-$(document).ready(function() {
-    // Initialize the datepicker with year selection
-    $("#dob, #date_of_joining, #date_of_leaving").datepicker({
-        dateFormat: 'yy-mm-dd',
-        changeYear: true,      // Enable year selection
-        yearRange: "1900:2100" // Set the range of years available
-    });
-
-    // Set a default date (e.g., today's date)
-    var today = $.datepicker.formatDate('yy-mm-dd', new Date());
-    $("#dob, #date_of_joining, #date_of_leaving").val(today);
-});
-
-
-    </script>
 <style>
-body {
-    background-color: #1c87c9; 
-}
+    :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --gray: #6b7280;
+            --error: #ef4444;
+            --success: #22c55e;
+        }
 
-.form-content {
-    padding: 25px;
-            margin: 25px;
-            box-shadow: 0 2px 5px #f5f5f5; 
-            background: #f5f5f5; 
-            border-radius: 8px;
-}
-h2 {
-      
-            font-weight: 400;
-            color: #1c87c9;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            line-height: 1.5;
+            padding: 2rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            
+            color: #111827;
             text-align:center;
         }
+    
 p{
-    text-align:center;
+text-align:center;
 }
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
 
-.form-control {
-    border: 1px solid #007bff; 
-    transition: border-color 0.3s ease; 
-}
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
 
-.form-control:focus {
-    border-color: #0056b3;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
-}
+        input, textarea , select{
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.15s ease;
+        }
 
-.btn-primary {
-    background-color: #007bff; 
-    border: none; 
-}
+        input:focus, textarea:focus , select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
 
-.btn-primary:hover {
-    background-color: #0056b3; 
-}
+        .error-message {
+            color: var(--error);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
 
+        .validation-icon {
+            position: absolute;
+            right: 1rem;
+            top: 2.5rem;
+            display: none;
+        }
+
+        .validation-icon.success {
+            color: var(--success);
+            display: block;
+        }
+
+        .validation-icon.error {
+            color: var(--error);
+            display: block;
+        }
+
+        input.success, textarea.success {
+            border-color: var(--success);
+        }
+
+        input.error, textarea.error {
+            border-color: var(--error);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 0.25rem;
+        }
+
+        .checkbox-group label {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        button:hover {
+            background: var(--primary-dark);
+        }
+
+        .privacy-notice {
+            font-size: 0.875rem;
+            color: var(--gray);
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .success-message {
+            display: none;
+            background: #dcfce7;
+            color: #166534;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
     </style>
 <body>
-    <div class="container mt-5">
-    <?php
+
+<body>
+    <div class="form-container">
+        <div class="success-message" id="successMessage">
+            Thank you! Your form has been submitted successfully.
+        </div>
+        <?php
         if(isset($allPdt)){
             foreach($allPdt as $pdt){
         
         ?>
-        <div class="row">
-        <div class="col-md-8 offset-md-2">
-        <div class="form-content">
-         
-        <h2><?php echo $pdt->title; ?></h2>
+            
+            <h1><?php echo $pdt->title; ?></h1>
         <p><?php echo $pdt->description; ?></p>
-        <form action="<?php echo base_url()."userformsubmit/$pdt->org_slug?v=$pdt->id" ?>" method="post" enctype="multipart/form-data">
-     
-            <div class="row">
-
-            <input  class="form-control" type="hidden" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
+        <form id="gdprForm"  action="<?php echo base_url()."userformsubmit/$pdt->org_slug?v=$pdt->id" ?>" method="post" enctype="multipart/form-data">
+            
+        <input  class="form-control" type="hidden" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
             <input  class="form-control" type="hidden" id="agent_id" name="agent_id" value="<?php echo $pdt->agent_id; ?>"  >
             <input  class="form-control" type="hidden" id="id" name="id" value="<?php echo $pdt->id; ?>"  >
-               <!-- FORM -->
+       
+       
+
+
             <?php
             if($pdt->is_name_en  == 1){
             ?>
@@ -664,54 +753,32 @@ p{
                 <?php
             }
             ?>
-            <!-- END FORM -->
-            <div class="col-md-10">
-            <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="terms" required>
-                    <label class="form-check-label" for="terms">
-                        I agree to the <a href="#termsModal" data-toggle="modal" data-target="#termsModal">terms and conditions</a>.
-                    </label>
-                </div>
-          
-            </div>
-            
-            </div>
-            <div class="col-md-10">
-            <button type="submit" class="btn btn-primary">Submit</button>
 
+         
+
+           
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">
+                I agree to the terms and conditions
+                </label>
+            </div>
+
+            <button type="submit">Submit </button>
+
+            <div class="privacy-notice">
+            <p>Design & Develop by: <span><a href="https://www.labibait.com" target="_blank">» Labiba IT</a></span></p>
             </div>
         </form>
-    </div>
-    </div>
 
-</div>
-
-    <?php
+        <?php
             }
         }
         ?>
     </div>
- <!-- Modal for Terms and Conditions -->
- <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Your terms and conditions go here. Make sure to include all necessary information that users should be aware of.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
 </body>
 </html>
