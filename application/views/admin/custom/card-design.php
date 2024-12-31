@@ -199,6 +199,12 @@ select[type="text"]{
                               </div>
                          </div>  
                          </div>
+
+                         <div class="form-group col-md-6">
+                                 <label for="staff_or_student">Student / Staff</label>
+                                 <input type="text" id="staff_or_student" class="form-control " name="staff_or_student"  value="Student" >
+                                 <span class="text-red small"><?php echo form_error('staff_or_student'); ?></span>
+                              </div>
                       <!-- END FORM -->
                       <div class="col-md-6">
   

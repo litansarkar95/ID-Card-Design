@@ -89,7 +89,7 @@
     margin: 5px;
     overflow: hidden;
     position: relative;
-        box-shadow: 0 0 1.5px 0px #b9b9b9;
+        box-shadow: 0 0 1.5px 0px #b9b9b9;    border-radius: 10px;
     }
     .bg {
         position: relative;
@@ -225,6 +225,114 @@
         **/
         bottom: 0;
     }
+
+
+     /* .back-side is the main container */
+     .back-side {
+        border: 2px solid #000;
+    /* width: 5.25cm;
+    height: 8.28cm; */
+    width: 300px;
+    height: 400px;
+    margin: 5px;
+    overflow: hidden;
+    position: relative;
+        box-shadow: 0 0 1.5px 0px #b9b9b9; 
+           border-radius: 10px;
+
+
+      
+    }
+
+    .back-details-info {
+        padding: 20px;
+    }
+
+    .back-details-info,
+    .back-details-address {
+        z-index: 1;
+        position: relative;
+
+
+    }
+
+    .back-side h4 {
+        margin: 0px 20px;
+
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+
+
+    .back-side strong {
+        font-weight: 600;
+    }
+
+    .circle5 {
+        width: 550px;
+
+        height: 550px;
+
+        background-color: #fff;
+        border-radius: 50%;
+        position: absolute;
+        bottom: -295px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+    }
+
+    .back_bg {
+        position: relative;
+        z-index: 0;
+
+    }
+
+    .back-details-address-return {
+        background-color: #EAEAEA;
+
+
+    }
+
+    .back-details-address-return h3 {
+        margin: .5rem;
+        text-align: center;
+        font-family: "Shadows Into Light Two", serif;
+    }
+
+    .back-details-address-return p {
+        margin: .5rem;
+        text-align: center;
+        font-weight: 100;
+
+    }
+
+    .back-details-address-return h4 {
+        text-align: center;
+
+    }
+
+    .return {
+        margin: 0px 10px;
+        padding: 10px;
+        list-style: 10px;
+        line-height: 10px;
+        font-family: "Shadows Into Light Two", serif;
+
+    }
+
+    .qr-code-img {
+        text-align: center;
+        align-items: center;
+    }
+
+    .qr-code-img img {
+        width: 80px;
+        height: 80px;
+        margin-top: .5rem;
+        text-align: center;
+    }
     </style>
 <body>
 
@@ -251,6 +359,11 @@
                     </div>
 <!--- End Print Button---> 
 <div class="print-section invoice-content-wrap" id="download_section">
+
+<?php
+
+for($i=1; $i<=200;$i++){
+?>
 <div class="font-side card-design-break">
 
 <div class="bg">
@@ -287,6 +400,47 @@
             </div>
 </div><!-- .front-side -->
 
+
+ <!-- start Backside-->
+
+<div class="back-side card-design-break">
+            <div class="back-details-info">
+                <h4><Strong>Phone</Strong>: 0128726262</h4>
+                <h4><Strong>Blood Group</Strong>: AB+</h4>
+                <h4><Strong>Emergency</Strong>: 0128726262</h4>
+                <h4><Strong>Address</Strong>: 12/A Dhaja Tangail, Bangaldesh</h4>
+            </div>
+
+
+            <div class="back_bg">
+                <div class="circle5"></div>
+            </div>
+
+            <div class="back-details-address">
+                <div class="back-details-address-return">
+                    <p class="return">If Found please Return The Card or Contact</p>
+
+                    <h3>M Hasan High School</h3>
+                    <p>Ploat ussh hdsgsgsd sadjksdghdsg asdhsddsdgsa sasdagdags</p>
+                    <h4><Strong>Phone</Strong>: 0128726262</h4>
+                    <h4><Strong>Blood Group</Strong>: AB+</h4>
+                </div>
+                <div class="qr-code-img">
+                    <img src="md_litan_sarkar_vcard.png">
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+        <!-- End Backside-->
+<?php
+}
+?>
 </div>
     
 </body>

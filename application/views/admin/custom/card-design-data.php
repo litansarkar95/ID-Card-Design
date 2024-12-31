@@ -331,6 +331,25 @@
   }
 ?>
 
+<!---Nationality-->
+<?php
+  if($pdt->id_number == 1){
+  ?>
+<div class="col-md-6">
+  
+<div class="form-group ">
+<input type="checkbox" class="form-check-input" id="id_number" name="id_number" value="1"> ID NO
+</div>
+</div>
+<?php
+  }
+?>
+<!-- <div class="col-md-6">
+  
+  <div class="form-group ">
+  <input type="checkbox" class="form-check-input" id="is_id_no" name="is_id_no" value="1"> ID No
+  </div>
+  </div> -->
 <!---End  Nationality-->
 
 

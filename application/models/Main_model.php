@@ -82,6 +82,20 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }  
+
+    
+    public function CardDesignList($id=NULL) {
+       
+
+        if($id){
+            $this->db->where("card_design.id",$id); 
+        }
+		$this->db->select("card_design.*");
+        $this->db->from("card_design");
+        $this->db->where('card_design.is_active', 1);
+        $this->db->order_by("id", "ASC");
+        return $this->db->get()->result();
+    } 
     public function AgentOrgList($id=NULL) {
         $agent_id  = $this->session->userdata('loggedin_userid');
         if($id){
