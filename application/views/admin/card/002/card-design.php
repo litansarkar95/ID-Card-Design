@@ -337,8 +337,9 @@ li {
                                                             src="/site_photos/logo/ins_short_logoaab3238922bcc25a6f606eb525ffdc56ins_logoc51ce410c124a10e0db5e4b97fc2af39IMG-20230404-WA00041.jpg"
                                                             alt="">
                                                     </td>
-                                                    <td colspan="2" style="border:0px solid black !important;">
-                                                        <h2 style="font-size:12px; color:#E67E22"><?php echo $qr['org_name']; ?></h2>
+                                            
+                                                    <td  style="border:0px solid black;text-align:center;;">
+                                                        <h2 style="font-size:12px;text-align:center; color:#E67E22"><?php echo $qr['org_name']; ?></h2>
                                                     </td>
 
 

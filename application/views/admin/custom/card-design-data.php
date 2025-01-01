@@ -344,6 +344,20 @@
 <?php
   }
 ?>
+
+<!---Blood-->
+<?php
+  if($pdt->is_blood_group == 1){
+  ?>
+<div class="col-md-6">
+  
+<div class="form-group ">
+<input type="checkbox" class="form-check-input" id="is_blood_group" name="is_blood_group" value="1"> Blood Group
+</div>
+</div>
+<?php
+  }
+?>
 <!-- <div class="col-md-6">
   
   <div class="form-group ">

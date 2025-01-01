@@ -152,6 +152,7 @@
         font-family: "Fauna One", serif;
         text-transform: uppercase;
         letter-spacing: .2rem;
+        font-size:16px;
     }
 
     .details p {
@@ -168,7 +169,7 @@
         color: white;
         font-size: 18px;
         height: 70px;
-
+        letter-spacing: .2rem;
     }
 
     .details-info {
@@ -362,7 +363,8 @@
 
 <?php
 
-for($i=1; $i<=200;$i++){
+if(isset($qr_images)){
+    foreach($qr_images  as $qr){
 ?>
 <div class="font-side card-design-break">
 
@@ -373,19 +375,74 @@ for($i=1; $i<=200;$i++){
     
 </div>
 <div class="info">
-                <h1>PRINCIPAL ABUL KALAM MAZUMDER MOHILA COLLEGE</h1>
+                <h1><?php echo $qr['org_name']; ?></h1>
                 <div class="info_pic">
-                    <img src="https://idcard.jbim2013.com/public/static/images/users/57507883554443e6b44ce63b5b8efcac.png">
+                    <img src="<?php echo base_url()."public/static/images/users/".$qr['photo']; ?>">
                 </div>
 
 
                 <div class="details">
-                    <h2>Riya Sharma</h2>
-                    <p>Web Designder</p>
+                    <h2><?php echo $qr['name']; ?></h2>
+                    <?php
+               if( $this->input->post('staff_or_student') != ''){
+               ?>
+                    <p><?php   echo $this->input->post('staff_or_student');     ?></p>
+                    <?php
+          }
+               ?>
+                          
                     <div class="details-info">
-                        <h3><label>ID No </label><strong>: &nbsp; 15442</strong></h3>
-                        <h3><label>Blood </label><strong>: &nbsp;&nbsp;A+</strong></h3>
-                        <h3><label>Phone</label><strong>: &nbsp;01829107469</strong></h3>
+                    <?php
+                 if($this->input->post('is_father_name_en') == 1){
+                     ?>
+                        <h3><label>Father Name  </label><strong>: &nbsp;&nbsp;<?php echo $qr['is_father_name_en']; ?></strong></h3>
+
+                        <?php
+        }
+        ?>
+                    <?php
+                 if($this->input->post('id_number') == 1){
+                     ?>
+                        <h3><label>ID No </label><strong>: &nbsp; <?php echo $qr['id_number']; ?></strong></h3>
+                        <?php
+                            }
+                            ?>
+                                 <?php
+                 if($this->input->post('is_class') == 1){
+                     ?>
+                        <h3><label>Class  </label><strong>: &nbsp;&nbsp;<?php echo $qr['class']; ?></strong></h3>
+
+                        <?php
+        }
+        ?>
+
+<?php
+                 if($this->input->post('is_class_roll') == 1){
+                     ?>
+                        <h3><label>Class Roll  </label><strong>: &nbsp;&nbsp;<?php echo $qr['class_roll']; ?></strong></h3>
+
+                        <?php
+        }
+        ?>
+
+<?php
+                 if($this->input->post('is_email') == 1){
+                     ?>
+                        <h3><label>Email  </label><strong>: &nbsp;&nbsp;<?php echo $qr['email']; ?></strong></h3>
+
+                        <?php
+        }
+        ?>
+              
+                        <?php
+                 if($this->input->post('mobile_no') == 1){
+                     ?>
+         <h3><label>Mobile No</label><strong>: &nbsp;<?php echo $qr['phone']; ?></strong></h3>
+       
+        <?php
+        }
+        ?>
+                       
 
                     </div>
 
@@ -405,10 +462,16 @@ for($i=1; $i<=200;$i++){
 
 <div class="back-side card-design-break">
             <div class="back-details-info">
-                <h4><Strong>Phone</Strong>: 0128726262</h4>
-                <h4><Strong>Blood Group</Strong>: AB+</h4>
-                <h4><Strong>Emergency</Strong>: 0128726262</h4>
-                <h4><Strong>Address</Strong>: 12/A Dhaja Tangail, Bangaldesh</h4>
+                <h4><Strong>Email</Strong>: <?php echo $qr['email']; ?></h4>
+                <?php
+                 if($this->input->post('is_blood_group') == 1){
+                     ?>
+                <h4><Strong>Blood Group</Strong>: <?php echo $qr['blood_group']; ?></h4>
+                <?php
+        }
+        ?>
+                <h4><Strong>Emergency</Strong>: <?php echo $qr['phone']; ?></h4>
+                <h4><Strong>Address</Strong>: <?php echo $qr['address']; ?></h4>
             </div>
 
 
@@ -420,13 +483,13 @@ for($i=1; $i<=200;$i++){
                 <div class="back-details-address-return">
                     <p class="return">If Found please Return The Card or Contact</p>
 
-                    <h3>M Hasan High School</h3>
-                    <p>Ploat ussh hdsgsgsd sadjksdghdsg asdhsddsdgsa sasdagdags</p>
-                    <h4><Strong>Phone</Strong>: 0128726262</h4>
-                    <h4><Strong>Blood Group</Strong>: AB+</h4>
+                    <h3><?php echo $qr['org_name']; ?></h3>
+                    <p><?php echo $qr['org_address']; ?></p>
+                    <h4><Strong>Phone</Strong>: <?php echo $qr['org_mobile_no']; ?></h4>
+                    <h4><Strong>Email</Strong>: <?php echo $qr['org_email']; ?></h4>
                 </div>
                 <div class="qr-code-img">
-                    <img src="md_litan_sarkar_vcard.png">
+                    <img src="<?php echo base_url($qr['qr_code_image']); ?>">
                 </div>
             </div>
 
@@ -439,6 +502,8 @@ for($i=1; $i<=200;$i++){
 
         <!-- End Backside-->
 <?php
+}
+
 }
 ?>
 </div>

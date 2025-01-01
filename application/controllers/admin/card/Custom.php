@@ -91,7 +91,7 @@ class Custom extends CI_Controller {
                 $sections                       = $pdt->sections;
                 $class_roll                     = $pdt->class_roll;
                 $org_name                       = $pdt->org_name;
-                $org_email                       = $pdt->org_email;
+                $org_email                      = $pdt->org_email;
                 $org_address                    = $pdt->org_address;
                 $website                        = $pdt->website;
                 $org_mobile_no                  = $pdt->org_mobile_no;
@@ -128,6 +128,7 @@ class Custom extends CI_Controller {
                     'mother_name_en'            => $mother_name_en,
                     'mother_name_bn'            => $mother_name_bn,
                     'id_number'                 => $id_number,
+                    'address'                   => $address,
                     'email' => $email,
                     'phone' => $phone,
                     'photo' => $photo,
@@ -170,7 +171,7 @@ class Custom extends CI_Controller {
          
         }
         else if($template_id == 4){
-            $this->load->view('admin/card/card-design-004', $data);
+            $this->load->view('admin/card//004/card-design-004', $data);
          
         }
         else if($template_id == 5){
