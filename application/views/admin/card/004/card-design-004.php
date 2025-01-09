@@ -291,6 +291,23 @@
                 <hr class="hr">
                 <h2><?php echo $qr['name']; ?></h2>
                 <?php
+                 if($this->input->post('father_name_en') == 1){
+                     ?>
+         <p>Father Name: &nbsp;<?php echo $qr['father_name_en']; ?></p>
+       
+        <?php
+        }
+        ?>
+
+<?php
+                 if($this->input->post('mother_name_en') == 1){
+                     ?>
+         <p>Mother Name: &nbsp;<?php echo $qr['mother_name_en']; ?></p>
+       
+        <?php
+        }
+        ?>
+                <?php
                  if($this->input->post('id_number') == 1){
                      ?>
                         <p>ID No : &nbsp; <?php echo $qr['id_number']; ?></p>
@@ -380,6 +397,23 @@
                 <h3>পরিচয়পত্র</h3>
                 <hr class="hr">
                 <h2><?php echo $qr['name']; ?></h2>
+                <?php
+                 if($this->input->post('father_name_en') == 1){
+                     ?>
+         <p>Father Name: &nbsp;<?php echo $qr['father_name_en']; ?></p>
+       
+        <?php
+        }
+        ?>
+
+<?php
+                 if($this->input->post('mother_name_en') == 1){
+                     ?>
+         <p>Mother Name: &nbsp;<?php echo $qr['mother_name_en']; ?></p>
+       
+        <?php
+        }
+        ?>
                 <?php
                  if($this->input->post('id_number') == 1){
                      ?>

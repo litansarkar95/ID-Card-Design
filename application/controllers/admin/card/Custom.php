@@ -60,6 +60,8 @@ class Custom extends CI_Controller {
         $data['title'] =  "Users List";
         $id = $this->input->post('fields_code');
 
+        $side_id = $this->input->post('side_id');
+
         $allPdt = $this->main_model->PrintUserData($id);
     
         $template_id = $this->input->post('template_id');
@@ -90,6 +92,10 @@ class Custom extends CI_Controller {
                 $class                          = $pdt->class;
                 $sections                       = $pdt->sections;
                 $class_roll                     = $pdt->class_roll;
+                $village_en                     = $pdt->village_en;
+                $post_office_en                 = $pdt->post_office_en;
+                $upazila_en                     = $pdt->upazila_en;
+                $zilla_en                       = $pdt->zilla_en;
                 $org_name                       = $pdt->org_name;
                 $org_email                      = $pdt->org_email;
                 $org_address                    = $pdt->org_address;
@@ -129,21 +135,25 @@ class Custom extends CI_Controller {
                     'mother_name_bn'            => $mother_name_bn,
                     'id_number'                 => $id_number,
                     'address'                   => $address,
-                    'email' => $email,
-                    'phone' => $phone,
-                    'photo' => $photo,
-                    'gender' => $gender,
-                    'class'  => $class,
-                    'sections' => $sections,
-                    'class_roll' => $class_roll,
-                    'org_name' =>$org_name,
-                    'org_email' =>$org_email,
-                    'org_mobile_no' => $org_mobile_no,
-                    'org_address' => $org_address,
-                    'website' => $website,
-                    'signature_name' => $signature_name,
-                    'signature_picture' => $signature_picture,
-                    'picture' => $picture
+                    'email'                     => $email,
+                    'phone'                     => $phone,
+                    'photo'                     => $photo,
+                    'gender'                    => $gender,
+                    'class'                     => $class,
+                    'sections'                  => $sections,
+                    'class_roll'                => $class_roll,
+                    'village_en'                => $village_en,
+                    'post_office_en'            => $post_office_en,
+                    'upazila_en'                => $upazila_en,
+                    'zilla_en'                  => $zilla_en,
+                    'org_name'                  => $org_name,
+                    'org_email'                 => $org_email,
+                    'org_mobile_no'             => $org_mobile_no,
+                    'org_address'               => $org_address,
+                    'website'                   => $website,
+                    'signature_name'            => $signature_name,
+                    'signature_picture'         => $signature_picture,
+                    'picture'                   => $picture
                 ];
             }
         } else {
@@ -167,7 +177,7 @@ class Custom extends CI_Controller {
          
         }
         else if($template_id == 3){
-            $this->load->view('admin/card/card-design-003', $data);
+            $this->load->view('admin/card/003/card-design-003', $data);
          
         }
         else if($template_id == 4){
@@ -178,7 +188,15 @@ class Custom extends CI_Controller {
            // $this->load->view('admin/card/card-design-005', $data);
           //  $this->load->view('admin/card/card-design-001', $data);
 
+          if( $side_id  == 'front_side'){
+            $this->load->view('admin/card/005/front-side', $data);
+          }else  if( $side_id  == 'back_side'){
             $this->load->view('admin/card/005/back-side', $data);
+          }else if( $side_id  == 'both_side'){
+            $this->load->view('admin/card/005/both-side', $data);
+          }
+       
+            
         }
       
   

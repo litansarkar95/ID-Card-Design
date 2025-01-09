@@ -70,7 +70,7 @@
     .print-section {
         width: 210mm;
             margin: auto;
-            padding: 20px;
+        
             background: white;
          
     }
@@ -341,7 +341,7 @@
                if($this->input->post('side_id') == 'front_side' ){
                ?>
 
-                   <!--- fontend start-->
+                     <!--- fontend start-->
     <div class="id-card-holder card-design-break">
         <div class="id-card">
             <h2><?php echo $qr['org_name']; ?></h2>
@@ -349,12 +349,79 @@
                 <img src="<?php echo base_url()."public/static/images/users/".$qr['photo']; ?>">
             </div>
             <h3><?php echo $qr['name']; ?></h3>
+            <?php
+            if( $this->input->post('staff_or_student') != ''){
+            ?>
             <div class="box">
-                <h5>Student</h5>
+                <h5>  <?php
+            echo $this->input->post('staff_or_student');
+            ?></h5>
             </div>
-
+            <?php
+       }
+            ?>
 
             <div class="content-test">
+                 <!---Start father name  -->
+            <?php   
+               
+               if($this->input->post('father_name_en') == 1){
+               ?>
+        <h4><strong>Father Name:</strong> <?php echo $qr['father_name_en']; ?></h4>
+        <?php
+        }
+        ?>
+
+        <!---End father name  -->
+
+          <!---Start father name  -->
+          <?php   
+               
+               if($this->input->post('father_name_bn') == 1){
+               ?>
+        <h4><strong>পিতার নাম :</strong> <?php echo $qr['father_name_bn']; ?></h4>
+        <?php
+        }
+        ?>
+
+        <!---End father name  -->
+
+           <!---Start mother name  -->
+           <?php   
+               
+               if($this->input->post('mother_name_en') == 1){
+               ?>
+        <h4><strong>Mother Name :</strong> <?php echo $qr['mother_name_en']; ?></h4>
+        <?php
+        }
+        ?>
+
+        <!---End mother name  -->
+
+          <!---Start ID  -->
+          <?php   
+               
+               if($this->input->post('id_number') == 1){
+               ?>
+        <h4><strong>ID NO :</strong> <?php echo $qr['id_number']; ?></h4>
+        <?php
+        }
+        ?>
+
+        <!---End ID  -->
+
+            <!---Start mother name  -->
+            <?php   
+               
+               if($this->input->post('mother_name_bn') == 1){
+               ?>
+        <h4><strong>মাতার নাম :</strong> <?php echo $qr['mother_name_bn']; ?></h4>
+        <?php
+        }
+        ?>
+
+        <!---End mother name  -->
+
             <?php   
                
                if($this->input->post('class') == 1){
@@ -402,6 +469,9 @@
            <?php
         }
         ?>
+
+
+
             </div>
             <!-- <div class="bottom-color">
                 <p>www.labibait.com</p>

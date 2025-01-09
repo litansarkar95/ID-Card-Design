@@ -367,70 +367,138 @@
 if(isset($qr_images)){
     foreach($qr_images  as $qr){
 ?>
+<div class="font-side card-design-break">
+
+<div class="bg">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    
+</div>
+<div class="info">
+                <h1><?php echo $qr['org_name']; ?></h1>
+                <div class="info_pic">
+                    <img src="<?php echo base_url()."public/static/images/users/".$qr['photo']; ?>">
+                </div>
 
 
+                <div class="details">
+                    <h2><?php echo $qr['name']; ?></h2>
+                    <?php
+               if( $this->input->post('staff_or_student') != ''){
+               ?>
+                    <p><?php   echo $this->input->post('staff_or_student');     ?></p>
+                    <?php
+          }
+               ?>
+                          
+                    <div class="details-info">
+                    <?php
+              
+                 if($this->input->post('father_name_en') == 1){
+                     ?>
+                        <h3><label>Father Name  </label><strong>: &nbsp;&nbsp;<?php echo $qr['father_name_en']; ?></strong></h3>
 
- <!-- start Backside-->
+                        <?php
+        }
+        ?>
 
-<div class="back-side card-design-break">
-            <div class="back-details-info">
+<?php
+              
+              if($this->input->post('mother_name_en') == 1){
+                  ?>
+                     <h3><label>Mother Name  </label><strong>: &nbsp;&nbsp;<?php echo $qr['mother_name_en']; ?></strong></h3>
 
-            <?php
+                     <?php
+     }
+     ?>
+                    <?php
+                 if($this->input->post('id_number') == 1){
+                     ?>
+                        <h3><label>ID No </label><strong>: &nbsp; <?php echo $qr['id_number']; ?></strong></h3>
+                        <?php
+                            }
+                            ?>
+                                 <?php
+                 if($this->input->post('class') == 1){
+                     ?>
+                        <h3><label>Class  </label><strong>: &nbsp;&nbsp;<?php echo $qr['class']; ?></strong></h3>
+
+                        <?php
+        }
+        ?>
+
+<?php
+                 if($this->input->post('class_roll') == 1){
+                     ?>
+                        <h3><label>Class Roll  </label><strong>: &nbsp;&nbsp;<?php echo $qr['class_roll']; ?></strong></h3>
+
+                        <?php
+        }
+        ?>
+
+<?php
                  if($this->input->post('email') == 1){
                      ?>
-   <h4><Strong>Email</Strong>: <?php echo $qr['email']; ?></h4>
+                        <h3><label>Email  </label><strong>: &nbsp;&nbsp;<?php echo $qr['email']; ?></strong></h3>
+
+                        <?php
+        }
+        ?>
+              
+                        <?php
+                 if($this->input->post('mobile_no') == 1){
+                     ?>
+         <h3><label>Mobile No</label><strong>: &nbsp;<?php echo $qr['phone']; ?></strong></h3>
        
         <?php
         }
         ?>
-                
-                <?php
-                 if($this->input->post('is_blood_group') == 1){
+
+<?php
+                 if($this->input->post('post_office_en') == 1){
                      ?>
-                <h4><Strong>Blood Group</Strong>: <?php echo $qr['blood_group']; ?></h4>
-                <?php
+         <h3><label>Post Office</label><strong>: &nbsp;<?php echo $qr['post_office_en']; ?></strong></h3>
+       
+        <?php
         }
         ?>
-                <h4><Strong>Emergency</Strong>: <?php echo $qr['phone']; ?></h4>
-                <h4><Strong>Address</Strong>: <?php echo $qr['address']; ?>
-          
-         <?php
-                 if($this->input->post('village_en') == 1){
-                    echo $qr['village_en'];
-                 } if($this->input->post('post_office_en') == 1){
-                    echo " , ".$qr['post_office_en'];
-                 } if($this->input->post('upazila_en') == 1){
-                    echo " , ".$qr['upazila_en'];
-                 } if($this->input->post('zilla_en') == 1){
-                    echo " , ".$qr['zilla_en'];
-                 }
+
+<?php
+                 if($this->input->post('upazila_en') == 1){
                      ?>
-            </h4>
-            </div>
+         <h3><label>Upazila</label><strong>: &nbsp;<?php echo $qr['upazila_en']; ?></strong></h3>
+       
+        <?php
+        }
+        ?>
+
+<?php
+                 if($this->input->post('zilla_en') == 1){
+                     ?>
+         <h3><label>Zilla</label><strong>: &nbsp;<?php echo $qr['zilla_en']; ?>
+        
+        </strong></h3>
+       
+        <?php
+        }
+        ?>
+                       
+
+                    </div>
 
 
-            <div class="back_bg">
-                <div class="circle5"></div>
-            </div>
-
-            <div class="back-details-address">
-                <div class="back-details-address-return">
-                    <p class="return">If Found please Return The Card or Contact</p>
-
-                    <h3><?php echo $qr['org_name']; ?></h3>
-                    <p><?php echo $qr['org_address']; ?></p>
-                    <h4><Strong>Phone</Strong>: <?php echo $qr['org_mobile_no']; ?></h4>
-                    <h4><Strong>Email</Strong>: <?php echo $qr['org_email']; ?></h4>
                 </div>
-                <div class="qr-code-img">
-                    <img src="<?php echo base_url($qr['qr_code_image']); ?>">
-                </div>
+
+               
+                
+
+
+
             </div>
+</div><!-- .front-side -->
 
 
-
-
-        </div>
 
 
 
