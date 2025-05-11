@@ -173,7 +173,8 @@ class Custom extends CI_Controller {
          
         }
          else if($template_id == 2){
-            $this->load->view('admin/card/002/card-design', $data);
+           // $this->load->view('admin/card/002/card-design', $data);
+            $this->load->view('admin/card/011/card-design-001', $data);
          
         }
         else if($template_id == 3){
