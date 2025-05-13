@@ -105,6 +105,9 @@ class Custom extends CI_Controller {
                 $signature_picture              = $pdt->signature_picture;
                 $picture                        = $pdt->org_picture;
                 $address                        = $pdt->present_address_en;
+                $designation                    = $pdt->designation;
+                $department                     = $pdt->department;
+                $employee_id                    = $pdt->employee_id;
 
                 //input 
                 $qr_system = $this->input->post('qr_system');
@@ -153,7 +156,10 @@ class Custom extends CI_Controller {
                     'website'                   => $website,
                     'signature_name'            => $signature_name,
                     'signature_picture'         => $signature_picture,
-                    'picture'                   => $picture
+                    'picture'                   => $picture,
+                    'designation'               => $designation,
+                    'department'                => $department,
+                    'employee_id'               => $employee_id,
                 ];
             }
         } else {
@@ -169,7 +175,15 @@ class Custom extends CI_Controller {
          ################# END CODE ########################
          #####################################################
          if($template_id == 1){
-            $this->load->view('admin/card/card-design-001', $data);
+
+              if( $side_id  == 'front_side'){
+            $this->load->view('admin/card/012/front-side', $data);
+          }else  if( $side_id  == 'back_side'){
+            $this->load->view('admin/card/012/back-side', $data);
+          }else if( $side_id  == 'both_side'){
+            $this->load->view('admin/card/012/both-side', $data);
+          }
+           // $this->load->view('admin/card/012/card-design-012', $data);
          
         }
          else if($template_id == 2){
@@ -198,8 +212,30 @@ class Custom extends CI_Controller {
           }
        
             
+        } else if($template_id == 6){
+    
+          if( $side_id  == 'front_side'){
+            $this->load->view('admin/card/006/front-side', $data);
+          }else  if( $side_id  == 'back_side'){
+            $this->load->view('admin/card/006/back-side', $data);
+          }else if( $side_id  == 'both_side'){
+            $this->load->view('admin/card/006/both-side', $data);
+          }
+       
+            
         }
-      
+       else if($template_id == 7){
+    
+          if( $side_id  == 'front_side'){
+            $this->load->view('admin/card/007/front-side', $data);
+          }else  if( $side_id  == 'back_side'){
+            $this->load->view('admin/card/007/back-side', $data);
+          }else if( $side_id  == 'both_side'){
+            $this->load->view('admin/card/007/both-side', $data);
+          }
+       
+            
+        }
   
     }
 

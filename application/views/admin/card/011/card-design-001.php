@@ -474,7 +474,7 @@ body{
 }
   @media print {
             .print-container {
-                display: none;
+             display: block;
             }
             
             body {
@@ -485,7 +485,18 @@ body{
             .main_container {
                 margin-top: 0;
             }
+
+			 .card-design-break:nth-child(4) {
+					page-break-after: always;
+						}
         }
+
+@media print {
+  .card-design-break:nth-of-type(4n) {
+    page-break-after: always;
+  }
+}
+
 		</style>
 	<body id="bodyPart">
 		 <div class="print-container">
@@ -498,6 +509,280 @@ body{
     </div>
 		<div class="main_container" id="data">
 			<div id="wrapper">
+
+
+			<?php
+			
+			for($i=1; $i<=10; $i++){
+			?>
+		<div class="wrapper card-design-break ">
+
+				
+				<div class="front_part">
+					<section class="header_part">
+						<span class="header_shape1">
+						</span>
+						<span class="green_shape"></span>
+						<span class="white_line"></span>
+						<span class="orange_shape"></span>
+					</section>
+					<section class="body_part">
+						<img src="imgs/img_2_3.png" alt="" class="brand_logo">
+						<h4 class="tagline">tagline here</h4>
+						<span class="user_logo">
+							<img src="imgs/img_1_2.png" alt="" class="user_img">
+						</span>
+						<h3 class="title">your <span>name</span></h3>
+						<h4 class="designation">your position</h4>
+						<table class="user_info">
+							<tr>
+								<td class="left_col">
+									<p>emp id</p>
+								</td>
+								<td class="right_col">
+									<p>: 000000</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>blood</p>
+								</td>
+								<td>
+									<p>: O+</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>mail</p>
+								</td>
+								<td>
+									<p>: 00000000000</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>phone</p>
+								</td>
+								<td>
+									<p>: 0000000000000</p>
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section class="footer_part">
+						<div class="footer_inner">
+							<span class="header_shape1">
+							</span>
+							<span class="green_shape"></span>
+							<span class="white_line"></span>
+							<span class="orange_shape"></span>
+						</div>
+					</section>
+				</div>
+
+					</div>
+
+					<?php
+			}
+					?>
+							<div class="wrapper card-design-break ">
+
+				
+				<div class="front_part">
+					<section class="header_part">
+						<span class="header_shape1">
+						</span>
+						<span class="green_shape"></span>
+						<span class="white_line"></span>
+						<span class="orange_shape"></span>
+					</section>
+					<section class="body_part">
+						<img src="imgs/img_2_3.png" alt="" class="brand_logo">
+						<h4 class="tagline">tagline here</h4>
+						<span class="user_logo">
+							<img src="imgs/img_1_2.png" alt="" class="user_img">
+						</span>
+						<h3 class="title">your <span>name</span></h3>
+						<h4 class="designation">your position</h4>
+						<table class="user_info">
+							<tr>
+								<td class="left_col">
+									<p>emp id</p>
+								</td>
+								<td class="right_col">
+									<p>: 000000</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>blood</p>
+								</td>
+								<td>
+									<p>: O+</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>mail</p>
+								</td>
+								<td>
+									<p>: 00000000000</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>phone</p>
+								</td>
+								<td>
+									<p>: 0000000000000</p>
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section class="footer_part">
+						<div class="footer_inner">
+							<span class="header_shape1">
+							</span>
+							<span class="green_shape"></span>
+							<span class="white_line"></span>
+							<span class="orange_shape"></span>
+						</div>
+					</section>
+				</div>
+
+					</div>
+							<div class="wrapper card-design-break ">
+
+				
+				<div class="front_part">
+					<section class="header_part">
+						<span class="header_shape1">
+						</span>
+						<span class="green_shape"></span>
+						<span class="white_line"></span>
+						<span class="orange_shape"></span>
+					</section>
+					<section class="body_part">
+						<img src="imgs/img_2_3.png" alt="" class="brand_logo">
+						<h4 class="tagline">tagline here</h4>
+						<span class="user_logo">
+							<img src="imgs/img_1_2.png" alt="" class="user_img">
+						</span>
+						<h3 class="title">your <span>name</span></h3>
+						<h4 class="designation">your position</h4>
+						<table class="user_info">
+							<tr>
+								<td class="left_col">
+									<p>emp id</p>
+								</td>
+								<td class="right_col">
+									<p>: 000000</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>blood</p>
+								</td>
+								<td>
+									<p>: O+</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>mail</p>
+								</td>
+								<td>
+									<p>: 00000000000</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>phone</p>
+								</td>
+								<td>
+									<p>: 0000000000000</p>
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section class="footer_part">
+						<div class="footer_inner">
+							<span class="header_shape1">
+							</span>
+							<span class="green_shape"></span>
+							<span class="white_line"></span>
+							<span class="orange_shape"></span>
+						</div>
+					</section>
+				</div>
+
+					</div>
+							<div class="wrapper card-design-break ">
+
+				
+				<div class="front_part">
+					<section class="header_part">
+						<span class="header_shape1">
+						</span>
+						<span class="green_shape"></span>
+						<span class="white_line"></span>
+						<span class="orange_shape"></span>
+					</section>
+					<section class="body_part">
+						<img src="imgs/img_2_3.png" alt="" class="brand_logo">
+						<h4 class="tagline">tagline here</h4>
+						<span class="user_logo">
+							<img src="imgs/img_1_2.png" alt="" class="user_img">
+						</span>
+						<h3 class="title">your <span>name</span></h3>
+						<h4 class="designation">your position</h4>
+						<table class="user_info">
+							<tr>
+								<td class="left_col">
+									<p>emp id</p>
+								</td>
+								<td class="right_col">
+									<p>: 000000</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>blood</p>
+								</td>
+								<td>
+									<p>: O+</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>mail</p>
+								</td>
+								<td>
+									<p>: 00000000000</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>phone</p>
+								</td>
+								<td>
+									<p>: 0000000000000</p>
+								</td>
+							</tr>
+						</table>
+					</section>
+					<section class="footer_part">
+						<div class="footer_inner">
+							<span class="header_shape1">
+							</span>
+							<span class="green_shape"></span>
+							<span class="white_line"></span>
+							<span class="orange_shape"></span>
+						</div>
+					</section>
+				</div>
+
+					</div>
 				<div class="wrapper card-design-break ">
 
 				

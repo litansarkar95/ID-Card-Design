@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2025 at 11:46 AM
+-- Generation Time: May 13, 2025 at 09:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -143,11 +143,13 @@ CREATE TABLE `card_design` (
 --
 
 INSERT INTO `card_design` (`id`, `code`, `slug`, `name`, `description`, `is_front_side`, `is_back_side`, `is_both_side`, `picture`, `is_active`, `create_date`) VALUES
-(1, '001', '001', 'Design 1', 'Design 1', 1, 1, 1, 'design-001.jpg', 0, 0),
+(1, '001', '001', 'Design 1', 'Design 1', 1, 1, 1, 'design-001.jpg', 1, 0),
 (2, '002', '002', 'Design 2', 'Design 2', 1, 1, 1, 'design-002.jpg', 1, 0),
 (3, '003', '003', 'Design 3', 'Design 3', 1, 1, 1, 'design-003.jpg', 1, 0),
 (4, '004', '004', 'Design 4', 'Design 4', 1, 1, 1, 'design-004.jpg', 1, 0),
-(5, '005', '005', 'Design 5', 'Design 5', 1, 1, 1, 'design-005.jpg', 1, 0);
+(5, '005', '005', 'Design 5', 'Design 5', 1, 1, 1, 'design-005.jpg', 1, 0),
+(6, '006', '006', 'Design 6', 'Design 6', 1, 1, 1, 'design-006.jpg', 1, 0),
+(7, '007', '007', 'Design 7', 'Design 7', 1, 1, 1, 'design-007.jpg', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -196,10 +198,11 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2025-01-01 12:50:20', '2024-10-21 15:42:57', '2025-01-01 12:50:20'),
-(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2025-01-01 12:50:25', '2024-12-04 10:25:06', '2025-01-01 12:50:25'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2025-05-13 09:52:22', '2024-10-21 15:42:57', '2025-05-13 09:52:22'),
+(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2025-05-13 09:52:36', '2024-12-04 10:25:06', '2025-05-13 09:52:36'),
 (30, 10, '018291074689', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-04 12:09:56', '2024-12-04 12:09:56'),
-(31, 11, '01842325244', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-31 12:29:28', '2024-12-31 12:29:28');
+(31, 11, '01842325244', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-31 12:29:28', '2024-12-31 12:29:28'),
+(32, 12, '01829107462', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2025-05-13 10:49:04', '2025-05-13 10:49:04');
 
 -- --------------------------------------------------------
 
@@ -231,7 +234,8 @@ CREATE TABLE `organizations` (
 
 INSERT INTO `organizations` (`id`, `agent_id`, `name`, `name_bn`, `slug`, `mobile_no`, `email`, `website`, `address`, `signature_name`, `signature_picture`, `picture`, `is_active`, `create_user`, `create_date`) VALUES
 (10, 35, 'M Hasan High School', '', 'm-hasan-high-school', '018291074689', 'mhasan@gmail.com', 'www.mhasan.com', '12/A shshs sdhgd', 'Head Master', '', '', 1, 29, 1733292596),
-(11, 35, 'Master IT Solution', 'মাস্টার আইটি সলিউশন', 'master-it-solution', '01842325244', 'masterit138044@gmail.com', 'masteritsolution.com.bd', 'New Market, Kandirpar,Cumilla.', 'Riyad', '', '0.png', 1, 29, 1735626568);
+(11, 35, 'Master IT Solution', 'মাস্টার আইটি সলিউশন', 'master-it-solution', '01842325244', 'masterit138044@gmail.com', 'masteritsolution.com.bd', 'New Market, Kandirpar,Cumilla.', 'Riyad', '', '0.png', 1, 29, 1735626568),
+(12, 35, 'ABC IT Company', 'ABC IT Company', 'abc-it-company', '01829107462', 'abcit@gmail.com', 'www.abcit.com', '1/2 Outer Circular Road,\r\n\r\nDhaka', 'abc It', '', '6822e5d7e43c9.jpg', 1, 29, 1747111744);
 
 -- --------------------------------------------------------
 
@@ -295,7 +299,8 @@ CREATE TABLE `org_fields` (
 
 INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_sections`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
 (24, '2024', 12, 1, '241235001', 35, 10, 'Class 6 Form', 'this is one', 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1733302371),
-(25, '2024', 12, 2, '241235002', 35, 11, 'MASTER IT 2024', 'ID CARD TEST', 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1735626643);
+(25, '2024', 12, 2, '241235002', 35, 11, 'MASTER IT 2024', 'ID CARD TEST', 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1735626643),
+(26, '2025', 5, 1, '250535001', 35, 12, 'New Employee Form', 'New Employee Form', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1747111803);
 
 -- --------------------------------------------------------
 
@@ -561,7 +566,12 @@ INSERT INTO `users_fields` (`id`, `ip_address`, `date_code`, `month_code`, `code
 (151, '::1', '2024', 12, 2, '241235002', 35, 10, 24, 'Nill Hasan', '', '', '', '', '', '0182726262', 'nilahasan@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '6', '', 8, '0000-00-00', 'Female', '', 'AB+', '', '', '', '', '', '', '2a7dbcc26bc65e6e9b59e317d4abebc4.png', '', 0, '', 1, 0, 0),
 (152, '::1', '2024', 12, 3, '241235003', 35, 10, 24, 'Sonali Akter', '', '', '', '', '', '01827262', '22@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', '10', '2', '5', 8, '2019-12-12', 'Male', '', 'A-', '', '', '', '', '', '', 'bbb0310d0ea7acaff960326c27c8ca66.png', '', 0, '', 1, 0, 0),
 (153, '::1', '2024', 12, 4, '241235004', 35, 10, 24, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '0.png', '', 0, '', 1, 0, 0),
-(154, '::1', '2024', 12, 5, '241235005', 35, 11, 25, 'Md Litan Sarkar ', 'মো লিটন সরকার', 'Ebrahim Miah', 'ইব্রাহিম মিয়া', 'Lipi', '', '01829107469', '', '', '', 'Koiguri', '', 'Delduar', '', 'Tangail', '', '', '', '425852', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', 'Vill: Shovoki , Post : Koiguri , delduar, Tangail-1900', '', 'dc04c4df255c30e9c0e76b31c4185aa9.JPG', '', 0, '', 1, 0, 0);
+(154, '::1', '2024', 12, 5, '241235005', 35, 11, 25, 'Md Litan Sarkar ', 'মো লিটন সরকার', 'Ebrahim Miah', 'ইব্রাহিম মিয়া', 'Lipi', '', '01829107469', '', '', '', 'Koiguri', '', 'Delduar', '', 'Tangail', '', '', '', '425852', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', '', '', 'Vill: Shovoki , Post : Koiguri , delduar, Tangail-1900', '', 'dc04c4df255c30e9c0e76b31c4185aa9.JPG', '', 0, '', 1, 0, 0),
+(155, '::1', '2025', 5, 1, '250535001', 35, 12, 26, 'Md Litan Sarkar', '', 'Ibrahim', '', '', '', '01829107469', 'litan@gmail.com', '', '', '', '', '', '', '', '', 'Software Engineer', 'IT', '1282736', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', 'New Employee Form', '', '', '', '0da0ba03bf25366479e54c2eb5128e16.jpg', '', 0, '', 1, 0, 0),
+(156, '::1', '2025', 5, 2, '250535002', 35, 12, 26, 'Mili Akter', '', 'Hamid', '', '', '', '019287236', 'miliadter@gmail.com', '', '', '', '', '', '', '', '', 'Font Desk Manager', 'IT', '10298273', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', 'Dhaka', '', '', '', '8d432772f39c290c97ae43f6c6aaa656.jpeg', '', 0, '', 1, 0, 0),
+(157, '::1', '2025', 5, 3, '250535003', 35, 12, 26, 'Jasmin Akter', '', 'Korim', '', '', '', '01827262', 'jasminakter@gmail.com', '', '', '', '', '', '', '', '', 'Sales Manager', 'IT', '1230383747', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', 'dhaka', '', '', '', '41fc0bcc0c54cea37fae1b6139a8dfeb.jpeg', '', 0, '', 1, 0, 0),
+(158, '::1', '2025', 5, 4, '250535004', 35, 12, 26, 'kobir Miah', '', 'habib', '', '', '', '019273635333', 'kobir@gmail.com', '', '', '', '', '', '', '', '', 'Sales Manager', 'IT', '13433442', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', 'dhaka', '', '', '', 'e48a1f94bd6e3f3d3d69b2b2851beeb8.jpeg', '', 0, '', 1, 0, 0),
+(159, '::1', '2025', 5, 5, '250535005', 35, 12, 26, 'Kaya Akter', '', 'Habib', '', '', '', '01292721531', 'kaya@gmail.com', '', '', '', '', '', '', '', '', 'Manager', 'IT', '21324434', '', '', '', '', 0, '0000-00-00', '', '', '', '', '', 'dhaka', '', '', '', '1a3f92aefc8704d981eb0c1415fae01c.jpeg', '', 0, '', 1, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -671,7 +681,7 @@ ALTER TABLE `auth_users_info`
 -- AUTO_INCREMENT for table `card_design`
 --
 ALTER TABLE `card_design`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `classes`
@@ -683,19 +693,19 @@ ALTER TABLE `classes`
 -- AUTO_INCREMENT for table `login_credential`
 --
 ALTER TABLE `login_credential`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `org_fields`
 --
 ALTER TABLE `org_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -737,7 +747,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_fields`
 --
 ALTER TABLE `users_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
