@@ -50,8 +50,8 @@
           <div class="container">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
               <a class="navbar-brand brand-logo" href="<?php echo base_url(); ?>">
-                <img src="<?php echo base_url(); ?>public/assets/images/rodasiit.png" alt="logo" />
-                <span class="font-12 d-block font-weight-light"> Rodasi IT </span>
+                <!-- <img src="<?php echo base_url(); ?>public/assets/images/rodasiit.png" alt="logo" /> -->
+                <span class="font-12 d-block font-weight-light"> Master IT Solution </span>
               </a>
               <a class="navbar-brand brand-logo-mini" href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>public/assets/images/logo-mini.svg" alt="logo" /></a>
             </div>
@@ -381,8 +381,8 @@
         <footer class="footer">
             <div class="container">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024 <a href="https://www.rodasiit.com/" target="_blank">Rodasi IT</a>. All rights reserved.</span>
-                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Rodasi IT & made with <i class="mdi mdi-heart text-danger"></i></span>
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024 <a href="https://masteritsolution.com.bd/" target="_blank">Master IT Solution</a>. All rights reserved.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Master IT Solution & made with <i class="mdi mdi-heart text-danger"></i></span>
               </div>
             </div>
           </footer>

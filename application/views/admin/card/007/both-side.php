@@ -38,7 +38,7 @@
 
 /* Center the main container on screen and print */
 .main_container {
-  width: 800px; /* adjust as needed */
+  width: 297 mm;
   margin: 0 auto;
 }
  .print-container {

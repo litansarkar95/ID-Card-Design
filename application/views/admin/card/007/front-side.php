@@ -37,10 +37,10 @@
 }
 
 /* Center the main container on screen and print */
-.main_container {
-  width: 800px; /* adjust as needed */
+ .main_container {
+  width: 297 mm;
   margin: 0 auto;
-}
+  }
  .print-container {
           
         }
@@ -89,7 +89,7 @@ if(isset($qr_images)){
     foreach($qr_images  as $qr){
 
        
-            if (($i - 1) % 4 == 0) {
+            if (($i - 1) % 8 == 0) {
                 echo '<div class="page">';
             }
         ?>
@@ -173,7 +173,7 @@ if(isset($qr_images)){
 
 
                      <?php
- if ($i % 4 == 0 || $i == 12) {
+ if ($i % 8 == 0 || $i == 12) {
                 echo '</div>'; // close .page
             }
             $i++;

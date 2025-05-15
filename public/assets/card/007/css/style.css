@@ -17,14 +17,16 @@ body {
 }
 
 #wrapper {
-    width: 640px;
+    width: 8.27in;
+    max-height: 11.69in;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .front_part {
     background: #fff;
-    width: 300px;
-    height: 476px;
+    width: 2.125in;
+    height: 3.375in;
     margin: 10px;
     border-radius: 15px;
     display: flex;
@@ -36,8 +38,8 @@ body {
     background: #1e2736;
     border-radius: 15px;
     text-align: center;
-    height: 200px;
-    max-height: 200px;
+    height: 204px;
+    max-height: 204px;
     position: relative;
     width: 100%;
 }
@@ -53,6 +55,7 @@ body {
     border-radius: 50%;
     transform: translate(-50%, 94%);
     overflow: hidden;
+    top: -81px;
 }
 
 .front_part .left_leaf {
@@ -63,7 +66,7 @@ body {
     border-radius: 50%;
     transform: rotate(16deg);
     left: 21px;
-    bottom: -16px;
+    bottom: -26px;
 }
 
 .front_part .left_leaf::after {
@@ -86,7 +89,7 @@ body {
     border-radius: 50%;
     transform: rotate(-16deg);
     right: 21px;
-    bottom: -16px;
+    bottom: -26px;
 }
 
 .front_part .right_leaf::after {
@@ -113,9 +116,9 @@ body {
 .front_part .header_content h2 {
     color: #fff;
     text-align: center;
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .front_part .header_content .slogan {
@@ -127,12 +130,12 @@ body {
 
 .front_part .header_content .user_logo {
     display: inline-block;
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     background: #fff;
     border-radius: 50%;
     border: 5px solid #a4c735;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow: hidden;
 }
 
@@ -143,14 +146,14 @@ body {
 .front_part .body_part {
     height: 246px;
     background: #fefefe;
-    padding: 35px 30px 20px;
+    padding: 20px;
     box-sizing: border-box;
 }
 
 .front_part .body_part .title {
     text-align: center;
     color: #000;
-    font-size: 24px;
+    font-size: 16px;
 }
 
 .front_part .body_part .designation {
@@ -161,23 +164,21 @@ body {
 
 .front_part .body_part .user_info {
     border: none;
-    font-size: 13px;
+    font-size: 10px;
     margin: 0 auto;
-    width: 220px;
-    padding-top: 20px;
-}
-
-.pt10 {
+    width: 100%;
     padding-top: 10px;
 }
 
-.front_part .body_part .left_col {
-    width: 30%;
+.pt10 {
+    padding-top: 5px;
 }
 
-.front_part .body_part .right_col {
-    width: 70%;
+.front_part .body_part .left_col,
+.right_col {
+    width: 50%;
 }
+
 
 .front_part .footer_part {
     height: 30px;
@@ -195,7 +196,7 @@ body {
     border-radius: 50%;
     transform: translate(-50%, 94%);
     overflow: hidden;
-    bottom: 35px;
+    bottom: 20px;
 }
 
 .front_part .right_leaf_ftr {
@@ -249,8 +250,8 @@ body {
 
 .back_part {
     background: #fff;
-    width: 300px;
-    height: 476px;
+    width: 2.125in;
+    height: 3.375in;
     margin: 10px;
     border-radius: 15px;
     display: flex;
@@ -262,8 +263,8 @@ body {
     background: #1e2736;
     border-radius: 15px;
     text-align: center;
-    height: 200px;
-    max-height: 200px;
+    height: 204px;
+    max-height: 204px;
     position: relative;
     width: 100%;
 }
@@ -279,6 +280,7 @@ body {
     border-radius: 50%;
     transform: translate(-50%, 94%);
     overflow: hidden;
+    top: -81px;
 }
 
 .back_part .left_leaf {
@@ -289,7 +291,7 @@ body {
     border-radius: 50%;
     transform: rotate(16deg);
     left: 21px;
-    bottom: -16px;
+    bottom: -26px;
 }
 
 .back_part .left_leaf::after {
@@ -312,7 +314,7 @@ body {
     border-radius: 50%;
     transform: rotate(-16deg);
     right: 21px;
-    bottom: -16px;
+    bottom: -26px;
 }
 
 .back_part .right_leaf::after {
@@ -341,24 +343,23 @@ body {
 .back_part .header_content h2 {
     color: #fff;
     text-align: center;
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .back_part .header_content .terms_txt {
     color: #fff;
-    font-size: 10px;
-    padding: 10px 20px;
+    font-size: 8px;
+    padding: 10px;
 }
 
 .back_part .header_content .user_info {
     border: none;
-    font-size: 13px;
+    font-size: 8px;
     margin: 0 auto;
-    width: 200px;
+    width: 50%;
     color: #fff;
-    margin-top: 10px;
 }
 
 .back_part .body_part {
@@ -368,7 +369,7 @@ body {
 .back_part .body_part {
     height: 246px;
     background: #fefefe;
-    padding: 35px 30px 20px;
+    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -390,7 +391,7 @@ body {
 }
 
 .back_part .signatire_name {
-    font-size: 13px;
+    font-size: 12px;
     margin-top: 5px;
     font-weight: bold;
 }
@@ -401,19 +402,18 @@ body {
 }
 
 .back_part .barcode {
-    width: 60px;
-    margin-top: 10px;
+    width: 40px;
 }
 
 .back_part .company_name {
-    font-size: 15px;
+    font-size: 10px;
     text-transform: uppercase;
 }
 
 .back_part .slogan {
     color: #a4c735;
     text-align: center;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: bold;
 }
 
@@ -434,7 +434,7 @@ body {
     border-radius: 50%;
     transform: translate(-50%, 94%);
     overflow: hidden;
-    bottom: 35px;
+    bottom: 20px;
 }
 
 .back_part .right_leaf_ftr {
