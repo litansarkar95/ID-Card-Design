@@ -174,9 +174,8 @@ if(isset($qr_images)){
 			<div class="back_part card-design-break">
 				<section class="header_part">
 					<div class="header_content">
-						<h2>TERMS AND CONDITION</h2>
-						<p class="terms_txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-							repudiandae laudantium hic! Laborum et, tempora!</p>
+						<h2><?php echo $qr['terms_conditions_name']; ?></h2>
+						<p class="terms_txt"><?php echo $qr['terms_conditions']; ?></p>
 						<table class="user_info">
 							<tr>
 								<td>

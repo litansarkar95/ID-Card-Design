@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2025 at 09:10 AM
+-- Generation Time: May 18, 2025 at 12:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -198,8 +198,8 @@ CREATE TABLE `login_credential` (
 --
 
 INSERT INTO `login_credential` (`id`, `user_id`, `username`, `password`, `role`, `active`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2025-05-13 09:52:22', '2024-10-21 15:42:57', '2025-05-13 09:52:22'),
-(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2025-05-13 09:52:36', '2024-12-04 10:25:06', '2025-05-13 09:52:36'),
+(1, 1, 'admin@gmail.com', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 1, 1, '2025-05-18 15:01:25', '2024-10-21 15:42:57', '2025-05-18 15:01:25'),
+(29, 35, '01829107469', 'UHZVdVBOTWI0VkwrN0MvQjRRRUZkdz09', 3, 1, '2025-05-18 15:01:41', '2024-12-04 10:25:06', '2025-05-18 15:01:41'),
 (30, 10, '018291074689', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-04 12:09:56', '2024-12-04 12:09:56'),
 (31, 11, '01842325244', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2024-12-31 12:29:28', '2024-12-31 12:29:28'),
 (32, 12, '01829107462', 'c3BEckcrYllnMzJBSHhnTFVCanJEQT09', 4, 1, NULL, '2025-05-13 10:49:04', '2025-05-13 10:49:04');
@@ -253,6 +253,8 @@ CREATE TABLE `org_fields` (
   `organization_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `terms_conditions_name` varchar(255) NOT NULL,
+  `terms_conditions` text NOT NULL,
   `is_name_en` int(11) NOT NULL,
   `is_name_bn` int(11) NOT NULL,
   `is_father_name_en` int(11) NOT NULL,
@@ -297,10 +299,10 @@ CREATE TABLE `org_fields` (
 -- Dumping data for table `org_fields`
 --
 
-INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_sections`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
-(24, '2024', 12, 1, '241235001', 35, 10, 'Class 6 Form', 'this is one', 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1733302371),
-(25, '2024', 12, 2, '241235002', 35, 11, 'MASTER IT 2024', 'ID CARD TEST', 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1735626643),
-(26, '2025', 5, 1, '250535001', 35, 12, 'New Employee Form', 'New Employee Form', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1747111803);
+INSERT INTO `org_fields` (`id`, `date_code`, `month_code`, `code_random`, `code_no`, `agent_id`, `organization_id`, `title`, `description`, `terms_conditions_name`, `terms_conditions`, `is_name_en`, `is_name_bn`, `is_father_name_en`, `is_father_name_bn`, `is_mother_name_en`, `is_mother_name_bn`, `is_mobile_no`, `is_email`, `is_village_en`, `is_village_bn`, `is_post_office_en`, `is_post_office_bn`, `is_upazila_en`, `is_upazila_bn`, `is_zilla_en`, `is_zilla_bn`, `is_present_address_en`, `is_present_address_bn`, `is_permanent_address_en`, `is_permanent_address_bn`, `is_designation`, `is_department`, `is_employee_id`, `is_index_no`, `is_class`, `is_class_roll`, `is_sessions`, `is_sections`, `is_date_of_birth`, `is_gender`, `is_id_number`, `is_blood_group`, `is_marital_status`, `is_photo`, `is_signature`, `is_nationality`, `is_active`, `create_date`) VALUES
+(24, '2024', 12, 1, '241235001', 35, 10, 'Class 6 Form', 'this is one', '', '', 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1733302371),
+(25, '2024', 12, 2, '241235002', 35, 11, 'MASTER IT 2024', 'ID CARD TEST', '', '', 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1735626643),
+(26, '2025', 5, 1, '250535001', 35, 12, 'New Employee Form', 'New Employee Form', 'Terms & Conditions', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto repudiandae laudantium hic! Laborum et, tempora!', 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1747111803);
 
 -- --------------------------------------------------------
 

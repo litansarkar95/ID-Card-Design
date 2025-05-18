@@ -100,7 +100,16 @@ select[type="text"]{
                         <textarea type="text" class="form-control" id="description"  name="description"   ><?php echo set_value('description'); ?></textarea>
                         <span class="text-red small"><?php echo form_error('description'); ?></span>
                     </div>
-
+                  <div class="form-group">
+                        <label for="terms_conditions_name">Terms & Conditions Value<code>*</code></label>
+                        <input type="text" class="form-control" id="terms_conditions_name" value="<?php echo set_value('terms_conditions_name'); ?>" name="terms_conditions_name"   />
+                        <span class="text-red small"><?php echo form_error('terms_conditions_name'); ?></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="terms_conditions">Terms & Conditions Description<code>*</code></label>
+                        <textarea type="text" class="form-control" id="terms_conditions"  name="terms_conditions"   ><?php echo set_value('terms_conditions'); ?></textarea>
+                        <span class="text-red small"><?php echo form_error('terms_conditions'); ?></span>
+                    </div>
                     <div class="row">
                           <!-- FORM -->
                           <div class="col-md-6">

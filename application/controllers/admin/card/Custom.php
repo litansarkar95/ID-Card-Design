@@ -63,7 +63,7 @@ class Custom extends CI_Controller {
         $side_id = $this->input->post('side_id');
 
         $allPdt = $this->main_model->PrintUserData($id);
-    
+ //  echo "<pre>"; print_r( $allPdt );exit();
         $template_id = $this->input->post('template_id');
              
 
@@ -108,6 +108,8 @@ class Custom extends CI_Controller {
                 $designation                    = $pdt->designation;
                 $department                     = $pdt->department;
                 $employee_id                    = $pdt->employee_id;
+                $terms_conditions_name          = $pdt->terms_conditions_name;
+                $terms_conditions               = $pdt->terms_conditions;
 
                 //input 
                 $qr_system = $this->input->post('qr_system');
@@ -160,6 +162,8 @@ class Custom extends CI_Controller {
                     'designation'               => $designation,
                     'department'                => $department,
                     'employee_id'               => $employee_id,
+                    'terms_conditions_name'     => $terms_conditions_name,
+                    'terms_conditions'          => $terms_conditions,
                 ];
             }
         } else {

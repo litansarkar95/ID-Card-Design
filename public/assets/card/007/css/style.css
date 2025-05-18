@@ -5,7 +5,7 @@
 }
 
 body {
-    background: #e3e3e3;
+    background: transparent;
     font-family: arial;
 }
 
@@ -24,7 +24,7 @@ body {
 }
 
 .front_part {
-    background: #fff;
+    background: transparent;
     width: 2.125in;
     height: 3.375in;
     margin: 10px;
@@ -145,7 +145,7 @@ body {
 
 .front_part .body_part {
     height: 246px;
-    background: #fefefe;
+    background: transparent;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -249,7 +249,7 @@ body {
 
 
 .back_part {
-    background: #fff;
+    background: transparent;
     width: 2.125in;
     height: 3.375in;
     margin: 10px;
@@ -368,7 +368,7 @@ body {
 
 .back_part .body_part {
     height: 246px;
-    background: #fefefe;
+    background: transparent;
     padding: 20px;
     box-sizing: border-box;
 }
