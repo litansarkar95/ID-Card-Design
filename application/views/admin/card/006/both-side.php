@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>ID Two</title>
-		<link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/card/006/css/style.css">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-	</head>
 
-    <style>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ID Card design 001</title>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/card/006/css/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+</head>
+   <style>
     .card-design-break {
     float:left;
 }
@@ -41,7 +38,7 @@
 
 /* Center the main container on screen and print */
 .main_container {
-  width: 800px; /* adjust as needed */
+  width: 297 mm;
   margin: 0 auto;
 }
  .print-container {
@@ -78,15 +75,15 @@
   }
 }
         </style>
-	<body id="bodyPart">
-          <div class="print-container">
+<body id="bodyPart">
+             <div class="print-container">
     <button onclick="window.print()" class="print-button"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
             </svg>Print</button>
             </div>
-		<div class="main_container" id="data">
-			<div id="">
-                <?php
+	<div class="main_container" id="data">
+		<div id="">
+                    <?php
 $i=1;
 if(isset($qr_images)){
     foreach($qr_images  as $qr){
@@ -96,7 +93,8 @@ if(isset($qr_images)){
                 echo '<div class="page">';
             }
         ?>
-				<div class="front_part card-design-break">
+
+			<div class="front_part card-design-break">
 					<section class="header_part">
 						<span class="header_shape1">
 						</span>
@@ -223,8 +221,8 @@ if(isset($qr_images)){
 					</section>
 				</div>
 		
-			
-            <?php
+		
+                     <?php
  if ($i % 4 == 0 || $i == 12) {
                 echo '</div>'; // close .page
             }
@@ -233,8 +231,10 @@ if(isset($qr_images)){
 
     }
     ?>
-    	</div>
 		</div>
 	
-	</body>
+	</div>
+	
+</body>
+
 </html>

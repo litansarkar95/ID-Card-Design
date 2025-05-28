@@ -4,485 +4,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ID Three</title>
-
+	<title>ID Card design 001</title>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/card/012/css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-		rel="stylesheet">
 </head>
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    overflow: 0;
-}
-
-body {
-    background: #e3e3e3;
-    font-family: arial;
-}
-
-.main_container {
-    width: 8.27in;
-    max-height: 11.69in;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#wrapper {
-    width: 640px;
-    display: flex;
-}
-
-.front_part {
-    background: #fff;
-    width: 300px;
-    height: 476px;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.front_part .header_part {
-    height: 245px;
-    max-height: 245px;
-    display: flex;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-}
-
-.front_part .shape_1 {
-    position: absolute;
-    background: #0d1361;
-    width: 420px;
-    height: 212px;
-    left: 50%;
-    border-radius: 50%;
-    transform: translate(-50%);
-    top: -75px;
-    border: 20px solid #fff;
-    z-index: 9;
-}
-
-.front_part .shape_1::after {
-    content: "";
-    position: absolute;
-    background: #0469c2;
-    width: 480px;
-    height: 480px;
-    left: 18%;
-    border-radius: 50%;
-    transform: translate(-50%);
-    top: -295px;
-    transform: rotate(2deg);
-}
-
-.front_part .shape_1::before {
-    content: "";
-    position: absolute;
-    background: #007dfd;
-    width: 480px;
-    height: 480px;
-    right: 18%;
-    border-radius: 50%;
-    transform: translate(-50%);
-    top: -295px;
-    transform: rotate(2deg);
-    z-index: 99;
-    opacity: 0.5;
-    box-shadow: 0 0 34px #000;
-}
-
-.front_part .branding_part {
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 9999999999999999;
-}
-
-.front_part .header_logo {
-    width: 50px;
-    margin-top: 5px;
-    height: 25px;
-}
-
-.front_part .tagline_part {
-    margin-top: 5px;
-    margin-left: 5px;
-}
-
-.front_part .tagline_part p {
-    font-size: 10px;
-    color: #fff;
-}
-
-.front_part .tagline {
-    text-transform: capitalize;
-    font-size: 12px;
-    color: #fff;
-}
-
-.front_part .user_logo {
-    display: inline-block;
-    width: 120px;
-    height: 120px;
-    background: #fff;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    overflow: hidden;
-    position: absolute;
-    bottom: -26px;
-    left: 50%;
-    right: 25%;
-    box-shadow: 0px 0px 8px #000;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-}
-
-.front_part .user_img {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 100%;
-}
-
-.front_part .body_part {
-    background: #fff;
-    padding: 0px 30px;
-    height: 191px;
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
-}
-
-.front_part .shape_2 {
-    position: absolute;
-    width: 501px;
-    height: 247px;
-    background: #0472d1;
-    left: 50%;
-    transform: translate(-50%);
-    border-radius: 50%;
-    top: -223px;
-}
-
-.front_part .shape_2::after {
-    content: "";
-    position: absolute;
-    width: 501px;
-    height: 247px;
-    background: #fff;
-    left: 50%;
-    transform: translate(-50%);
-    border-radius: 50%;
-    top: 169px;
-}
-
-.front_part .user_title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-}
-
-.front_part .body_part .title {
-    text-align: center;
-    color: #000;
-    font-size: 30px;
-    text-transform: uppercase;
-    margin-top: -20px;
-    font-family: "Roboto", sans-serif;
-}
-
-.front_part .body_part .designation {
-    text-align: center;
-    color: #000;
-    font-size: 16px;
-    margin:10px;
-    text-transform: uppercase;
-    font-family: "Roboto", sans-serif;
-}
-
-.front_part .body_part h5 {
-    text-align: center;
-    font-size: 18px;
-    font-family: "Roboto", sans-serif;
-    margin-top: 30px;
-    letter-spacing: 2px;
-}
-
-.front_part .footer_part {
-    height: 40px;
-    position: relative;
-}
-
-.front_part .footer_shape {
-    display: block;
-    width: 100%;
-    height: 40px;
-}
-
-.front_part .bar_code {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: -9px;
-    z-index: 9;
-    width: 100px;
-}
-
-.front_part .ftr_shape {
-    background: linear-gradient(to right, #0173df, #012d8f, #0173df);
-    width: 506px;
-    position: absolute;
-    height: 200px;
-    border-radius: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    top: -1px;
-}
-
-.front_part .ftr_shape::after {
-    background: #fff;
-    content: "";
-    width: 390px;
-    position: absolute;
-    height: 202px;
-    border-radius: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    bottom: -8px;
-}
-
-
-.back_part {
-    background: #fff;
-    width: 300px;
-    height: 476px;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.header_part3 {
-    background: #fff;
-    text-align: center;
-    height: 60px;
-    max-height: 60px;
-    position: relative;
-    overflow: hidden;
-}
-
-.back_part .header_shape3 {
-    background: linear-gradient(to right, #0173df, #012d8f, #0173df);
-    width: 396px;
-    position: absolute;
-    height: 200px;
-    border-radius: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    bottom: 3px;
-}
-
-.back_part .header_shape3::after {
-    background: #fff;
-    content: "";
-    width: 346px;
-    position: absolute;
-    height: 202px;
-    border-radius: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    top: -10px;
-}
-
-.back_part .bac_title {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 35px;
-}
-
-.back_part .terms_3 {
-    margin-top: 10px;
-    font-size: 10px;
-    text-align: center;
-    color: #727272;
-}
-
-.back_part .body_part h5 {
-    text-align: center;
-    font-size: 18px;
-    font-family: "Roboto", sans-serif;
-    margin-top: 25px;
-    letter-spacing: 2px;
-}
-
-.back_part .body_part {
-    height: 311px;
-    text-align: center;
-}
-
-.back_part .valid_till {
-    font-size: 14px;
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
-
-
-
-.back_part .signature {
-    font-family: "Allura", cursive;
-    margin-bottom: 10px;
-    margin-top: 25px;
-}
-
-.back_part .closing_txt {
-    text-align: center;
-    color: #a1a1a1;
-    position: relative;
-}
-
-.back_part .closing_txt::after {
-    content: "";
-    height: 1px;
-    background: #a1a1a1;
-    left: -5px;
-    right: -5px;
-    top: -5px;
-    position: absolute;
-}
-
-.back_part .footer_part {
-    height: 105px;
-    display: flex;
-    flex-direction: row;
-    padding: 40px 20px;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
-}
-
-.ftr_content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: row;
-    padding: 40px 20px;
-    box-sizing: border-box;
-    z-index: 9;
-}
-
-.footer_left3 {
-    width: 55%;
-    padding-left: 10px;
-}
-
-.footer_right3 {
-    width: 50%;
-}
-
-.footer_left3 ul,
-.footer_right3 ul {
-    list-style-type: none;
-    margin: 0;
-}
-
-.footer_left3 ul li,
-.footer_right3 ul li {
-    float: left;
-    color: #fff;
-    font-size: 9px;
-    text-align: left;
-    margin-bottom: 10px;
-    margin-right: 20px;
-}
-
-.social_part {
-    display: inline-block;
-    height: 15px;
-    width: 15px;
-    background: #fff;
-    border-radius: 50%;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 2px;
-    margin-right: 5px;
-}
-
-.social_part img {
-    width: 10px;
-}
-
-.ftr_txt {
-
-}
-
-.ftr_shape3 {
-    position: absolute;
-    background: #0246ab;
-    width: 400px;
-    height: 200px;
-    left: 50%;
-    transform: translate(-50%);
-    border-radius: 50%;
-    top: 0;
-    overflow: hidden;
-}
-
-.ftr_shape3::after {
-    content: "";
-    position: absolute;
-    background: linear-gradient(to bottom, #0460bd, #033d9e, #0361bf);
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    top: 10px;
-    left: 106px;
-    opacity: 0.5;
-    box-shadow: 0 0 20px #000;
-}
-
-.ftr_shape3::before {
-    content: "";
-    position: absolute;
-    background: linear-gradient(#0560bb, #0460be);
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    top: 10px;
-    right: 106px;
-    opacity: 0.5;
-    box-shadow: 0 0 20px #000;
-}
-
-.printBtn {
-    padding: 10px 30px;
-    font-size: 20px;
-    background: #a4c735;
-    color: #fff;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-}
-
+   <style>
     .card-design-break {
     float:left;
 }
@@ -510,7 +38,7 @@ body {
 
 /* Center the main container on screen and print */
 .main_container {
-  width: 800px; /* adjust as needed */
+  width: 297 mm;
   margin: 0 auto;
 }
  .print-container {
@@ -546,17 +74,16 @@ body {
     break-inside: avoid;
   }
 }
-
-    </style>
+        </style>
 <body id="bodyPart">
-    <div class="print-container">
+             <div class="print-container">
     <button onclick="window.print()" class="print-button"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
             </svg>Print</button>
             </div>
 	<div class="main_container" id="data">
 		<div id="">
-<?php
+                    <?php
 $i=1;
 if(isset($qr_images)){
     foreach($qr_images  as $qr){
@@ -567,77 +94,95 @@ if(isset($qr_images)){
             }
         ?>
 			<div class="front_part card-design-break">
-				<section class="header_part">
-					<div class="branding_part">
-						<div class="logo_part">
-							<img src="<?php echo base_url(); ?>public/assets/card/012/img_3_1.png" alt="" class="header_logo">
+					<section class="header_part">
+						<div class="branding_part">
+							<!-- <div class="logo_part">
+								<img src="imgs/img_3_1.png" alt="" class="header_logo">
+							</div> -->
+							<div class="tagline_part">
+								<h4 class="tagline"><?php echo $qr['org_name']; ?></h4>
+								<p><?php echo $qr['website']; ?></p>
+							</div>
 						</div>
-						<div class="tagline_part">
-							<h4 class="tagline"><?php echo $qr['org_name']; ?></h4>
-							<p></Strong> <?php echo $qr['website']; ?></p>
-						</div>
-					</div>
-					<span class="user_logo">
-						<img src="<?php echo base_url()."public/static/images/users/".$qr['photo']; ?>" alt="" class="user_img">
-					</span>
+						<span class="user_logo">
+							<img src="<?php echo base_url()."public/static/images/users/".$qr['photo']; ?>" alt="" class="user_img">
+						</span>
 
 
-					<span class="shape_1"></span>
-				</section>
-				<section class="body_part">
-					<span class="shape_2"></span>
-					<div class="user_title">
-						<h3 class="title"><?php echo $qr['name']; ?></h3>
-						<h4 class="designation"><?php echo $qr['designation']; ?></h4>
-                        		<h4 class="designation"> <?php echo $qr['department']; ?> </h4>
+						<span class="shape_1"></span>
+					</section>
+					<section class="body_part">
+						<span class="shape_2"></span>
+						<div class="user_title">
+							<h3 class="title"><?php echo $qr['name']; ?></h3> 
+							<h4 class="designation"><?php echo $qr['designation']; ?></h4> 
+							<h5>ID : <?php echo $qr['employee_id']; ?></h3> 
+					
+						</div> 
+					</section> 
+					<section class="footer_part"> 
+
+						<img src="<?php echo base_url($qr['qr_code_image']); ?>" alt="" class="bar_code">  
+						<span class="ftr_shape"></span>
+					</section> 
+				</div>
+
+	<div class="back_part card-design-break">
+					<section class="header_part3">
+						<span class="header_shape3"></span>
+					</section>
+					<section class="body_part">
+						<h3 class="bac_title"><?php echo $qr['terms_conditions_name']; ?></h3>
+						<p class="terms_3"><?php echo $qr['terms_conditions']; ?></p>
 						<h5>ID : <?php echo $qr['employee_id']; ?></h3>
-					</div>
-				</section>
-				<section class="footer_part">
-
-					<img src="<?php echo base_url($qr['qr_code_image']); ?>" alt="" class="bar_code">
-					<span class="ftr_shape"></span>
-				</section>
-			</div>
-<div class="back_part card-design-break">
-				<section class="header_part3">
-					<span class="header_shape3"></span>
-				</section>
-				<section class="body_part">
-					<h3 class="bac_title">Terms and Conditions</h3>
-					<p class="terms_3">Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit odio
-						fugiat veniam dicta minus, soluta </p>
-					<p class="terms_3">Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit odio
-						fugiat</p>
-					<h5>ID : <?php echo $qr['employee_id']; ?></h3>
-						<h4 class="valid_till">Valid Thru: 07/21</h4>
+						<h4 class="valid_till">Valid Thru: <?php echo  $this->input->post('dob') ; ?></h4>
 						<p class="signature"><?php echo $qr['name']; ?></p>
 						<span class="closing_txt"><?php echo $qr['name']; ?></span>
-				</section>
-				<section class="footer_part">
+					</section>
+					<section class="footer_part">
 
-					<div class="ftr_content">
-						<div class="footer_left3">
-							<ul>
-								<li><span class="social_part"><img src="<?php echo base_url(); ?>public/assets/card/012/img_3_6.png" alt=""></span> <span
-										class="ftr_txt"><?php echo $qr['org_email']; ?></span></li>
-								<li><span class="social_part"><img src="<?php echo base_url(); ?>public/assets/card/012/img_3_8.png" alt=""></span> <span
-										class="ftr_txt"><?php echo $qr['org_address']; ?></span></li>
-							</ul>
+						<div class="ftr_content">
+							<div class="footer_left3">
+								<table align="center">
+									<tr>
+										<td>
+											<span class="social_part"><img src="<?php echo base_url(); ?>public/assets/card/012/imgs/img_3_6.png" alt=""></span> <span class="ftr_txt"><?php echo $qr['org_email']; ?></span>
+										</td>
+									
+									</tr>
+									<tr>
+									
+										<td>
+											<span class="social_part"><img src="<?php echo base_url(); ?>public/assets/card/012/imgs/img_3_9.png" alt=""></span> <span class="ftr_txt"><?php echo $qr['website']; ?></span>
+										</td>
+									</tr>
+								</table>
+							</div>
 						</div>
-						<div class="footer_right3">
-							<ul>
-								<li><span class="social_part"><img src="<?php echo base_url(); ?>public/assets/card/012/img_3_7.png" alt=""></span> <span
-										class="ftr_txt"><?php echo $qr['org_mobile_no']; ?></span></li>
-								<li><span class="social_part"><img src="<?php echo base_url(); ?>public/assets/card/012/img_3_9.png" alt=""></span> <span
-										class="ftr_txt"><?php echo $qr['website']; ?></span></li>
-							</ul>
+						<span class="ftr_shape3"></span>
+					</section>
+					<!-- <section class="footer_part">
+
+						<div class="ftr_content">
+							<div class="footer_left3">
+								<ul>
+									<li><span class="social_part"><img src="imgs/img_3_6.png" alt=""></span> <span class="ftr_txt">demo@email.com</span></li>
+									<li><span class="social_part"><img src="imgs/img_3_8.png" alt=""></span> <span class="ftr_txt">House, Road, Area</span></li>
+								</ul>
+							</div>
+							<div class="footer_right3">
+								<ul>
+									<li><span class="social_part"><img src="imgs/img_3_7.png" alt=""></span> <span class="ftr_txt">000 - 000 - 0000</span></li>
+									<li><span class="social_part"><img src="imgs/img_3_9.png" alt=""></span> <span class="ftr_txt">www.mysite.com</span></li>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<span class="ftr_shape3"></span>
-				</section>
-			</div>
-<?php
+						<span class="ftr_shape3"></span>
+					</section> -->
+				</div>
+
+
+                     <?php
  if ($i % 4 == 0 || $i == 12) {
                 echo '</div>'; // close .page
             }
@@ -646,9 +191,8 @@ if(isset($qr_images)){
 
     }
     ?>
-			
 		</div>
-		
+	
 	</div>
 	
 </body>
