@@ -150,6 +150,16 @@ select[type="text"]{
                          </div>  </div>
                       <!-- END FORM -->
 
+                        <!-- FORM -->
+                        <div class="col-md-6">
+                     <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_father_mobile_no">
+                                <input type="checkbox" class="form-check-input" id="is_father_mobile_no" name="is_father_mobile_no" value="1"> Father's Mobile No</label>
+                            </div>
+                         </div>  </div>
+                      <!-- END FORM --> 
+
                              <!-- FORM -->
                              <div class="col-md-6">
                              <div class="form-group">
@@ -165,6 +175,17 @@ select[type="text"]{
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_mother_name_bn">
                                 <input type="checkbox" class="form-check-input" id="is_mother_name_bn" name="is_mother_name_bn" value="1">Mother Name Bangla</label>
+                            </div>
+                         </div>
+                         </div>
+                      <!-- END FORM -->
+
+                        <!-- FORM -->
+                      <div class="col-md-6">
+                      <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_mother_mobile_no">
+                                <input type="checkbox" class="form-check-input" id="is_mother_mobile_no" name="is_mother_mobile_no" value="1">Mother Mobile No</label>
                             </div>
                          </div>
                          </div>

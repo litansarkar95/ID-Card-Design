@@ -239,6 +239,22 @@ text-align:center;
             }
             ?>
             <!-- END FORM -->
+
+              <!-- FORM -->
+            <?php
+            if($pdt->is_father_mobile_no == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="father_mobile_no">Father's Mobile No</label>
+                <input type="text" class="form-control" id="father_mobile_no" name="father_mobile_no" value="<?php echo set_value('father_mobile_no'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
                <!-- FORM -->
             <?php
             if($pdt->is_mother_name_en  == 1){
@@ -262,6 +278,22 @@ text-align:center;
                 <div class="form-group">
                 <label for="mother_name_bn">মায়ের নাম</label>
                 <input type="text" class="form-control" id="mother_name_bn" name="mother_name_bn" value="<?php echo set_value('mother_name_bn'); ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+
+             <!-- FORM -->
+            <?php
+            if($pdt->is_mother_mobile_no  == 1){
+            ?>
+                <div class="col-md-10">
+                <div class="form-group">
+                <label for="mother_mobile_no">Mother Mobile No</label>
+                <input type="text" class="form-control" id="mother_mobile_no" name="mother_mobile_no" value="<?php echo set_value('mother_mobile_no'); ?>">
                 </div>
 
                 </div>
@@ -758,12 +790,7 @@ text-align:center;
 
            
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">
-                I agree to the terms and conditions
-                </label>
-            </div>
+   
 
             <button type="submit">Submit </button>
 

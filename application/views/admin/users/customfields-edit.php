@@ -145,6 +145,17 @@ select[type="text"]{
                             </div>
                          </div>   </div>
                       <!-- END FORM -->
+
+                      
+                      <!-- FORM -->
+                             <div class="col-md-6">
+                             <div class="form-group">
+                             <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_father_mobile_no">
+                                <input type="checkbox" class="form-check-input" id="is_father_mobile_no" name="is_father_mobile_no" value="1" <?php if($val->is_father_mobile_no == 1){ echo "checked"; } ?>> Father's Mobile No</label>
+                            </div>
+                         </div>   </div>
+                      <!-- END FORM -->
                         <!-- FORM -->
                         <div class="col-md-6">
                      <div class="form-group">
@@ -161,6 +172,16 @@ select[type="text"]{
                       <div class="form-check form-check-success">
                               <label class="form-check-label" for="is_mother_name_en">
                                 <input type="checkbox" class="form-check-input" id="is_mother_name_en" name="is_mother_name_en" value="1" <?php if($val->is_mother_name_en == 1){ echo "checked"; } ?>> Mother Name English</label>
+                            </div>
+                         </div>   </div>
+                      <!-- END FORM -->
+
+                      <!-- FORM -->
+                             <div class="col-md-6">
+                             <div class="form-group">
+                      <div class="form-check form-check-success">
+                              <label class="form-check-label" for="is_mother_mobile_no">
+                                <input type="checkbox" class="form-check-input" id="is_mother_mobile_no" name="is_mother_mobile_no" value="1" <?php if($val->is_mother_mobile_no == 1){ echo "checked"; } ?>> Mother Mobile No</label>
                             </div>
                          </div>   </div>
                       <!-- END FORM -->

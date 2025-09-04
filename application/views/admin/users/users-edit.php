@@ -89,7 +89,7 @@ textarea[type="text"] {
               
         ?> 
                     <form class="forms-sample"  action="<?php echo base_url(); ?>admin/users/update" method="post" enctype="multipart/form-data">
-                    <input type="" class="form-control" id="id" name="id" value="<?php echo $val->id; ?>">
+                    <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $val->id; ?>">
                    
                     <div class="row">
                
@@ -155,6 +155,22 @@ textarea[type="text"] {
             }
             ?>
             <!-- END FORM -->
+
+               <!-- FORM -->
+            <?php
+            if($pdt->is_father_mobile_no  == 1){
+            ?>
+                <div class="col-md-4">
+                <div class="form-group">
+                <label for="father_mobile_no">Father's Mobile No</label>
+                <input type="text" class="form-control" id="father_mobile_no" name="father_mobile_no" value="<?php echo $val->father_mobile_no; ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
                <!-- FORM -->
             <?php
             if($pdt->is_mother_name_en  == 1){
@@ -178,6 +194,22 @@ textarea[type="text"] {
                 <div class="form-group">
                 <label for="mother_name_bn">মায়ের নাম</label>
                 <input type="text" class="form-control" id="mother_name_bn" name="mother_name_bn" value="<?php echo $val->mother_name_bn; ?>">
+                </div>
+
+                </div>
+                <?php
+            }
+            ?>
+            <!-- END FORM -->
+
+             <!-- FORM -->
+            <?php
+            if($pdt->is_mother_mobile_no  == 1){
+            ?>
+                <div class="col-md-4">
+                <div class="form-group">
+                <label for="mother_mobile_no">Mother Mobile No</label>
+                <input type="text" class="form-control" id="mother_mobile_no" name="mother_mobile_no" value="<?php echo $val->mother_mobile_no; ?>">
                 </div>
 
                 </div>
