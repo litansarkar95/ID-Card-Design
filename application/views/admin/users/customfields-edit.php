@@ -94,15 +94,15 @@ select[type="text"]{
                       </select> 
                         <span class="text-red small"><?php echo form_error('company_name'); ?></span>
                     </div>
-                    
                       <div class="form-group">
-                        <label for="title">শিরোনাম<code>*</code></label>
-                        <input type="text" class="form-control" id="title" value="<?php echo $val->title; ?>" name="title"   />
+                        <label for="title">Title<code>*</code></label>
+                        <textarea type="text" class="form-control" id="title"  name="title"   ><?php echo $val->title ; ?></textarea>
                         <span class="text-red small"><?php echo form_error('title'); ?></span>
                     </div>
+                  
                     <div class="form-group">
                         <label for="description">Description<code>*</code></label>
-                        <textarea type="text" class="form-control" id="description"  name="description"   ><?php echo $val->description; ?></textarea>
+                        <textarea type="text" class="form-control" id="description"  name="description"   ><?php echo $val->description ; ?></textarea>
                         <span class="text-red small"><?php echo form_error('description'); ?></span>
                     </div>
                    <div class="form-group">

@@ -1,811 +1,344 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GDPR-Compliant Contact Form</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<style>
+  <title>Dynamic Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
     :root {
-            --primary: #4f46e5;
-            --primary-dark: #4338ca;
-            --gray: #6b7280;
-            --error: #ef4444;
-            --success: #22c55e;
-        }
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --gray: #6b7280;
+      --error: #dc2626;
+      --success: #16a34a;
+      --bg: #f9fafb;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background: #f3f4f6;
-            color: #1f2937;
-            line-height: 1.5;
-            padding: 2rem;
-        }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: #1f2937;
+      padding: 2rem;
+    }
 
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-        }
+    .form-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-        h1 {
-            font-size: 1.5rem;
-            
-            color: #111827;
-            text-align:center;
-        }
-    
-p{
-text-align:center;
+    h1 {
+      font-size: 1.75rem;
+      text-align: center;
+      margin-bottom: 0.25rem;
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #f59e0b;
+      margin-bottom: 2rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-control {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+      outline: none;
+    }
+
+    .form-control.error {
+      border-color: var(--error);
+    }
+
+    .form-control.success {
+      border-color: var(--success);
+    }
+
+    .error-message {
+      font-size: 0.85rem;
+      color: var(--error);
+      margin-top: 0.3rem;
+    }
+
+    .success-message {
+      display: none;
+      background: #dcfce7;
+      color: #166534;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--success);
+      font-weight: 500;
+    }
+
+    button {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 2rem;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
+    }
+
+    .privacy-notice {
+      font-size: 0.85rem;
+      color: var(--gray);
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    input[type="file"] {
+      font-size: 0.9rem;
+    }
+    .form-header {
+  background: linear-gradient(135deg, #3b82f6, #2563eb); /* Company theme gradient */
+  color: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
 
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
+.form-header h1 {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
 
-        input, textarea , select{
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            transition: all 0.15s ease;
-        }
+.form-header p {
+  color: #e0f2fe;
+  font-size: 1.1rem;
+}
 
-        input:focus, textarea:focus , select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-
-        .error-message {
-            color: var(--error);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-            display: none;
-        }
-
-        .validation-icon {
-            position: absolute;
-            right: 1rem;
-            top: 2.5rem;
-            display: none;
-        }
-
-        .validation-icon.success {
-            color: var(--success);
-            display: block;
-        }
-
-        .validation-icon.error {
-            color: var(--error);
-            display: block;
-        }
-
-        input.success, textarea.success {
-            border-color: var(--success);
-        }
-
-        input.error, textarea.error {
-            border-color: var(--error);
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: start;
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            margin-top: 0.25rem;
-        }
-
-        .checkbox-group label {
-            font-size: 0.875rem;
-            color: var(--gray);
-        }
-
-        button {
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.15s ease;
-        }
-
-        button:hover {
-            background: var(--primary-dark);
-        }
-
-        .privacy-notice {
-            font-size: 0.875rem;
-            color: var(--gray);
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .success-message {
-            display: none;
-            background: #dcfce7;
-            color: #166534;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-        }
-    </style>
+  </style>
+</head>
 <body>
+  <div class="form-container">
+    <div class="success-message" id="successMessage">
+      ✅ Thank you! Your form has been submitted successfully.
+    </div>
 
-<body>
-    <div class="form-container">
-        <div class="success-message" id="successMessage">
-            Thank you! Your form has been submitted successfully.
-        </div>
-        <?php
-        if(isset($allPdt)){
-            foreach($allPdt as $pdt){
-        
-        ?>
-            
-            <h1><?php echo $pdt->title; ?></h1>
-        <p><?php echo $pdt->description; ?></p>
-        <form id="gdprForm"  action="<?php echo base_url()."userformsubmit/$pdt->org_slug?v=$pdt->id" ?>" method="post" enctype="multipart/form-data">
-            
-        <input  class="form-control" type="hidden" id="organization_id" name="organization_id" value="<?php echo $pdt->organization_id; ?>"  >
-            <input  class="form-control" type="hidden" id="agent_id" name="agent_id" value="<?php echo $pdt->agent_id; ?>"  >
-            <input  class="form-control" type="hidden" id="id" name="id" value="<?php echo $pdt->id; ?>"  >
-       
-       
+    <?php if (isset($allPdt)) {
+      foreach ($allPdt as $pdt) { ?>
 
+       <div class="form-header">
+  <h1><?= $pdt->title ?></h1>
+  <p><?= $pdt->description ?></p>
+</div>
+
+
+        <form action="<?= base_url() . "userformsubmit/$pdt->org_slug?v=$pdt->id" ?>" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="organization_id" value="<?= $pdt->organization_id ?>">
+          <input type="hidden" name="agent_id" value="<?= $pdt->agent_id ?>">
+          <input type="hidden" name="id" value="<?= $pdt->id ?>">
+
+          <div class="form-grid">
 
             <?php
-            if($pdt->is_name_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="name_en">Full Name</label>
-                <input type="text" class="form-control" id="name_en" name="name_en" value="<?php echo set_value('name_en'); ?>">
-                </div>
+            $fields = [
+              'name_en' => 'Full Name',
+              'name_bn' => 'নাম',
+              'father_name_en' => "Father's Name",
+              'father_name_bn' => 'পিতার নাম',
+              'father_mobile_no' => "Father's Mobile No",
+              'mother_name_en' => 'Mother Name',
+              'mother_name_bn' => 'মায়ের নাম',
+              'mother_mobile_no' => "Mother Mobile No",
+              'mobile_no' => 'Mobile No.',
+              'email' => 'Email',
+              'village_en' => 'Village',
+              'village_bn' => 'গ্রাম',
+              'post_office_en' => 'Post Office',
+              'post_office_bn' => 'পোস্ট অফিস',
+              'upazila_en' => 'Upazila',
+              'upazila_bn' => 'উপজেলা',
+              'zilla_en' => 'Zilla',
+              'zilla_bn' => 'জেলা',
+              'designation' => 'Designation',
+              'department' => 'Department',
+              'employee_id' => 'Employee ID',
+              'index_no' => 'Index No',
+              'class_roll' => 'Class Roll',
+              'date_of_birth' => 'Date of Birth',
+              'id_number' => 'ID No',
+              'nationality' => 'Nationality',
+            ];
+            $requiredFields = ['name_en', 'mobile_no', 'email', 'date_of_birth']; // উদাহরণ
 
-                </div>
-                <?php
+
+
+
+           foreach ($fields as $field => $label) {
+            $flag = "is_$field";
+            if (property_exists($pdt, $flag) && $pdt->$flag == 1) {
+              $isRequired = in_array($field, $requiredFields) ? 'required' : '';
+              ?>
+              <div class="form-group">
+                <label for="<?= $field ?>"><?= $label ?></label>
+                <input type="text" class="form-control" name="<?= $field ?>" id="<?= $field ?>" value="<?= set_value($field) ?>" <?= $isRequired ?>>
+                <?php if ($field === 'mobile_no') echo "<small class='error-message'>" . form_error('mobile_no') . "</small>"; ?>
+              </div>
+            <?php
             }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_name_bn  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="name_bn">নাম</label>
-                <input type="text" class="form-control" id="name_bn" name="name_bn" value="<?php echo set_value('name_bn'); ?>">
-                </div>
+          }
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-              <!-- FORM -->
-            <?php
-            if($pdt->is_father_name_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="father_name_en">Father's Name</label>
-                <input type="text" class="form-control" id="father_name_en" name="father_name_en" value="<?php echo set_value('father_name_en'); ?>">
-                </div>
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_father_name_bn  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="father_name_bn">পিতার নাম</label>
-                <input type="text" class="form-control" id="father_name_bn" name="father_name_bn" value="<?php echo set_value('father_name_bn'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-
-              <!-- FORM -->
-            <?php
-            if($pdt->is_father_mobile_no == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="father_mobile_no">Father's Mobile No</label>
-                <input type="text" class="form-control" id="father_mobile_no" name="father_mobile_no" value="<?php echo set_value('father_mobile_no'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_mother_name_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="mother_name_en">Mother Name</label>
-                <input type="text" class="form-control" id="mother_name_en" name="mother_name_en" value="<?php echo set_value('mother_name_en'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_mother_name_bn  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="mother_name_bn">মায়ের নাম</label>
-                <input type="text" class="form-control" id="mother_name_bn" name="mother_name_bn" value="<?php echo set_value('mother_name_bn'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-
-             <!-- FORM -->
-            <?php
-            if($pdt->is_mother_mobile_no  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="mother_mobile_no">Mother Mobile No</label>
-                <input type="text" class="form-control" id="mother_mobile_no" name="mother_mobile_no" value="<?php echo set_value('mother_mobile_no'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_mobile_no  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="mobile_no">Mobile No.</label>
-                <span class="text-red small"><?php echo form_error('mobile_no'); ?></span>
-                <input type="text" class="form-control" id="mobile_no" name="mobile_no" value="<?php echo set_value('mobile_no'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_email  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo set_value('email'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_village_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="village_en">Village</label>
-                <input type="text" class="form-control" id="village_en" name="village_en" value="<?php echo set_value('village_en'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_village_bn  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="village_bn">গ্রাম</label>
-                <input type="text" class="form-control" id="village_bn" name="village_bn" value="<?php echo set_value('village_bn'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_post_office_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="post_office_en">Post Office</label>
-                <input type="text" class="form-control" id="post_office_en" name="post_office_en" value="<?php echo set_value('post_office_en'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_post_office_bn  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="post_office_bn">পোস্ট অফিস</label>
-                <input type="text" class="form-control" id="post_office_bn" name="post_office_bn" value="<?php echo set_value('post_office_bn'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_upazila_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="upazila_en">Upazila</label>
-                <input type="text" class="form-control" id="upazila_en" name="upazila_en" value="<?php echo set_value('upazila_en'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_upazila_bn  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="upazila_bn">উপজেলা</label>
-                <input type="text" class="form-control" id="upazila_bn" name="upazila_bn" value="<?php echo set_value('upazila_bn'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_zilla_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="zilla_en">Zilla</label>
-                <input type="text" class="form-control" id="zilla_en" name="zilla_en" value="<?php echo set_value('zilla_en'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_zilla_bn  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="zilla_bn">জেলা</label>
-                <input type="text" class="form-control" id="zilla_bn" name="zilla_bn" value="<?php echo set_value('zilla_bn'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_designation  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="designation">Designation</label>
-                <input type="text" class="form-control" id="designation" name="designation" value="<?php echo set_value('designation'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_department  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="department">Department</label>
-                <input type="text" class="form-control" id="department" name="department" value="<?php echo set_value('department'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_employee_id  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="employee_id">Employee ID</label>
-                <input type="text" class="form-control" id="employee_id" name="employee_id" value="<?php echo set_value('employee_id'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_index_no  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="index_no">Index No</label>
-                <input type="text" class="form-control" id="index_no" name="index_no" value="<?php echo set_value('index_no'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_class  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
+            // Dropdowns
+            if ($pdt->is_class == 1) { ?>
+              <div class="form-group">
                 <label for="class">Class</label>
-                <select type="text" class="form-control select2" id="class"  name="class"   >
-                      <option value="">Select</option>   
-                      <?php
-                                        foreach ($allClass as $cls){
-                                       
-                                                echo "<option value='{$cls->id}'>{$cls->name} </option>";
-                                          
-                                     
-                                        }
-                                    ?>
-                       
-                      </select> 
+                <select name="class" id="class" class="form-control">
+                  <option value="">Select</option>
+                  <?php foreach ($allClass as $cls) {
+                    echo "<option value='$cls->id'>$cls->name</option>";
+                  } ?>
+                </select>
+              </div>
+            <?php }
 
-                </div>
+            if ($pdt->is_sections == 1) { ?>
+              <div class="form-group">
+                <label for="sections">Sections</label>
+                <select name="sections" id="sections" class="form-control">
+                  <option value="">Select</option>
+                  <?php foreach ($allSect as $sect) {
+                    echo "<option value='$sect->id'>$sect->name</option>";
+                  } ?>
+                </select>
+              </div>
+            <?php }
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-       
-               <!-- FORM -->
-            <?php
-            if($pdt->is_class_roll  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="class_roll">Class Roll</label>
-                <input type="text" class="form-control" id="class_roll" name="class_roll" value="<?php echo set_value('class_roll'); ?>">
-                </div>
+            if ($pdt->is_sessions == 1) { ?>
+              <div class="form-group">
+                <label for="sessions">Session</label>
+                <select name="sessions" id="sessions" class="form-control">
+                  <option value="">Select</option>
+                  <?php foreach ($allSession as $session) {
+                    echo "<option value='$session->id'>$session->name</option>";
+                  } ?>
+                </select>
+              </div>
+            <?php }
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-                <!-- FORM -->
-                <?php
-            if($pdt->is_sections  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="class_roll">Sections</label>
-                <select type="text" class="form-control select2" id="sections"  name="sections"   >
-                      <option value="">Select</option>   
-                      <?php
-                                        foreach ($allSect as $sect){
-                                       
-                                                echo "<option value='{$sect->id}'>{$sect->name} </option>";
-                                          
-                                     
-                                        }
-                                    ?>
-                       
-                      </select> 
-              
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-                <!-- FORM -->
-            <?php
-            if($pdt->is_sessions  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="class_roll">Session</label>
-                <select type="text" class="form-control select2" id="sessions"  name="sessions"   >
-                      <option value="">Select</option>   
-                      <?php
-                                        foreach ($allSession as $session){
-                                       
-                                                echo "<option value='{$session->id}'>{$session->name} </option>";
-                                          
-                                     
-                                        }
-                                    ?>
-                       
-                      </select> 
-              
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-
-          
-               <!-- FORM -->
-            <?php
-            if($pdt->is_date_of_birth  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="full_name">Date of Birth</label>
-                <input type="text" class="form-control" id="dob" name="date_of_birth" value="<?php echo set_value('date_of_birth'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_gender  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
+            if ($pdt->is_gender == 1) { ?>
+              <div class="form-group">
                 <label for="gender">Gender</label>
-                <select class="form-control" type="text" id="gender" name="gender" value="<?php echo set_value('gender'); ?>" >
-                <option value="">Select</option>
-                <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Others">Others</option>
-            </select>
-              
-                </div>
+                <select name="gender" id="gender" class="form-control">
+                  <option value="">Select</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Others">Others</option>
+                </select>
+              </div>
+            <?php }
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_id_number  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="id_number">ID No</label>
-                <input type="text" class="form-control" id="id_number" name="id_number" value="<?php echo set_value('id_number'); ?>">
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_blood_group  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
+            if ($pdt->is_blood_group == 1) { ?>
+              <div class="form-group">
                 <label for="blood_group">Blood Group</label>
-                <select class="form-control" type="text" id="blood_group" name="blood_group" value="<?php echo set_value('blood_group'); ?>" >
-                <option value="">Select</option>
-                <option value="A+">A+</option>
-                <option value="A-">A-</option>
-                <option value="B+">B+</option>
-                <option value="B-">B-</option>
-                <option value="O+">O+</option>
-                <option value="O-">O-</option>
-                <option value="AB+">AB+</option>
-                <option value="AB-">AB-</option>
-            </select>
-            </div>
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-                       <!-- FORM -->
-            <?php
-            if($pdt->is_marital_status  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="marital_status">Marital Status</label>
-                <select class="form-control" type="text" id="marital_status" name="marital_status" value="<?php echo set_value('marital_status'); ?>" >
-                <option value="">Select</option>
-                <option value="Single">Single</option>
-                <option value="Married">Married</option>
-                <option value="Widowed">Widowed</option>
-                <option value="Separated">Separated</option>
-                <option value="Not Specified">Not Specified</option>
-            </select>
-            
-            </div>
+                <select name="blood_group" id="blood_group" class="form-control">
+                  <option value="">Select</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                </select>
+              </div>
+                 <?php } ?>
+        <?php
+$requiredFields = ['pic', 'signature']; // Ensure 'pic' আছে এখানে
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-                    <!-- FORM -->
-            <?php
-            if($pdt->is_nationality  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="nationality">Nationality</label>
-                <input type="text" class="form-control" id="nationality" name="nationality" value="<?php echo set_value('nationality'); ?>">
-                </div>
+if ($pdt->is_photo == 1) {
+  $isFileRequired = in_array('pic', $requiredFields) ? 'required' : '';
+?>
+  <div class="form-group">
+    <label for="pic">Photo</label>
+    <input type="file" class="form-control" name="pic" id="pic" <?= $isFileRequired ?>>
+  </div>
+<?php } ?>
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-                     <!-- FORM -->
-            <?php
-            if($pdt->is_present_address_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="present_address_en">Present Address</label>
-                <textarea class="form-control" id="present_address_en" name="present_address_en" rows="3" placeholder="Your Address"><?php echo set_value('present_address_en'); ?></textarea>
-                </div>
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
+     <?php if ($pdt->is_signature == 1) { 
+      $isFileRequired = in_array('signature', $requiredFields) ? 'required' : '';
+    ?>
+      <div class="form-group">
+        <label for="signature">Signature</label>
+        <input type="file" class="form-control" name="signature" id="signature" <?= $isFileRequired ?>>
+      </div>
+    <?php } ?>
 
-                    <!-- FORM -->
-                    <?php
-            if($pdt->is_permanent_address_en  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="permanent_address_en">Permanent Address</label>
-                <textarea class="form-control" id="permanent_address_en" name="permanent_address_en" rows="3" ><?php echo set_value('permanent_address_en'); ?></textarea>
-                </div>
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
-               <!-- FORM -->
-            <?php
-            if($pdt->is_photo  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="is_photo">Photo</label>
-                <input  class="form-control" type="file" id="is_photo" name="pic" value="<?php echo set_value('pic'); ?>" >
-                </div>
+          </div>
 
-                </div>
-                <?php
-            }
-            ?>
-            <!-- END FORM -->
+          <div style="text-align: center;">
+            <button type="submit">Submit</button>
+          </div>
 
-                <!-- FORM -->
-                <?php
-            if($pdt->is_signature  == 1){
-            ?>
-                <div class="col-md-10">
-                <div class="form-group">
-                <label for="signature">Signature</label>
-                <input  class="form-control" type="file" id="signature" name="signature" accept="image/png" value="<?php echo set_value('signature'); ?>" >
-                </div>
-
-                </div>
-                <?php
-            }
-            ?>
-
-         
-
-           
-
-   
-
-            <button type="submit">Submit </button>
-
-            <div class="privacy-notice">
-            <p>Design & Develop by: <span><a href="https://www.labibait.com" target="_blank">» Labiba IT</a></span></p>
-            </div>
+          <div class="privacy-notice">
+            <p>Design & Develop by: <span><a href="www.masteritsolution.com.bd" target="_blank">» Master IT Solution</a></span></p>
+          </div>
         </form>
 
-        <?php
-            }
-        }
-        ?>
-    </div>
-</body>
-
-
+      <?php }
+    } ?>
+  </div>
 </body>
 </html>
+
+
