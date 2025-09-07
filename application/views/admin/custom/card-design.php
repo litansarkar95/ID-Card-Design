@@ -6,15 +6,16 @@
 <script>
 $(document).ready(function() {
     // Initialize the datepicker with year selection
-    $("#dob, #date_of_joining, #date_of_leaving").datepicker({
+    $("#valid_date, #date_of_joining, #date_of_leaving").datepicker({
         dateFormat: 'dd-mm-yy',
+        changeMonth: true,      // Enable year selection
         changeYear: true,      // Enable year selection
         yearRange: "1900:2100" // Set the range of years available
     });
 
     // Set a default date (e.g., today's date)
     var today = $.datepicker.formatDate('dd-mm-yy', new Date());
-    $("#dob, #date_of_joining, #date_of_leaving").val(today);
+    $("#valid_date, #date_of_joining, #date_of_leaving").val(today);
 });
 
 
@@ -102,19 +103,12 @@ select[type="text"]{
                       
 
 
- <!-- FORM -->
-  <div class="row form-check-success" id="choose-filds">
-
- 
-
-                         </div>
+                  <!-- FORM -->
+                    <div class="row form-check-success" id="choose-filds">      </div>
                       <!-- END FORM -->
                          
                       <?php $base_url = base_url(); // Get the base URL ?>
     
- 
-
-   
  
                           
                       <!-- END FORM -->
@@ -125,7 +119,7 @@ select[type="text"]{
                           <div class="form-group ">
                          <div class="form-check form-check-success">
                          <label for="template_id">কার্ড ডিজাইন<code>*</code></label>
-                         <select type="text" class="form-control " id="template_id" value="<?php echo set_value('side_id'); ?>" name="template_id"   >
+                         <select type="text" class="form-control " id="template_id" value="<?php echo set_value('template_id'); ?>" name="template_id"   >
                       <option value="" data-id="no-image.png">Select</option>   
                     
                       <?php
@@ -138,7 +132,7 @@ select[type="text"]{
                                     ?>
                        
                       </select> 
-                        <span class="text-red small"><?php echo form_error('side_id'); ?></span>
+                        <span class="text-red small"><?php echo form_error('template_id'); ?></span>
                             
                               </div>
                          </div>  
@@ -214,9 +208,9 @@ select[type="text"]{
             </div>
             <div id="hiddenDiv" style="display:none;">
                       <div class="form-group col-md-6">
-                                 <label for="dob">Valid until Date</label>
-                                 <input type="text" id="dob" class="form-control Date" name="dob"  value="<?php echo set_value('dob'); ?>" >
-                                 <span class="text-red small"><?php echo form_error('dob'); ?></span>
+                                 <label for="valid_date">Valid until Date</label>
+                                 <input type="text" id="valid_date" class="form-control Date" name="valid_date"  value="<?php echo set_value('valid_date'); ?>" >
+                                 <span class="text-red small"><?php echo form_error('valid_date'); ?></span>
                               </div>
                               </div>
          <!-- END FORM -->
@@ -319,24 +313,7 @@ $(document).ready(function(){
 
 
 
-    
-<script>
-$(document).ready(function() {
-    // Initialize the datepicker with year selection
-    $("#dob, #date_of_joining, #date_of_leaving").datepicker({
-        dateFormat: 'dd-mm-yy',
-        changeYear: true,      // Enable year selection
-        yearRange: "1900:2100" // Set the range of years available
-    });
-
-    // Set a default date (e.g., today's date)
-    var today = $.datepicker.formatDate('dd-mm-yy', new Date());
-    $("#dob, #date_of_joining, #date_of_leaving").val(today);
-});
-
-
-    </script>
-
+  
 
 <script>
     $(document).ready(function() {

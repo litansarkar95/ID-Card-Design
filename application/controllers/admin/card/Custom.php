@@ -35,11 +35,10 @@ class Custom extends CI_Controller {
 
          $accounts = $this->main_model->get_org_fields($paymentTypeId);
          $data['allPdt'] = $accounts;
-        // Prepare the response
         if ($accounts) {
             $response = [
                 'success' => true,
-                'html' => $this->load->view('admin/custom/card-design-data', $data, true) // Load a view to create HTML
+                'html' => $this->load->view('admin/custom/card-design-data', $data, true) 
             ];
         } else {
             $response = [
@@ -48,7 +47,6 @@ class Custom extends CI_Controller {
             ];
         }
 
-        // Return JSON response
         echo json_encode($response);
     }
 
@@ -58,188 +56,88 @@ class Custom extends CI_Controller {
         $data['active'] = "users";
         $design_id = $_GET['v'];
         $data['title'] =  "Users List";
-        $id = $this->input->post('fields_code');
+        //
+        $id                = $this->input->post('fields_code');
+        $template_id       = $this->input->post('template_id');
+        $side_id           = $this->input->post('side_id');
+        $qr_tpye           = $this->input->post('qr_tpye');
+        $qr_system         = $this->input->post('qr_system');
+        $staff_or_student  = $this->input->post('staff_or_student');
+        $is_valid          = $this->input->post('is_valid');
+        $valid_date        = $this->input->post('valid_date');
 
-        $side_id = $this->input->post('side_id');
+      $fields = [
+      'name_en' => 'Full Name',
+      'name_bn' => 'নাম',
+      'father_name_en' => "Father's Name",
+      'father_name_bn' => 'পিতার নাম',
+      'father_mobile_no' => "Father's Mobile No",
+      'mother_name_en' => 'Mother Name',
+      'mother_name_bn' => 'মায়ের নাম',
+      'mother_mobile_no' => "Mother Mobile No",
+      'mobile_no' => 'Mobile No.',
+      'email' => 'Email',
+      'village_en' => 'Village',
+      'village_bn' => 'গ্রাম',
+      'post_office_en' => 'Post Office',
+      'post_office_bn' => 'পোস্ট অফিস',
+      'upazila_en' => 'Upazila',
+      'upazila_bn' => 'উপজেলা',
+      'zilla_en' => 'Zilla',
+      'zilla_bn' => 'জেলা',
+      'designation' => 'Designation',
+      'department' => 'Department',
+      'employee_id' => 'Employee ID',
+      'index_no' => 'Index No',
+      'class_roll' => 'Class Roll',
+      'date_of_birth' => 'Date of Birth',
+      'id_number' => 'ID No',
+      'nationality' => 'Nationality',
+      'photo' => 'Photo',
+];
 
-        $allPdt = $this->main_model->PrintUserData($id);
- //  echo "<pre>"; print_r( $allPdt );exit();
-        $template_id = $this->input->post('template_id');
-             
+// $data = [];
+// foreach ($fields as $field => $label) {
+//     $data[$field] = $this->input->post($field);
+// }
 
+// if (in_array(1, $data)) {
+
+// }
+
+    $data['allPdt'] = $this->main_model->PrintUserData($id);
+     
+//echo "<pre>";print_r($data['allPdt']);
 
          // #############################################
          ############################# CODE ##################
          ####################################################
 
-         $qr_images = [];
+      // Template mapping
+        $templates = [
+            1 => 'admin/card/001/card-design-001',
+            2 => 'admin/card/002/card-design-002',
+            3 => 'admin/card/003/card-design-003',
+            4 => 'admin/card/004/card-design-004', 
+        ];
 
-         if ($allPdt) {
-            // Loop through the user data (if multiple users)
-            foreach ($allPdt as $pdt) {
-                // Extract user data
-                $name                           = $pdt->name_en;
-                $father_name_en                 = $pdt->father_name_en;
-                $father_name_bn                 = $pdt->father_name_bn;
-                $mother_name_en                 = $pdt->mother_name_en;
-                $mother_name_bn                 = $pdt->mother_name_bn;
-                $id_number                      = $pdt->id_number;
-                $email                          = $pdt->email;
-                $phone                          = $pdt->mobile_no; // Make sure to use the correct field for phone number
-                $photo                          = $pdt->photo;
-                $registration_no                = $pdt->registration_no;
-                $gender                         = $pdt->gender;
-                $class                          = $pdt->class;
-                $sections                       = $pdt->sections;
-                $class_roll                     = $pdt->class_roll;
-                $village_en                     = $pdt->village_en;
-                $post_office_en                 = $pdt->post_office_en;
-                $upazila_en                     = $pdt->upazila_en;
-                $zilla_en                       = $pdt->zilla_en;
-                $org_name                       = $pdt->org_name;
-                $org_email                      = $pdt->org_email;
-                $org_address                    = $pdt->org_address;
-                $website                        = $pdt->website;
-                $org_mobile_no                  = $pdt->org_mobile_no;
-                $signature_name                 = $pdt->signature_name;
-                $signature_picture              = $pdt->signature_picture;
-                $picture                        = $pdt->org_picture;
-                $address                        = $pdt->present_address_en;
-                $designation                    = $pdt->designation;
-                $department                     = $pdt->department;
-                $employee_id                    = $pdt->employee_id;
-                $terms_conditions_name          = $pdt->terms_conditions_name;
-                $terms_conditions               = $pdt->terms_conditions;
+        // যদি valid template_id থাকে
+        if (isset($templates[$template_id])) {
+             // side mapping
+          $sides = [
+              'front_side' => 'front-side',
+              'back_side'  => 'back-side',
+              'both_side'  => 'both-side',
+          ];
 
-                //input 
-                $qr_system = $this->input->post('qr_system');
-                if($qr_system == 'online'){
-                    // Create the vCard data string
-                  //  $datap = 
-                  $datap = base_url() . "verification/".ReplaceR($name)."?v=".$registration_no;
-              //   $url = 'https://www.example.com';
-                }else if($qr_system == 'offline'){
-                // Create the vCard data string
-                       
-                $datap = "$name\nEmail: $email\nMobile No: $phone\nAddress: $address\nGender:$gender\nBlood Group:$blood_group\n";
-               // $datap = "BEGIN:VCARD\nVERSION:3.0\nFN:$name\nTEL:$phone\nEMAIL:$email\nGender:$gender\nBlood Group:$blood_group\nEND:VCARD";
-                }
-           
-
-                // Generate and save the QR code as an image in the 'qrcodes' folder
-                $qr_code_filename = 'qrcodes/' . strtolower(str_replace(' ', '_', $name)) . '_vcard.png';
-                $this->qr_code->generate($datap, $qr_code_filename);
-
-                // Add the generated QR code path to the array
-                $qr_images[] = [
-                    'qr_code_image'             => $qr_code_filename,
-                    'name'                      => $name,
-                    'father_name_en'            => $father_name_en,
-                    'father_name_bn'            => $father_name_bn,
-                    'mother_name_en'            => $mother_name_en,
-                    'mother_name_bn'            => $mother_name_bn,
-                    'id_number'                 => $id_number,
-                    'address'                   => $address,
-                    'email'                     => $email,
-                    'phone'                     => $phone,
-                    'photo'                     => $photo,
-                    'gender'                    => $gender,
-                    'class'                     => $class,
-                    'sections'                  => $sections,
-                    'class_roll'                => $class_roll,
-                    'village_en'                => $village_en,
-                    'post_office_en'            => $post_office_en,
-                    'upazila_en'                => $upazila_en,
-                    'zilla_en'                  => $zilla_en,
-                    'org_name'                  => $org_name,
-                    'org_email'                 => $org_email,
-                    'org_mobile_no'             => $org_mobile_no,
-                    'org_address'               => $org_address,
-                    'website'                   => $website,
-                    'signature_name'            => $signature_name,
-                    'signature_picture'         => $signature_picture,
-                    'picture'                   => $picture,
-                    'designation'               => $designation,
-                    'department'                => $department,
-                    'employee_id'               => $employee_id,
-                    'terms_conditions_name'     => $terms_conditions_name,
-                    'terms_conditions'          => $terms_conditions,
-                ];
-            }
+            $this->load->view("admin/design/" . str_pad($template_id, 3, "0", STR_PAD_LEFT) . "/" . $sides[$side_id], $data);
+          //  $this->load->view($templates[$template_id], $data);
         } else {
-            // If no user data found, set the QR image to null or handle error
-            $qr_images = null;
+            echo "Invalid Template ID!";
         }
 
-        // Pass the data (including the QR code image) to the view
-        $data['qr_images'] = $qr_images;
-
-
-         ####################################################
-         ################# END CODE ########################
-         #####################################################
-         if($template_id == 1){
-
-              if( $side_id  == 'front_side'){
-            $this->load->view('admin/card/012/front-side', $data);
-          }else  if( $side_id  == 'back_side'){
-            $this->load->view('admin/card/012/back-side', $data);
-          }else if( $side_id  == 'both_side'){
-            $this->load->view('admin/card/012/both-side', $data);
-          }
-           // $this->load->view('admin/card/012/card-design-012', $data);
-         
-        }
-         else if($template_id == 2){
-           // $this->load->view('admin/card/002/card-design', $data);
-            $this->load->view('admin/card/011/card-design-001', $data);
-         
-        }
-        else if($template_id == 3){
-            $this->load->view('admin/card/003/card-design-003', $data);
-         
-        }
-        else if($template_id == 4){
-            $this->load->view('admin/card//004/card-design-004', $data);
-         
-        }
-        else if($template_id == 5){
-           // $this->load->view('admin/card/card-design-005', $data);
-          //  $this->load->view('admin/card/card-design-001', $data);
-
-          if( $side_id  == 'front_side'){
-            $this->load->view('admin/card/005/front-side', $data);
-          }else  if( $side_id  == 'back_side'){
-            $this->load->view('admin/card/005/back-side', $data);
-          }else if( $side_id  == 'both_side'){
-            $this->load->view('admin/card/005/both-side', $data);
-          }
-       
-            
-        } else if($template_id == 6){
-    
-          if( $side_id  == 'front_side'){
-            $this->load->view('admin/card/006/front-side', $data);
-          }else  if( $side_id  == 'back_side'){
-            $this->load->view('admin/card/006/back-side', $data);
-          }else if( $side_id  == 'both_side'){
-            $this->load->view('admin/card/006/both-side', $data);
-          }
-       
-            
-        }
-       else if($template_id == 7){
-    
-          if( $side_id  == 'front_side'){
-            $this->load->view('admin/card/007/front-side', $data);
-          }else  if( $side_id  == 'back_side'){
-            $this->load->view('admin/card/007/back-side', $data);
-          }else if( $side_id  == 'both_side'){
-            $this->load->view('admin/card/007/both-side', $data);
-          }
-       
-            
-        }
+     
+      
   
     }
 

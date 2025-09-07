@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dynamic Form</title>
+  <title>ID Card Design Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -358,8 +358,8 @@
               $isRequired = in_array($field, $requiredFields) ? 'required' : '';
               ?>
               <div class="form-group">
-          <label for="<?= $field ?>"><?= $label ?></label>
-          <input type="text" 
+              <label for="<?= $field ?>"><?= $label ?></label>
+              <input type="text" 
                 class="form-control <?= form_error($field) ? 'error' : '' ?>"    name="<?= $field ?>"     id="<?= $field ?>"      value="<?= set_value($field) ?>" 
                 <?= $isRequired ?>>
           

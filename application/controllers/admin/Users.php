@@ -22,6 +22,8 @@ class Users extends CI_Controller {
         $data['active'] = "users";
         $data['title'] =  "Users List";
         $data['allPdt'] = $this->main_model->UsersList();
+         $agent_id =  $this->session->userdata('loggedin_userid');
+        $data['allCat'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");
         $data['content'] = $this->load->view("admin/users-list", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}
@@ -310,8 +312,10 @@ class Users extends CI_Controller {
         $data = array();
         $data['active'] = "users";
         $data['title'] =  "Users Reports";
-        $data['allCat'] = $this->main_model->AgentOrgList();
-        $data['allPdt'] = $this->common_model->view_data("agents", "", "id", "asc");
+        $org            = $this->input->post("organization_id");
+        $org_form_id    = $this->input->post("org_form_id");
+        $data['allCat'] = $this->main_model->AgentOrgName($org);
+        $data['allPdt'] = $this->main_model->AgentOrgUsersList($org_form_id);
         $data['css'] = [
             base_url('public/reports/assets/css/main.css'),
             base_url('public/reports/assets/css/bootstrap.min.css')
@@ -320,5 +324,7 @@ class Users extends CI_Controller {
        
         $this->load->view('admin/users/users-reports-pdf', $data);
 	}
+
+  
 
 }

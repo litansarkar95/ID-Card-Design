@@ -1,113 +1,101 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="images/favicon.png" rel="icon" />
-<title>General Invoice -4 - Koice</title>
-<meta name="author" content="harnishdesign.net">
+<title>General Invoice</title>
 
-<!-- Web Fonts
-======================= -->
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900' type='text/css'>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
-<!-- Stylesheet
-======================= -->
-    <!-- Bootstrap -->
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
 
-        <?php foreach ($css as $css_file): ?>
-                    <link rel="stylesheet" href="<?php echo $css_file; ?>" type="text/css" />
-                <?php endforeach; ?>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #f8f9fa;
+    }
+    .invoice-container {
+        max-width: 900px;
+        background: #fff;
+        padding: 20px;
+        margin: 30px auto;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+    }
+    h3 {
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    table th, table td {
+        vertical-align: middle !important;
+        font-size: 14px;
+    }
+    .img-circle {
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    @media print {
+        .btn-group { display: none !important; }
+        body { background: #fff; }
+        .invoice-container { border: none; }
+    }
+</style>
 </head>
 <body>
-    <style>
 
-        </style>
-<!-- Container -->
-<div class="container-fluid invoice-container">
-  <!-- Main Content -->
-  <main>
-	  <div class="table-responsive">
-		<table class="table table-bordered border border-secondary mb-0">
-			<tbody>
-                <?php
-                if(isset($allCat)){
-                    foreach($allCat as $cat){
-                
-                ?>
-				<tr>
-				  <td colspan="2" class="bg-light text-center"><h3 class="mb-0"><?php  echo $cat->name; ?></h3></td>
-				</tr>
-				<tr>
-				  <td colspan="2" class="text-center text-uppercase"><?php  echo $cat->mobile_no; ?><br><?php  echo $cat->address; ?>.</td>
-				</tr>
-                <?php
-                    }
-                }
-                ?>
-				<tr>
-				  <td colspan="2" class="py-1">
-					<div class="row">
-						<div class="col"></div>
-						<div class="col text-center fw-600 text-3 text-uppercase">Invoice</div>
-						<div class="col text-end"></div>
-					</div>
-				  </td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" class="p-0">
-						<table class="table table-sm mb-0">
-							<thead>
-							  <tr class="bg-light">
-								<td class="col-1 text-center"><strong>SrNo</strong></td>
-								<td class="col-2 "><strong> Name</strong></td>
-								<td class="col-2 text-center"><strong>Mobile</strong></td>
-								<td class="col-2 text-end"><strong>Email</strong></td>
-								<td class="col-2 text-end"><strong>Amount</strong></td>
-                                <td class="col-3 text-end"><strong>Picture</strong></td>
-							  </tr>
-							</thead>
-							<tbody>
-                                <?php
-                                $i=1;
-                                if(isset($allPdt)){
-                                    foreach($allPdt as $pdt){
-                                
-                                ?>
-								<tr>
-								  <td class="col-1 text-center"><?php echo $i; $i++;?></td>
-								  <td class="col-6">STYLE KERATIN SH. 250ML</td>
-								  <td class="col-1 text-center">3</td>
-								  <td class="col-2 text-end">$25.75</td>
-								  <td class="col-2 text-end">$77.25</td>
-								</tr>
-                                <?php
-                                    }
-                                }
-                                ?>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-			
-			
-				<tr>
-					<td class="col-7 text-1">Note :</td>
-					<td class="col-5 pe-1 bg-light fw-600">
-						Grand Total:<span class="float-end">285.55</span>
-					</td>
-				</tr>
-			
-			</tbody>
-		</table>
-		</div>
-  </main>
-  <footer class="text-center mt-4">
-	<div class="btn-group btn-group-sm d-print-none"> <a href="javascript:window.print()" class="btn btn-light border text-black-50 shadow-none"><i class="fa fa-print"></i> Print & Download</a> </div>
-  </footer>
+<div class="container-fluid invoice-container shadow-sm">
+    <!-- Header -->
+    <div class="text-center mb-3">
+        <?php if(isset($allCat)){ foreach($allCat as $cat){ ?>
+            <h3 class="text-uppercase"><?php echo $cat->name; ?></h3>
+            <p class="mb-0"><?php echo $cat->mobile_no; ?> <br> <?php echo $cat->address; ?></p>
+        <?php }} ?>
+    </div>
+
+    <!-- Title -->
+    <div class="text-center fw-bold text-uppercase mb-3">List</div>
+
+    <!-- Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead class="table-light text-center">
+                <tr>
+                    <th>SrNo</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $i=1; 
+                if(isset($allPdt)){ foreach($allPdt as $pdt){ ?>
+                <tr>
+                    <td class="text-center"><?php echo $i++; ?></td>
+                    <td><?php echo $pdt->name_en ?> <br><small class="text-muted"><?php echo $pdt->name_bn ?></small></td>
+                    <td class="text-center"><?php echo $pdt->mobile_no ?></td>
+                    <td><?php echo $pdt->email ?></td>
+                    <td class="text-center">
+                        <img src="<?php echo base_url()."public/static/images/users/$pdt->photo"?>" width="40" height="40" class="img-circle" alt="">
+                    </td>
+                </tr>
+                <?php }} ?>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-4">
+        <div class="btn-group btn-group-sm d-print-none">
+            <a href="javascript:window.print()" class="btn btn-dark shadow-sm">
+                <i class="fa fa-print"></i> Print & Download
+            </a>
+        </div>
+    </footer>
 </div>
+
 </body>
 </html>
