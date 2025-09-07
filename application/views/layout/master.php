@@ -4,13 +4,14 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title> Admin Panel</title>
- <!-- Include Toastr CSS -->
- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/toastr/toastr.min.css">
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/css/vendor.bundle.base.css">
+    <title> <?php echo isset($title) ? $title : "ID Card Design"; ?> </title>
+
+  <!-- Include Toastr CSS -->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>public/toastr/toastr.min.css">
+      <!-- plugins:css -->
+      <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/mdi/css/materialdesignicons.min.css">
+      <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+      <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/vendors/css/vendor.bundle.base.css">
       
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
@@ -82,11 +83,9 @@
                     </div>
                   </a>
                   <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="#">
-                      <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
-                    <div class="dropdown-divider"></div>
+                  
                     <a class="dropdown-item" href="<?php echo base_url(); ?>logout">
-                      <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+                      <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>
                   </div>
                 </li>
               </ul>
@@ -111,7 +110,7 @@
                       if($loggedin_type == 'superdamin'){
 ?>
 
-<li class="nav-item" style="float: left !important;">
+              <li class="nav-item" style="float: left !important;">
                 <a href="#" class="nav-link">
                   <i class="mdi mdi-monitor-dashboard menu-icon"></i>
                   <span class="menu-title">এজেন্ট</span>
@@ -381,7 +380,7 @@
         <footer class="footer">
             <div class="container">
               <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024 <a href="https://masteritsolution.com.bd/" target="_blank">Master IT Solution</a>. All rights reserved.</span>
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025 <a href="https://masteritsolution.com.bd/" target="_blank">Master IT Solution</a>. All rights reserved.</span>
                 <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Master IT Solution & made with <i class="mdi mdi-heart text-danger"></i></span>
               </div>
             </div>
