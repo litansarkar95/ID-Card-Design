@@ -408,7 +408,7 @@
     //##########################################################################    
     
     class QRencode {
-    
+        public $cmyk = 0;
         public $casesensitive = true;
         public $eightbit = false;
         

@@ -320,7 +320,7 @@ class Users extends CI_Controller {
             base_url('public/reports/assets/css/main.css'),
             base_url('public/reports/assets/css/bootstrap.min.css')
         ];
-      //  echo "<pre>";print_r($data['allStu']);exit(); 
+        //echo "<pre>";print_r($data['allPdt']);exit(); 
        
         $this->load->view('admin/users/users-reports-pdf', $data);
 	}

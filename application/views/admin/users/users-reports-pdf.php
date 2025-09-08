@@ -17,10 +17,8 @@
         background: #f8f9fa;
     }
     .invoice-container {
-        max-width: 900px;
+       
         background: #fff;
-        padding: 20px;
-        margin: 30px auto;
         border: 1px solid #dee2e6;
         border-radius: 8px;
     }
@@ -30,7 +28,7 @@
     }
     table th, table td {
         vertical-align: middle !important;
-        font-size: 14px;
+        font-size: 11px;
     }
     .img-circle {
         border-radius: 50%;
@@ -41,6 +39,51 @@
         body { background: #fff; }
         .invoice-container { border: none; }
     }
+
+    @media print {
+    @page {
+        size: A4 landscape; /* landscape orientation */
+        margin: 10mm;
+    }
+
+    body {
+        background: #fff;
+        font-size: 10px;
+        zoom: 80%; /* Optional: shrink everything to fit page */
+    }
+
+    .invoice-container {
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .btn-group {
+        display: none !important;
+    }
+
+    table {
+        font-size: 9px !important;
+    }
+
+    table th, table td {
+        padding: 4px 6px !important;
+        white-space: nowrap !important;
+    }
+
+}
+@media print {
+    .table-responsive {
+        overflow: visible !important;
+    }
+}
+table th, table td {
+    padding: 4px 6px !important;
+    vertical-align: top !important; /* Optional: top align করলে ফাঁকা কম দেখায় */
+    font-size: 10px;
+}
+
 </style>
 </head>
 <body>
@@ -50,51 +93,108 @@
     <div class="text-center mb-3">
         <?php if(isset($allCat)){ foreach($allCat as $cat){ ?>
             <h3 class="text-uppercase"><?php echo $cat->name; ?></h3>
-            <p class="mb-0"><?php echo $cat->mobile_no; ?> <br> <?php echo $cat->address; ?></p>
+            <p class="mb-0">Mobile No: <?php echo $cat->mobile_no; ?> , Email: <?php echo $cat->email; ?> <br> <?php echo $cat->address; ?></p>
         <?php }} ?>
     </div>
 
     <!-- Title -->
-    <div class="text-center fw-bold text-uppercase mb-3">List</div>
-
-    <!-- Table -->
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-            <thead class="table-light text-center">
-                <tr>
-                    <th>SrNo</th>
-                    <th>Name</th>
-                    <th>Mobile</th>
-                    <th>Email</th>
-                    <th>Picture</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                $i=1; 
-                if(isset($allPdt)){ foreach($allPdt as $pdt){ ?>
-                <tr>
-                    <td class="text-center"><?php echo $i++; ?></td>
-                    <td><?php echo $pdt->name_en ?> <br><small class="text-muted"><?php echo $pdt->name_bn ?></small></td>
-                    <td class="text-center"><?php echo $pdt->mobile_no ?></td>
-                    <td><?php echo $pdt->email ?></td>
-                    <td class="text-center">
-                        <img src="<?php echo base_url()."public/static/images/users/$pdt->photo"?>" width="40" height="40" class="img-circle" alt="">
-                    </td>
-                </tr>
-                <?php }} ?>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Footer -->
+    <div class="text-center fw-bold text-uppercase mb-3">  <?php if (!empty($allPdt[0])) echo $allPdt[0]->title; ?>
+  <hr></div>
+  <!-- Footer -->
     <footer class="text-center mt-4">
         <div class="btn-group btn-group-sm d-print-none">
             <a href="javascript:window.print()" class="btn btn-dark shadow-sm">
                 <i class="fa fa-print"></i> Print & Download
             </a>
         </div>
-    </footer>
+    </footer><br>
+    <!-- Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+             <?php
+            $fields = [
+              'name_en' => 'Full Name',
+              'name_bn' => 'নাম',
+              'father_name_en' => "Father's Name",
+              'father_name_bn' => 'পিতার নাম',
+              'father_mobile_no' => "Father's Mobile No",
+              'mother_name_en' => 'Mother Name',
+              'mother_name_bn' => 'মায়ের নাম',
+              'mother_mobile_no' => "Mother Mobile No",
+              'mobile_no' => 'Mobile No.',
+              'email' => 'Email',
+              'village_en' => 'Village',
+              'village_bn' => 'গ্রাম',
+              'post_office_en' => 'Post Office',
+              'post_office_bn' => 'পোস্ট অফিস',
+              'upazila_en' => 'Upazila',
+              'upazila_bn' => 'উপজেলা',
+              'zilla_en' => 'Zilla',
+              'zilla_bn' => 'জেলা',
+              'designation' => 'Designation',
+              'department' => 'Department',
+              'employee_id' => 'Employee ID',
+              'index_no' => 'Index No',
+              'class_name' => 'Class Name',
+              'class_roll' => 'Class Roll',
+              'sessions_name' => 'Sessions',
+              'date_of_birth' => 'Date of Birth',
+              'id_number' => 'ID No',
+              'nationality' => 'Nationality',
+            ];
+            ?>
+            <thead class="table-light text-center">
+                <tr>
+                    <th>SrNo</th>
+                  <?php foreach ($fields as $field => $label): ?>
+        <?php $flag = $field; ?>
+        <?php if (!empty($allPdt[0]->$flag)): ?>
+            <th class="text-center"><?= $label ?></th>
+        <?php endif; ?>
+    <?php endforeach; ?>
+                  
+                    <th>Picture</th>
+                </tr>
+            </thead>
+            <tbody>
+              <?php 
+$i = 1; 
+if (isset($allPdt)) {
+    foreach ($allPdt as $pdt) {
+?>
+<tr>
+    <td class="text-center"><?php echo $i++; ?></td>
+
+    <?php
+    foreach ($fields as $field => $label) {
+        $flag = "$field"; // যেমন is_name_en, is_email
+
+        // যদি ঐ ফিল্ডটি active থাকে, তাহলে শো করাবে
+        if (property_exists($pdt, $flag) && $pdt->$flag != "") {
+
+            // এখানে field নাম variable দিয়ে access করা হচ্ছে
+            echo '<td class="text-center">' . ($pdt->$field ?? '-') . '</td>';
+        }
+    }
+    ?>
+
+
+
+
+                    <td class="text-center">
+                        <img src="<?php echo base_url()."public/static/images/users/$pdt->photo"?>" width="40" height="40" class="img-circle" alt="">
+                    </td>
+                    <?php 
+    } // endforeach
+} // endif
+?>
+                </tr>
+              
+            </tbody>
+        </table>
+    </div>
+
+  
 </div>
 
 </body>

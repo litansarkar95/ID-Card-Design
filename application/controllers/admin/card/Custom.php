@@ -51,95 +51,129 @@ class Custom extends CI_Controller {
     }
 
 
-    public function printdesign(){
-        $data = array();
-        $data['active'] = "users";
-        $design_id = $_GET['v'];
-        $data['title'] =  "Users List";
-        //
-        $id                = $this->input->post('fields_code');
-        $template_id       = $this->input->post('template_id');
-        $side_id           = $this->input->post('side_id');
-        $qr_tpye           = $this->input->post('qr_tpye');
-        $qr_system         = $this->input->post('qr_system');
-        $staff_or_student  = $this->input->post('staff_or_student');
-        $is_valid          = $this->input->post('is_valid');
-        $valid_date        = $this->input->post('valid_date');
+  public function printdesign() {
+    // QR লাইব্রেরি লোড (phpqrcode)
+    require_once(APPPATH . 'libraries/phpqrcode/qrlib.php');
 
-      $fields = [
-      'name_en' => 'Full Name',
-      'name_bn' => 'নাম',
-      'father_name_en' => "Father's Name",
-      'father_name_bn' => 'পিতার নাম',
-      'father_mobile_no' => "Father's Mobile No",
-      'mother_name_en' => 'Mother Name',
-      'mother_name_bn' => 'মায়ের নাম',
-      'mother_mobile_no' => "Mother Mobile No",
-      'mobile_no' => 'Mobile No.',
-      'email' => 'Email',
-      'village_en' => 'Village',
-      'village_bn' => 'গ্রাম',
-      'post_office_en' => 'Post Office',
-      'post_office_bn' => 'পোস্ট অফিস',
-      'upazila_en' => 'Upazila',
-      'upazila_bn' => 'উপজেলা',
-      'zilla_en' => 'Zilla',
-      'zilla_bn' => 'জেলা',
-      'designation' => 'Designation',
-      'department' => 'Department',
-      'employee_id' => 'Employee ID',
-      'index_no' => 'Index No',
-      'class_roll' => 'Class Roll',
-      'date_of_birth' => 'Date of Birth',
-      'id_number' => 'ID No',
-      'nationality' => 'Nationality',
-      'photo' => 'Photo',
-];
+    $data = array();
+    $data['active'] = "users";
+    $design_id = $_GET['v'];
+    $data['title'] =  "Users List";
 
-// $data = [];
-// foreach ($fields as $field => $label) {
-//     $data[$field] = $this->input->post($field);
-// }
+    // Input data
+    $id                = $this->input->post('fields_code');
+    $template_id       = $this->input->post('template_id');
+    $side_id           = $this->input->post('side_id');
+    $qr_tpye           = $this->input->post('qr_tpye');
+    $qr_system         = $this->input->post('qr_system');
+    $staff_or_student  = $this->input->post('staff_or_student');
+    $is_valid          = $this->input->post('is_valid');
+    $valid_date        = $this->input->post('valid_date');
 
-// if (in_array(1, $data)) {
+    // Fields mapping
+     $data['name_en']                = $this->input->post('name_en');
+     $data['name_bn']                = $this->input->post('name_bn');
+    $fields = [
+        'name_en' => 'Full Name',
+        'name_bn' => 'নাম',
+        'father_name_en' => "Father's Name",
+        'father_name_bn' => 'পিতার নাম',
+        'father_mobile_no' => "Father's Mobile No",
+        'mother_name_en' => 'Mother Name',
+        'mother_name_bn' => 'মায়ের নাম',
+        'mother_mobile_no' => "Mother Mobile No",
+        'mobile_no' => 'Mobile No.',
+        'email' => 'Email',
+        'village_en' => 'Village',
+        'village_bn' => 'গ্রাম',
+        'post_office_en' => 'Post Office',
+        'post_office_bn' => 'পোস্ট অফিস',
+        'upazila_en' => 'Upazila',
+        'upazila_bn' => 'উপজেলা',
+        'zilla_en' => 'Zilla',
+        'zilla_bn' => 'জেলা',
+        'designation' => 'Designation',
+        'department' => 'Department',
+        'employee_id' => 'Employee ID',
+        'index_no' => 'Index No',
+        'class_roll' => 'Class Roll',
+        'date_of_birth' => 'Date of Birth',
+        'id_number' => 'ID No',
+        'nationality' => 'Nationality',
+        'photo' => 'Photo',
+    ];
 
-// }
+    // User data
+        $data['allPdt'] = $this->main_model->PrintUserData($id);
+        $qr_system = $this->input->post('qr_system');
 
-    $data['allPdt'] = $this->main_model->PrintUserData($id);
-     
-//echo "<pre>";print_r($data['allPdt']);
+// QR কোড ফাইল রাখার ফোল্ডার
+$qr_dir = FCPATH . 'qrcodes/';
+if (!is_dir($qr_dir)) {
+    mkdir($qr_dir, 0777, true);
+}
 
-         // #############################################
-         ############################# CODE ##################
-         ####################################################
+// প্রতিটি ইউজারের জন্য QR কোড তৈরি করুন
+foreach ($data['allPdt'] as $index => $user) {
+    // ইউজার ইনফো
+    $name = $user->name_en ?? 'unknown';
+    $email = $user->email ?? 'noemail@example.com';
+    $phone = $user->mobile_no ?? '0000000000';
+    $gender = $user->gender ?? 'N/A';
+    $address = $user->village_en ?? 'N/A';
+    $blood_group = $user->blood_group ?? 'N/A';
+    $registration_no = $user->registration_no ?? '0000';
 
-      // Template mapping
-        $templates = [
-            1 => 'admin/card/001/card-design-001',
-            2 => 'admin/card/002/card-design-002',
-            3 => 'admin/card/003/card-design-003',
-            4 => 'admin/card/004/card-design-004', 
+    // QR ডাটা তৈরি
+    if ($qr_system == 'online') {
+        $qr_data = base_url() . "verification/" . urlencode(strtolower(str_replace(' ', '_', $name))) . "?v=" . $registration_no;
+    } else {
+        $qr_data = "$name\nEmail: $email\nMobile No: $phone\nAddress: $address\nGender: $gender\nBlood Group: $blood_group\n";
+    }
+
+    // ফাইল নাম (ইউনিক করার জন্য index/ID যোগ করুন)
+    $clean_name = strtolower(str_replace(' ', '_', $name));
+    $qr_filename = $clean_name . '_' . $index . '_qr.png';
+    $qr_filepath = $qr_dir . $qr_filename;
+
+    // Generate QR কোড
+    QRcode::png($qr_data, $qr_filepath, QR_ECLEVEL_H, 5);
+
+    // ভিউতে path পাঠানোর জন্য অ্যারে তৈরি
+    $data['allPdt'][$index]->qr_code_url = base_url('qrcodes/' . $qr_filename);
+
+}
+
+    // ==============================
+    // ✅ QR Code Generate Logic End
+    // ==============================
+
+    // Template mapping
+    $templates = [
+        1 => 'admin/card/001/card-design-001',
+        2 => 'admin/card/002/card-design-002',
+        3 => 'admin/card/003/card-design-003',
+        4 => 'admin/card/004/card-design-004',
+        5 => 'admin/card/005/card-design-005',
+        6 => 'admin/card/006/card-design-006',
+    ];
+
+    if (isset($templates[$template_id])) {
+        $sides = [
+            'front_side' => 'front-side',
+            'back_side'  => 'back-side',
+            'both_side'  => 'both-side',
         ];
 
-        // যদি valid template_id থাকে
-        if (isset($templates[$template_id])) {
-             // side mapping
-          $sides = [
-              'front_side' => 'front-side',
-              'back_side'  => 'back-side',
-              'both_side'  => 'both-side',
-          ];
-
-            $this->load->view("admin/design/" . str_pad($template_id, 3, "0", STR_PAD_LEFT) . "/" . $sides[$side_id], $data);
-          //  $this->load->view($templates[$template_id], $data);
-        } else {
-            echo "Invalid Template ID!";
-        }
-
-     
-      
-  
+        // View load with QR
+        $this->load->view("admin/design/" . str_pad($template_id, 3, "0", STR_PAD_LEFT) . "/" . $sides[$side_id], $data);
+    } else {
+        echo "Invalid Template ID!";
     }
+}
+
+
+    
 
     
 }

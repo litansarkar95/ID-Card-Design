@@ -347,7 +347,7 @@
               'id_number' => 'ID No',
               'nationality' => 'Nationality',
             ];
-            $requiredFields = ['name_en', 'mobile_no', 'email', 'date_of_birth']; // উদাহরণ
+            $requiredFields = ['name_en', 'mobile_no', 'email', 'date_of_birth', 'father_name_en', 'father_mobile_no', 'mother_name_en']; // উদাহরণ
 
 
 

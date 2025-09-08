@@ -5,12 +5,488 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ID Card design 001</title>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/card/012/css/style.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>publi2c/assets/card/012/css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
 </head>
    <style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: transparent;
+    font-family: arial;
+}
+
+.main_container {
+    width: 8.27in;
+    max-height: 11.69in;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#wrapper {
+    width: 8.27in;
+    max-height: 11.69in;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.front_part {
+    background: transparent;
+    width: 2.125in;
+    height: 3.375in;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.front_part .header_part {
+    height: 169px;
+    max-height: 169px;
+    display: flex;
+    /* padding: 20px; */
+    box-sizing: border-box;
+    position: relative;
+}
+
+.front_part .shape_1 {
+    position: absolute;
+    background: #0d1361;
+    width: 420px;
+    height: 212px;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%);
+    top: -95px;
+    border: 12px solid #fff;
+    z-index: 9;
+}
+
+.front_part .shape_1::after {
+    content: "";
+    position: absolute;
+    background: #0469c2;
+    width: 480px;
+    height: 480px;
+    left: 18%;
+    border-radius: 50%;
+    transform: translate(-50%);
+    top: -283px;
+    transform: rotate(2deg);
+}
+
+.front_part .shape_1::before {
+    content: "";
+    position: absolute;
+    background: #007dfd;
+    width: 480px;
+    height: 480px;
+    right: 18%;
+    border-radius: 50%;
+    transform: translate(-50%);
+    top: -281px;
+    transform: rotate(2deg);
+    z-index: 99;
+    opacity: 0.5;
+    box-shadow: 0 0 34px #000;
+}
+
+.front_part .branding_part {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 9999999999999999;
+}
+
+
+.front_part .tagline_part {
+ 
+    margin-top: -10px;
+}
+
+.front_part .tagline_part p {
+	 margin-top: 5px;
+    font-size: 10px;
+    color: #fff;
+}
+
+.front_part .tagline {
+    text-transform: capitalize;
+    font-size: 12px;
+    color: #fff;
+}
+
+.front_part .user_logo {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background: #fff;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    overflow: hidden;
+    position: absolute;
+    bottom: -26px;
+    left: 50%;
+    right: 25%;
+    box-shadow: 0px 0px 8px #000;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.front_part .user_img {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+
+.front_part .body_part {
+    background: transparent;
+    padding: 0px 30px;
+    height: 125px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+}
+
+.front_part .shape_2 {
+    position: absolute;
+    width: 501px;
+    height: 247px;
+    background: #0472d1;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 50%;
+    top: -195px;
+}
+
+.front_part .shape_2::after {
+    content: "";
+    position: absolute;
+    width: 501px;
+    height: 247px;
+    background: #fff;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 50%;
+    top: 171px;
+}
+
+.front_part .user_title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+}
+
+.front_part .body_part .title {
+    text-align: center;
+    color: #000;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+}
+
+.front_part .body_part .designation {
+    text-align: center;
+    color: #000;
+    font-size: 12px;
+	line-height:1.2rem;
+    text-transform: capitalize;
+    font-family: "Roboto", sans-serif;
+}
+
+.front_part .body_part h5 {
+    text-align: center;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+
+.front_part .footer_part {
+    height: 30px;
+    position: relative;
+}
+
+.front_part .footer_shape {
+    display: block;
+    width: 100%;
+    height: 30px;
+}
+
+.front_part .bar_code {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 0px;
+    z-index: 9;
+    width: 40px;
+}
+
+.front_part .ftr_shape {
+    background: linear-gradient(to right, #0173df, #012d8f, #0173df);
+    width: 441px;
+    position: absolute;
+    height: 200px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    top: 6px;
+}
+
+.front_part .ftr_shape::after {
+    background: #fff;
+    content: "";
+    width: 330px;
+    position: absolute;
+    height: 202px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: -6px;
+}
+
+.back_part {
+    background: #fff;
+    width: 2.125in;
+    height: 3.375in;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+}
+
+.header_part3 {
+    background: #fff;
+    text-align: center;
+    height: 50px;
+    max-height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.back_part .header_shape3 {
+    background: linear-gradient(to right, #0173df, #012d8f, #0173df);
+    width: 396px;
+    position: absolute;
+    height: 200px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 3px;
+}
+
+.back_part .header_shape3::after {
+    background: #fff;
+    content: "";
+    width: 346px;
+    position: absolute;
+    height: 202px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    top: -10px;
+}
+
+.back_part .bac_title {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+.back_part .terms_3 {
+    margin-top: 10px;
+    font-size: 9px;
+    text-align: center;
+    color: #727272;
+}
+
+.back_part .body_part h5 {
+    text-align: center;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    margin-top: 15px;
+    letter-spacing: 2px;
+}
+
+.back_part .body_part {
+    height: 311px;
+    text-align: center;
+}
+
+.back_part .valid_till {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+
+
+.back_part .signature {
+    font-family: "Allura", cursive;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.back_part .closing_txt {
+    text-align: center;
+    color: #a1a1a1;
+    position: relative;
+}
+
+.back_part .closing_txt::after {
+    content: "";
+    height: 1px;
+    background: #a1a1a1;
+    left: -5px;
+    right: -5px;
+    top: -5px;
+    position: absolute;
+}
+
+.back_part .footer_part {
+    height: 105px;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.ftr_content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    z-index: 9;
+}
+
+/*.footer_left3{
+	width: 50%;
+}
+.footer_right3{
+	width: 50%;
+}*/
+/*.footer_left3 ul, .footer_right3 ul{
+	list-style-type: none;
+	margin: 0;
+}
+.footer_left3 ul li, .footer_right3 ul li{
+	float: left;
+	color: #fff;
+	font-size: 8px;
+	text-align: left;
+	margin-bottom: 10px;
+}*/
+.footer_left3 {
+    width: 100%;
+}
+
+.footer_left3 table {
+    color: #fff;
+    font-size: 8px;
+    text-align: left;
+    margin: 0 auto;
+    margin-top: 9px;
+}
+
+.footer_left3 table td {
+    padding-bottom: 5px;
+
+}
+
+.social_part {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    background: #fff;
+    border-radius: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 2px;
+    margin-right: 5px;
+}
+
+.social_part img {
+    width: 7px;
+}
+
+.ftr_txt {
+    display: inline-block;
+}
+
+.ftr_shape3 {
+    position: absolute;
+    background: #0246ab;
+    width: 400px;
+    height: 200px;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 50%;
+    top: 0;
+    overflow: hidden;
+}
+
+.ftr_shape3::after {
+    content: "";
+    position: absolute;
+    background: linear-gradient(to bottom, #0460bd, #033d9e, #0361bf);
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    top: 10px;
+    left: 106px;
+    opacity: 0.5;
+    box-shadow: 0 0 20px #000;
+}
+
+.ftr_shape3::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(#0560bb, #0460be);
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    top: 10px;
+    right: 106px;
+    opacity: 0.5;
+    box-shadow: 0 0 20px #000;
+}
+
+.printBtn {
+    padding: 10px 30px;
+    font-size: 20px;
+    background: #a4c735;
+    color: #fff;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+}
     .card-design-break {
     float:left;
 }
@@ -87,7 +563,7 @@
 
 /* default বড় font */
 .tagline_part .tagline {
-    font-size: 18px;
+    font-size: 13px;
     font-weight: bold;
     margin: 0;
     line-height: 1.2;
@@ -97,7 +573,7 @@
 /* যদি দুই লাইনে যায় তাহলে font ছোট হবে */
 .tagline_part .tagline:has(br),
 .tagline_part .tagline:has(span) {
-    font-size: 20px;
+    font-size: 14px;
 }
 
         </style>
@@ -110,9 +586,9 @@
 	<div class="main_container" id="data">
 		<div id="">
                     <?php
-$i=1;
-if(isset($allPdt)){
-    foreach($allPdt  as $qr){
+		$i=1;
+		if(isset($allPdt)){
+			foreach($allPdt  as $qr){
 
        
             if (($i - 1) % 4 == 0) {
@@ -122,12 +598,18 @@ if(isset($allPdt)){
 			<div class="front_part card-design-break">
 					<section class="header_part">
 						<div class="branding_part">
-							<!-- <div class="logo_part">
-								<img src="imgs/img_3_1.png" alt="" class="header_logo">
-							</div> -->
+							
 							<div class="tagline_part">
 							<h4 class="tagline fit-text"><?php echo $qr->org_name; ?></h4>
-<p class="fit-text"><?php echo $qr->website; ?></p>
+							<?php
+							if($qr->website != NULL){
+								?>
+								<p class="fit-text"><?php echo $qr->website; ?></p>
+
+								<?php
+							}
+							?>
+							
 							</div>
 						</div>
 						<span class="user_logo">
@@ -140,16 +622,23 @@ if(isset($allPdt)){
 					<section class="body_part">
 						<span class="shape_2"></span>
 						<div class="user_title">
-							<h3 class="title"><?php echo $qr->name_en; ?></h3> 
+							
+							<h3 class="title">
+								
+							<?php 	if($name_en == 1){ echo $qr->name_en; }else if($name_bn == 1){
+                                    echo $qr->name_bn;
+							} ?>
+						
+						</h3> 
 							<h4 class="designation">Student</h4> 
 							<h4 class="designation"><?php echo $qr->designation; ?></h4> 
-							<h5>ID : <?php echo $qr->employee_id; ?></h3> 
+							<h4  class="designation">ID : <?php echo $qr->employee_id; ?><h4> 
 					
 						</div> 
 					</section> 
 					<section class="footer_part"> 
 
-						<img src="<?php echo base_url($qr->qr_code_image); ?>" alt="" class="bar_code">  
+						<img src="<?php echo $qr->qr_code_url; ?>" alt="" class="bar_code">  
 						<span class="ftr_shape"></span>
 					</section> 
 				</div>
