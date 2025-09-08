@@ -92,7 +92,7 @@ textarea[type="text"] {
                            </td>
                           <td>
                               <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/customfields/edit/{$pdt->id}";?>"><i class="fa fa-pencil"></i></a>
-                              <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/customfields/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
+                              <a  class="btn btn-add btn-sm badge-danger text-white"  onclick="return confirm('আপনি কি নিশ্চিতভাবে এটি ডিলিট করতে চান?');" href="<?php echo base_url()."admin/customfields/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
                             </td>
                           </tr>
                    

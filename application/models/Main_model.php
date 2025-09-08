@@ -138,6 +138,16 @@ class Main_model extends CI_Model {
         return $this->db->get()->result();
     }
 
+      public function AgentOrgFiledsList($id) {
+ 
+     
+            
+		$this->db->select("org_fields.* ");
+        $this->db->from("org_fields");
+        $this->db->where("org_fields.id",$id); 
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }
     
     public function FieldsListUsers($org_fields_id, $id=NULL) {
         $agent_id  = $this->session->userdata('loggedin_userid');

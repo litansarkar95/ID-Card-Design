@@ -110,88 +110,86 @@ table th, table td {
     </footer><br>
     <!-- Table -->
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-             <?php
-            $fields = [
-              'name_en' => 'Full Name',
-              'name_bn' => 'নাম',
-              'father_name_en' => "Father's Name",
-              'father_name_bn' => 'পিতার নাম',
-              'father_mobile_no' => "Father's Mobile No",
-              'mother_name_en' => 'Mother Name',
-              'mother_name_bn' => 'মায়ের নাম',
-              'mother_mobile_no' => "Mother Mobile No",
-              'mobile_no' => 'Mobile No.',
-              'email' => 'Email',
-              'village_en' => 'Village',
-              'village_bn' => 'গ্রাম',
-              'post_office_en' => 'Post Office',
-              'post_office_bn' => 'পোস্ট অফিস',
-              'upazila_en' => 'Upazila',
-              'upazila_bn' => 'উপজেলা',
-              'zilla_en' => 'Zilla',
-              'zilla_bn' => 'জেলা',
-              'designation' => 'Designation',
-              'department' => 'Department',
-              'employee_id' => 'Employee ID',
-              'index_no' => 'Index No',
-              'class_name' => 'Class Name',
-              'class_roll' => 'Class Roll',
-              'sessions_name' => 'Sessions',
-              'date_of_birth' => 'Date of Birth',
-              'id_number' => 'ID No',
-              'nationality' => 'Nationality',
-            ];
-            ?>
-            <thead class="table-light text-center">
-                <tr>
-                    <th>SrNo</th>
-                  <?php foreach ($fields as $field => $label): ?>
-        <?php $flag = $field; ?>
-        <?php if (!empty($allPdt[0]->$flag)): ?>
-            <th class="text-center"><?= $label ?></th>
-        <?php endif; ?>
-    <?php endforeach; ?>
-                  
-                    <th>Picture</th>
-                </tr>
-            </thead>
-            <tbody>
-              <?php 
-$i = 1; 
-if (isset($allPdt)) {
-    foreach ($allPdt as $pdt) {
-?>
-<tr>
-    <td class="text-center"><?php echo $i++; ?></td>
-
+     <table class="table table-bordered table-striped">
     <?php
-    foreach ($fields as $field => $label) {
-        $flag = "$field"; // যেমন is_name_en, is_email
-
-        // যদি ঐ ফিল্ডটি active থাকে, তাহলে শো করাবে
-        if (property_exists($pdt, $flag) && $pdt->$flag != "") {
-
-            // এখানে field নাম variable দিয়ে access করা হচ্ছে
-            echo '<td class="text-center">' . ($pdt->$field ?? '-') . '</td>';
-        }
-    }
+    $fields = [
+        'name_en' => 'Full Name',
+        'name_bn' => 'নাম',
+        'father_name_en' => "Father's Name",
+        'father_name_bn' => 'পিতার নাম',
+        'father_mobile_no' => "Father's Mobile No",
+        'mother_name_en' => 'Mother Name',
+        'mother_name_bn' => 'মায়ের নাম',
+        'mother_mobile_no' => "Mother Mobile No",
+        'mobile_no' => 'Mobile No.',
+        'email' => 'Email',
+        'village_en' => 'Village',
+        'village_bn' => 'গ্রাম',
+        'post_office_en' => 'Post Office',
+        'post_office_bn' => 'পোস্ট অফিস',
+        'upazila_en' => 'Upazila',
+        'upazila_bn' => 'উপজেলা',
+        'zilla_en' => 'Zilla',
+        'zilla_bn' => 'জেলা',
+        'designation' => 'Designation',
+        'department' => 'Department',
+        'employee_id' => 'Employee ID',
+        'index_no' => 'Index No',
+        'class_name' => 'Class Name',
+        'class_roll' => 'Class Roll',
+        'sessions_name' => 'Sessions',
+        'date_of_birth' => 'Date of Birth',
+        'blood_group' => 'Blood group',
+        'id_number' => 'ID No',
+        'nationality' => 'Nationality',
+    ];
     ?>
+    <thead class="table-light text-center">
+        <tr>
+            <th>SrNo</th>
+            <?php foreach ($fields as $field => $label): ?>
+                <?php $flag = "is_" . $field; ?>
+                <?php if (!empty($allFields[0]->$flag)): ?>
+                    <th class="text-center"><?= $label ?></th>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <th>Picture</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        $i = 1;
+        if (!empty($allPdt)) {
+            foreach ($allPdt as $pdt) {
+        ?>
+        <tr>
+            <td class="text-center"><?= $i++; ?></td>
 
+            <?php foreach ($fields as $field => $label): ?>
+                <?php $flag = "is_" . $field; ?>
+                <?php if (!empty($allFields[0]->$flag)): ?>
+                    <td class="text-center"><?= !empty($pdt->$field) ? $pdt->$field : '-' ?></td>
+                <?php endif; ?>
+            <?php endforeach; ?>
 
+            <td class="text-center">
+                <?php if (!empty($pdt->photo)): ?>
+                    <img src="<?= base_url("public/static/images/users/" . $pdt->photo) ?>" width="40" height="40" class="img-circle" alt="">
+                <?php else: ?>
+                    <span>-</span>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <?php 
+            }
+        } else {
+            echo '<tr><td colspan="' . (count($fields)+2) . '" class="text-center">No data found</td></tr>';
+        }
+        ?>
+    </tbody>
 
+</table>
 
-                    <td class="text-center">
-                        <img src="<?php echo base_url()."public/static/images/users/$pdt->photo"?>" width="40" height="40" class="img-circle" alt="">
-                    </td>
-                    <?php 
-    } // endforeach
-} // endif
-?>
-                </tr>
-              
-            </tbody>
-        </table>
     </div>
 
   

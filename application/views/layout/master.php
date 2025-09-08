@@ -27,14 +27,40 @@
         <!-- dataTables css -->
    <link href="<?php echo base_url(); ?>public/assets/datatables/dataTables.dataTables.css" rel="stylesheet" type="text/css"/>
     <!-- End layout styles -->
-         <!-- Include Toastr JavaScript -->
-         <script src="<?php echo base_url(); ?>public/toastr/toastr.min.js"></script>
+     
     <!-- <link rel="shortcut icon" href="<?php echo base_url(); ?>public/assets/images/favicon.png" /> -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <!-- Include Toastr JavaScript -->
+         <script src="<?php echo base_url(); ?>public/toastr/toastr.min.js"></script>
           <!-- plugins:js -->
     <script src="<?php echo base_url(); ?>public/assets/vendors/js/vendor.bundle.base.js"></script>
 
   </head>
+<style>
+    /* Success */
+    .toast-success {
+        background-color: #28a745 !important; /* সবুজ */
+        color: white !important;
+    }
+
+    /* Error */
+    .toast-error {
+        background-color: #dc3545 !important; /* লাল */
+        color: white !important;
+    }
+
+    /* Warning */
+    .toast-warning {
+        background-color: #ffc107 !important; /* হলুদ */
+        color: #212529 !important;
+    }
+
+    /* Info */
+    .toast-info {
+        background-color: #17a2b8 !important; /* নীল */
+        color: white !important;
+    }
+</style>
 
 <style>
   .nav-item{
@@ -358,23 +384,33 @@
       </div>
       <!-- partial -->
 
-      <script>
-       
-    <?php if ($this->session->flashdata('success')): ?>
-        toastr.success('<?php echo $this->session->flashdata('success'); ?>');
-    <?php endif; ?>
     
-
-    <?php if ($this->session->flashdata('error')): ?>
-        toastr.error('<?php echo $this->session->flashdata('error'); ?>');
-    <?php endif; ?>
    
-</script>
+
        <?php
        if(isset($content)){
         echo $content;
        }
        ?>
+
+       <script>
+    <?php if ($this->session->flashdata('success')): ?>
+        toastr.success("<?= $this->session->flashdata('success'); ?>");
+    <?php endif; ?>
+
+    <?php if ($this->session->flashdata('error')): ?>
+        toastr.error("<?= $this->session->flashdata('error'); ?>");
+    <?php endif; ?>
+
+    <?php if ($this->session->flashdata('warning')): ?>
+        toastr.warning("<?= $this->session->flashdata('warning'); ?>");
+    <?php endif; ?>
+
+    <?php if ($this->session->flashdata('info')): ?>
+        toastr.info("<?= $this->session->flashdata('info'); ?>");
+    <?php endif; ?>
+</script>
+
 
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">

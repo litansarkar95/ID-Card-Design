@@ -315,6 +315,7 @@ class Users extends CI_Controller {
         $org            = $this->input->post("organization_id");
         $org_form_id    = $this->input->post("org_form_id");
         $data['allCat'] = $this->main_model->AgentOrgName($org);
+        $data['allFields'] = $this->main_model->AgentOrgFiledsList($org_form_id);
         $data['allPdt'] = $this->main_model->AgentOrgUsersList($org_form_id);
         $data['css'] = [
             base_url('public/reports/assets/css/main.css'),

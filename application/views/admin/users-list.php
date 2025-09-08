@@ -62,7 +62,7 @@ textarea[type="text"] {
                           <td><?php echo $pdt->id;?>  </td>
                        
                           <td><?php echo $pdt->registration_no;?></td>
-                          <td><?php echo $pdt->name_en;?></td>
+                          <td><?php echo $pdt->name_en ;?><span><?php echo $pdt->name_bn ;?></span></td>
                           <td><?php echo $pdt->mobile_no;?></td>
                           <td>
                           <?php 
@@ -88,7 +88,12 @@ textarea[type="text"] {
                     
                           <td>
                               <a  class="btn btn-add btn-sm badge-primary text-white"  href="<?php echo base_url()."admin/users/edit/{$pdt->id}?v={$pdt->org_fields_id}";?>"><i class="fa fa-pencil"></i></a>
-                              <a  class="btn btn-add btn-sm badge-danger text-white"  href="<?php echo base_url()."admin/users/delete/{$pdt->id}";?>"><i class="fa fa-trash-o"></i></a>
+                             <a class="btn btn-add btn-sm badge-danger text-white" 
+   href="<?php echo base_url()."admin/users/delete/{$pdt->id}";?>" 
+   onclick="return confirm('আপনি কি নিশ্চিতভাবে এটি ডিলিট করতে চান?');">
+   <i class="fa fa-trash-o"></i>
+</a>
+
                             </td>
                           </tr>
                    
