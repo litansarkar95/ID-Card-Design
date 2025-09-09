@@ -70,9 +70,31 @@ class Custom extends CI_Controller {
     $is_valid          = $this->input->post('is_valid');
     $valid_date        = $this->input->post('valid_date');
 
-    // Fields mapping
+    // Input Fields 
      $data['name_en']                = $this->input->post('name_en');
      $data['name_bn']                = $this->input->post('name_bn');
+     $data['class']                  = $this->input->post('class');
+     $data['class_roll']             = $this->input->post('class_roll');
+     $data['sections']               = $this->input->post('sections');
+     $data['sessions']               = $this->input->post('sessions');
+     $data['employee_id']            = $this->input->post('employee_id');
+     $data['blood_group']            = $this->input->post('blood_group');
+     $data['father_name_en']         = $this->input->post('father_name_en');
+     $data['father_mobile_no']       = $this->input->post('father_mobile_no');
+     $data['mother_name_en']         = $this->input->post('mother_name_en');
+     $data['mobile_no']              = $this->input->post('mobile_no');
+     $data['is_valid']               = $this->input->post('is_valid');
+     $data['valid_date']             = $this->input->post('valid_date');
+     $data['permanent_address_en']   = $this->input->post('permanent_address_en');
+     $data['index_no']               = $this->input->post('index_no');
+     $data['designation']            = $this->input->post('designation');
+     $data['village_en']             = $this->input->post('village_en');
+     $data['village_bn']             = $this->input->post('village_bn');
+   
+
+
+
+    // Fields mapping
     $fields = [
         'name_en' => 'Full Name',
         'name_bn' => 'নাম',
@@ -106,7 +128,7 @@ class Custom extends CI_Controller {
     // User data
         $data['allPdt'] = $this->main_model->PrintUserData($id);
         $qr_system = $this->input->post('qr_system');
-
+       // echo "<pre>";  print_r($data['allPdt']);exit();
 // QR কোড ফাইল রাখার ফোল্ডার
 $qr_dir = FCPATH . 'qrcodes/';
 if (!is_dir($qr_dir)) {
@@ -156,6 +178,8 @@ foreach ($data['allPdt'] as $index => $user) {
         4 => 'admin/card/004/card-design-004',
         5 => 'admin/card/005/card-design-005',
         6 => 'admin/card/006/card-design-006',
+        7 => 'admin/card/007/card-design-007',
+        8 => 'admin/card/007/card-design-008',
     ];
 
     if (isset($templates[$template_id])) {

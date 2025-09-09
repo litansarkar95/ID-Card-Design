@@ -4,77 +4,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ID Card design 001</title>
+	<title>Smart ID Card Design </title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/card/006/css/style.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
 </head>
-   <style>
-    .card-design-break {
-    float:left;
-}
-@media print {
-  .card-design-break {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
 
-  .page {
-    page-break-after: always;
-    break-after: page;
-  }
-
-  /* Optional: Clean layout for print */
-  .main_container {
-    width: 100%;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-  }
-}
-
-/* Center the main container on screen and print */
-.main_container {
-  width: 297 mm;
-  margin: 0 auto;
-}
- .print-container {
-          
-        }
-/* Style the print button */
-.print-button {
-  margin: 20px auto;
-  display: block;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;  display: flex;
-}
-
-/* Hide the print button when printing */
-@media print {
-  .print-button {
-    display: none;
-  }
-
-  .main_container {
-    margin: 0 auto;
-    page-break-after: avoid;
-  }
-
-  .page {
-    page-break-after: always;
-    break-after: page;
-  }
-
-  .card-design-break {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-}
-        </style>
 <body id="bodyPart">
              <div class="print-container">
     <button onclick="window.print()" class="print-button"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -108,42 +44,102 @@ if(isset($allPdt)){
 						<span class="user_logo">
 							<img src="<?php echo base_url()."public/static/images/users/".$qr->photo; ?>" alt="" class="user_img">
 						</span>
-						<h3 class="title"><?php echo $qr->name; ?></h3>
-						<h4 class="designation"><?php echo $qr->designation; ?></h4>
-						<table class="user_info">
-							<tr>
-								<td class="left_col">
-									<p>emp id</p>
-								</td>
-								<td class="right_col">
-									<p>: <?php echo $qr->employee_id; ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>blood</p>
-								</td>
-								<td>
-									<p>: <?php echo $qr->blood_group; ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>mail</p>
-								</td>
-								<td>
-									<p>: <?php echo $qr->email; ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>phone</p>
-								</td>
-								<td>
-									<p>: <?php echo $qr->phone; ?></p>
-								</td>
-							</tr>
-						</table>
+						<h3 class="title">
+						<?php 	if($name_en == 1){ echo $qr->name_en; }else if($name_bn == 1){
+                                    echo $qr->name_bn;
+							} ?>	
+						</h3>
+						<div class="employee-info">
+						 <!--- Start ID CARD -->
+                           <?php if($employee_id == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Employee ID: <?php echo $qr->employee_id; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End ID CARD -->
+
+                             <!--- Start Index No-->
+                           <?php if($index_no == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Index No : <?php echo $qr->index_no; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End  Index No-->
+
+                            <!--- Start Index No-->
+                           <?php if($designation == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Designation : <?php echo $qr->designation; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End  Index No-->
+
+                            <!--- Start Class Roll -->
+                           <?php if($class_roll == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Class Roll: <?php echo $qr->class_roll; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End Class Roll -->
+                             <!--- Start Class  -->
+                           <?php if($class == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Class : <?php echo $qr->class; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End Class  -->
+
+                             <!--- Start Section -->
+                           <?php if($sections == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Section: <?php echo $qr->sections; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End Section -->
+
+                             <!--- Start sessions  -->
+                           <?php if($sessions == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Session: <?php echo $qr->sessions; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End sessions  -->
+
+                             <!--- Start Blood Group -->
+                           <?php if($blood_group == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Blood Group: <?php echo $qr->blood_group; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End Blood Group -->
+
+							 <!--- Start Blood Group -->
+                           <?php if($mobile_no == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Mobile No: <?php echo $qr->mobile_no; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End Blood Group -->
+						</div>
+						
 					</section>
 					<section class="footer_part">
 						<div class="footer_inner">
@@ -164,51 +160,67 @@ if(isset($allPdt)){
 						<span class="orange_shape"></span>
 					</section>
 					<section class="body_part">
-						<img src="<?php echo base_url()."public/static/images/organization/".$qr['picture']; ?>" alt="" class="brand_logo">
-						<h4 class="tagline"><?php echo $qr['org_name']; ?></h4>
-						<table class="user_info2">
-							<tr>
-								<td class="left_col">
-									<p>Address </p>
-								</td>
-								<td class="right_col">
-									<p>: <?php echo $qr['org_address']; ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>E-mail </p>
-								</td>
-								<td>
-									<p>: <?php echo $qr['org_email']; ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>contact </p>
-								</td>
-								<td>
-									<p>: <?php echo $qr['org_mobile_no']; ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>joined date</p>
-								</td>
-								<td>
-									<p>:  <?php echo  date("d-m-Y") ; ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<p>expire date</p>
-								</td>
-								<td>
-									<p>: <?php echo  $this->input->post('dob') ; ?></p>
-								</td>
-							</tr>
-						</table>
-						<span class="closing_txt">Your sincerely</span>
+						<img src="<?php echo base_url()."public/static/images/organization/".$qr->picture; ?>" alt="" class="brand_logo">
+						<h4 class="tagline"><?php echo $qr->org_name; ?></h4>
+						 <!--- Start Father's Name -->
+                           <?php if($father_name_en == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Father Name : <?php echo $qr->father_name_en; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End Father's Name -->
+                             <!--- Start Father Mobile No -->
+                           <?php if($father_mobile_no == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Father Mob. No : <?php echo $qr->father_mobile_no; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End Father Mobile No -->
+
+                             <!--- Start Mother Name -->
+                           <?php if($mother_name_en == 1){ 
+                                   
+							 ?>
+							<h4 class="designation">Mother Name : <?php echo $qr->mother_name_en; ?></h4> 
+                            <?php
+                              }
+                            ?>
+
+
+ <?php
+                            if($qr->terms_conditions_name != NULL ){
+                            ?>
+                            
+						<h3 class="bac_title"><?php echo $qr->terms_conditions_name; ?></h3>
+						<p class="terms_3"><?php echo $qr->terms_conditions; ?></p>
+                        <?php
+                            }
+                        ?>
+
+                            <!--- End Mother Name -->
+						<!--- Start Expiry Date -->
+                           <?php if($is_valid == 1){ 
+                                   
+							 ?>
+							<h4 class="designation" style="margin-top:10px;">Expiry Date : <?php echo $valid_date; ?></h4> 
+                            <?php
+                              }
+                            ?>
+                            <!--- End Expiry Date -->
+					
+
+						 <?php
+                            if($qr->signature_name != NULL){
+                            ?>
+						<p class="signature"><?php echo $qr->signature_name; ?></p>
+						<span class="closing_txt"><?php echo $qr->signature_picture; ?></span>
+                        <?php
+                            }
+							?>
 					</section>
 					<section class="footer_part">
 						<div class="footer_inner">

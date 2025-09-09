@@ -1,4 +1,4 @@
-* {
+	* {
     margin: 0;
     padding: 0;
     overflow: 0;
@@ -155,20 +155,27 @@ body {
 .front_part .body_part .title {
     text-align: center;
     color: #fa8b31;
-    font-size: 18px;
+    font-size: 14px;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin: 10px 0px;
 }
 
 .front_part .body_part .title span {
     color: #1d7f34;
 }
-
+.employee-info {
+    display: flex;
+    gap: 1px; 
+    flex-wrap: wrap; 
+}
 .front_part .body_part .designation {
-    text-align: center;
-    color: #000;
-    font-size: 11px;
+     color: #008836;
+    font-size: 12px;
+    line-height: 1.4; 
     text-transform: capitalize;
+    text-align: left;
+    margin: 2px 0; 
+    font-weight: normal; 
 }
 
 .front_part .user_info {
@@ -375,13 +382,32 @@ body {
     text-align: center;
     position: relative;
 }
-
+.back_part .body_part .designation {
+     color: #000;
+    font-size: 11px;
+    line-height: 1.4; 
+    text-transform: capitalize;
+    text-align: left;
+    font-weight: normal; 
+}
 .back_part .brand_logo {
     width: 60px;
     margin-top: 5px;
     filter: grayscale(100%);
 }
-
+.back_part .bac_title {
+    text-align: center;
+    font-size: 12px;
+    margin: 10px 0px;
+	 font-weight:bold;
+	 color: #727272;
+}
+.back_part .terms_3 {
+    margin-top: 10px;
+    font-size: 9px;
+    text-align: center;
+    color: #727272;
+}
 .back_part .tagline {
     text-transform: uppercase;
     font-size: 8px;
@@ -449,3 +475,67 @@ body {
     border: none;
     border-radius: 10px;
 }
+    .card-design-break {
+    float:left;
+}
+@media print {
+  .card-design-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .page {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  /* Optional: Clean layout for print */
+  .main_container {
+    width: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Center the main container on screen and print */
+.main_container {
+  width: 297 mm;
+  margin: 0 auto;
+}
+ .print-container {
+          
+        }
+/* Style the print button */
+.print-button {
+  margin: 20px auto;
+  display: block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;  display: flex;
+}
+
+/* Hide the print button when printing */
+@media print {
+  .print-button {
+    display: none;
+  }
+
+  .main_container {
+    margin: 0 auto;
+    page-break-after: avoid;
+  }
+
+  .page {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .card-design-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+  

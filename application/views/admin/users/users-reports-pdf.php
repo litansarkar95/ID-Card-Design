@@ -174,7 +174,7 @@ table th, table td {
 
             <td class="text-center">
                 <?php if (!empty($pdt->photo)): ?>
-                    <img src="<?= base_url("public/static/images/users/" . $pdt->photo) ?>" width="40" height="40" class="img-circle" alt="">
+                    <img src="<?= base_url("public/static/images/users/" . $pdt->photo) ?>" width="50" height="50" class="" alt="">
                 <?php else: ?>
                     <span>-</span>
                 <?php endif; ?>
