@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
+
   
 <body id="bodyPart">
              <div class="print-container">
@@ -33,11 +34,11 @@
 						<div class="branding_part">
 							
 							<div class="tagline_part">
-							<h4 class="tagline fit-text"><?php echo $qr->org_name; ?></h4>
+							<h4 class="tagline fit-text" style="font-size: <?php echo $header_title; ?>px;"><?php echo $qr->org_name; ?></h4>
 							<?php
 							if($qr->website != NULL){
 								?>
-								<p class="fit-text"><?php echo $qr->website; ?></p>
+								<!-- <p class="fit-text"><?php echo $qr->website; ?></p> -->
 
 								<?php
 							}

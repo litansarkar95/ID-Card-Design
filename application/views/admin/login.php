@@ -12,8 +12,8 @@
   <!-- Video background -->
   <!-- <video autoplay muted loop class="video-background">
         <source src="<?php echo base_url(); ?>public/assets/videos/7187418_Group_Friends_1920x1080.mp4" type="video/mp4">
-        <!-- Your browser does not support the video tag. -->
-    <!-- </video> --> -->
+       Your browser does not support the video tag. -->
+    <!-- </video> --> 
     <div class="login-container">
         <div class="login-box">
             <!-- <img src="<?php echo base_url(); ?>public/static/images/logo.png" alt="Rodasi IT Logo" class="logo"> -->

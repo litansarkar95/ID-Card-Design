@@ -70,51 +70,15 @@ select[type="text"]{
              
             </div>
             <div class="row">
-              <div class="col-md-8 grid-margin stretch-card">
+              <div class="col-md-7 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <form  action="<?php echo base_url(); ?>admin/card/custom/printdesign" method="post" >
                     <h4 class="card-title">আইডি কার্ড ডিজাইন করুন</h4>
                     <hr style="border: 1px solid #0033C4;">
                     <div class="row">
-                          <!-- FORM -->
-                          <div class="col-md-6">
-                          <div class="form-group ">
-                         <div class="form-check form-check-success">
-                         <label for="fields_code">শিরোনাম<code>*</code></label>
-                        <select type="text" class="form-control select2" id="fields_code" value="<?php echo set_value('fields_code'); ?>" name="fields_code"   >
-                      <option value="">Select</option>   
-                      <?php
-                                        foreach ($allCat as $cat){
-                                      echo "<option value='{$cat->id}'>{$cat->code_no} - {$cat->title}</option>";
-                                        }
-                                    ?>
-                       
-                      </select> 
-                        <span class="text-red small"><?php echo form_error('fields_code'); ?></span>
-                            
-                              </div>
-                         </div>  
-                         </div>
-                      <!-- END FORM -->
 
-                  
-
-                      
-
-
-                  <!-- FORM -->
-                    <div class="row form-check-success" id="choose-filds">      </div>
-                      <!-- END FORM -->
-                         
-                      <?php $base_url = base_url(); // Get the base URL ?>
-    
- 
-                          
-                      <!-- END FORM -->
-
-                           
-                          <!-- FORM -->
+                        <!-- FORM -->
                           <div class="col-md-6">
                           <div class="form-group ">
                          <div class="form-check form-check-success">
@@ -125,7 +89,7 @@ select[type="text"]{
                       <?php
                                         foreach ($allTemp as $temp){
                                           ?>
-                                          <option value="<?php echo $temp->id ?>" data-id="<?php echo $temp->picture ?>"><?php echo "{$temp->code} - {$temp->name}"; ?></option>
+                                          <option value="<?php echo $temp->id ?>" data-id="<?php echo $temp->id ?>"data-picture="<?php echo $temp->picture ?>" ><?php echo "{$temp->code} - {$temp->name}"; ?></option>
                        
                                       <?php
                                         }
@@ -157,6 +121,46 @@ select[type="text"]{
                          </div>  
                          </div>
                       <!-- END FORM -->
+                          <!-- FORM -->
+                          <div class="col-md-6">
+                          <div class="form-group ">
+                         <div class="form-check form-check-success">
+                         <label for="fields_code">শিরোনাম<code>*</code></label>
+                        <select type="text" class="form-control select2" id="fields_code" value="<?php echo set_value('fields_code'); ?>" name="fields_code"   >
+                      <option value="">Select</option>   
+                      <?php
+                                        foreach ($allCat as $cat){
+                                      echo "<option value='{$cat->id}'>{$cat->code_no} - {$cat->title}</option>";
+                                        }
+                                    ?>
+                       
+                      </select> 
+                        <span class="text-red small"><?php echo form_error('fields_code'); ?></span>
+                            
+                              </div>
+                         </div>  
+                         </div>
+                      <!-- END FORM -->
+
+                  
+
+                      
+
+
+                  <!-- FORM -->
+                    <div class="row form-check-success" id="choose-filds">   </div>   
+                      <!-- END FORM -->
+                         
+                      <?php $base_url = base_url(); // Get the base URL ?>
+    
+
+
+ 
+                          
+                      <!-- END FORM -->
+
+                           
+                      
 
                         <!-- FORM -->
                         <div class="col-md-6">
@@ -199,14 +203,20 @@ select[type="text"]{
                                  <input type="text" id="staff_or_student" class="form-control " name="staff_or_student"  value="Student" >
                                  <span class="text-red small"><?php echo form_error('staff_or_student'); ?></span>
                               </div>
+
+                               <div class="form-group col-md-6">
+                                 <label for="header_title">প্রতিষ্ঠানের সাইজ </label>
+                                 <input type="text" id="header_title" class="form-control " name="header_title"  value="20" >
+                                 <span class="text-red small"><?php echo form_error('header_title'); ?></span>
+                              </div>
                       <!-- END FORM -->
                       <div class="col-md-6">
   
-            <div class="form-group ">
-            <input type="checkbox" class="form-check-input" id="is_valid" name="is_valid" value="1"> Is Valid until Date
-            </div>
-            </div>
-            <div id="hiddenDiv" style="display:none;">
+                  <div class="form-group ">
+                  <input type="checkbox" class="form-check-input" id="is_valid" name="is_valid" value="1"> Is Valid until Date
+                  </div>
+                  </div>
+                  <div id="hiddenDiv" style="display:none;">
                       <div class="form-group col-md-6">
                                  <label for="valid_date">Valid until Date</label>
                                  <input type="text" id="valid_date" class="form-control Date" name="valid_date"  value="<?php echo set_value('valid_date'); ?>" >
@@ -237,13 +247,16 @@ select[type="text"]{
                                       </div>
 
 
-                                      <div class="col-md-4 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                  <div class="design-card">
-                  <img id="myImage" src="<?php echo $base_url; ?>public/static/assets/images/card_design/no-image.png" alt="Selected Image" width="300">
+                                      <div class="col-md-5 grid-margin stretch-card">
+                              <div class="card">
+                                <div class="card-body">
+                                <div class="design-card">
+                                <img id="myImage" src="<?php echo $base_url; ?>public/static/assets/images/card_design/no-image.png" alt="Selected Image" width="300">
 
-              </div> 
+                            </div> 
+                  <!-- Load HTML -->
+                  <div id="designHtmlContainer" style="margin-top: 20px;"></div>
+
                                       </div> 
             </div>  </div>
           
@@ -262,49 +275,120 @@ select[type="text"]{
 
 
   
-    <script>
-         function value() {
-            const selector = document.getElementById('template_id');
-            return selector.options[selector.selectedIndex].getAttribute('data-id'); // Get data-id
-        }
+<script>
+    const selectedFieldsOrder = [];
 
-        // Event listener for dropdown changes
-        document.getElementById('template_id').addEventListener('change', function() {
-            const imgElement = document.getElementById('myImage');
-            imgElement.src = "<?php echo $base_url; ?>public/static/assets/images/card_design/" + value(); // Set the src using PHP base URL and data-id
+    // Checkbox selection tracking
+    document.querySelectorAll('#choose-filds input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            const fieldId = this.id;
+
+            if (this.checked) {
+                if (!selectedFieldsOrder.includes(fieldId)) {
+                    selectedFieldsOrder.push(fieldId);
+                }
+            } else {
+                const index = selectedFieldsOrder.indexOf(fieldId);
+                if (index > -1) {
+                    selectedFieldsOrder.splice(index, 1);
+                }
+            }
+
+            loadTemplateDesign(); // ডিজাইন রি-লোড
         });
-    </script>
+    });
+
+    document.getElementById('template_id').addEventListener('change', function () {
+        const selectedOption = this.options[this.selectedIndex];
+        const picture = selectedOption.getAttribute('data-picture');
+        document.getElementById('myImage').src = "<?php echo $base_url; ?>public/static/assets/images/card_design/" + picture;
+        loadTemplateDesign(); // ডিজাইন লোড
+    });
+
+function loadTemplateDesign() {
+    const templateSelector = document.getElementById('template_id');
+    const templateId = templateSelector.options[templateSelector.selectedIndex].getAttribute('data-id');
+
+    // যদি টেমপ্লেট সিলেক্ট না করা থাকে
+    if (!templateId || templateId === 'no-image.png') {
+        document.getElementById('designHtmlContainer').innerHTML = '<em>⚠️ কোনো টেমপ্লেট সিলেক্ট করা হয়নি।</em>';
+        return;
+    }
+
+    // Encode data properly
+    const postData = new URLSearchParams();
+    postData.append('id', templateId);
+    postData.append('fields', JSON.stringify(selectedFieldsOrder));
+
+    fetch("<?php echo site_url('admin/design/get_template_html'); ?>", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: postData.toString()
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('designHtmlContainer').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error loading design HTML:', error);
+    });
+}
+
+</script>
+
+
   
 
     <script>
 
 $(document).ready(function(){
-  $('#fields_code').change(function() {
-            var categoryId = $(this).val();
+    // Ajax code
+    $('#fields_code').change(function() {
+        var categoryId = $(this).val();
 
-            if (categoryId) {
-                $.ajax({
-                    url: '<?php echo site_url('admin/card/custom/fetch_accounts'); ?>',
-                    type: 'POST',
-                    data: { payment_type_id: categoryId },
-                    dataType: 'json',
-                    success: function(data) {
-                        // Check if data is an array or object
-                        if (data.success) {
-                            $('#choose-filds').html(data.html); // Assuming the server returns HTML
-                        } else {
-                            $('#choose-filds').html('<p>No accounts found.</p>');
-                        }
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.error('AJAX Error:', textStatus, errorThrown);
-                        $('#choose-filds').html('<p>An error occurred while fetching accounts.</p>');
+        if (categoryId) {
+            $.ajax({
+                url: '<?php echo site_url('admin/card/custom/fetch_accounts'); ?>',
+                type: 'POST',
+                data: { payment_type_id: categoryId },
+                dataType: 'json',
+                success: function(data) {
+                    if (data.success) {
+                        $('#choose-filds').html(data.html);
+                    } else {
+                        $('#choose-filds').html('<p>No accounts found.</p>');
                     }
-                });
-            } else {
-                $('#choose-filds').empty(); // Clear the output if no category is selected
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('AJAX Error:', textStatus, errorThrown);
+                    $('#choose-filds').html('<p>An error occurred while fetching accounts.</p>');
+                }
+            });
+        } else {
+            $('#choose-filds').empty();
+        }
+    });
+
+    // ✅ Checkbox change event using event delegation
+    $('#choose-filds').on('change', 'input[type="checkbox"]', function () {
+        const fieldId = $(this).attr('id');
+
+        if (this.checked) {
+            if (!selectedFieldsOrder.includes(fieldId)) {
+                selectedFieldsOrder.push(fieldId);
             }
-        });
+        } else {
+            const index = selectedFieldsOrder.indexOf(fieldId);
+            if (index > -1) {
+                selectedFieldsOrder.splice(index, 1);
+            }
+        }
+
+        // Call template reload or preview render
+        loadTemplateDesign();
+    });
 });
 
        

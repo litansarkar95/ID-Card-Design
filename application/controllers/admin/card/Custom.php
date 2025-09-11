@@ -60,6 +60,13 @@ class Custom extends CI_Controller {
     $design_id = $_GET['v'];
     $data['title'] =  "Users List";
 
+     $data['header_title'] = $this->input->post('header_title');
+
+    $fields_json = $this->input->post('fields');
+   
+//   print_r( $fields_json);
+//     exit();
+
     // Input data
     $id                = $this->input->post('fields_code');
     $template_id       = $this->input->post('template_id');

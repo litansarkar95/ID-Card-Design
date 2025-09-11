@@ -40,7 +40,7 @@ if(isset($allPdt)){
 					</section>
 					<section class="body_part">
 						<!-- <img src="<?php echo base_url()."public/static/images/organization/".$qr->picture; ?>" alt="" class="brand_logo"> -->
-						<h4 class="tagline"><?php echo $qr->org_name; ?></h4>
+						<h4 class="tagline" style="font-size: <?php echo $header_title; ?>px;"><?php echo $qr->org_name; ?></h4>
 						<span class="user_logo">
 							<img src="<?php echo base_url()."public/static/images/users/".$qr->photo; ?>" alt="" class="user_img">
 						</span>

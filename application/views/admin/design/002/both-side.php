@@ -376,7 +376,7 @@
         
     </div>
     <div class="info">
-                <h1><?php echo $qr->org_name; ?></h1>
+                <h1 style="font-size: <?php echo $header_title; ?>px;"><?php echo $qr->org_name; ?></h1>
                 <div class="info_pic">
                     <img src="<?php echo base_url()."public/static/images/users/".$qr->photo; ?>">
                 </div>

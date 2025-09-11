@@ -59,6 +59,7 @@ foreach ($fields as $field => $label) {
 <div class="col-md-6">
   
 <div class="form-group ">
+<!-- <input type="checkbox" class="form-check-input" id="<?= $field ?>" name="fields[]" value="<?= $field ?>"> <?= $label ?> -->
 <input type="checkbox" class="form-check-input" id="<?= $field ?>" name="<?= $field ?>" value="1"> <?= $label ?>
 </div>
 </div>

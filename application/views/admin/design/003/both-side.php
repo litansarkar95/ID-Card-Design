@@ -67,7 +67,7 @@
     <!--- fontend start-->
     <div class="id-card-holder card-design-break">
         <div class="id-card">
-            <h2><?php echo $qr->org_name; ?></h2>
+            <h2 style="font-size: <?php echo $header_title; ?>px;"><?php echo $qr->org_name; ?></h2>
             <!-- <h2><?php echo $qr->website; ?></h2> -->
             <div class="photo">
                 <img src="<?php echo base_url()."public/static/images/users/".$qr->photo; ?>">

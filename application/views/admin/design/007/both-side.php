@@ -537,7 +537,7 @@ body{
 			<div class="front_part card-design-break">
 				<section class="header_part">
 					<div class="header_content">
-						<h2><?php echo $qr->org_name; ?></h2>
+						<h2 style="font-size: <?php echo $header_title; ?>px;"><?php echo $qr->org_name; ?></h2>
 						<!-- <p class="slogan">SLOGAN HERE</p> -->
 						<span class="user_logo">
 							<img src="<?php echo base_url()."public/static/images/users/".$qr->photo; ?>" alt="" class="user_img">
