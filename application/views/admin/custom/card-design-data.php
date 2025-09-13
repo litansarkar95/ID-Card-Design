@@ -14,7 +14,6 @@
 
  <?php
             $fields = [
-              'name_en' => 'Full Name',
               'name_bn' => 'নাম',
               'father_name_en' => "Father's Name",
               'father_name_bn' => 'পিতার নাম',
@@ -45,7 +44,7 @@
               'id_number' => 'ID No',
               'nationality' => 'Nationality',
               'blood_group' => 'Blood Group',
-              'photo'       => 'Photo',
+              
             ];
             ?>
 
@@ -59,8 +58,8 @@ foreach ($fields as $field => $label) {
 <div class="col-md-6">
   
 <div class="form-group ">
-<!-- <input type="checkbox" class="form-check-input" id="<?= $field ?>" name="fields[]" value="<?= $field ?>"> <?= $label ?> -->
-<input type="checkbox" class="form-check-input" id="<?= $field ?>" name="<?= $field ?>" value="1"> <?= $label ?>
+<input type="checkbox" class="form-check-input" id="<?= $field ?>" name="fields[]" value="<?= $field ?>"> <?= $label ?>
+<!-- <input type="checkbox" class="form-check-input" id="<?= $field ?>" name="<?= $field ?>" value="1"> <?= $label ?> -->
 </div>
 </div>
 <?php
@@ -68,6 +67,13 @@ foreach ($fields as $field => $label) {
 
 }
 ?>
+
+<div class="col-md-6">
+  
+<div class="form-group ">
+<input type="checkbox" class="form-check-input" id="expiry_date" name="fields[]" value="expiry_date"> Expiry Date
+</div>
+</div>
 
 <!-- <div class="col-md-6">
   

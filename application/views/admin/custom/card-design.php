@@ -73,7 +73,7 @@ select[type="text"]{
               <div class="col-md-7 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form  action="<?php echo base_url(); ?>admin/card/custom/printdesign" method="post" >
+                    <form  id="fieldForm"  action="<?php echo base_url(); ?>admin/card/custom/printdesign" method="post" >
                     <h4 class="card-title">আইডি কার্ড ডিজাইন করুন</h4>
                     <hr style="border: 1px solid #0033C4;">
                     <div class="row">
@@ -159,10 +159,82 @@ select[type="text"]{
                           
                       <!-- END FORM -->
 
-                           
+                             <input type="hidden" name="ordered_fields" id="orderedFields">
                       
 
                         <!-- FORM -->
+                        <div class="col-md-6">
+                          <div class="form-group ">
+                         <div class="form-check form-check-success">
+                         <label for="qr_tpye">Type of Selection<code>*</code></label>
+                         <select type="text" class="form-control select2" id="type"  name="type"   >
+                                <option value="">-- Select Type --</option>
+                    <option value="id">By ID</option>
+                    <option value="position">By Position</option>
+                    <option value="range">By Range</option>
+                    
+                       
+                      </select> 
+                        <span class="text-red small"><?php echo form_error('type'); ?></span>
+                            
+                              </div>
+                         </div>  
+                         </div>
+                      <!-- END FORM -->
+
+                        <!-- FORM -->
+                        <div class="col-md-6 " id="input_id">
+                          <div class="form-group ">
+                         <div class="form-check form-check-success">
+                         <label for="qr_tpye">Enter ID</label>
+                         <input  type="text" class="form-control " id="" value="<?php echo set_value('input_id'); ?>" name="input_id"   >
+                        <span class="text-red small"><?php echo form_error('qr_tpye'); ?></span>
+                            
+                              </div>
+                         </div>  
+                         </div>
+                      <!-- END FORM -->
+                       <!-- FORM -->
+                        <div class="col-md-6 " id="input_position">
+                          <div class="form-group ">
+                         <div class="form-check form-check-success">
+                         <label for="qr_tpye">Enter Position (Offset)</label>
+                         <input  type="number" class="form-control " id="" value="<?php echo set_value('input_position'); ?>" name="input_position"  placeholder="Enter Position" >
+                        <span class="text-red small"><?php echo form_error('input_position'); ?></span>
+                            
+                              </div>
+                         </div>  
+                         </div>
+                      <!-- END FORM -->
+
+                      <!-- FORM -->
+                        <div class="col-md-6" id="input_range">
+                        
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group ">
+                                    <div class="form-check form-check-success">
+                                <label>Enter Offset:</label>
+                                    <input type="number" class="form-control " name="input1" placeholder="Offset">
+                                </div>
+                              </div>
+                              </div>
+
+                              <div class="col-md-6">
+                                  <div class="form-group ">
+                                    <div class="form-check form-check-success">
+                                   <label>Enter Limit:</label>
+                                    <input type="number" class="form-control " name="input2" placeholder="Limit">
+                                </div>
+                              </div>
+                              </div>
+                              </div>
+          
+
+                              
+                         </div>
+                      <!-- END FORM -->
+                         <!-- FORM -->
                         <div class="col-md-6">
                           <div class="form-group ">
                          <div class="form-check form-check-success">
@@ -412,3 +484,66 @@ $(document).ready(function(){
       });
     });
   </script>
+
+
+
+
+ <script>
+    $(document).ready(function() {
+        // সব ইনপুট শুরুতে হাইড
+        $('#input_id').hide();
+        $('#input_position').hide();
+        $('#input_range').hide();
+
+        // টাইপ চেঞ্জ করলে শো/হাইড হবে
+        $('select[name="type"]').on('change', function() {
+            let selected = $(this).val();
+
+            // সব হাইড করে ফেলা
+            $('#input_id, #input_position, #input_range').hide();
+
+            if (selected === 'id') {
+                $('#input_id').show();
+            } else if (selected === 'position') {
+                $('#input_position').show();
+            } else if (selected === 'range') {
+                $('#input_range').show();
+            }
+        });
+    });
+    </script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const selectedOrder = [];
+  const container = document.getElementById('choose-filds');
+  const hiddenInput = document.getElementById('orderedFields');
+
+  // Event delegation for dynamic checkboxes (Ajax loaded)
+  container.addEventListener('change', function (e) {
+    if (e.target && e.target.matches('input[type="checkbox"]')) {
+      const value = e.target.value;
+
+      if (e.target.checked) {
+        if (!selectedOrder.includes(value)) {
+          selectedOrder.push(value);
+        }
+      } else {
+        const index = selectedOrder.indexOf(value);
+        if (index !== -1) {
+          selectedOrder.splice(index, 1);
+        }
+      }
+
+      hiddenInput.value = selectedOrder.join(',');
+    }
+  });
+
+  // Optional: on submit, make sure value is synced
+  document.getElementById('fieldForm').addEventListener('submit', function () {
+    hiddenInput.value = selectedOrder.join(',');
+  });
+});
+</script>
