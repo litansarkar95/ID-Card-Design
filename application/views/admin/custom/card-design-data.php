@@ -75,6 +75,21 @@ foreach ($fields as $field => $label) {
 </div>
 </div>
 
+
+<div class="col-md-6">
+  
+<div class="form-group ">
+<input type="checkbox" class="form-check-input" id="terms_&_conditions" name="fields[]" value="terms_&_conditions"> Terms & Conditions
+</div>
+</div>
+
+<div class="col-md-6">
+  
+<div class="form-group ">
+<input type="checkbox" class="form-check-input" id="signature_name" name="fields[]" value="signature_name"> Signature
+</div>
+</div>
+
 <!-- <div class="col-md-6">
   
   <div class="form-group ">

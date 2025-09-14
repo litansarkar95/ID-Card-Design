@@ -149,9 +149,10 @@ body{
 	
 	background: transparent;
 	
+	box-sizing: border-box;
 }
 .front_part .body_part .title {
-    padding-top:10px;
+  
 	color: #000;
 	font-size: 1rem;
 }
@@ -165,10 +166,10 @@ body{
 	font-size: 11px;
 	margin: 0 auto;
 	width: auto!important;
-	padding-top: 4px;
+	
 }
 .pt10{
-	padding-top: 5px;
+
 }
 
 .front_part .body_part .left_col{
@@ -200,35 +201,8 @@ body{
 }
 
 /* Style the print button */
-.print-button {
-  margin: 20px auto;
-  display: block;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;  display: flex;
-}
 
-/* Hide the print button when printing */
-@media print {
-  .print-button {
-    display: none;
-  }
 
-  .main_container {
-    margin: 0 auto;
-    page-break-after: avoid;
-  }
-
-  .page {
-    page-break-after: always;
-    break-after: page;
-  }
-
-  .card-design-break {
-    page-break-inside: avoid;
-    break-inside: avoid;
-  }
-}
 
 .front_part .right_leaf_ftr {
 	background: #a4c735;
@@ -386,7 +360,7 @@ body{
 .back_part .header_content .terms_txt {
 	color: #fff;
 	font-size: 8px;
-	padding: 10px;
+	
 }
 .back_part .header_content .user_info {
 	border: none;
@@ -401,7 +375,6 @@ body{
 .back_part .body_part {
 	height: 246px;
 	background: transparent;
-	padding: 20px;
 	box-sizing: border-box;
 }
 .back_part .signatire {
@@ -504,18 +477,29 @@ body{
 	bottom: -10px;
 	transform: rotate(10deg);
 }
-.printBtn{
-	padding: 10px 30px;
-	font-size: 20px;
-	background: #a4c735;
-	color: #fff;
-	margin: 10px;
-	border: none;
-	border-radius: 10px;
-}
+
 	</style>
 
 <body id="bodyPart">
+    <?php
+// Sample dummy data - future use: fetch from DB
+$dummyData = [
+    'name_en' => 'Md Litan Sarkar',
+    'father_name_en' => 'Mr. Karim',
+    'father_mobile_no' => '017XXXXXXXX',
+    'mother_name_en' => 'Mrs. Rahima',
+    'mobile_no' => '018XXXXXXXX',
+    'permanent_address_en' => 'Dhaka, Bangladesh',
+    'department' => 'Science',
+    'class' => '10',
+    'class_roll' => '23',
+    'sessions' => '2024-25',
+    'blood_group' => 'A+',
+    'expiry_date' => '13-09-2027',
+    'terms_&_conditions' => 'This card must be carried at all times.If found, please return to Institution '
+    
+];
+?>
  <?php
 function clean_label($fieldKey) {
     $label = str_replace("_", " ", $fieldKey);
@@ -523,32 +507,23 @@ function clean_label($fieldKey) {
     return ucwords($label);
 }
 ?>
-<div class="print-container">
-    <button onclick="window.print()" class="print-button"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
-            </svg>Print</button>
-            </div>
+<?php
+$terms_conditions_name = "ID Card ব্যবহারের নিয়মাবলী";
+$terms_conditions = "This card must be carried at all times If found, please return to Institution";
+$signature_name = "Md. Litan Sarkar";
+?>
 
 	<div class="main_container" id="data">
 		<div id="">
-		 <?php
-		$i=1;
-		if(isset($allPdt)){
-			foreach($allPdt  as $pdt){
-
-       
-            if (($i - 1) % 4 == 0) {
-                echo '<div class="page">';
-            }
-        ?>
+	
 		
 			<div class="front_part card-design-break">
 				<section class="header_part">
 					<div class="header_content">
-						<h2 style="font-size: <?php echo $header_title; ?>px;"><?php echo $pdt->org_name; ?></h2>
+						<h2 style="font-size: <?php echo $header_title; ?>px;">Debidwar Sujat Ali Govt. College</h2>
 						<!-- <p class="slogan">SLOGAN HERE</p> -->
 						<span class="user_logo">
-							<img src="<?php echo base_url()."public/static/images/users/".$pdt->photo; ?>" alt="" class="user_img">
+							<img src="<?php echo base_url()."public/static/assets/images/profile_design.png"; ?>" alt="" class="user_img">
 						</span>
 					</div>
 					<span class="header_shape1">
@@ -557,7 +532,7 @@ function clean_label($fieldKey) {
 					</span>
 				</section>
 				<section class="body_part">
-					<h3 class="title"><?php  echo $pdt->name_en;		?></h3>
+					<h3 class="title">Md Litan Sarkar</h3>
 					 <!--- Start Index No-->
                            <?php if($designation == 1){ 
                                    
@@ -569,16 +544,19 @@ function clean_label($fieldKey) {
                             <!--- End  Index No-->
 
 							
-						<table class="user_info">
+					<table class="user_info">
 						  <?php foreach (array_slice($fields, 0, 5) as $fieldKey): ?>
 							<tr>
 							<td class="left_col">
-								<p><?php echo clean_label($fieldKey); ?></p>
+								<?php echo clean_label($fieldKey); ?>
 							</td>
 							<td class="right_col">
-								<p>: <?php echo $pdt->$fieldKey; ?></p>
+						  <?php echo isset($dummyData[$fieldKey]) ? $dummyData[$fieldKey] : '[No Data]'; ?>
 							</td>
 						</tr>
+          
+         
+                    
             
             <?php endforeach; ?>
 						
@@ -602,11 +580,11 @@ function clean_label($fieldKey) {
 						  <?php foreach (array_slice($fields, 5,3) as $fieldKey): ?>
 							 <?php
 							if($fieldKey == "terms_&_conditions"){
-								echo '<h2>'.$pdt->terms_conditions_name.'</h2>';
-								echo '<p class="terms_txt">'.$pdt->terms_conditions.'</p>';
+								echo '<h2>'.$terms_conditions_name.'</h2>';
+								echo '<p class="terms_txt">'.$terms_conditions.'</p>';
 							}else if($fieldKey == "signature_name"){
-								echo '<h3 class="signature">'.$pdt->name_en.'</h3>';
-								echo '<p class="closing_txt">'.$pdt->name_en.'</p>';
+								echo '<h3 class="signature">'.$name_en.'</h3>';
+								echo '<p class="closing_txt">'.$name_en.'</p>';
 							}else{
 							?>
 						
@@ -618,15 +596,15 @@ function clean_label($fieldKey) {
                          
 							<tr>
 								<td class="left_col">
-									<p ><?php echo clean_label($fieldKey); ?> </p>
+									<?php echo clean_label($fieldKey); ?> 
 								</td>
 								<td class="right_col">
-									<p>:   <?php
+									:   <?php
                   if($fieldKey == "expiry_date"){
                     echo $valid_date;
                   }
                  ?>
-                    <?php echo $pdt->$fieldKey; ?></p>
+                     <?php echo isset($dummyData[$fieldKey]) ? $dummyData[$fieldKey] : '[No Data]'; ?>
 								</td>
 							</tr>
 							
@@ -651,29 +629,27 @@ function clean_label($fieldKey) {
                   
                  ?>
 				 <?php
-				 if($pdt->signature_picture != NULL){
+				 if($signature_picture != NULL){
 				 ?>
-					<p class="signatire"><?php echo base_url()."public/static/images/users/".$pdt->signature_picture; ?></p>
+					<p class="signatire"><?php echo base_url()."public/static/images/signature1.png"; ?></p>
 					<?php
 				 }else{
 					?>
-           <p class="signatire"><?php 
-                                    echo $pdt->name_en; ?></p>
+           <p class="signatire">Md. Litan Sarkar</p>
 				 <?php
 				 }
 				?>
 					<span class="line"></span>
-					<p class="signatire_name"><?php 
-                                    echo $pdt->name_en; ?></p>
+					<p class="signatire_name">Md. Litan Sarkar</p>
 
 							<?php
 				  }
 							?>
 							<?php endforeach; ?>
 					<!-- <p class="signatire_name_desig">Manager</p> -->
-					<img src="<?php echo $pdt->qr_code_url; ?>" alt="" class="barcode">
-					<h2 class="company_name"><?php echo $pdt->org_name; ?></h2>
-					<p class="slogan"><?php echo $pdt->website; ?></p>
+					<img src="<?php echo base_url() ?>qrcodes/hasan_mia_0_qr.png" alt="" class="barcode">
+					<h2 class="company_name">Debidwar Sujat Ali Govt. College</h2>
+					<p class="slogan">www.eductaion.bd.com</p>
 				</section>
 				<section class="footer_part">
 					<span class="footer_shape1">
@@ -683,15 +659,7 @@ function clean_label($fieldKey) {
 				</section>
 			</div>
 
-			          <?php
- if ($i % 4 == 0 || $i == 12) {
-                echo '</div>'; // close .page
-            }
-            $i++;
-        }
-
-    }
-    ?>
+			
 		</div>
 
 	</div>

@@ -301,15 +301,6 @@ select[type="text"]{
               
 
 
-                   
-
-              
-                    
-                     
-                      
-                     
-                       
-
                  
                       <button type="submit" class="btn btn-primary me-2"> Print ID Card </button>
                       <button class="btn btn-light">Cancel</button>
@@ -467,19 +458,13 @@ $(document).ready(function(){
 
 </script>
 
-
-
-  
-
 <script>
     $(document).ready(function() {
-      // Listen for checkbox click event
       $("#is_valid").change(function() {
-        // Toggle the visibility of the div based on the checkbox state
         if ($(this).is(":checked")) {
-          $("#hiddenDiv").fadeIn(); // Show div with a fade-in effect
+          $("#hiddenDiv").fadeIn(); // Show 
         } else {
-          $("#hiddenDiv").fadeOut(); // Hide div with a fade-out effect
+          $("#hiddenDiv").fadeOut(); // Hide 
         }
       });
     });
@@ -490,16 +475,14 @@ $(document).ready(function(){
 
  <script>
     $(document).ready(function() {
-        // সব ইনপুট শুরুতে হাইড
+       
         $('#input_id').hide();
         $('#input_position').hide();
         $('#input_range').hide();
 
-        // টাইপ চেঞ্জ করলে শো/হাইড হবে
         $('select[name="type"]').on('change', function() {
             let selected = $(this).val();
 
-            // সব হাইড করে ফেলা
             $('#input_id, #input_position, #input_range').hide();
 
             if (selected === 'id') {

@@ -93,7 +93,7 @@ $orderedFields = explode(',', $orderedFieldsRaw); // Final ordered array
 
 $data['fields'] = $orderedFields;
 $data['valid_date'] = $valid_date;
-//echo "<pre>";print_r($orderedFields);exit();
+//echo "<pre>";print_r($data['allPdt']);exit();
 
 
    

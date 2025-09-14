@@ -6,9 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ID Card design 001</title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>3public/assets/card/001/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    	<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
+
 <style>
 
 
@@ -22,7 +28,7 @@
 body {
     background: transparent;
     font-family: arial;
-    font-family: 'Noto Sans Bengali', 'Roboto', sans-serif;
+
 }
 
 .main_container {
@@ -72,32 +78,32 @@ body {
 }
 
 .front_part .shape_1::after {
-    content: "";
-    position: absolute;
-    background: #0469c2;
-    width: 480px;
-    height: 480px;
-    left: 18%;
-    border-radius: 50%;
-    transform: translate(-50%);
-    top: -283px;
-    transform: rotate(2deg);
+   	content: "";
+	position: absolute;
+	background: #0469c2;
+	width: 480px;
+	height: 480px;
+	left: 18%;
+	border-radius: 50%;
+	transform: translate(-50%);
+	top: -295px;
+	transform: rotate(2deg);
 }
 
 .front_part .shape_1::before {
-    content: "";
-    position: absolute;
-    background: #007dfd;
-    width: 480px;
-    height: 480px;
-    right: 18%;
-    border-radius: 50%;
-    transform: translate(-50%);
-    top: -281px;
-    transform: rotate(2deg);
-    z-index: 99;
-    opacity: 0.5;
-    box-shadow: 0 0 34px #000;
+ content: "";
+	position: absolute;
+	background: #007dfd;
+	width: 480px;
+	height: 480px;
+	right: 18%;
+	border-radius: 50%;
+	transform: translate(-50%);
+	top: -295px;
+	transform: rotate(2deg);
+	z-index: 99;
+	opacity: 0.5;
+	box-shadow: 0 0 34px #000;
 }
 
 .front_part .branding_part {
@@ -201,17 +207,16 @@ body {
     font-size: 16px;
     line-height:1.4rem;
     margin-top:-12px;
+    margin-bottom:5px;
     text-transform: uppercase;
     font-family: "Roboto", sans-serif;
     font-weight:bold;
 }
 
 .front_part .body_part .designation {
-  margin-left:15px;
+    margin-left:15px;
     text-align: justify;
-    color: #000;
     font-size: 12px;
-    /* line-height:1.2rem; */
     text-transform: capitalize;
     font-family: "Roboto", sans-serif;
 }
@@ -298,13 +303,11 @@ body {
     bottom: 3px;
 }
 .body_part .designation {
-     margin-left:15px;
     text-align: justify;
-    color: #000;
-    font-size: 12px;
-    /* line-height:1.2rem; */
+    font-size: 11px;
+    padding:1px;
     text-transform: capitalize;
-    font-family: "Roboto", sans-serif;
+    font-family: "Noto Sans Bengali";
 }
 .back_part .header_shape3::after {
     background: #fff;
@@ -320,13 +323,14 @@ body {
 
 .back_part .bac_title {
     text-align: center;
-    font-size: 15px;
-    margin-top: 15px;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 .back_part .terms_3 {
-    margin-top: 10px;
+    margin-top: 2px;
     font-size: 9px;
+	margin-bottom: 10px;
     text-align: center;
     color: #727272;
 }
@@ -356,7 +360,8 @@ body {
 .back_part .signature {
     font-family: "Allura", cursive;
     margin-bottom: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
+        font-size:12px;
 }
 
 .back_part .address {
@@ -370,6 +375,7 @@ body {
     text-align: center;
     color: #a1a1a1;
     position: relative;
+     font-size:12px;
 }
 
 .back_part .closing_txt::after {
@@ -580,7 +586,7 @@ body {
     align-items: center;
     justify-content: center;
 }
-    </style>
+  </style>
 <?php
 // Sample dummy data - future use: fetch from DB
 $dummyData = [
@@ -595,11 +601,16 @@ $dummyData = [
     'class_roll' => '23',
     'sessions' => '2024-25',
     'blood_group' => 'A+',
-    'expiry_date' => '13-09-2027'
+    'expiry_date' => '13-09-2027',
+    'terms_&_conditions' => 'This card must be carried at all times.If found, please return to Institution '
     
 ];
 ?>
-
+<?php
+$terms_conditions_name = "ID Card ব্যবহারের নিয়মাবলী";
+$terms_conditions = "This card must be carried at all times If found, please return to Institution";
+$signature_name = "Md. Litan Sarkar";
+?>
 <?php
 
 function clean_label($fieldKey) {
@@ -667,11 +678,30 @@ function clean_label($fieldKey) {
 					<section class="body_part">
 
                         <?php if (!empty($fields)) : ?>
-                <?php foreach (array_slice($fields, 4, 6) as $fieldKey): ?>
+                <?php foreach (array_slice($fields, 4, 9) as $fieldKey): ?>
+
+
+                    <?php
+                if($fieldKey == "terms_&_conditions"){
+                    echo '<h3 class="bac_title">'.$terms_conditions_name.'</h3>';
+                    echo '<p class="terms_3">'.$terms_conditions.'</p>';
+                  } else if($fieldKey == "signature_name"){
+                    echo '<h3 class="signature">'.$signature_name.'</h3>';
+                    ?>
+                    	<span class="closing_txt"><?php echo $signature_name; ?></span>
+                    <?php
+                  
+                  } else{
+                ?>
                     <h4 class="designation">
                         <?php echo clean_label($fieldKey); ?>:
                         <?php echo  $dummyData[$fieldKey]; ?>
+
+                        
                     </h4>
+                    <?php
+                  }
+                    ?>
                 <?php endforeach; ?>
                 <?php else: ?>
                     <em>⚠️ কোনো ফিল্ড সিলেক্ট করা হয়নি।</em>
