@@ -31,6 +31,7 @@
               'upazila_bn' => 'উপজেলা',
               'zilla_en' => 'Zilla',
               'zilla_bn' => 'জেলা',
+              'present_address_en' => 'Present Address English',
               'permanent_address_en' => 'Permanent Address English',
               'designation' => 'Designation',
               'department' => 'Department',
@@ -44,6 +45,7 @@
               'id_number' => 'ID No',
               'nationality' => 'Nationality',
               'blood_group' => 'Blood Group',
+              'signature' => 'Signature',
               
             ];
             ?>
@@ -86,7 +88,7 @@ foreach ($fields as $field => $label) {
 <div class="col-md-6">
   
 <div class="form-group ">
-<input type="checkbox" class="form-check-input" id="signature_name" name="fields[]" value="signature_name"> Signature
+<input type="checkbox" class="form-check-input" id="signature_name" name="fields[]" value="signature_name"> Org Signature
 </div>
 </div>
 

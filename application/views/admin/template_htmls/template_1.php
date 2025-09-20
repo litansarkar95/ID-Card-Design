@@ -595,12 +595,16 @@ $dummyData = [
     'father_mobile_no' => '017XXXXXXXX',
     'mother_name_en' => 'Mrs. Rahima',
     'mobile_no' => '018XXXXXXXX',
+    'designation' => 'Deputy Director',
+    'present_address_en' => 'Dhaka, Bangladesh',
     'permanent_address_en' => 'Dhaka, Bangladesh',
     'department' => 'Science',
     'class' => '10',
     'class_roll' => '23',
     'sessions' => '2024-25',
+    'date_of_birth' => '1996-11-14',
     'blood_group' => 'A+',
+    'id_number' => '1028272',
     'expiry_date' => '13-09-2027',
     'terms_&_conditions' => 'This card must be carried at all times.If found, please return to Institution '
     

@@ -5,6 +5,9 @@
   <title>ID Card Design Form</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
   <style>
     :root {
       --primary: #3b82f6;
@@ -345,6 +348,7 @@
               'class_roll' => 'Class Roll',
               'date_of_birth' => 'Date of Birth',
               'id_number' => 'ID No',
+              'present_address_en' => 'Present Address ',
               'nationality' => 'Nationality',
             ];
             $requiredFields = ['name_en', 'mobile_no', 'email', 'date_of_birth', 'father_name_en', 'father_mobile_no', 'mother_name_en']; // উদাহরণ
@@ -372,6 +376,9 @@
             <?php
             }
           }
+          
+          //dob
+        
 
 
             // Dropdowns
@@ -591,3 +598,15 @@ if (mobileInput && mobileInput.value) {
   </script>
 </body>
 </html>
+
+<script>
+  $(function() {
+    $( "#date_of_birth" ).datepicker({
+      dateFormat: "yy-mm-dd",   // Date format in "yyyy-mm-dd" format
+      setDate: new Date(),       // Set default date to today's date
+      changeMonth: true,         // Allow changing the month
+      changeYear: true           // Allow changing the year
+    });
+  });
+</script>
+

@@ -692,8 +692,15 @@ function clean_label($fieldKey) {
                 if($fieldKey == "terms_&_conditions"){
                     echo '<h3 class="bac_title">'.$pdt->terms_conditions_name.'</h3>';
                     echo '<p class="terms_3">'.$pdt->terms_conditions.'</p>';
-                  }else if($fieldKey == "signature_name"){
-                    echo '<h3 class="signature">'.$pdt->name_en.'</h3>';
+                  }else if($fieldKey == "signature_name"){?>
+                 <img src="<?php echo base_url()."public/static/images/organization/$pdt->signature_picture"?>" style="width:80px">
+                  <?php
+                   
+                    echo '<p class="closing_txt">'.$pdt->signature_name.'</p>';
+                  }else if($fieldKey == "signature"){
+                    ?>
+                      <img src="<?php echo base_url()."public/static/images/users/$pdt->signature"?>" style="width:80px">
+                    <?php
                     echo '<p class="closing_txt">'.$pdt->name_en.'</p>';
                   }else{
                 ?>

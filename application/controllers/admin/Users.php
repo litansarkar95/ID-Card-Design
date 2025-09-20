@@ -21,9 +21,27 @@ class Users extends CI_Controller {
         $data = array();
         $data['active'] = "users";
         $data['title'] =  "Users List";
-        $data['allPdt'] = $this->main_model->UsersList();
-         $agent_id =  $this->session->userdata('loggedin_userid');
-        $data['allCat'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");
+
+        $org_id               = $this->input->post("org_id") ;
+        $fields_id            = $this->input->post("fields_id") ;
+        $users_id             = $this->input->post("users_id") ;
+        $blood_group          = $this->input->post("blood_group") ;
+        $gender_id            = $this->input->post("gender_id") ;
+
+
+
+        $data['org_id']             = $this->input->post("org_id") ;
+        $data['fields_id']          = $this->input->post("fields_id") ;
+        $data['users_id']           = $this->input->post("users_id") ;
+        $data['blood_group']        = $this->input->post("blood_group") ;
+        $data['gender_id']          = $this->input->post("gender_id") ;
+
+        $data['allPdt'] = $this->main_model->UsersList($org_id,$fields_id,$users_id,$blood_group,$gender_id);
+
+        $agent_id =  $this->session->userdata('loggedin_userid');
+        $data['allOrg'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");
+        $data['allOrgfields'] = $this->common_model->view_data("org_fields", array("agent_id"=>$agent_id), "id", "DESC");
+        $data['allStu'] = $this->common_model->view_data("users_fields", array("agent_id"=>$agent_id), "id", "DESC");
         $data['content'] = $this->load->view("admin/users-list", $data, TRUE);
         $this->load->view('layout/master', $data);
 	}

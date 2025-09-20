@@ -69,16 +69,31 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }
-    public function UsersList($id=NULL) {
+    public function UsersList($org_id,$fields_id,$users_id,$blood_group,$gender_id) {
         $agent_id  = $this->session->userdata('loggedin_userid');
 
-        if($id){
-            $this->db->where("users_fields.id",$id); 
-        }
+      
+
+        if ($fields_id ) {
+          $this->db->where("users_fields.org_fields_id", $fields_id); 
+         }
+	
+        if ($users_id ) {
+          $this->db->where("users_fields.id", $users_id); 
+         }
+
+        if ($blood_group ) {
+          $this->db->where("users_fields.blood_group", $blood_group); 
+         }
+
+        if ($gender_id ) {
+          $this->db->where("users_fields.gender", $gender_id); 
+         }
 		$this->db->select("users_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
         $this->db->from("users_fields");
         $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
         $this->db->where('organizations.agent_id', $agent_id);
+        $this->db->where("users_fields.organization_id", $org_id); 
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }  

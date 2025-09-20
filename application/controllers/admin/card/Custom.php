@@ -95,6 +95,19 @@ $data['fields'] = $orderedFields;
 $data['valid_date'] = $valid_date;
 //echo "<pre>";print_r($data['allPdt']);exit();
 
+// Save Data
+  $mdata = array(   
+              "agent_id"                          => $this->session->userdata('loggedin_userid'),
+              "org_fields_id"                     => $this->common_model->xss_clean($this->input->post("fields_code")),
+
+  );
+
+$this->common_model->save_data("users_last_design", $mdata);
+
+
+//End Save Data
+  
+
 
    
     // Input Fields 
