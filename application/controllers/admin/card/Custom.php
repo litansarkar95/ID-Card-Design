@@ -72,6 +72,7 @@ class Custom extends CI_Controller {
     $valid_date        = $this->input->post('valid_date');
 
      $data['header_title'] = $this->input->post('header_title');
+     $data['footer_title'] = $this->input->post('footer_title');
 
         $type = $this->input->post('type');
         $input_id = $this->input->post('input_id');
@@ -81,89 +82,86 @@ class Custom extends CI_Controller {
 
          if ($type == 'id') {
             $data['allPdt'] = $this->card_model->get_by_id($id,$input_id);
-        } elseif ($type == 'position') {
-            $data['allPdt'] = $this->card_model->get_by_position($id,$input_position);
-        } elseif ($type == 'range') {
-            $data['allPdt'] = $this->card_model->get_by_range($id,$input2, $input1); // limit, offset
-        }
+         }else{
+            $data['allPdt'] = $this->card_model->get_by_all($id);
+         }
+         // elseif ($type == 'position') {
+        //     $data['allPdt'] = $this->card_model->get_by_position($id,$input_position);
+        // } elseif ($type == 'range') {
+        //     $data['allPdt'] = $this->card_model->get_by_range($id,$input2, $input1); // limit, offset
+        // }
 
 
  $orderedFieldsRaw = $this->input->post('ordered_fields'); // CSV string
-$orderedFields = explode(',', $orderedFieldsRaw); // Final ordered array
+ $orderedFields = explode(',', $orderedFieldsRaw); // Final ordered array
 
 $data['fields'] = $orderedFields;
 $data['valid_date'] = $valid_date;
 //echo "<pre>";print_r($data['allPdt']);exit();
+$org_fields_id = $this->common_model->xss_clean($this->input->post("fields_code"));
 
-// Save Data
-  $mdata = array(   
-              "agent_id"                          => $this->session->userdata('loggedin_userid'),
-              "org_fields_id"                     => $this->common_model->xss_clean($this->input->post("fields_code")),
+// Step 2: পুরানো রেকর্ড ডিঅ্যাকটিভ করা (is_active = 0)
+$this->db->where('org_fields_id', $org_fields_id);
+$this->db->update('users_last_design', ['is_active' => 0]);
 
-  );
 
+// ডাটাবেজে আপডেট করার জন্য ডাটা প্রস্তুত করা
+$mdata = array(
+    "agent_id"        => $this->session->userdata('loggedin_userid'),
+    "is_active"       => 1,
+   // "create_user"     => $this->session->userdata('loggedin_userid'),
+   // "create_date"     => time(),
+    "org_fields_id"   => $this->common_model->xss_clean($this->input->post("fields_code")),
+    "name_en"   => 1,
+);
+$fieldList = [
+    'name_en',
+    'name_bn',
+    'father_name_en',
+    'father_name_bn',
+    'father_mobile_no',
+    'mother_name_en',
+    'mother_name_bn',
+    'mother_mobile_no',
+    'mobile_no',
+    'email',
+    'village_en',
+    'village_bn',
+    'post_office_en',
+    'post_office_bn',
+    'upazila_en',
+    'upazila_bn',
+    'zilla_en',
+    'zilla_bn',
+    'present_address_en',
+    'permanent_address_en',
+    'designation',
+    'department',
+    'employee_id',
+    'index_no',
+    'class',
+    'class_roll',
+    'sections',
+    'sessions',
+    'date_of_birth',
+    'id_number',
+    'nationality',
+    'blood_group',
+    'signature',
+    'terms_&_conditions',
+    'expiry_date', 
+    'signature_name'
+];
+
+foreach ($fieldList as $field) {
+    $mdata[$field] = in_array($field, $orderedFields) ? 1 : 0;
+
+}
+// save
 $this->common_model->save_data("users_last_design", $mdata);
 
-
 //End Save Data
-  
 
-
-   
-    // Input Fields 
-    //  $data['name_en']                = $this->input->post('name_en');
-    //  $data['name_bn']                = $this->input->post('name_bn');
-    //  $data['class']                  = $this->input->post('class');
-    //  $data['class_roll']             = $this->input->post('class_roll');
-    //  $data['sections']               = $this->input->post('sections');
-    //  $data['sessions']               = $this->input->post('sessions');
-    //  $data['employee_id']            = $this->input->post('employee_id');
-    //  $data['blood_group']            = $this->input->post('blood_group');
-    //  $data['father_name_en']         = $this->input->post('father_name_en');
-    //  $data['father_mobile_no']       = $this->input->post('father_mobile_no');
-    //  $data['mother_name_en']         = $this->input->post('mother_name_en');
-    //  $data['mobile_no']              = $this->input->post('mobile_no');
-    //  $data['is_valid']               = $this->input->post('is_valid');
-    //  $data['valid_date']             = $this->input->post('valid_date');
-    //  $data['permanent_address_en']   = $this->input->post('permanent_address_en');
-    //  $data['index_no']               = $this->input->post('index_no');
-    //  $data['designation']            = $this->input->post('designation');
-    //  $data['village_en']             = $this->input->post('village_en');
-    //  $data['village_bn']             = $this->input->post('village_bn');
-   
-
-
-
-    // Fields mapping
-    // $fields = [
-    //     'name_en' => 'Full Name',
-    //     'name_bn' => 'নাম',
-    //     'father_name_en' => "Father's Name",
-    //     'father_name_bn' => 'পিতার নাম',
-    //     'father_mobile_no' => "Father's Mobile No",
-    //     'mother_name_en' => 'Mother Name',
-    //     'mother_name_bn' => 'মায়ের নাম',
-    //     'mother_mobile_no' => "Mother Mobile No",
-    //     'mobile_no' => 'Mobile No.',
-    //     'email' => 'Email',
-    //     'village_en' => 'Village',
-    //     'village_bn' => 'গ্রাম',
-    //     'post_office_en' => 'Post Office',
-    //     'post_office_bn' => 'পোস্ট অফিস',
-    //     'upazila_en' => 'Upazila',
-    //     'upazila_bn' => 'উপজেলা',
-    //     'zilla_en' => 'Zilla',
-    //     'zilla_bn' => 'জেলা',
-    //     'designation' => 'Designation',
-    //     'department' => 'Department',
-    //     'employee_id' => 'Employee ID',
-    //     'index_no' => 'Index No',
-    //     'class_roll' => 'Class Roll',
-    //     'date_of_birth' => 'Date of Birth',
-    //     'id_number' => 'ID No',
-    //     'nationality' => 'Nationality',
-    //     'photo' => 'Photo',
-    // ];
 
     // User data
         // $data['allPdt'] = $this->main_model->PrintUserData($id);

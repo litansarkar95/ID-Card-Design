@@ -168,10 +168,10 @@ select[type="text"]{
                          <div class="form-check form-check-success">
                          <label for="qr_tpye">Type of Selection<code>*</code></label>
                          <select type="text" class="form-control select2" id="type"  name="type"   >
-                                <option value="">-- Select Type --</option>
+                                <option value="">-- All Type --</option>
                     <option value="id">By ID</option>
-                    <option value="position">By Position</option>
-                    <option value="range">By Range</option>
+                    <!-- <option value="position">By Position</option>
+                    <option value="range">By Range</option> -->
                     
                        
                       </select> 
@@ -280,6 +280,12 @@ select[type="text"]{
                                  <label for="header_title">প্রতিষ্ঠানের সাইজ </label>
                                  <input type="text" id="header_title" class="form-control " name="header_title"  value="20" >
                                  <span class="text-red small"><?php echo form_error('header_title'); ?></span>
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                 <label for="footer_title">প্রতিষ্ঠানের সাইজ ফুটারে </label>
+                                 <input type="text" id="footer_title" class="form-control " name="footer_title"  value="10" >
+                                 <span class="text-red small"><?php echo form_error('footer_title'); ?></span>
                               </div>
                       <!-- END FORM -->
                       <div class="col-md-6">

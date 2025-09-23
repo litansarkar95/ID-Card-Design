@@ -734,7 +734,7 @@ function clean_label($fieldKey) {
 									<tr>
                                        
 										<td>
-											<span class=""><?php echo $pdt->org_name; ?></span>
+											<span class="" style="font-size: <?php echo $footer_title; ?>px;"><?php echo $pdt->org_name; ?></span>
 										</td>
 									
 									</tr>
