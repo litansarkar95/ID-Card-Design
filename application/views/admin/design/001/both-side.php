@@ -230,7 +230,7 @@ body {
 }
 
 .front_part .footer_part {
-    height: 30px;
+    height: 40px;
     position: relative;
 }
 
@@ -246,7 +246,7 @@ body {
     left: 50%;
     top: 12px;
     z-index: 9;
-    width: 50px;
+    width: 60px;
 }
 
 .front_part .ftr_shape {
@@ -392,7 +392,7 @@ body {
     height: 105px;
     display: flex;
     flex-direction: row;
-    padding: 20px 10px;
+    /*padding: 20px 10px;*/
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
@@ -693,13 +693,13 @@ function clean_label($fieldKey) {
                     echo '<h3 class="bac_title">'.$pdt->terms_conditions_name.'</h3>';
                     echo '<p class="terms_3">'.$pdt->terms_conditions.'</p>';
                   }else if($fieldKey == "signature_name"){?>
-                 <img src="<?php echo base_url()."public/static/images/organization/$pdt->signature_picture"?>" style="width:80px">
+                 <img src="<?php echo base_url()."public/static/images/organization/$pdt->signature_picture"?>" style="width:auto;height:50px;">
                   <?php
                    
                     echo '<p class="closing_txt">'.$pdt->signature_name.'</p>';
                   }else if($fieldKey == "signature"){
                     ?>
-                      <img src="<?php echo base_url()."public/static/images/users/$pdt->signature"?>" style="width:80px">
+                      <img src="<?php echo base_url()."public/static/images/users/$pdt->signature"?>" style="width:auto;height:50px;">
                     <?php
                     echo '<p class="closing_txt">'.$pdt->name_en.'</p>';
                   }else{
@@ -734,7 +734,8 @@ function clean_label($fieldKey) {
 									<tr>
                                        
 										<td>
-											<span class="" style="font-size: <?php echo $footer_title; ?>px;"><?php echo $pdt->org_name; ?></span>
+											<span class="" style="font-size: <?php echo $footer_title; ?>px;font-weight: bold;
+"><?php echo $pdt->org_name; ?></span>
 										</td>
 									
 									</tr>
