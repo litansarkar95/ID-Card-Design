@@ -126,11 +126,11 @@ class Customfields extends CI_Controller {
         $data['active'] = "users";
         $data['title'] =  "Users List";
         $org_id = $_GET['v'];
-        $data['allClass'] = $this->main_model->CustomerClasses("classes",$org_id);
-        $data['allSect'] = $this->main_model->CustomerClasses("sections",$org_id);
-        $data['allSession'] = $this->main_model->CustomerClasses("sessions",$org_id);
+      //  $data['allClass'] = $this->main_model->CustomerClasses("classes",$org_id);
+     //   $data['allSect'] = $this->main_model->CustomerClasses("sections",$org_id);
+     //   $data['allSession'] = $this->main_model->CustomerClasses("sessions",$org_id);
         $data['allPdt'] =   $this->main_model->CustomfieldsList($id);
-        $data['allStu'] = $this->main_model->UsersList($id);
+        //$data['allStu'] = $this->main_model->UsersList($id);
         $agent_id =  $this->session->userdata('loggedin_userid');
         $data['allCat'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");
       //  echo "<pre>";print_r($data['allPdt']);exit();

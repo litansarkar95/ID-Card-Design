@@ -221,6 +221,7 @@ $this->common_model->save_data("users_last_design", $mdata);
     ];
 
     if (isset($templates[$template_id])) {
+       
         $sides = [
             'front_side' => 'front-side',
             'back_side'  => 'back-side',

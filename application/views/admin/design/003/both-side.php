@@ -11,7 +11,13 @@
          <link rel="stylesheet" href="<?php echo base_url(); ?>public/assets/card/003/css/style.css">
 </head>
 
-
+     <?php
+function clean_label($fieldKey) {
+    $label = str_replace("_", " ", $fieldKey);
+    $label = preg_replace('/\s(en|bn)$/i', '', $label);
+    return ucwords($label);
+}
+?>
 <body>
         <div class="agency-bottom-content d-print-none" id="agency_bottom">
 				<!--Print-download content start here -->
@@ -50,15 +56,16 @@
 			
 		<div class="main_container" id="data">	
            
-<?php
-    if(isset($allPdt)){
-     foreach($allPdt  as $qr){
+           <?php
+$i=1;
+if(isset($allPdt)){
+    foreach($allPdt  as $pdt){
 
-         if (($i - 1) % 4 == 0) {
+       
+            if (($i - 1) % 4 == 0) {
                 echo '<div class="page">';
             }
-    
-    ?>
+        ?>
     
         
 
@@ -67,14 +74,12 @@
     <!--- fontend start-->
     <div class="id-card-holder card-design-break">
         <div class="id-card">
-            <h2 style="font-size: <?php echo $header_title; ?>px;"><?php echo $qr->org_name; ?></h2>
+            <h2 style="font-size: <?php echo $header_title; ?>px;"><?php echo $pdt->org_name; ?></h2>
             <!-- <h2><?php echo $qr->website; ?></h2> -->
             <div class="photo">
-                <img src="<?php echo base_url()."public/static/images/users/".$qr->photo; ?>">
+                <img src="<?php echo base_url()."public/static/images/users/".$pdt->photo; ?>">
             </div>
-            <h3><?php 	if($name_en == 1){ echo $qr->name_en; }else if($name_bn == 1){
-                                    echo $qr->name_bn;
-							} ?></h3>
+            <h3><?php 	echo $pdt->name_en; ?>	</h3>
             <?php
             if( $this->input->post('staff_or_student') != ''){
             ?>
@@ -89,94 +94,15 @@
 
             <div class="content-test">
               <!--- Start ID CARD -->
-                           <?php if($employee_id == 1){ 
-                                   
-							 ?>
-							<h4 class="designation"><strong>Employee ID:</strong> <?php echo $qr->employee_id; ?></h4> 
-                            <?php
-                              }
-                            ?>
+                           <div class="record-box">
+            <?php foreach (array_slice($fields, 0, 4) as $fieldKey): ?>
+                <h4 class="designation">
+                <?php echo clean_label($fieldKey); ?> : 
+                    <?php echo $pdt->$fieldKey; ?>
+                </h4>
+            <?php endforeach; ?>
+        </div>
                             <!--- End ID CARD -->
-
-                             <!--- Start Index No-->
-                           <?php if($index_no == 1){ 
-                                   
-							 ?>
-							<h4 class="designation"><strong>Index No :</strong> <?php echo $qr->index_no; ?></h4> 
-                            <?php
-                              }
-                            ?>
-                            <!--- End  Index No-->
-
-                            <!--- Start Index No-->
-                           <?php if($designation == 1){ 
-                                   
-							 ?>
-							<h4 class="designation title"><strong>Designation:</strong> <?php echo $qr->designation; ?></h4> 
-                            <?php
-                              }
-                            ?>
-                            <!--- End  Index No-->
-
-                            <!--- Start Class Roll -->
-                           <?php if($class_roll == 1){ 
-                                   
-							 ?>
-							<h4 class="designation"><strong>Class Roll: </strong><?php echo $qr->class_roll; ?></h4> 
-                            <?php
-                              }
-                            ?>
-                            <!--- End Class Roll -->
-                             <!--- Start Class  -->
-                           <?php if($class == 1){ 
-                                   
-							 ?>
-							<h4 class="designation"><strong>Class :</strong> <?php echo $qr->class; ?></h4> 
-                            <?php
-                              }
-                            ?>
-                            <!--- End Class  -->
-
-                             <!--- Start Section -->
-                           <?php if($sections == 1){ 
-                                   
-							 ?>
-							<h4 class="designation"><strong>Section:</strong> <?php echo $qr->sections; ?></h4> 
-                            <?php
-                              }
-                            ?>
-                            <!--- End Section -->
-
-                             <!--- Start sessions  -->
-                           <?php if($sessions == 1){ 
-                                   
-							 ?>
-							<h4 class="designation"><strong>Session:</strong> <?php echo $qr->sessions; ?></h4> 
-                            <?php
-                              }
-                            ?>
-                            <!--- End sessions  -->
-
-                             <!--- Start Blood Group -->
-                           <?php if($blood_group == 1){ 
-                                   
-							 ?>
-							<h4 class="designation"><strong>Blood Group:</strong> <?php echo $qr->blood_group; ?></h4> 
-                            <?php
-                              }
-                            ?>
-                            <!--- End Blood Group -->
-
-					
-      
-
-          
-
-
-          
-
-
-
 
             </div>
             <!-- <div class="bottom-color">
@@ -197,42 +123,50 @@
             <div class="header-back">
                 <h2>তথ্যাবলি </h2>
                 <table>
-                    <?php if($is_valid == 1){ 
-                                   
-							 ?>
-                    <tr>
-                        <td>যোগদান : </td>
-                        <td> <?php echo $valid_date; ?></td>
-                    </tr>
+                 
+
+              
+                <?php foreach (array_slice($fields, 4,9) as $fieldKey): ?>
+
+                      <?php
+                if($fieldKey == "terms_&_conditions"){
+                    // echo '<h3 class="bac_title">'.$pdt->terms_conditions_name.'</h3>';
+                    // echo '<p class="terms_3">'.$pdt->terms_conditions.'</p>';
+                  }else if($fieldKey == "signature_name"){?>
+                 <!-- <img src="<?php echo base_url()."public/static/images/organization/$pdt->signature_picture"?>" style="width:auto;height:50px;"> -->
+                  <?php
+                   
+                    echo '<p class="closing_txt">'.$pdt->signature_name.'</p>';
+                  }else if($fieldKey == "signature"){
+                    ?>
+                      <!-- <img src="<?php echo base_url()."public/static/images/users/$pdt->signature"?>" style="width:auto;height:50px;"> -->
                     <?php
-                              }
-                            ?>
-                    <tr>
-                        <td>অফিস ইমেইল : </td>
-                        <td> <?php echo $qr->org_email; ?> </td>
+                    echo '<p class="closing_txt">'.$pdt->name_en.'</p>';
+                  }else{
+                ?>
+               <tr>
+                        <td><?php echo clean_label($fieldKey); ?> : </td>
+                        <td> <?php
+                  if($fieldKey == "expiry_date"){
+                    echo $valid_date;
+                  }
+                 ?>  <?php echo $pdt->$fieldKey; ?></td>
                     </tr>
-                    <tr>
-                        <td>অফিস টেলিফোন : </td>
-                        <td> <?php echo $qr->org_mobile_no; ?> </td>
-                    </tr>
-                    <tr>
-                        <td> ওয়েব সাইট : </td>
-                        <td> <?php echo $qr->website; ?> </td>
-                    </tr>
+
+                    <?php
+                  }
+                    ?>
+           
+            <?php endforeach; ?>
+     
+                  
                 </table>
-                 <?php
-                            if($qr->terms_conditions_name != NULL ){
-                            ?>
-                <h2><?php echo $qr->terms_conditions_name; ?></h2>
-                <p><?php echo $qr->terms_conditions; ?></p>
-                     <?php
-                            }
-                        ?>
+              
                 <!-- <h2><?php echo $qr->org_name; ?></h2> -->
                 <p class="address"><?php echo $qr->org_address ?> </p>
                 <div class="">
                 <p class="address">বিস্তারিত জানতে  QR Code স্ক্যান করুন</p>
-                <img src="<?php echo $qr->qr_code_url; ?>" alt="QR Code" class="bar_code">
+                <img src="<?php echo $pdt->qr_code_url; ?>" alt="QR Code" class="bar_code">
                 </div>
             </div>
 

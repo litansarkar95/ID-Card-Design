@@ -36,7 +36,7 @@ class Users extends CI_Controller {
         $data['blood_group']        = $this->input->post("blood_group") ;
         $data['gender_id']          = $this->input->post("gender_id") ;
 
-        $data['allPdt'] = $this->main_model->UsersList($org_id,$fields_id,$users_id,$blood_group,$gender_id);
+        $data['allPdt'] = $this->main_model->UsersListSearch($org_id,$fields_id,$users_id,$blood_group,$gender_id);
 
         $agent_id =  $this->session->userdata('loggedin_userid');
         $data['allOrg'] = $this->common_model->view_data("organizations", array("agent_id"=>$agent_id), "id", "DESC");

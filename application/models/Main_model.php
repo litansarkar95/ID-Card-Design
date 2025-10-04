@@ -69,7 +69,7 @@ class Main_model extends CI_Model {
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }
-    public function UsersList($org_id,$fields_id,$users_id,$blood_group,$gender_id) {
+    public function UsersListSearch($org_id,$fields_id,$users_id,$blood_group,$gender_id) {
         $agent_id  = $this->session->userdata('loggedin_userid');
 
       
@@ -94,6 +94,24 @@ class Main_model extends CI_Model {
         $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
         $this->db->where('organizations.agent_id', $agent_id);
         $this->db->where("users_fields.organization_id", $org_id); 
+        $this->db->order_by("id", "DESC");
+        return $this->db->get()->result();
+    }  
+
+
+    public function UsersList($id=NULL) {
+        $agent_id  = $this->session->userdata('loggedin_userid');
+
+      
+
+        if ($id ) {
+          $this->db->where("users_fields.id", $id); 
+         }
+
+		$this->db->select("users_fields.*, organizations.name org_name,  organizations.slug org_slug  , organizations.mobile_no org_mobile_no , organizations.email org_email,  organizations.address org_address, organizations.picture org_picture");
+        $this->db->from("users_fields");
+        $this->db->join('organizations', "users_fields.organization_id = organizations.id",'left');
+        $this->db->where('organizations.agent_id', $agent_id);
         $this->db->order_by("id", "DESC");
         return $this->db->get()->result();
     }  
