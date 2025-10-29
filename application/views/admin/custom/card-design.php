@@ -89,7 +89,7 @@ select[type="text"]{
                       <?php
                                         foreach ($allTemp as $temp){
                                           ?>
-                                          <option value="<?php echo $temp->code ?>" data-id="<?php echo $temp->code ?>"data-picture="<?php echo $temp->picture ?>" ><?php echo "{$temp->code} - {$temp->name}"; ?></option>
+                                          <option value="<?php echo $temp->code ?>" data-id="<?php echo $temp->code ?>"data-picture="<?php echo $temp->picture ?>" ><?php echo $temp->name; ?></option>
                        
                                       <?php
                                         }

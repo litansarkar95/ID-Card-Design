@@ -73,6 +73,7 @@ class Custom extends CI_Controller {
 
      $data['header_title'] = $this->input->post('header_title');
      $data['footer_title'] = $this->input->post('footer_title');
+     $data['staff_or_student'] = $staff_or_student;
 
         $type = $this->input->post('type');
         $input_id = $this->input->post('input_id');
