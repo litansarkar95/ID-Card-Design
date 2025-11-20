@@ -219,6 +219,7 @@ $this->common_model->save_data("users_last_design", $mdata);
         6 => 'admin/card/006/card-design-006',
         7 => 'admin/card/007/card-design-007',
         8 => 'admin/card/007/card-design-008',
+        9 => 'admin/card/007/card-design-009',
     ];
 
     if (isset($templates[$template_id])) {
