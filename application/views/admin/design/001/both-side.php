@@ -53,6 +53,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
 }
 
 .front_part .header_part {
@@ -117,7 +118,7 @@ body {
 
 
 .front_part .tagline_part {
- 
+    padding:5px;
     margin-top: -10px;
 }
 
@@ -208,6 +209,7 @@ body {
     line-height:1.4rem;
     margin-top:-12px;
     margin-bottom:5px;
+    padding:0px 3px;
     text-transform: uppercase;
     font-family: "Roboto", sans-serif;
     font-weight:bold;
@@ -232,6 +234,7 @@ body {
 .front_part .footer_part {
     height: 40px;
     position: relative;
+  
 }
 
 .front_part .footer_shape {
@@ -244,7 +247,7 @@ body {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    top: 12px;
+    top: 0px;
     z-index: 9;
     width: 60px;
 }
@@ -273,13 +276,15 @@ body {
 }
 
 .back_part {
-    background: #fff;
+ background: transparent;
     width: 2.125in;
     height: 3.375in;
     margin: 10px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
+
 
 }
 
@@ -308,6 +313,13 @@ body {
     padding:1px;
     text-transform: capitalize;
     font-family: "Noto Sans Bengali";
+}
+
+
+.back_part .designation {
+
+    padding:1px 17px;
+   
 }
 .back_part .header_shape3::after {
     background: #fff;
@@ -396,6 +408,7 @@ body {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
+      padding:22px;
 }
 
 .ftr_content {
